@@ -1,0 +1,3484 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ac" = (
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ad" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/toy/prize,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"ae" = (
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ag" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/surface/table,
+/obj/structure/machinery/computer/intel,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ah" = (
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/lv624/ground/caves/west1)
+"ai" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "Curie_blast";
+	layer = 3.3;
+	name = "\improper Marie Curie Blast Door"
+	},
+/turf/open/floor/plating{
+	dir = 4;
+	icon_state = "warnplate"
+	},
+/area/lv624/ground/caves/west1)
+"aj" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	dir = 2;
+	locked = 1;
+	name = "Marie Curie Secondary Airlock"
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/lv624/ground/caves/west1)
+"ak" = (
+/obj/structure/machinery/computer/crew{
+	icon_state = "crewb";
+	stat = 1
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"al" = (
+/obj/structure/machinery/computer/communications{
+	icon_state = "commb";
+	stat = 1
+	},
+/obj/structure/surface/table,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"an" = (
+/obj/structure/surface/table,
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"ao" = (
+/obj/structure/machinery/computer/station_alert{
+	icon_state = "atmosb";
+	stat = 1
+	},
+/obj/structure/surface/table,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"ap" = (
+/obj/structure/machinery/suit_storage_unit,
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/crashed_ship)
+"aq" = (
+/obj/structure/bed,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"ar" = (
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"as" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/mob/living/simple_animal/crab/Coffee,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"at" = (
+/obj/structure/bed/chair{
+	dir = 1;
+	icon_state = "chair";
+	tag = "icon-chair (NORTH)"
+	},
+/obj/item/weapon/gun/pistol/b92fs,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"au" = (
+/obj/item/ammo_magazine/pistol/heavy,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"av" = (
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/crashed_ship)
+"aw" = (
+/obj/structure/bed/chair{
+	dir = 1;
+	icon_state = "chair";
+	tag = "icon-chair (NORTH)"
+	},
+/obj/item/toy/katana,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"ax" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"ay" = (
+/obj/structure/sign/safety/airlock,
+/turf/closed/wall/almayer,
+/area/lv624/lazarus/crashed_ship)
+"az" = (
+/obj/structure/sign/safety/EVA,
+/turf/closed/wall/almayer,
+/area/lv624/lazarus/crashed_ship)
+"aA" = (
+/obj/structure/sign/safety/bridge,
+/turf/closed/wall/almayer,
+/area/lv624/lazarus/crashed_ship)
+"aB" = (
+/obj/item/weapon/gun/pistol/heavy,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"aC" = (
+/obj/structure/window/framed/almayer/white,
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"aD" = (
+/obj/item/ammo_magazine/pistol/heavy,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"aE" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"aF" = (
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"aG" = (
+/obj/structure/morgue,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/lv624/lazarus/crashed_ship)
+"aH" = (
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	name = "Crashed Ship APC";
+	pixel_y = 30;
+	start_charge = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"aI" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"aJ" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"aK" = (
+/obj/structure/machinery/light,
+/obj/item/stack/sheet/metal{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"aL" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"aM" = (
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"aN" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"aO" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "whiteblue"
+	},
+/area/lv624/lazarus/crashed_ship)
+"aP" = (
+/obj/structure/machinery/power/smes/buildable/charged,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"aS" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	dir = 2;
+	locked = 1;
+	name = "Marie Curie Secondary Airlock"
+	},
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "Curie_blast";
+	layer = 3.3;
+	name = "\improper Marie Curie Blast Door"
+	},
+/turf/open/floor/plating{
+	dir = 4;
+	icon_state = "warnplate"
+	},
+/area/lv624/ground/caves/west1)
+"aT" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"aU" = (
+/obj/structure/ladder{
+	icon_state = "ladder00"
+	},
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/crashed_ship)
+"aW" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"aX" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"aY" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/vending/cigarette/colony,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"aZ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "whiteblue"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ba" = (
+/obj/structure/bed,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"bb" = (
+/obj/structure/surface/rack,
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bc" = (
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"bd" = (
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"be" = (
+/obj/structure/bed/chair/comfy,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"bf" = (
+/obj/structure/bed/chair/comfy,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"bg" = (
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "whiteblue"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bh" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"bk" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/toy/deck/uno,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"bn" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteblue";
+	tag = "icon-whiteblue (EAST)"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bo" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"bp" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/firstaid/adv,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"bq" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/firstaid,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"br" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"bt" = (
+/obj/structure/machinery/door/airlock/almayer/generic,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"bu" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"bv" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"bw" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "whiteblue"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bA" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 2
+	},
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"bB" = (
+/obj/structure/sink{
+	pixel_y = 15
+	},
+/obj/item/toy/bikehorn/rubberducky,
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bC" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bD" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/sand4)
+"bG" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"bH" = (
+/turf/open/floor/plating{
+	dir = 9;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bI" = (
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bJ" = (
+/turf/open/floor/plating{
+	dir = 5;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bK" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"bM" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/west1)
+"bN" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/west1)
+"bO" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bP" = (
+/obj/structure/cargo_container{
+	icon_state = "green 0,0";
+	tag = "icon-green 0,0"
+	},
+/turf/open/floor/plating{
+	dir = 10;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bQ" = (
+/obj/structure/cargo_container{
+	icon_state = "green 1,0";
+	tag = "icon-green 1,0"
+	},
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bR" = (
+/obj/structure/mineral_door/resin,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/west1)
+"bS" = (
+/obj/structure/cargo_container{
+	icon_state = "green 2,0";
+	tag = "icon-green 2,0"
+	},
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bT" = (
+/turf/open/floor/plating{
+	dir = 6;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"bV" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"bW" = (
+/obj/item/ammo_magazine/pistol/b92fs,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"bX" = (
+/obj/item/ammo_magazine/pistol/b92fs,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"bY" = (
+/obj/item/storage/firstaid,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"bZ" = (
+/obj/structure/barricade/plasteel{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ca" = (
+/obj/structure/largecrate/supply/supplies/mre{
+	desc = "A supply crate containing fifty reposessed USCM MRE packets.";
+	name = "\improper CLF Supply MRE crate (x50)"
+	},
+/turf/open/floor/plating{
+	dir = 9;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cb" = (
+/obj/structure/machinery/door/airlock/almayer/generic,
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cc" = (
+/obj/structure/sign/safety/fridge,
+/turf/closed/wall/almayer,
+/area/lv624/lazarus/crashed_ship)
+"ce" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/pistol/heavy,
+/obj/item/ammo_magazine/pistol/heavy,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"cf" = (
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"cg" = (
+/obj/structure/barricade/metal,
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ch" = (
+/obj/structure/barricade/metal,
+/obj/structure/machinery/m56d_hmg/mg_turret,
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ci" = (
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/turf/open/floor/plating{
+	dir = 9;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cj" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	dir = 4;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ck" = (
+/obj/structure/bed,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"cl" = (
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cm" = (
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cn" = (
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/crashed_ship)
+"co" = (
+/obj/item/ammo_casing/shell,
+/turf/open/floor/plating{
+	dir = 6;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cp" = (
+/obj/structure/sign/safety/electronics,
+/turf/closed/wall/almayer,
+/area/lv624/lazarus/crashed_ship)
+"cr" = (
+/obj/structure/machinery/optable,
+/obj/item/tank/anesthetic,
+/obj/item/clothing/mask/breath/medical,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cs" = (
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/plating{
+	dir = 5;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ct" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel,
+/turf/open/floor/plating{
+	dir = 6;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cu" = (
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/obj/structure/barricade/plasteel,
+/turf/open/floor/plating{
+	dir = 10;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cv" = (
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/obj/structure/machinery/sleeper,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cw" = (
+/obj/structure/machinery/sleep_console,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cx" = (
+/obj/structure/surface/table,
+/obj/item/storage/surgical_tray,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cy" = (
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	dir = 5;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cz" = (
+/obj/structure/sign/safety/medical,
+/turf/closed/wall/almayer,
+/area/lv624/lazarus/crashed_ship)
+"cA" = (
+/turf/open/floor/plating{
+	dir = 10;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cB" = (
+/obj/structure/barricade/plasteel,
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cC" = (
+/obj/structure/barricade/metal{
+	dir = 8
+	},
+/obj/structure/barricade/metal,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cD" = (
+/obj/item/stack/sheet/metal{
+	amount = 2;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/plating{
+	dir = 6;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cG" = (
+/turf/closed/wall/almayer,
+/area/lv624/lazarus/crashed_ship)
+"cH" = (
+/turf/closed/wall/almayer,
+/turf/open/space,
+/area/lv624/lazarus/crashed_ship)
+"cI" = (
+/obj/structure/machinery/door/airlock/almayer/engineering,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"cJ" = (
+/obj/structure/ladder{
+	icon_state = "ladder00"
+	},
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cK" = (
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/open,
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cL" = (
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cM" = (
+/obj/structure/ladder{
+	icon_state = "ladder00"
+	},
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor{
+	icon_state = "whitebluefull";
+	tag = "icon-whitebluefull"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cN" = (
+/turf/open/gm/dirt,
+/turf/closed/wall/almayer,
+/area/lv624/lazarus/crashed_ship)
+"cP" = (
+/obj/structure/machinery/door/airlock/almayer/command,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"cQ" = (
+/obj/structure/machinery/door/airlock/almayer/generic,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"cR" = (
+/obj/structure/machinery/door/airlock/almayer/generic,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cS" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"cT" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/attachable/lasersight,
+/obj/item/attachable/lasersight,
+/obj/item/attachable/extended_barrel,
+/obj/item/attachable/flashlight/grip,
+/obj/item/attachable/flashlight/grip,
+/obj/item/attachable/burstfire_assembly,
+/obj/item/attachable/reddot,
+/obj/item/attachable/reddot,
+/obj/item/attachable/compensator,
+/obj/item/attachable/compensator,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"cU" = (
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "whiteblue"
+	},
+/area/lv624/lazarus/crashed_ship)
+"cV" = (
+/obj/item/cell,
+/obj/item/cell,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"dK" = (
+/obj/structure/mineral_door/resin,
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/west1)
+"dO" = (
+/turf/closed/wall/almayer,
+/area/lv624/ground/caves/west1)
+"eg" = (
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"fm" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/sand4)
+"fo" = (
+/obj/item/ammo_casing/shell,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"hN" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"hO" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/stack/rods,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"jm" = (
+/obj/item/weapon/gun/rifle/sniper/svd,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"jA" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirt,
+/area/lv624/ground/river1)
+"jX" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"jZ" = (
+/obj/item/stack/sheet/metal{
+	amount = 2;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"kx" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/obj/effect/spawner/random/toolbox,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"kK" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/sand1)
+"lB" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/sand1)
+"lD" = (
+/turf/open/gm/river,
+/area/lv624/ground/river1)
+"mc" = (
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river1)
+"mk" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirt,
+/area/lv624/ground/sand1)
+"ml" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/surface/table,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"mp" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/river1)
+"mx" = (
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/river1)
+"my" = (
+/obj/structure/tunnel{
+	id = "hole3"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/west1)
+"mz" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/dirt,
+/area/lv624/ground/sand1)
+"mG" = (
+/obj/structure/flora/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/turf/open/gm/river,
+/area/lv624/ground/river1)
+"mI" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/jungle6)
+"mJ" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle6)
+"mK" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle6)
+"mM" = (
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/lv624/ground/river1)
+"ne" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/sand7)
+"nh" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/jungle6)
+"nl" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/gm/river,
+/area/lv624/ground/river1)
+"nu" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/river,
+/area/lv624/ground/river1)
+"nz" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/sand7)
+"nL" = (
+/obj/vehicle/multitile/truck/fixed,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"nN" = (
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/lv624/ground/river1)
+"nZ" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"ox" = (
+/obj/structure/machinery/light,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"oB" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"oS" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirt,
+/area/lv624/ground/river1)
+"oZ" = (
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/turf/open/gm/river,
+/area/lv624/ground/river1)
+"pa" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/river1)
+"pD" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/jungle6)
+"pO" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/river,
+/area/lv624/ground/river1)
+"pP" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle6)
+"qc" = (
+/obj/item/weapon/gun/rifle/mar40,
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"qd" = (
+/obj/item/weapon/gun/m60,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"qz" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/belt/utility/full,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"to" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"uT" = (
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"wj" = (
+/obj/item/stack/sheet/metal{
+	amount = 2;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"wQ" = (
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"wX" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/toy/prize/marauder,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+"zH" = (
+/obj/item/ammo_casing/shell,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Aa" = (
+/obj/item/stack/rods,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"BD" = (
+/turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"Cf" = (
+/obj/item/ammo_magazine/sniper/svd,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"DI" = (
+/obj/item/ammo_casing/shell,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"Ed" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/jungle6)
+"EC" = (
+/obj/item/ammo_magazine/sniper/svd,
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Fk" = (
+/obj/structure/bed,
+/obj/effect/landmark/survivor_spawner/lv624_crashed_clf,
+/obj/item/toy/farwadoll,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"GA" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Hq" = (
+/obj/structure/machinery/floodlight,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"HW" = (
+/obj/item/storage/belt/medical/full,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Ia" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/toy/bikehorn/rubberducky,
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/carpet,
+/area/lv624/lazarus/crashed_ship)
+"Jj" = (
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Jn" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/jungle6)
+"Ma" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"Ok" = (
+/obj/structure/surface/table,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"PC" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/plasteel,
+/obj/item/stack/sheet/plasteel,
+/obj/item/stack/sheet/plasteel,
+/turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"PT" = (
+/obj/item/ammo_magazine/m60,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Qn" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Qv" = (
+/obj/item/ammo_magazine/m60,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"St" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"Tq" = (
+/obj/structure/barricade/metal,
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Tw" = (
+/obj/structure/machinery/floodlight,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/lv624/lazarus/crashed_ship)
+"WA" = (
+/obj/structure/machinery/autolathe,
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"XR" = (
+/obj/item/stack/rods,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged3"
+	},
+/area/lv624/lazarus/crashed_ship)
+"Yq" = (
+/obj/item/ammo_magazine/shotgun/slugs,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"YP" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river1)
+"YQ" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast,
+/area/lv624/ground/river1)
+"YR" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 4
+	},
+/area/lv624/ground/river1)
+"YS" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 2;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/river1)
+"YV" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 2;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/river1)
+"Zd" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer,
+/area/lv624/lazarus/crashed_ship)
+"ZE" = (
+/obj/item/weapon/gun/rifle/mar40,
+/turf/open/floor/plating,
+/area/lv624/lazarus/crashed_ship)
+"ZZ" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/turf/open/floor/wood,
+/area/lv624/lazarus/crashed_ship)
+
+(1,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+"}
+(2,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+"}
+(3,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+"}
+(4,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+"}
+(5,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+ne
+ne
+ne
+ne
+ne
+ne
+ne
+"}
+(6,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+ne
+ne
+ne
+ne
+ne
+ne
+nz
+"}
+(7,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+ne
+ne
+ne
+ne
+ne
+ne
+nz
+"}
+(8,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+ne
+ne
+ne
+ne
+ne
+ne
+nz
+"}
+(9,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+ne
+ne
+ne
+ne
+ne
+ne
+nz
+"}
+(10,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+ne
+ne
+ne
+ne
+ne
+ne
+nz
+"}
+(11,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+ne
+ne
+ne
+ne
+ne
+ne
+nz
+"}
+(12,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bN
+ne
+ne
+ne
+ne
+ne
+nz
+nz
+"}
+(13,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bN
+bN
+ne
+ne
+ne
+ne
+nz
+nz
+nz
+"}
+(14,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+cH
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cc
+cG
+cp
+cG
+cz
+cG
+cH
+bM
+bM
+bM
+bM
+bM
+bN
+bN
+ne
+ne
+ne
+nz
+nz
+nz
+nz
+"}
+(15,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+cH
+bb
+bb
+cG
+cV
+aP
+cG
+bV
+aq
+cG
+bV
+aq
+cG
+Ia
+aq
+cG
+bH
+bP
+ca
+cA
+bH
+cA
+Aa
+Aa
+cG
+cG
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+ne
+ne
+ne
+nz
+nz
+nz
+nz
+"}
+(16,1,1) = {"
+bM
+bM
+bM
+bM
+cH
+aG
+ae
+ae
+cG
+aH
+aF
+cG
+ar
+ck
+cG
+eg
+Fk
+cG
+ar
+ba
+cG
+bI
+bQ
+bI
+Jj
+bI
+cL
+nL
+wQ
+cG
+cG
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+nz
+nz
+nz
+nz
+nz
+nz
+nz
+"}
+(17,1,1) = {"
+bM
+bM
+bM
+bM
+cG
+ag
+ae
+cG
+cG
+cb
+cG
+cG
+cQ
+cG
+cG
+cQ
+cG
+cG
+cQ
+cG
+cG
+bI
+bS
+bI
+cL
+bI
+cL
+bI
+wQ
+cG
+cG
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+nz
+nz
+nz
+nz
+nz
+nz
+nz
+"}
+(18,1,1) = {"
+bM
+bM
+bM
+bM
+cG
+ae
+ae
+bA
+av
+aI
+aI
+aT
+aI
+aI
+bn
+aI
+aI
+bn
+aI
+aI
+cG
+bJ
+co
+cs
+bT
+bJ
+bT
+cy
+cD
+cG
+cG
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+nz
+nz
+nz
+nz
+nz
+nz
+nz
+"}
+(19,1,1) = {"
+bM
+bM
+bM
+bM
+cG
+cG
+cG
+aA
+cP
+cG
+cG
+cJ
+cM
+cG
+bc
+bc
+cG
+bt
+cG
+av
+cG
+ci
+cA
+bK
+Cf
+cj
+ct
+aF
+aF
+wQ
+cK
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+nz
+nz
+nz
+nz
+nz
+nz
+nz
+"}
+(20,1,1) = {"
+bM
+bM
+bM
+bM
+cG
+ak
+as
+aB
+ar
+aJ
+cG
+bc
+bc
+cG
+bd
+bo
+bo
+ox
+cG
+av
+cG
+PT
+EC
+aF
+jZ
+aF
+GA
+fo
+Tw
+wQ
+cL
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+nz
+nz
+nz
+nz
+nz
+nz
+nz
+"}
+(21,1,1) = {"
+bM
+bM
+bM
+bM
+ac
+al
+at
+bd
+ar
+aK
+cG
+aW
+bd
+bd
+bd
+bp
+bk
+bu
+cf
+av
+cG
+cm
+qc
+jm
+cB
+aF
+aF
+aF
+wQ
+hN
+cL
+bN
+bN
+bN
+bN
+bN
+bM
+ne
+ne
+nz
+nz
+nz
+nz
+nz
+nz
+"}
+(22,1,1) = {"
+bM
+bM
+bM
+bN
+ac
+an
+au
+bW
+ar
+aL
+cG
+aX
+be
+cS
+bd
+bq
+wX
+bv
+cf
+av
+cG
+bJ
+aF
+St
+ch
+DI
+aF
+wQ
+zH
+GA
+cL
+bN
+bN
+bN
+bN
+bM
+bM
+ne
+ne
+nz
+nz
+nz
+nz
+nz
+nz
+"}
+(23,1,1) = {"
+bM
+bM
+bM
+bN
+ac
+an
+ar
+ar
+ar
+aM
+cG
+bh
+bf
+cT
+bd
+bq
+oB
+bu
+cf
+av
+cG
+uT
+Qv
+qd
+ch
+aF
+aF
+aF
+GA
+GA
+cK
+bN
+bN
+bN
+bM
+bM
+bM
+ne
+ne
+nz
+nz
+nz
+nz
+nz
+nz
+"}
+(24,1,1) = {"
+bM
+bM
+bM
+bM
+aC
+al
+aw
+bX
+ar
+ce
+cG
+aY
+bd
+bd
+bd
+bp
+ZZ
+bv
+cf
+av
+cG
+aF
+to
+wQ
+cB
+aF
+DI
+GA
+GA
+aF
+cL
+bN
+bN
+bM
+bM
+bM
+bM
+ne
+nz
+nz
+nz
+nz
+nz
+nz
+nz
+"}
+(25,1,1) = {"
+bM
+bM
+bM
+bM
+cG
+ao
+ax
+aD
+ar
+aN
+cG
+bc
+bc
+cG
+bd
+jX
+br
+ox
+cG
+av
+cG
+ZE
+aF
+jm
+cg
+aF
+aF
+aF
+Hq
+DI
+cL
+bN
+bN
+bM
+bM
+bM
+bM
+ne
+nz
+nz
+nz
+nz
+nz
+nz
+nz
+"}
+(26,1,1) = {"
+bM
+bM
+bM
+bM
+cG
+cG
+cG
+aA
+cP
+cG
+cG
+aU
+cM
+cG
+bc
+bc
+cG
+bt
+cG
+av
+bG
+Qv
+Yq
+aF
+aF
+cl
+cu
+aF
+GA
+GA
+cL
+bN
+bN
+bM
+bM
+lB
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+YP
+YR
+"}
+(27,1,1) = {"
+bM
+bM
+bM
+bM
+cG
+ap
+av
+av
+av
+aO
+aO
+bw
+bg
+cU
+aZ
+aO
+aO
+aZ
+aO
+aO
+aF
+aF
+bY
+aF
+aF
+Cf
+aF
+wj
+cl
+cG
+cG
+dO
+bM
+bM
+bM
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+kK
+YQ
+lD
+"}
+(28,1,1) = {"
+bM
+bM
+bM
+bM
+cG
+cG
+ay
+ah
+aj
+cG
+cQ
+cG
+cG
+cI
+cG
+cG
+cG
+cG
+cG
+cR
+cG
+bZ
+bZ
+cv
+cC
+wQ
+hO
+nZ
+XR
+cG
+cG
+dO
+dO
+bM
+bM
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+kK
+YQ
+lD
+"}
+(29,1,1) = {"
+bM
+bM
+bM
+bM
+cH
+cG
+cG
+aE
+aF
+cG
+ar
+ba
+cG
+BD
+BD
+BD
+kx
+cG
+cG
+bB
+cG
+HW
+cn
+cw
+Tq
+wQ
+nZ
+Qn
+wQ
+cG
+cG
+dO
+bM
+lB
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+kK
+YP
+YS
+lD
+"}
+(30,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+cH
+az
+ml
+Ok
+cG
+ad
+aq
+cG
+Ma
+BD
+BD
+PC
+cG
+cG
+bC
+cG
+bO
+cr
+cx
+Tq
+wQ
+wQ
+wQ
+wQ
+cG
+cG
+bM
+bM
+lB
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+kK
+YQ
+lD
+lD
+"}
+(31,1,1) = {"
+bM
+bM
+bM
+bM
+bN
+bM
+cH
+ai
+aS
+cG
+cG
+cG
+cG
+WA
+Zd
+BD
+qz
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+cN
+lB
+lB
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+YP
+YR
+YS
+lD
+lD
+"}
+(32,1,1) = {"
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bM
+bM
+bM
+cG
+cG
+cG
+cG
+cG
+cG
+cG
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+lB
+lB
+lB
+lB
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+YQ
+lD
+lD
+lD
+mG
+"}
+(33,1,1) = {"
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+lB
+lB
+lB
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+mk
+YQ
+lD
+lD
+lD
+lD
+"}
+(34,1,1) = {"
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bM
+bM
+bM
+bM
+bM
+bM
+lB
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+mp
+YP
+YR
+YS
+lD
+lD
+lD
+lD
+"}
+(35,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+bM
+bM
+bM
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+kK
+mp
+YQ
+lD
+lD
+lD
+lD
+lD
+lD
+"}
+(36,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+bM
+bM
+bM
+lB
+lB
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+kK
+mp
+YP
+YS
+nl
+lD
+lD
+lD
+lD
+lD
+"}
+(37,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+bM
+lB
+lB
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+YP
+YR
+YS
+lD
+lD
+lD
+lD
+lD
+pO
+mx
+"}
+(38,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+lB
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+kK
+YQ
+lD
+lD
+lD
+lD
+lD
+oZ
+lD
+lD
+nN
+"}
+(39,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+bM
+lB
+lB
+kK
+kK
+kK
+kK
+kK
+mk
+YP
+YV
+lD
+lD
+lD
+lD
+lD
+mG
+lD
+lD
+nN
+"}
+(40,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+bM
+bM
+lB
+kK
+kK
+kK
+kK
+kK
+kK
+kK
+YQ
+lD
+lD
+lD
+lD
+lD
+lD
+lD
+mx
+mM
+mc
+"}
+(41,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+bM
+bM
+bM
+bM
+lB
+kK
+kK
+kK
+kK
+kK
+kK
+kK
+YQ
+lD
+lD
+lD
+lD
+lD
+lD
+pa
+mc
+oS
+mp
+"}
+(42,1,1) = {"
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+bM
+bM
+bM
+bM
+bM
+bD
+lB
+kK
+kK
+kK
+kK
+kK
+kK
+kK
+kK
+YQ
+lD
+lD
+lD
+mG
+lD
+lD
+nN
+mp
+mI
+Ed
+"}
+(43,1,1) = {"
+bR
+bN
+bN
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bM
+bM
+bM
+bM
+bM
+bM
+bM
+bD
+kK
+kK
+kK
+kK
+kK
+kK
+kK
+kK
+mz
+YQ
+lD
+lD
+lD
+lD
+mx
+mM
+mc
+mp
+pD
+pP
+"}
+(44,1,1) = {"
+dK
+bN
+bN
+bN
+bN
+bM
+bM
+bN
+bN
+bN
+bN
+bN
+bN
+fm
+fm
+fm
+fm
+fm
+fm
+fm
+fm
+fm
+fm
+fm
+fm
+kK
+kK
+kK
+kK
+kK
+kK
+kK
+kK
+kK
+YQ
+lD
+lD
+lD
+mG
+nN
+mp
+mp
+jA
+mp
+mJ
+"}
+(45,1,1) = {"
+bM
+my
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+bN
+fm
+fm
+fm
+fm
+fm
+fm
+fm
+fm
+fm
+fm
+fm
+fm
+kK
+kK
+kK
+kK
+kK
+kK
+kK
+kK
+kK
+YQ
+mG
+lD
+lD
+nu
+nN
+mp
+oS
+Jn
+nh
+mK
+"}
