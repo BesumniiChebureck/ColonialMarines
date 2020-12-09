@@ -191,7 +191,7 @@
 		list("Entrenching Tool (ET)", round(scale * 2), /obj/item/tool/shovel/etool, VENDOR_ITEM_REGULAR),
 		list("M89-S Signal Flare Pack", round(scale * 1), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", round(scale * 5), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
-		list("Binoculars", round(scale * 1), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
+		list("Binoculars", round(scale * 1), /obj/item/device/binoculars/range/designator, VENDOR_ITEM_REGULAR),
 		list("MB-6 Folding Barricade", round(scale * 2), /obj/item/folding_barricade, VENDOR_ITEM_REGULAR)
 		)
 
@@ -329,23 +329,31 @@
 	listed_products = list(
 
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
-		list("L42A AP Magazine (10x24mm)", round(scale * 3.5), /obj/item/ammo_magazine/rifle/l42a/ap, VENDOR_ITEM_REGULAR),
-		list("M39 AP Magazine (10x20mm)", round(scale * 3), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
-		list("M41A AP Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
-		list("M41A MK1 Magazine (10x24mm)", round(scale * 1.5), /obj/item/ammo_magazine/rifle/m41aMK1, VENDOR_ITEM_REGULAR),
+		list("L42A AP Magazine (10x24mm)", round(scale * 7), /obj/item/ammo_magazine/rifle/l42a/ap, VENDOR_ITEM_REGULAR),
+		list("M39 AP Magazine (10x20mm)", round(scale * 6), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
+		list("M41A AP Magazine (10x24mm)", round(scale * 6), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
+		list("M41A MK1 Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/m41aMK1, VENDOR_ITEM_REGULAR),
 
 		list("EXTENDED AMMUNITION", -1, null, null),
-		list("M39 Extended Magazine (10x20mm)", round(scale * 1.8), /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
-		list("M41A Extended Magazine (10x24mm)", round(scale * 1.9), /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
+		list("M39 Extended Magazine (10x20mm)", round(scale * 3.6), /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
+		list("M41A Extended Magazine (10x24mm)", round(scale * 3.8), /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", -1, null, null),
-		list("Incinerator Tank", round(scale * 1.5), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
+		list("Incinerator Tank", round(scale * 3), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
 		list("M56 Smartgun Drum", 1, /obj/item/ammo_magazine/smartgun, VENDOR_ITEM_REGULAR),
-		list("M44 Heavy Speed Loader (.44)", round(scale * 2), /obj/item/ammo_magazine/revolver/heavy, VENDOR_ITEM_REGULAR),
-		list("M44 Marksman Speed Loader (.44)", round(scale * 2), /obj/item/ammo_magazine/revolver/marksman, VENDOR_ITEM_REGULAR),
-		list("M4A3 HP Magazine (9mm)", round(scale * 2), /obj/item/ammo_magazine/pistol/hp, VENDOR_ITEM_REGULAR),
-		list("SU-6 Smartpistol Magazine (.45)", round(scale * 3), /obj/item/ammo_magazine/pistol/smart, VENDOR_ITEM_REGULAR),
-		list("VP78 Magazine", round(scale * 3), /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR)
+		list("M44 Heavy Speed Loader (.44)", round(scale * 4), /obj/item/ammo_magazine/revolver/heavy, VENDOR_ITEM_REGULAR),
+		list("M44 Marksman Speed Loader (.44)", round(scale * 4), /obj/item/ammo_magazine/revolver/marksman, VENDOR_ITEM_REGULAR),
+		list("M4A3 HP Magazine (9mm)", round(scale * 4), /obj/item/ammo_magazine/pistol/hp, VENDOR_ITEM_REGULAR),
+		list("SU-6 Smartpistol Magazine (.45)", round(scale * 6), /obj/item/ammo_magazine/pistol/smart, VENDOR_ITEM_REGULAR),
+		list("VP78 Magazine", round(scale * 6), /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR),
+		list("L42A LE Magazine (10x24mm)", round(scale * 3.5), /obj/item/ammo_magazine/rifle/l42a/le, VENDOR_ITEM_REGULAR),
+		list("L42A Inc Magazine (10x24mm)", round(scale * 3.5), /obj/item/ammo_magazine/rifle/l42a/incendiary, VENDOR_ITEM_REGULAR),
+		list("M39 LE Magazine (10x20mm)", round(scale * 3), /obj/item/ammo_magazine/smg/m39/le, VENDOR_ITEM_REGULAR),
+		list("M39 Inc Magazine (10x20mm)", round(scale * 3), /obj/item/ammo_magazine/smg/m39/incendiary, VENDOR_ITEM_REGULAR),
+		list("M41A EX Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/explosive, VENDOR_ITEM_REGULAR),
+		list("M41A Inc Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/incendiary, VENDOR_ITEM_REGULAR),
+		list("M41A LE Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/le, VENDOR_ITEM_REGULAR),
+		list("M41A MK1 Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/m41aMK1, VENDOR_ITEM_REGULAR)
 		)
 
 //------------ATTACHMENTS VENDOR---------------
@@ -373,43 +381,43 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
 	listed_products = list(
 		list("MUZZLE", -1, null, null),
-		list("Barrel Charger", round(scale * 2.5), /obj/item/attachable/heavy_barrel, VENDOR_ITEM_REGULAR),
-		list("Extended Barrel", round(scale * 6.5), /obj/item/attachable/extended_barrel, VENDOR_ITEM_REGULAR),
-		list("M5 Bayonet", round(scale * 10.5), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
-		list("Recoil Compensator", round(scale * 6.5), /obj/item/attachable/compensator, VENDOR_ITEM_REGULAR),
-		list("Suppressor", round(scale * 6.5), /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
+		list("Barrel Charger", round(scale * 5), /obj/item/attachable/heavy_barrel, VENDOR_ITEM_REGULAR),
+		list("Extended Barrel", round(scale * 13), /obj/item/attachable/extended_barrel, VENDOR_ITEM_REGULAR),
+		list("M5 Bayonet", round(scale * 21), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
+		list("Recoil Compensator", round(scale * 13), /obj/item/attachable/compensator, VENDOR_ITEM_REGULAR),
+		list("Suppressor", round(scale * 13), /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
 
 		list("RAIL", -1, null, null),
-		list("B8 Smart-Scope", round(scale * 3.5), /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),
-		list("Magnetic Harness", round(scale * 6.5), /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
-		list("Quickfire Adapter", round(scale * 4.5), /obj/item/attachable/quickfire, VENDOR_ITEM_REGULAR),
-		list("Rail Flashlight", round(scale * 10.5), /obj/item/attachable/flashlight, VENDOR_ITEM_REGULAR),
-		list("S4 2x Telescopic Mini-Scope", round(scale * 4.5), /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),
-		list("S5 Red-Dot Sight", round(scale * 9.5), /obj/item/attachable/reddot, VENDOR_ITEM_REGULAR),
-		list("S6 Reflex Sight", round(scale * 9.5), /obj/item/attachable/reflex, VENDOR_ITEM_REGULAR),
-		list("S8 4x Telescopic Scope", round(scale * 4.5), /obj/item/attachable/scope, VENDOR_ITEM_REGULAR),
+		list("B8 Smart-Scope", round(scale * 7), /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),
+		list("Magnetic Harness", round(scale * 13), /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
+		list("Quickfire Adapter", round(scale * 9), /obj/item/attachable/quickfire, VENDOR_ITEM_REGULAR),
+		list("Rail Flashlight", round(scale * 21), /obj/item/attachable/flashlight, VENDOR_ITEM_REGULAR),
+		list("S4 2x Telescopic Mini-Scope", round(scale * 9), /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),
+		list("S5 Red-Dot Sight", round(scale * 19), /obj/item/attachable/reddot, VENDOR_ITEM_REGULAR),
+		list("S6 Reflex Sight", round(scale * 19), /obj/item/attachable/reflex, VENDOR_ITEM_REGULAR),
+		list("S8 4x Telescopic Scope", round(scale * 9), /obj/item/attachable/scope, VENDOR_ITEM_REGULAR),
 
 		list("UNDERBARREL", -1, null, null),
-		list("Angled Grip", round(scale * 6.5), /obj/item/attachable/angledgrip, VENDOR_ITEM_REGULAR),
-		list("Bipod", round(scale * 6.5), /obj/item/attachable/bipod, VENDOR_ITEM_REGULAR),
-		list("Burst Fire Assembly", round(scale * 4.5), /obj/item/attachable/burstfire_assembly, VENDOR_ITEM_REGULAR),
-		list("Gyroscopic Stabilizer", round(scale * 4.5), /obj/item/attachable/gyro, VENDOR_ITEM_REGULAR),
-		list("Laser Sight", round(scale * 9.5), /obj/item/attachable/lasersight, VENDOR_ITEM_REGULAR),
-		list("Mini Flamethrower", round(scale * 4.5), /obj/item/attachable/attached_gun/flamer, VENDOR_ITEM_REGULAR),
-		list("U7 Underbarrel Shotgun", round(scale * 4.5), /obj/item/attachable/attached_gun/shotgun, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Extinguisher", round(scale * 4.5), /obj/item/attachable/attached_gun/extinguisher, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Flashlight Grip", round(scale * 9.5), /obj/item/attachable/flashlight/grip, VENDOR_ITEM_REGULAR),
-		list("Underslung Grenade Launcher", round(scale * 9.5), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR),
-		list("Vertical Grip", round(scale * 9.5), /obj/item/attachable/verticalgrip, VENDOR_ITEM_REGULAR),
+		list("Angled Grip", round(scale * 13), /obj/item/attachable/angledgrip, VENDOR_ITEM_REGULAR),
+		list("Bipod", round(scale * 13), /obj/item/attachable/bipod, VENDOR_ITEM_REGULAR),
+		list("Burst Fire Assembly", round(scale * 9), /obj/item/attachable/burstfire_assembly, VENDOR_ITEM_REGULAR),
+		list("Gyroscopic Stabilizer", round(scale * 9), /obj/item/attachable/gyro, VENDOR_ITEM_REGULAR),
+		list("Laser Sight", round(scale * 19), /obj/item/attachable/lasersight, VENDOR_ITEM_REGULAR),
+		list("Mini Flamethrower", round(scale * 9), /obj/item/attachable/attached_gun/flamer, VENDOR_ITEM_REGULAR),
+		list("U7 Underbarrel Shotgun", round(scale * 9), /obj/item/attachable/attached_gun/shotgun, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Extinguisher", round(scale * 9), /obj/item/attachable/attached_gun/extinguisher, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Flashlight Grip", round(scale * 19), /obj/item/attachable/flashlight/grip, VENDOR_ITEM_REGULAR),
+		list("Underslung Grenade Launcher", round(scale * 19), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR),
+		list("Vertical Grip", round(scale * 19), /obj/item/attachable/verticalgrip, VENDOR_ITEM_REGULAR),
 
 		list("STOCK", -1, null, null),
-		list("L42 Synthetic Stock", round(scale * 4.5), /obj/item/attachable/stock/carbine, VENDOR_ITEM_REGULAR),
-		list("M37 Wooden Stock", round(scale * 4.5), /obj/item/attachable/stock/shotgun, VENDOR_ITEM_REGULAR),
-		list("M39 Arm Brace", round(scale * 4.5), /obj/item/attachable/stock/smg/brace, VENDOR_ITEM_REGULAR),
-		list("M39 Folding Stock", round(scale * 4.5), /obj/item/attachable/stock/smg/collapsible, VENDOR_ITEM_REGULAR),
-		list("M39 Stock", round(scale * 4.5), /obj/item/attachable/stock/smg, VENDOR_ITEM_REGULAR),
-		list("M41A Solid Stock", round(scale * 4.5), /obj/item/attachable/stock/rifle, VENDOR_ITEM_REGULAR),
-		list("M44 Magnum Sharpshooter Stock", round(scale * 4.5), /obj/item/attachable/stock/revolver, VENDOR_ITEM_REGULAR)
+		list("L42 Synthetic Stock", round(scale * 9), /obj/item/attachable/stock/carbine, VENDOR_ITEM_REGULAR),
+		list("M37 Wooden Stock", round(scale * 9), /obj/item/attachable/stock/shotgun, VENDOR_ITEM_REGULAR),
+		list("M39 Arm Brace", round(scale * 9), /obj/item/attachable/stock/smg/brace, VENDOR_ITEM_REGULAR),
+		list("M39 Folding Stock", round(scale * 9), /obj/item/attachable/stock/smg/collapsible, VENDOR_ITEM_REGULAR),
+		list("M39 Stock", round(scale * 9), /obj/item/attachable/stock/smg, VENDOR_ITEM_REGULAR),
+		list("M41A Solid Stock", round(scale * 9), /obj/item/attachable/stock/rifle, VENDOR_ITEM_REGULAR),
+		list("M44 Magnum Sharpshooter Stock", round(scale * 9), /obj/item/attachable/stock/revolver, VENDOR_ITEM_REGULAR)
 		)
 
 /obj/structure/machinery/cm_vending/sorted/attachments/get_appropriate_vend_turf(var/mob/living/carbon/human/H)

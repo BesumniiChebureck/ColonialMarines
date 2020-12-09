@@ -566,10 +566,9 @@
 			else
 				shake_camera(M, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
 
-	for(var/mob/living/carbon/M in oview(7, src))
-		if((match_hivemind(M) || isXenoQueen(M)))
+	for(var/mob/living/carbon/human/M in oview(7, src))
+		if(istype(M.wear_ear, /obj/item/clothing/ears/earmuffs))
 			continue
-
 		M.scream_stun_timeout = SECONDS_20
 		var/dist = get_dist(src, M)
 		if(dist <= 4)

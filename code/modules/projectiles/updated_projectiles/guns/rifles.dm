@@ -192,12 +192,14 @@
 	fire_sound = "gun_pulse"
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
-	current_mag = /obj/item/ammo_magazine/rifle/incendiary
+	current_mag = /obj/item/ammo_magazine/rifle/explosive
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/rifle/extended,
 		/obj/item/ammo_magazine/rifle/incendiary,
+		/obj/item/ammo_magazine/rifle/explosive,
 		/obj/item/ammo_magazine/rifle/ap,
+		/obj/item/ammo_magazine/rifle/le,
 		/obj/item/ammo_magazine/rifle/m41aMK1
 	)
 	//somewhere in between the mk1 and mk2
@@ -270,9 +272,9 @@
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
-	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
-	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
 /obj/item/weapon/gun/rifle/m46c/able_to_fire(mob/user)
 	. = ..()
