@@ -1,2 +1,2 @@
 # ColonialMarines
- CM.RU edition
+ CM Russian edition
