@@ -3,7 +3,7 @@
 
 /mob/dead
 	var/voted_this_drop = 0
-	can_block_movement = FALSE
+	//can_block_movement = FALSE
 	recalculate_move_delay = FALSE
 
 /mob/dead/observer
@@ -164,7 +164,7 @@
 
 
 /mob/dead/BlockedPassDirs(atom/movable/mover, target_dir)
-	return NO_BLOCKED_MOVEMENT
+	return //NO_BLOCKED_MOVEMENT
 /*
 Transfer_mind is there to check if mob is being deleted/not going to have a body.
 Works together with spawning an observer, noted above.

@@ -1,4 +1,3 @@
-
 /client/verb/who()
 	set name = "Who"
 	set category = "OOC"
@@ -37,11 +36,11 @@
 
 	var/list/counted_xenos = list(0,0,0,0,0,0)
 
-	var/msg = "<b>Current Players:</b>\n"
+	var/body = "<b>Current Players:</b><br>"
 	var/list/Lines = list()
 	if(admin_holder && ((R_ADMIN & admin_holder.rights) || (R_MOD & admin_holder.rights)))
 		for(var/client/C in GLOB.clients)
-			var/entry = "\t[C.key]"
+			var/entry = "[C.key]"
 			if(C.mob)	//Juuuust in case
 				if(istype(C.mob, /mob/new_player))
 					entry += " - In Lobby"
@@ -97,41 +96,41 @@
 				Lines += entry
 
 		for(var/line in sortList(Lines))
-			msg += "[line]\n"
-		msg += "<b>Total Players: [length(Lines)]</b>"
-		msg += "<br><b style='color:#777'>In Lobby: [counted_humanoids["Lobby"]]</b>"
-		msg += "<br><b style='color:#777'>Observers: [counted_humanoids["Observers"]] players and [counted_humanoids["Admin observers"]] staff members</b>"
-		msg += "<br><b style='color:#2C7EFF'>Humans: [counted_humanoids["Humans"]]</b> <b style='color:#F00'>(Infected: [counted_humanoids["Infected humans"]])</b>"
+			body += "[line]<br>"
+		body += "<b>Total Players: [length(Lines)]</b>"
+		body += "<br><b style='color:#777'>In Lobby: [counted_humanoids["Lobby"]]</b>"
+		body += "<br><b style='color:#777'>Observers: [counted_humanoids["Observers"]] players and [counted_humanoids["Admin observers"]] staff members</b>"
+		body += "<br><b style='color:#2C7EFF'>Humans: [counted_humanoids["Humans"]]</b> <b style='color:#F00'>(Infected: [counted_humanoids["Infected humans"]])</b>"
 		if(counted_humanoids[FACTION_MARINE])
-			msg += "<br><b style='color:#2C7EFF'>USCM personnel: [counted_humanoids[FACTION_MARINE]]</b> <b style='color:#688944'>(Squad Marines: [counted_humanoids["USCM Marines"]])</b>"
+			body += "<br><b style='color:#2C7EFF'>USCM personnel: [counted_humanoids[FACTION_MARINE]]</b> <b style='color:#688944'>(Squad Marines: [counted_humanoids["USCM Marines"]])</b>"
 		if(counted_humanoids[FACTION_YAUTJA])
-			msg += "<br><b style='color:#7ABA19'>Predators: [counted_humanoids[FACTION_YAUTJA]]</b> [counted_humanoids["Infected preds"] ? "<b style='color:#F00'>(Infected: [counted_humanoids["Infected preds"]])</b>" : ""]"
+			body += "<br><b style='color:#7ABA19'>Predators: [counted_humanoids[FACTION_YAUTJA]]</b> [counted_humanoids["Infected preds"] ? "<b style='color:#F00'>(Infected: [counted_humanoids["Infected preds"]])</b>" : ""]"
 
 		var/show_fact = TRUE
 		for(var/i in 10 to LAZYLEN(counted_humanoids) - 2)
 			if(counted_humanoids[counted_humanoids[i]])
 				if(show_fact)
-					msg += "<br><br>Other factions:"
+					body += "<br><br>Other factions:"
 					show_fact = FALSE
-				msg += "<br><b style='color:#2C7EFF'>[counted_humanoids[i]]: [counted_humanoids[counted_humanoids[i]]]</b>"
+				body += "<br><b style='color:#2C7EFF'>[counted_humanoids[i]]: [counted_humanoids[counted_humanoids[i]]]</b>"
 		if(counted_humanoids[FACTION_NEUTRAL])
-			msg += "<br><b style='color:#777'>[FACTION_NEUTRAL] humans: [counted_humanoids[FACTION_NEUTRAL]]</b>"
+			body += "<br><b style='color:#777'>[FACTION_NEUTRAL] humans: [counted_humanoids[FACTION_NEUTRAL]]</b>"
 
 		show_fact = TRUE
 		var/datum/hive_status/hive
 		for(var/i = 1;i < LAZYLEN(counted_xenos); i++)
 			if(counted_xenos[i])
 				if(show_fact)
-					msg += "<br><br>Xenomorphs:"
+					body += "<br><br>Xenomorphs:"
 					show_fact = FALSE
 				hive = hive_datum[i]
 				if(hive)
-					msg += "<br><b style='color:[hive.color ? hive.color : "#8200FF"]'>[hive.name]: [counted_xenos[i]]</b> <b style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</b>"
+					body += "<br><b style='color:[hive.color ? hive.color : "#8200FF"]'>[hive.name]: [counted_xenos[i]]</b> <b style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</b>"
 				else
-					msg += "<br><b style='color:#F00'>Error: no hive datum detected for [counted_xenos[i]]s Hive.</b>"
+					body += "<br><b style='color:#F00'>Error: no hive datum detected for [counted_xenos[i]]s Hive.</b>"
 				hive = null
 		if(counted_xenos[6])
-			msg += "<br><b style='color:#7ABA19'>Predaliens: [counted_xenos[6]]</b>"
+			body += "<br><b style='color:#7ABA19'>Predaliens: [counted_xenos[6]]</b>"
 
 	else
 		for(var/client/C in GLOB.clients)
@@ -140,10 +139,14 @@
 
 			Lines += C.key
 		for(var/line in sortList(Lines))
-			msg += "[line]\n"
-		msg += "<b>Total Players: [length(Lines)]</b>"
+			body += "[line]\n"
+		body += "<b>Total Players: [length(Lines)]</b><br>"
 
-	to_chat(src, msg)
+	var/datum/browser/browser = new(usr, "who", "<div align='center'>Who</div>", 400, 500)
+	browser.set_content(body)
+	browser.open()
+
+
 
 /client/verb/staffwho()
 	set name = "Staffwho"

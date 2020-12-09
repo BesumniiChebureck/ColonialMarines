@@ -65,6 +65,6 @@
 	t = replacetextEx(t, "ý", "&#1101;")
 	t = replacetextEx(t, "þ", "&#1102;")
 
-	t = replacetextEx(t, "&#255;", "&#1103;")
+	t = replacetextEx(t, "ÿ;", "&#1103;")
 
 	return t
