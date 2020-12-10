@@ -448,7 +448,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	icon = 'icons/obj/items/pro_case.dmi'
 	icon_state = "pro_case_large"
 	w_class = SIZE_HUGE
-	storage_slots = 6
+	storage_slots = 24
 	slowdown = 1
 	can_hold = list(/obj/item/ammo_magazine/riflemc,/obj/item/weapon/gun/rifle/m46c) //Nada. Once you take the stuff out it doesn't fit back in.
 	foldable = TRUE
