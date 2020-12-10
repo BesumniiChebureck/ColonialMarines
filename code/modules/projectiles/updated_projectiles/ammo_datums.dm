@@ -471,15 +471,15 @@
 
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
 	damage = BULLET_DAMAGE_TIER_20
-	damage_var_low = PROJECTILE_VARIANCE_TIER_10 //so... very need more lacky
+	damage_var_low = PROJECTILE_VARIANCE_TIER_10
 	damage_var_high = PROJECTILE_VARIANCE_TIER_10
-	accurate_range = 60
+	accurate_range = 10
 	accuracy = 0
 	damage_armor_punch = 6
 	pen_armor_punch = 6
 	damage_type = BURN||BRUTE
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_10
-	accuracy = HIT_ACCURACY_TIER_4
+	accuracy = HIT_ACCURACY_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_10
 	shell_speed = AMMO_SPEED_TIER_1
 	penetration = ARMOR_PENETRATION_TIER_10
