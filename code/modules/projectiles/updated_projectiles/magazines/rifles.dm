@@ -1,15 +1,15 @@
-
+//-------------------------------------------------------
 //M46C RIFLE SPECIAL AMMUNITION
 
 /obj/item/ammo_magazine/riflemc
 	name = "\improper M46C magazine (40x120mm)"
-	desc = "A 40x120mm FOUR SPARE ROUNDS IN PRESENTABLE MAG. WARNING, ONLY IN EMERGENCY SITYATIONS."
+	desc = "A 40x120mm EIGHT SPARE ROUNDS IN PRESENTABLE MAG. WARNING, ONLY IN EMERGENCY SITYATIONS."
 	caliber = "40x120mm"
 	icon_state = "m46c"
 	item_state = "generic_mag"
 	w_class = SIZE_MEDIUM
 	default_ammo = /datum/ammo/bullet/riflemc
-	max_rounds = 4
+	max_rounds = 8
 	gun_type = /obj/item/weapon/gun/rifle/m46c
 
 //-------------------------------------------------------

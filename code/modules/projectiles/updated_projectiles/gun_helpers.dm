@@ -192,6 +192,21 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 
+/obj/item/weapon/gun/proc/co_allowed_check(mob/living/carbon/human/user)
+	if(CONFIG_GET(flag/remove_gun_restrictions))
+		return TRUE //Not if the config removed it.
+
+	if(user.mind)
+		switch(user.job)
+			if(
+				"Commanding Officer",
+				"Ground Commander",
+				"PMC",
+				"WY Agent",
+			) return TRUE
+
+	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
+
 // Checks whether there is anything to put your harness
 /obj/item/weapon/gun/proc/harness_check(var/mob/living/carbon/human/user)
 	var/obj/item/I = user.wear_suit

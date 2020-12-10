@@ -41,7 +41,7 @@
 	for(var/i in GLOB.co_secure_boxes)
 		var/obj/structure/closet/secure_closet/securecom/S = i
 		var/loc_to_spawn = S.opened ? get_turf(S) : S
-		new /obj/item/storage/box/kit/co_gun(loc_to_spawn)
+		new /obj/item/storage/box/kitc/co_gun(loc_to_spawn)
 		new /obj/item/clothing/suit/storage/marine/MP/CO(loc_to_spawn)
 		new /obj/item/clothing/head/helmet/marine/CO(loc_to_spawn)
 
