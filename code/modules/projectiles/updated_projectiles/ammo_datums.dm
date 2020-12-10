@@ -370,8 +370,8 @@
 	impact_limbs = BODY_FLAG_HEAD
 	debilitate = list(0,2,0,0,0,1,0,0)
 
-	damage = BULLET_DAMAGE_TIER_11
-	damage_var_low = PROJECTILE_VARIANCE_TIER_8
+	damage = BULLET_DAMAGE_TIER_20
+	damage_var_low = PROJECTILE_VARIANCE_TIER_6
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_2
 
@@ -465,6 +465,47 @@
 					Rifle Ammo
 //================================================
 */
+//don't ask me about this is shitly lacky fucking bullets
+/datum/ammo/bullet/riflemc
+	name = "experemental bullet"//really experemental
+
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
+	damage = BULLET_DAMAGE_TIER_20
+	damage_var_low = PROJECTILE_VARIANCE_TIER_10 //so... very need more lacky
+	damage_var_high = PROJECTILE_VARIANCE_TIER_10
+	accurate_range = 60
+	accuracy = 0
+	damage_armor_punch = 6
+	pen_armor_punch = 6
+	damage_type = BURN||BRUTE
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_10
+	accuracy = HIT_ACCURACY_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_10
+	shell_speed = AMMO_SPEED_TIER_1
+	penetration = ARMOR_PENETRATION_TIER_10
+	damage_falloff = DAMAGE_FALLOFF_TIER_10
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_10
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_10 //so... very need more lacky
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_10
+
+/datum/ammo/bullet/riflemc/on_hit_mob(mob/M, obj/item/projectile/P)
+	cell_explosion(get_turf(M), 100, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 200, 180, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+	knockback(M, P, 32)	// Can knockback basically at max range
+	M.Daze(3)
+	if(!M || M == P.firer) return
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		shake_camera(H, 2, 1)
+
+/datum/ammo/bullet/riflemc/on_hit_obj(obj/O, obj/item/projectile/P)
+	cell_explosion(get_turf(O), 100, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 200, 180, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+
+/datum/ammo/bullet/riflemc/on_hit_turf(turf/T, obj/item/projectile/P)
+	if(T.density)
+		cell_explosion(T, 100, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+		cell_explosion(T, 200, 180, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/bullet/rifle
 	name = "rifle bullet"
@@ -472,7 +513,6 @@
 	damage = BULLET_DAMAGE_TIER_8
 	accurate_range = 16
 	accuracy = HIT_ACCURACY_TIER_4
-	scatter = SCATTER_AMOUNT_TIER_10
 	shell_speed = AMMO_SPEED_TIER_6
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
 

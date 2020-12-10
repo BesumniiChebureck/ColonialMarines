@@ -112,7 +112,7 @@
 //MARSHALS REVOLVER //Spearhead exists in Alien cannon.
 
 /obj/item/ammo_magazine/internal/revolver/cmb
-	default_ammo = /datum/ammo/bullet/revolver/small
-	caliber = ".357"
+	default_ammo = /datum/ammo/bullet/revolver/highimpact
+	caliber = ".454"
 	gun_type = /obj/item/weapon/gun/revolver/cmb
 
