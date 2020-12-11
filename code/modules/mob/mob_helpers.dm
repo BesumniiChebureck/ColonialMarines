@@ -158,7 +158,7 @@ var/global/list/limb_types_by_name = list(
 			t = text("[]*", t)
 		p++
 	return t
-
+/*
 proc/slur(phrase)
 	phrase = html_decode(phrase)
 	var/leng=length(phrase)
@@ -204,6 +204,86 @@ proc/slur(phrase)
 		t = text("[t][n_letter]")//since the above is ran through for each letter, the text just adds up back to the original word.
 		p++//for each letter p is increased to find where the next letter will be.
 	return strip_html(t)
+
+*/
+/proc/slur(text)
+
+	text = html_decode(text)
+
+	var/bytes_length = length(text)
+	var/new_text = ""
+	var/letter = ""
+	var/new_letter = ""
+
+	for(var/i = 1, i <= bytes_length, i += length(letter))
+		letter = text[i]
+		new_letter = letter
+
+		if(prob(35))
+			switch(lowertext(new_letter))
+				// latin
+				if("o")
+					new_letter = "u"
+				if("s")
+					new_letter = "ch"
+				if("a")
+					new_letter = "ah"
+				if("c")
+					new_letter = "k"
+				// cyrillic
+				if("ч")
+					new_letter = "щ"
+				if("е")
+					new_letter = "и"
+				if("з")
+					new_letter = "с"
+				if("к")
+					new_letter = "х"
+
+		switch(rand(1,15))
+			if(1,3,5,8)
+				new_letter = lowertext(new_letter)
+			if(2,4,6,15)
+				new_letter = uppertext(new_letter)
+			if(7)
+				new_letter += "'"
+
+		new_text += new_letter
+
+	return html_encode(capitalize(new_text))
+
+/proc/stutter(text)
+
+	text = html_decode(text)
+
+	var/bytes_length = length(text)
+	var/new_text = ""
+	var/letter = ""
+	var/new_letter = ""
+
+	var/static/list/stutter_alphabet = list("b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z","б","в","г","д","ж","з","й","к","л","м","н","п","р","с","т","ф","х","ц","ч","ш","щ")
+
+
+	for(var/i = 1, i <= bytes_length, i += length(letter))
+		letter = text[i]
+		new_letter = letter
+
+		if(prob(80) && (lowertext(new_letter) in stutter_alphabet))
+			if (prob(10))
+				new_letter = "[new_letter]-[new_letter]-[new_letter]-[new_letter]"
+			else
+				if (prob(20))
+					new_letter = "[new_letter]-[new_letter]-[new_letter]"
+				else
+					if (prob(5))
+						new_letter = ""
+					else
+						new_letter = "[new_letter]-[new_letter]"
+
+		new_text += new_letter
+
+	return html_encode(new_text)
+
 
 
 proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added

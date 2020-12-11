@@ -178,7 +178,12 @@
 		list("Field Intelligence Support Kit", round(scale * 1), /obj/item/storage/box/kit/mini_intel, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Kit", round(scale * 1), /obj/item/storage/box/kit/mini_jtac, VENDOR_ITEM_REGULAR),
 		list("M39 Point Man Kit", round(scale * 1), /obj/item/storage/box/kit/pursuit, VENDOR_ITEM_REGULAR),
-		list("M-OU53 Field Test Kit", round(scale / 3), /obj/item/storage/box/kit/mou53_sapper, VENDOR_ITEM_REGULAR),
+		list("M-OU53 Field Test Kit", round(scale * 1), /obj/item/storage/box/kit/mou53_sapper, VENDOR_ITEM_REGULAR),
+		list("Combat Technician Support Kit", round(scale * 1), /obj/item/storage/box/kit/mini_engineer, VENDOR_ITEM_REGULAR),
+		list("First Responder Medical Support Kit", round(scale * 1), /obj/item/storage/box/kit/mini_medic, VENDOR_ITEM_REGULAR),
+		list("Frontline Grenadier Kit", round(scale * 1), /obj/item/storage/box/kit/mini_grenadier, VENDOR_ITEM_REGULAR),
+		list("L42A Sniper Kit", round(scale * 1), /obj/item/storage/box/kit/mini_sniper, VENDOR_ITEM_REGULAR),
+		list("Personal Self Defense Kit", round(scale * 1), /obj/item/storage/box/kit/self_defense, VENDOR_ITEM_REGULAR),
 
 		list("EXPLOSIVES", -1, null, null),
 		list("M15 Fragmentation Grenade", round(scale * 2), /obj/item/explosive/grenade/HE/m15, VENDOR_ITEM_REGULAR),

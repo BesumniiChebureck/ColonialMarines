@@ -139,7 +139,7 @@
 
 			Lines += C.key
 		for(var/line in sortList(Lines))
-			body += "[line]\n"
+			body += "[line]<br>"
 		body += "<b>Total Players: [length(Lines)]</b><br>"
 
 	var/datum/browser/browser = new(usr, "who", "<div align='center'>Who</div>", 400, 500)
