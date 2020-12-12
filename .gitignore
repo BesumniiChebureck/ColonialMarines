@@ -62,3 +62,15 @@ MyzondlyaCM/vomit.ogg
 MyzondlyaCM/water_horror.ogg
 MyzondlyaCM/zvuk-horrora-sintezator-arfa.ogg
 MyzondlyaCM/zvuk-horrora-skripka.ogg
+config/dbconfig_native.txt
+config/dbconfig_bsql.txt
+config/custom_items.txt
+config/config.txt
+config/alienwhitelist.txt
+config/admins.txt
+config/admin_ranks.txt
+config/forumdbconfig.txt
+config/game_options.txt
+config/icon_source.txt
+config/motd.txt
+config/role_whitelist.txt

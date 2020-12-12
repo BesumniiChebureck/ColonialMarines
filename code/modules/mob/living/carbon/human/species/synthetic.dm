@@ -23,6 +23,7 @@
 
 	body_temperature = 350
 
+	mob_flags = KNOWS_TECHNOLOGY
 	flags = IS_WHITELISTED|NO_BREATHE|NO_SCAN|NO_BLOOD|NO_POISON|IS_SYNTHETIC|NO_CHEM_METABOLIZATION
 
 	blood_color = "#EEEEEE"
@@ -40,7 +41,7 @@
 		)
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
-	H.set_languages(list("English", "Russian", "Tradeband", "Spacendeutchen", "American Spanish", "Sainja", "Xenomorph"))
+	H.set_languages(list("English", "Russian", "Japanese", "Spacendeutchen", "Spanish", "Sainja", "Xenomorph"))
 	GLOB.alive_human_list -= H
 	return ..()
 

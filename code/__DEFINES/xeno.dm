@@ -99,6 +99,7 @@
 #define XVX_WARRIOR_HEALMULT 0.35
 
 // Weed defines
+#define WEED_LEVEL_WEAK 0
 #define WEED_LEVEL_STANDARD  1.5
 #define WEED_LEVEL_HIVE      4
 
@@ -158,7 +159,7 @@
 #define XENO_HEALTH_TIER_8		600 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_TIER_9		650 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_TIER_10		700 * XENO_UNIVERSAL_HPMULT
-#define XENO_HEALTH_QUEEN		850 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_QUEEN		1000 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_IMMORTAL	1200 * XENO_UNIVERSAL_HPMULT
 
 // Plasma bands
@@ -294,13 +295,36 @@
 #define XENO_PLASMAGAIN_MOD_MED   0.2
 #define XENO_PLASMAGAIN_MOD_LARGE 0.3
 
-// Speed modifiers
-#define XENO_SPEED_MODIFIER_SLOW       	0.15
-#define XENO_SPEED_MODIFIER_SLOWER      0.25
-#define XENO_SPEED_MODIFIER_SLOWEST     0.5
-#define XENO_SPEED_MODIFIER_FAST  		-0.15
-#define XENO_SPEED_MODIFIER_FASTER		-0.25
-#define XENO_SPEED_MODIFIER_FASTEST	  	-0.5
+// Faster speed modifier (higher tiers mean greater increase in speed)
+#define XENO_SPEED_FASTMOD_TIER_1       -0.05
+#define XENO_SPEED_FASTMOD_TIER_2       -0.1
+#define XENO_SPEED_FASTMOD_TIER_3       -0.15
+#define XENO_SPEED_FASTMOD_TIER_4       -0.2
+#define XENO_SPEED_FASTMOD_TIER_5	    -0.25
+#define XENO_SPEED_FASTMOD_TIER_6	    -0.3
+#define XENO_SPEED_FASTMOD_TIER_7	    -0.35
+#define XENO_SPEED_FASTMOD_TIER_8	    -0.4
+#define XENO_SPEED_FASTMOD_TIER_9	    -0.45
+#define XENO_SPEED_FASTMOD_TIER_10	    -0.5
+
+// Slower speed modifier (higher tiers mean greater decrease in speed)
+#define XENO_SPEED_SLOWMOD_TIER_1       0.05
+#define XENO_SPEED_SLOWMOD_TIER_2       0.1
+#define XENO_SPEED_SLOWMOD_TIER_3       0.15
+#define XENO_SPEED_SLOWMOD_TIER_4       0.20
+#define XENO_SPEED_SLOWMOD_TIER_5       0.25
+#define XENO_SPEED_SLOWMOD_TIER_6       0.30
+#define XENO_SPEED_SLOWMOD_TIER_7       0.35
+#define XENO_SPEED_SLOWMOD_TIER_8       0.4
+#define XENO_SPEED_SLOWMOD_TIER_9       0.45
+#define XENO_SPEED_SLOWMOD_TIER_10      0.5
+
+// Neuro power
+#define XENO_NEURO_TIER_1   1
+#define XENO_NEURO_TIER_2   1.25
+#define XENO_NEURO_TIER_3   1.5 // Threshold for sleep and daze
+#define XENO_NEURO_TIER_4   1.75
+#define XENO_NEURO_TIER_5   2
 
 // Pheremone strength modifiers
 #define XENO_PHERO_MOD_VERYSMALL  0.25

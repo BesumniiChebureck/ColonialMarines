@@ -96,8 +96,8 @@
 		stat("Security Level:","[uppertext(get_security_level())]")
 		stat("DEFCON Level:","[defcon_controller.current_defcon_level]")
 
-		if(!isnull(ticker) && !isnull(ticker.mode) && !isnull(ticker.mode.active_lz) && !isnull(ticker.mode.active_lz.loc) && !isnull(ticker.mode.active_lz.loc.loc))
-			stat("Primary LZ: ", ticker.mode.active_lz.loc.loc.name)
+		if(!isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
+			stat("Primary LZ: ", SSticker.mode.active_lz.loc.loc.name)
 
 		if(assigned_squad)
 			if(assigned_squad.overwatch_officer)
@@ -1092,6 +1092,8 @@
 		//additional things to change when we're no longer that species
 		oldspecies.post_species_loss(src)
 
+	mob_flags = species.mob_flags
+
 	species.create_organs(src)
 
 	if(species.base_color && default_colour)
@@ -1307,6 +1309,7 @@
 		dat += "Leadership: [usr.skills.get_skill_level(SKILL_LEADERSHIP)]<br/>"
 		dat += "Medical: [usr.skills.get_skill_level(SKILL_MEDICAL)]<br/>"
 		dat += "Surgery: [usr.skills.get_skill_level(SKILL_SURGERY)]<br/>"
+		dat += "Research: [usr.skills.get_skill_level(SKILL_RESEARCH)]<br/>"
 		dat += "Pilot: [usr.skills.get_skill_level(SKILL_PILOT)]<br/>"
 		dat += "Police: [usr.skills.get_skill_level(SKILL_POLICE)]<br/>"
 		dat += "Powerloader: [usr.skills.get_skill_level(SKILL_POWERLOADER)]<br/>"

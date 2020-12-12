@@ -1,6 +1,6 @@
 /datum/equipment_preset/clf
 	name = FACTION_CLF
-	languages = list("Tradeband", "English")
+	languages = list("Japanese", "English")
 	assignment = JOB_CLF
 	rank = FACTION_CLF
 	faction = FACTION_CLF
@@ -72,7 +72,7 @@
 /datum/equipment_preset/clf/survivor
 	name = "CLF Survivor"
 	flags = EQUIPMENT_PRESET_EXTRA
-	skills = /datum/skills/civilian/survivor/doctor
+	skills = /datum/skills/civilian/survivor/clf
 
 /datum/equipment_preset/clf/survivor/load_gear(mob/living/carbon/human/H)
 

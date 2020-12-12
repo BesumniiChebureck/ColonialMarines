@@ -227,7 +227,6 @@ var/savefile/iconCache = new /savefile("data/iconCache.sav") //Cache of icons fo
 	//Some macros remain in the string even after parsing and fuck up the eventual output
 	message = replacetextEx(message, "\n", "<br>")
 	message += "<br>"
-	message = utf_goon(message)
 
 	var/encoded_message = message
 	//Grab us a client if possible

@@ -9,7 +9,7 @@
 	plasma_max = XENO_PLASMA_TIER_10
 	crystal_max = XENO_CRYSTAL_MEDIUM
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_10
-	armor_deflection = XENO_ARMOR_TIER_4
+	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_QUEEN
 
@@ -227,7 +227,7 @@
 	max_grown = 10
 	pixel_x = -16
 	old_x = -16
-	mob_size = MOB_SIZE_BIG
+	mob_size = MOB_SIZE_IMMOBILE
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 0 //Queen doesn't count towards population limit.
 	hive_pos = XENO_QUEEN
@@ -568,7 +568,8 @@
 
 	for(var/mob/living/carbon/human/M in oview(7, src))
 		if(istype(M.wear_ear, /obj/item/clothing/ears/earmuffs))
-			continue
+			return
+
 		M.scream_stun_timeout = SECONDS_20
 		var/dist = get_dist(src, M)
 		if(dist <= 4)
@@ -669,23 +670,23 @@
 		qdel(A)
 
 	var/list/immobile_abilities = list(\
-		/datum/action/xeno_action/onclick/regurgitate,\
-		/datum/action/xeno_action/onclick/remove_eggsac,\
-		/datum/action/xeno_action/activable/screech,\
-		/datum/action/xeno_action/onclick/emit_pheromones,\
-		/datum/action/xeno_action/onclick/psychic_whisper,\
-		/datum/action/xeno_action/onclick/toggle_queen_zoom,\
-		/datum/action/xeno_action/watch_xeno,\
-		/datum/action/xeno_action/onclick/set_xeno_lead,\
-		/datum/action/xeno_action/onclick/queen_heal,\
-		/datum/action/xeno_action/onclick/queen_give_plasma,\
-		/datum/action/xeno_action/onclick/queen_order,\
-		/datum/action/xeno_action/onclick/choose_resin, \
-		/datum/action/xeno_action/activable/secrete_resin/ovipositor, \
-		/datum/action/xeno_action/activable/place_construction,\
-		/datum/action/xeno_action/onclick/deevolve, \
-		/datum/action/xeno_action/onclick/banish, \
-		/datum/action/xeno_action/onclick/readmit, \
+		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/remove_eggsac,
+		/datum/action/xeno_action/activable/screech,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/psychic_whisper,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/onclick/set_xeno_lead,
+		/datum/action/xeno_action/activable/queen_heal,
+		/datum/action/xeno_action/activable/queen_give_plasma,
+		/datum/action/xeno_action/onclick/queen_order,
+		/datum/action/xeno_action/onclick/choose_resin,
+		/datum/action/xeno_action/activable/expand_weeds,
+		/datum/action/xeno_action/activable/secrete_resin/ovipositor,
+		/datum/action/xeno_action/activable/place_construction,
+		/datum/action/xeno_action/onclick/deevolve,
+		/datum/action/xeno_action/onclick/banish,
+		/datum/action/xeno_action/onclick/readmit,
 		/datum/action/xeno_action/onclick/eye
 		)
 

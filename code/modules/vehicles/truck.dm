@@ -30,7 +30,7 @@
 	luminosity = 4
 
 	hardpoints_allowed = list(
-		/obj/item/hardpoint/locomotion/truck_wheels,
+		/obj/item/hardpoint/locomotion/van_wheels,
 		/obj/item/hardpoint/locomotion/truck_treads)
 
 	hardpoints = list(
@@ -57,7 +57,7 @@
 
 //truck spawner that spawns in an truck that's NOT eight kinds of awful, mostly for testing purposes
 /obj/vehicle/multitile/truck/fixed/load_hardpoints(var/obj/vehicle/multitile/R)
-	add_hardpoint(new /obj/item/hardpoint/locomotion/truck_wheels)
+	add_hardpoint(new /obj/item/hardpoint/locomotion/van_wheels)
 
 /obj/vehicle/multitile/truck/decrepit/load_damage(var/obj/vehicle/multitile/R)
 	take_damage_type(1e8, "abstract") //OOF.ogg

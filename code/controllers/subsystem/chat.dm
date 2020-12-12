@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(chat)
 /datum/controller/subsystem/chat/proc/queue(var/target, var/message)
 	if(!target || !message)
 		return
-
+	
 	if(!istext(message))
 		CRASH("to_chat called with invalid input type ([message])")
 
@@ -94,13 +94,12 @@ SUBSYSTEM_DEF(chat)
 	//Some macros remain in the string even after parsing and fuck up the eventual output
 	message = replacetextEx(message, "\n", "<br>")
 	message += "<br>"
-	message = utf_goon(message)
 
 	var/encoded_message = message
 
 	//Grab us a client if possible
-	if(islist(target))
-
+	if(islist(target))		
+		
 		for(var/T in target)
 			var/client/C
 
@@ -113,16 +112,16 @@ SUBSYSTEM_DEF(chat)
 					type_of_list = GCHAT_MIND_LIST
 				else
 					continue
-
+			
 			if(type_of_list == GCHAT_CLIENT_LIST)
 				C = T
-
+			
 			if(type_of_list == GCHAT_MOB_LIST)
 				var/mob/M = T
 				if(!istype(M))
 					continue
 				C = M.client
-
+			
 			if(type_of_list == GCHAT_MOB_LIST)
 				var/datum/mind/M = T
 				if(!istype(M))
@@ -137,7 +136,7 @@ SUBSYSTEM_DEF(chat)
 			if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
 				C << clean_message
 				continue
-
+			
 			if (C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
 				//Client sucks at loading things, put their messages in a queue
 				C.chatOutput.messageQueue += message

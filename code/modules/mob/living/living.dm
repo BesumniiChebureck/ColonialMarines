@@ -347,7 +347,7 @@
 
 	if(isXeno(L) && !isXenoLarva(L))
 		var/mob/living/carbon/Xenomorph/X = L
-		if(X.mob_size == MOB_SIZE_BIG || (ishuman(src) && !isYautja(src))) // Small xenos can be pushed by other xenos or preds
+		if(X.mob_size >= MOB_SIZE_BIG || (ishuman(src) && !isYautja(src))) // Small xenos can be pushed by other xenos or preds
 			now_pushing = FALSE
 			return
 
@@ -503,7 +503,7 @@
 		user.show_message(SPAN_NOTICE("Key: Suffocation/Toxin/Burns/Brute"), 1)
 		user.show_message(SPAN_NOTICE("Body Temperature: ???"), 1)
 		return
-	if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if(!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 	if(!ignore_delay && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))

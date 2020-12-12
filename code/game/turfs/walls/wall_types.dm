@@ -225,11 +225,13 @@
 	icon = 'icons/custom/lobby/title.dmi'
 	icon_state = "lobbyart1"
 	layer = FLY_LAYER
+	special_icon = 1
 
 /turf/closed/wall/indestructible/splashscreen/New()
 	..()
 	if(icon_state == "lobbyart1") // default
 		icon_state = "lobbyart[rand(1,5)]"
+
 
 /turf/closed/wall/indestructible/other
 	icon_state = "r_wall"

@@ -69,11 +69,11 @@
 */
 
 // Galactic common languages (systemwide accepted standards).
-/datum/language/trader
-	name = "Tradeband"
-	desc = "Maintained by the various trading cartels in major systems, this elegant, structured language is used for bartering and bargaining."
-	speech_verb = "enunciates"
-	colour = "say_quote"
+/datum/language/japanese
+	name = "Japanese"
+	desc = "A language boasting an extensive grammatical system, three writing systems, and a new smattering of English loanwords. This gained popularity due to high cultural contact in the RESS, and finds use outside due to immigration."
+	speech_verb = "vocalizes"
+	colour = "japanese"
 	key = "2"
 
 /datum/language/russian
@@ -93,8 +93,8 @@
 	key = "4"
 
 /datum/language/spanish
-	name = "American Spanish"
-	desc = "The second most common language spoken in the UA, but mostly mutated from its original roots of its mother tongues in Spain and Latin America."
+	name = "Spanish"
+	desc = "The second most common language spoken in the UA, mostly concentrated and brought from marines from the Latin American territories and in the former southern USA."
 	speech_verb = "dice"
 	ask_verb = "cuestiona"
 	exclaim_verb = "grita"
@@ -108,7 +108,7 @@
 	ask_verb = "interrogates"
 	exclaim_verb = "orders"
 	colour = "commando"
-	key = "6"
+	key = "t"
 
 /datum/language/sainja //Yautja tongue
 	name = "Sainja"

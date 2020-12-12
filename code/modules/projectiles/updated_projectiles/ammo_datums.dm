@@ -693,7 +693,7 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	max_range = 12
-	damage = BULLET_DAMAGE_TIER_6
+	damage = BULLET_DAMAGE_TIER_5
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_7
@@ -739,7 +739,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
-	penetration = 0
+	penetration = ARMOR_PENETRATION_TIER_1
 	shell_speed = AMMO_SPEED_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_1
 	damage_armor_punch = 0
@@ -976,14 +976,14 @@
 	name = "heavy machinegun bullet"
 	icon_state 	= "bullet"
 
-	accurate_range = 10
-	damage =  BULLET_DAMAGE_TIER_9
+	accurate_range = 8
+	damage =  BULLET_DAMAGE_TIER_10
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
 	max_range = 11
 	effective_range_max = 8
-	damage_falloff = DAMAGE_FALLOFF_TIER_8
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
 
 /datum/ammo/bullet/minigun
 	name = "minigun bullet"
@@ -1424,10 +1424,16 @@
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
 	spit_cost = 25
-	var/effect_power = 1.75
+	var/effect_power = XENO_NEURO_TIER_4
+	var/datum/callback/neuro_callback
 
 	shell_speed = AMMO_SPEED_TIER_2
 	max_range = 6
+
+/datum/ammo/xeno/toxin/New()
+	..()
+
+	neuro_callback = CALLBACK(GLOBAL_PROC, .proc/apply_neuro)
 
 /proc/apply_neuro(mob/M, power, insta_neuro)
 	var/pass_down_the_line = FALSE
@@ -1447,7 +1453,7 @@
 				M.AdjustKnockeddown(1 * power)
 			return
 
-		if(M.knocked_down>4 || pass_down_the_line)
+		if(M.knocked_down > 4 || pass_down_the_line)
 			if(!pass_down_the_line)
 				M.visible_message(SPAN_DANGER("[M] falls limp on the ground."))
 			M.KnockOut(30) //KO them. They already got rekt too much
@@ -1479,7 +1485,39 @@
 		if(!pass_down_the_line)
 			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
 
-/proc/neuro_flak(turf/T,obj/item/projectile/P , power, insta_neuro, radius)
+/proc/apply_scatter_neuro(mob/M, power)
+	var/pass_down_the_line = FALSE
+	if(isSynth(M) || isYautja(M))
+		return // unaffected
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
+			return
+
+	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
+		pass_down_the_line = TRUE
+
+	if(!isXeno(M))
+		var/no_clothes_neuro = FALSE
+
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(!H.wear_suit || H.wear_suit.slowdown == 0)
+				no_clothes_neuro = TRUE
+
+		if(M.superslowed >= 5 || pass_down_the_line || no_clothes_neuro)
+			if(M.knocked_down < 3)
+				M.AdjustKnockeddown(1 * power) // KD them a bit more
+				if(!pass_down_the_line)
+					M.visible_message(SPAN_DANGER("[M] falls prone."))
+			pass_down_the_line = TRUE
+
+	if(M.superslowed < 10)
+		M.AdjustSuperslowed(3 * power) // Superslow them a bit more
+		if(!pass_down_the_line)
+			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
+
+/proc/neuro_flak(turf/T, obj/item/projectile/P, datum/callback/CB, power, insta_neuro, radius)
 	if(!T) return FALSE
 	var/firer = P.firer
 	var/hit_someone = FALSE
@@ -1491,7 +1529,7 @@
 			continue
 
 		hit_someone = TRUE
-		apply_neuro(M, power, insta_neuro)
+		CB.Invoke(M, power, insta_neuro)
 
 		P.play_damage_effect(M)
 
@@ -1501,10 +1539,10 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.status_flags & XENO_HOST)
-			apply_neuro(H, effect_power, TRUE)
+			neuro_callback.Invoke(H, effect_power, TRUE)
 			return
 
-	apply_neuro(M, effect_power, FALSE)
+	neuro_callback.Invoke(M, effect_power, FALSE)
 
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"
@@ -1522,11 +1560,11 @@
 	max_range = 6 - 1
 
 /datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/item/projectile/P)
-	apply_neuro(M, effect_power, TRUE)
+	neuro_callback.Invoke(M, effect_power, TRUE)
 
 /datum/ammo/xeno/toxin/burst //sentinel burst
 	name = "neurotoxic air splash"
-	effect_power = 1
+	effect_power = XENO_NEURO_TIER_1
 	spit_cost = 50
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
 
@@ -1535,30 +1573,35 @@
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
 	spit_cost = 30
 	added_spit_delay = 15
-	effect_power = 1.5
+	effect_power = XENO_NEURO_TIER_3
 	bonus_projectiles_type = /datum/ammo/xeno/toxin/shotgun/additional
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
-	accurate_range = 4
-	max_range = 4
+	accurate_range = 5
+	max_range = 5
 	scatter = SCATTER_AMOUNT_NEURO
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_2
 
+/datum/ammo/xeno/toxin/shotgun/New()
+	..()
+
+	neuro_callback = CALLBACK(GLOBAL_PROC, .proc/apply_scatter_neuro)
+
 /datum/ammo/xeno/toxin/shotgun/additional
 	name = "additional neurotoxic droplets"
-	effect_power = 1.5
+	effect_power = XENO_NEURO_TIER_3
 
 	bonus_projectiles_amount = 0
 
 /datum/ammo/xeno/toxin/burst/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M) && isXeno(P.firer) && M:hivenumber == P.firer:hivenumber)
-		apply_neuro(M, effect_power*1.5, TRUE)
+		neuro_callback.Invoke(M, effect_power*1.5, TRUE)
 
-	neuro_flak(get_turf(M), P, effect_power, FALSE, 1)
+	neuro_flak(get_turf(M), P, neuro_callback, effect_power, FALSE, 1)
 
 /datum/ammo/xeno/toxin/burst/on_near_target(turf/T, obj/item/projectile/P)
-	return neuro_flak(T,P, effect_power, FALSE, 1)
+	return neuro_flak(T, P, neuro_callback, effect_power, FALSE, 1)
 
 /*datum/ammo/xeno/sticky
 	name = "sticky resin spit"
@@ -1630,7 +1673,7 @@
 	damage = BULLET_DAMAGE_TIER_4
 	shell_speed = AMMO_SPEED_TIER_3
 	accuracy = HIT_ACCURACY_TIER_5*3
-	max_range = 6
+	max_range = 7
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"

@@ -21,6 +21,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	bound_x = 0
 	bound_y = 0
 
+	can_buckle = FALSE
+
 	//Yay! Working cameras in the vehicles at last!!
 	var/obj/structure/machinery/camera/vehicle/camera_int = null
 	var/nickname		//used for single-use verb to name the vehicle. Put anything here to prevent naming
@@ -119,6 +121,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	//Placeholders
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "cargo_engine"
+
+	var/move_on_turn = FALSE
 
 /obj/vehicle/multitile/Initialize()
 	. = ..()

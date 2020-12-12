@@ -240,6 +240,10 @@
 			last_move_dir = buckled_mob.last_move_dir
 			buckled_mob.inertia_dir = last_move_dir
 			return 0
+
+	// Even if the movement is entirely managed by the object, notify the buckled mob that it's moving for its handler.
+	//It won't be called otherwise because it's a function of client_move or pulled mob, neither of which accounts for this.
+	buckled_mob.on_movement()
 	return 1
 
 /obj/BlockedPassDirs(atom/movable/mover, target_dir)
@@ -250,7 +254,7 @@
 
 /obj/proc/wall_check() //used at roundstart to automatically detect and remove walls that overlap. Called by windows and airlocks
 	spawn(10)
-		if(ticker.current_state == GAME_STATE_PREGAME)
+		if(SSticker.current_state == GAME_STATE_PREGAME)
 			var/turf/T = get_turf(src)
 			if( istype( T,/turf/closed/wall ) )
 				message_admins("Overlap of [src] with [T] detected and fixed in area [T.loc.name] ([T.x],[T.y],[T.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)")
