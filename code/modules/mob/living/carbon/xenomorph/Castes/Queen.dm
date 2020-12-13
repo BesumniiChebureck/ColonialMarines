@@ -15,7 +15,7 @@
 
 	is_intelligent = 1
 	evolution_allowed = FALSE
-	fire_immune = TRUE
+	fire_immune = FALSE
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
 	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/medium)
 	can_hold_facehuggers = 0
@@ -34,6 +34,8 @@
 	tacklestrength_max = 6
 
 	minimum_xeno_playtime = 9 HOURS
+
+	behavior_delegate_type = /datum/behavior_delegate/queen_base
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
@@ -235,6 +237,7 @@
 	crystal_stored = XENO_CRYSTAL_MEDIUM
 	small_explosives_stun = FALSE
 	pull_speed = 3.0 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
+	mutation_type = QUEEN_NORMAL
 
 	var/map_view = 0
 	var/breathing_counter = 0
@@ -784,3 +787,7 @@
 	if(!ovipositor)
 		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways
 	return get_dist(src, T) <= egg_planting_range
+
+// No special behavior for boilers
+/datum/behavior_delegate/queen_base
+	name = "Base Queen Behavior Delegate"

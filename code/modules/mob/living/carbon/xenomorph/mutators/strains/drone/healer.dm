@@ -46,7 +46,7 @@
 	set name = "Transfer Health"
 	set hidden = 1
 	var/action_name = "Transfer Health"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /mob/living/carbon/Xenomorph/proc/xeno_transfer_health(atom/A, amount = 40, transfer_delay = 50, max_range = 1)
 	if(!istype(A, /mob/living/carbon/Xenomorph))

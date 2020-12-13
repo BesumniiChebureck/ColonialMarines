@@ -1,5 +1,5 @@
 #define SENTRY_FIREANGLE 	135
-#define SENTRY_RANGE 		5
+#define SENTRY_RANGE 		8
 #define SENTRY_MUZZLELUM	3
 /obj/structure/machinery/defenses/sentry
 	name = "\improper UA 571-C sentry gun"
@@ -48,10 +48,10 @@
 	targets = SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
 	if(!targets)
 		return FALSE
-	
+
 	if(!target && targets.len)
 		target = pick(targets)
-	
+
 	get_target(target)
 	return TRUE
 
@@ -114,7 +114,7 @@
 	unset_range()
 
 /obj/structure/machinery/defenses/sentry/attackby(var/obj/item/O, var/mob/user)
-	if(QDELETED(O) || QDELETED(user)) 
+	if(QDELETED(O) || QDELETED(user))
 		return
 
 	//Securing/Unsecuring
@@ -214,7 +214,7 @@
 
 	if(targets.len)
 		addtimer(CALLBACK(src, .proc/get_target), fire_delay)
-	
+
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
 	var/obj/item/projectile/P = new(initial(name), owner_mob)
 	P.generate_bullet(new ammo.default_ammo)
@@ -228,7 +228,7 @@
 
 //Mostly taken from gun code.
 /obj/structure/machinery/defenses/sentry/proc/muzzle_flash(var/angle)
-	if(isnull(angle)) 
+	if(isnull(angle))
 		return
 
 	SetLuminosity(SENTRY_MUZZLELUM)
@@ -296,7 +296,7 @@
 				adj = x-A.x
 
 		var/r = 9999
-		if(adj != 0) 
+		if(adj != 0)
 			r = abs(opp/adj)
 		var/angledegree = arcsin(r/sqrt(1+(r*r)))
 		if(adj < 0 || (angledegree*2) > SENTRY_FIREANGLE)

@@ -217,14 +217,14 @@
 	supplies = list(/obj/item/ammo_box/magazine/misc/flares = 2)
 
 /obj/structure/largecrate/supply/supplies/metal
-	name = "metal sheets supply crate (x200)"
-	desc = "A supply crate containing four fifty stacks of metal sheets."
-	supplies = list(/obj/item/stack/sheet/metal/large_stack = 4)
+	name = "metal sheets supply crate (x300)"
+	desc = "A supply crate containing four six stacks of metal sheets."
+	supplies = list(/obj/item/stack/sheet/metal/large_stack = 6)
 
 /obj/structure/largecrate/supply/supplies/plasteel
-	name = "plasteel supply crate (x60)"
-	desc = "A supply crate containing two stacks of 30 plasteel sheets."
-	supplies = list(/obj/item/stack/sheet/plasteel/medium_stack = 2)
+	name = "plasteel supply crate (x100)"
+	desc = "A supply crate containing two stacks of 50 plasteel sheets."
+	supplies = list(/obj/item/stack/sheet/plasteel/large_stack = 2)
 
 /obj/structure/largecrate/supply/supplies/sandbags
 	name = "sandbag supply crate (x100)"

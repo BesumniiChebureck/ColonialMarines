@@ -8,7 +8,7 @@
 
 /turf/open/Initialize(mapload, ...)
 	. = ..()
-	
+
 	update_icon()
 
 /turf/open/update_icon()
@@ -280,6 +280,9 @@
 		var/new_slowdown = C.next_move_slowdown + river_slowdown
 		C.next_move_slowdown = new_slowdown
 
+		if(C.on_fire)
+			C.ExtinguishMob()
+
 /turf/open/gm/river/proc/cleanup(var/mob/living/carbon/human/M)
 	if(!M || !istype(M)) return
 
@@ -404,7 +407,7 @@
 
 /turf/open/jungle/New()
 	..()
-	
+
 	icon_state = icon_spawn_state
 
 	if(plants_spawn && prob(40))

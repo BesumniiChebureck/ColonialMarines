@@ -70,7 +70,7 @@
 
 	return TRUE
 
-			
+
 /datum/effects/bleeding/internal
 	effect_name = "internal bleeding"
 	flags = INF_DURATION | NO_PROCESS_ON_DEATH | DEL_ON_UNDEFIBBABLE
@@ -87,13 +87,13 @@
 	if(affected_mob.bodytemperature < T0C && (affected_mob.reagents && affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
 		blood_loss -= CRYO_BLOOD_REDUCTION
 
-	var/bicaridine = affected_mob.reagents?.get_reagent_amount("bicaridine")
+	var/bicaridine = affected_mob.reagents.get_reagent_amount("bicaridine")
 	if(bicaridine > REAGENTS_OVERDOSE && affected_mob.getBruteLoss() <= 0)
 		blood_loss -= BICAOD_BLOOD_REDUCTION
 
 	if (affected_mob.reagents && affected_mob.reagents.get_reagent_amount("thwei"))
 		blood_loss -= THWEI_BLOOD_REDUCTION
-		
+
 	if(affected_mob.reagents && affected_mob.reagents.get_reagent_amount("quickclot")) // Annoying QC check
 		return FALSE
 

@@ -1,9 +1,9 @@
-/datum/xeno_mutator/steel_crest 
+/datum/xeno_mutator/steel_crest
 	name = "STRAIN: Defender - Steel Crest"
 	description = "In exchange for your tail sweep and some of your damage, you gain the ability to move while in Fortify. Your headbutt can now be used while your crest is lowered. It also reaches further and does more damage."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Defender") 
+	caste_whitelist = list("Defender")
 	keystone = TRUE
 
 /datum/xeno_mutator/steel_crest/apply_mutator(datum/mutator_set/individual_mutators/MS)

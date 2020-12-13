@@ -16,12 +16,12 @@ SUBSYSTEM_DEF(ticker)
 
 	var/datum/game_mode/mode = null
 
-	var/list/login_music = null						//Music played in pregame lobby
+	var/list/login_music = null				//Music played in pregame lobby
 
 	var/delay_end = FALSE					//If set true, the round will not restart on it's own
 	var/admin_delay_notice = ""				//A message to display to anyone who tries to restart the world after a delay
 
-	var/time_left							//Pre-game timer
+	var/time_left						//Pre-game timer
 	var/start_at
 
 	var/roundend_check_paused = FALSE
@@ -44,15 +44,16 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
-
-	var/all_music = CONFIG_GET(keyed_list/lobby_music)
-	var/key = SAFEPICK(all_music)
-	if(key)
-		var/music_options = splittext(all_music[key], " ")
-		login_music = list(music_options[1], music_options[2], music_options[3])
+	login_music = pick(
+	'sound/music/good_day_to_die.ogg',
+	'sound/music/Aliens_Main_Theme.ogg',
+	'sound/music/fortunate_son.ogg',
+	'sound/music/buffalo_springfield.ogg',
+	'sound/music/warrior_song.ogg',
+	'sound/music/Edwin_Starr_War.ogg',
+	'sound/music/Ross_bugden_Welcome_to_chaos.ogg')
 
 	return ..()
-
 
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)

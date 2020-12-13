@@ -147,9 +147,11 @@
 /obj/effect/essentials_set/engi
 	spawned_gear_list = list(
 		/obj/item/explosive/plastic,
+		/obj/item/explosive/plastic,
 		/obj/item/stack/sandbags_empty = 25,
 		/obj/item/stack/sheet/metal/large_stack,
-		/obj/item/stack/sheet/plasteel/medium_stack,
+		/obj/item/stack/sheet/metal/large_stack,
+		/obj/item/stack/sheet/plasteel/large_stack,
 		/obj/item/cell/high,
 		/obj/item/tool/shovel/etool,
 		/obj/item/device/lightreplacer,

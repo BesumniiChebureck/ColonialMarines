@@ -260,6 +260,7 @@
 #define XENO_DAMAGE_MOD_MED        15
 #define XENO_DAMAGE_MOD_LARGE      20
 #define XENO_DAMAGE_MOD_VERYLARGE  25
+#define XENO_DAMAGE_MOD_OVERLARGE  75
 
 // Overall health pool
 #define XENO_HEALTH_MOD_VERYSMALL  20
@@ -267,6 +268,7 @@
 #define XENO_HEALTH_MOD_MED        60
 #define XENO_HEALTH_MOD_LARGE      80
 #define XENO_HEALTH_MOD_VERYLARGE  100
+#define XENO_HEALTH_MOD_OVERLARGE  500
 
 // Armor mods. Use the above defines for some guidance
 // In general, +20 armor should be a little more than +20% effective HP, however,
@@ -276,12 +278,14 @@
 #define XENO_ARMOR_MOD_MED        15
 #define XENO_ARMOR_MOD_LARGE      20
 #define XENO_ARMOR_MOD_VERYLARGE  25
+#define XENO_ARMOR_MOD_OVERLARGE  50
 
 #define XENO_EXPOSIVEARMOR_MOD_VERYSMALL  10
 #define XENO_EXPOSIVEARMOR_MOD_SMALL      20
 #define XENO_EXPOSIVEARMOR_MOD_MED        30
 #define XENO_EXPOSIVEARMOR_MOD_LARGE      40
 #define XENO_EXPOSIVEARMOR_MOD_VERYLARGE  50
+#define XENO_EXPOSIVEARMOR_MOD_OVERLARGE  100
 
 // Plasma
 #define XENO_PLASMAPOOL_MOD_VERYSMALL  20
@@ -289,11 +293,13 @@
 #define XENO_PLASMAPOOL_MOD_MED        60
 #define XENO_PLASMAPOOL_MOD_LARGE      80
 #define XENO_PLASMAPOOL_MOD_VERYLARGE  100
+#define XENO_PLASMAPOOL_MOD_OVERLARGE  500
 
 // Plasma regen
 #define XENO_PLASMAGAIN_MOD_SMALL 0.1
 #define XENO_PLASMAGAIN_MOD_MED   0.2
 #define XENO_PLASMAGAIN_MOD_LARGE 0.3
+#define XENO_PLASMAGAIN_MOD_OVER  0.6
 
 // Faster speed modifier (higher tiers mean greater increase in speed)
 #define XENO_SPEED_FASTMOD_TIER_1       -0.05
@@ -318,6 +324,7 @@
 #define XENO_SPEED_SLOWMOD_TIER_8       0.4
 #define XENO_SPEED_SLOWMOD_TIER_9       0.45
 #define XENO_SPEED_SLOWMOD_TIER_10      0.5
+#define XENO_SPEED_SLOWMOD_TIER_11      1.0
 
 // Neuro power
 #define XENO_NEURO_TIER_1   1
@@ -332,6 +339,7 @@
 #define XENO_PHERO_MOD_MED        0.75
 #define XENO_PHERO_MOD_LARGE      1.0
 #define XENO_PHERO_MOD_VERYLARGE  1.25
+#define XENO_PHERO_MOD_OVERLARGE  2.0
 
 // Evasion modifiers
 #define XENO_EVASION_MOD_VERYSMALL 	3
@@ -347,6 +355,7 @@
 #define XENO_ARMORFACTOR_MOD_MED		15
 #define XENO_ARMORFACTOR_MOD_LARGE		20
 #define XENO_ARMORFACTOR_MOD_VERYLARGE 	25
+#define XENO_ARMORFACTOR_MOD_OVERLARGE 	50
 
 // Acid boost (I guess, this is used literally nowhere)
 // Feel free to add more defines here if it ever becomes relevant

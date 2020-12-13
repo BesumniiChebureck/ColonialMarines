@@ -401,9 +401,9 @@ var/list/datum/entity/map_vote/all_votes
 	//Note: Hub content is limited to 254 characters, including HTML/CSS. Image width is limited to 450 pixels.
 	var/s = ""
 	if (config)
-		s += "<a href=\"https://discord.gg/eWKjvt4\"><b>CM-SS13.RU Crysis/Tarrets Mad &#8212; [MAIN_SHIP_NAME]</b></a>"
+		s += "<a href=\"https://discord.gg/eWKjvt4\"><b>CM-SS13 RU EDITION &#8212; [MAIN_SHIP_NAME]</b></a>"
 	else
-		s += "<a href=\"https://discord.gg/eWKjvt4\"><b>CM-SS13.RU Earmuffs major! &#8212; [MAIN_SHIP_NAME]</b></a>"
+		s += "<a href=\"https://discord.gg/eWKjvt4\"><b>CM-SS13 RU EDITION &#8212; [MAIN_SHIP_NAME]</b></a>"
 		if(SSticker)
 			if(master_mode)
 				s += "<br>Map: <b>[map_tag]</b>"

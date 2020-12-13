@@ -1,4 +1,3 @@
-
 /datum/xeno_mutator/trapper
 	name = "STRAIN: Boiler - Trapper"
 	description = "You trade your ability to bombard for longer range vision, traps that immobilize your opponents, and unblockable acid mines."
@@ -16,7 +15,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	
+
 	var/mob/living/carbon/Xenomorph/Boiler/B = MS.xeno
 	if(B.is_zoomed)
 		B.zoom_out()
@@ -66,7 +65,7 @@
 		return
 
 	var/mob/living/carbon/human/H = A
-	var/datum/effects/xeno_freeze/found = null 
+	var/datum/effects/xeno_freeze/found = null
 	for (var/datum/effects/xeno_freeze/F in H.effects_list)
 		if (F.source_mob == bound_xeno)
 			found = F

@@ -41,7 +41,7 @@
 /obj/structure/interior_wall/truck
 	name = "truck interior wall"
 	desc = "An interior wall."
-	icon = 'icons/obj/vehicles/interiors/truck.dmi'
+	icon = 'icons/obj/vehicles/interiors/van.dmi'
 	icon_state = "truck_right_1"
 	density = 1
 	opacity = 1

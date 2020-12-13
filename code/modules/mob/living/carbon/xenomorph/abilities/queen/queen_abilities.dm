@@ -72,3 +72,5 @@
 	name = "Enter Eye Form"
 	action_icon_state = "queen_eye"
 	plasma_cost = 0
+
+/////////////////////////////Charger Queen abilites

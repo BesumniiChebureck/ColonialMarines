@@ -312,3 +312,28 @@ var/global/datum/controller/defcon/defcon_controller
 	//Send ARES message about special asset authorisation
 	var/name = "STRATEGIC NUKE AUTHORISED"
 	marine_announcement(announcement_message, name, 'sound/misc/notice1.ogg')
+
+/datum/defcon_reward/obnuke
+	name = "OB nuke"
+	cost = DEFCON_COST_EXPENSIVE
+	minimum_defcon_level = 2
+	unique = TRUE
+	announcement_message = "OB nuke has been been delivered to Requisitions' ASRS."
+
+/datum/defcon_reward/obnuke/apply_reward(var/datum/controller/defcon/d)
+	. = ..()
+	if(. == 0)
+		return
+
+	var/datum/supply_order/O = new /datum/supply_order()
+	O.ordernum = supply_controller.ordernum
+	supply_controller.ordernum++
+	O.object = supply_controller.supply_packs["Operational OB Nuke"]
+	O.orderedby = MAIN_AI_SYSTEM
+
+	supply_controller.shoppinglist += O
+
+/datum/defcon_reward/obnuke/announce_reward(var/announcement_message)
+	//Send ARES message about special asset authorisation
+	var/name = "STRATEGIC OB NUKE AUTHORISED"
+	marine_announcement(announcement_message, name, 'sound/misc/notice1.ogg')
