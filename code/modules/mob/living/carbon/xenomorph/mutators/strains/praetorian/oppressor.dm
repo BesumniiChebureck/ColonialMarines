@@ -51,7 +51,7 @@
 		return
 
 	var/total_bonus_damage = next_slash_buffed ? crush_additional_damage : 0
-	
+
 	if (H.knocked_down || H.frozen || H.slowed)
 		total_bonus_damage += 15
 
