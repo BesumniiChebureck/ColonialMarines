@@ -413,8 +413,8 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_1"
 	var/clear_power = 1200
 	var/clear_falloff = 400
-	var/standard_power = 600
-	var/standard_falloff = 30
+	var/standard_power = 400
+	var/standard_falloff = 10
 	var/clear_delay = 3
 	var/double_explosion_delay = 6
 

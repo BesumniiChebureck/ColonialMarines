@@ -16,7 +16,7 @@
 	name = "robus-treads"
 	desc = "These treads are made of a tougher material and are more durable. However, the added weight slows the tank down slightly."
 
-	health = 750
+	health = 1000
 
 	move_speed = VEHICLE_SPEED_FASTNORMAL
 

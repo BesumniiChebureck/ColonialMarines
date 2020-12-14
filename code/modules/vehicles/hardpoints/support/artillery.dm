@@ -6,7 +6,7 @@
 	disp_icon = "tank"
 	disp_icon_state = "artillerymod"
 
-	health = 250
+	health = 500
 
 	activatable = TRUE
 
