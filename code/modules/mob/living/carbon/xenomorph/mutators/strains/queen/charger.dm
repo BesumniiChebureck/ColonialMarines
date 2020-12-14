@@ -1,12 +1,12 @@
 /datum/xeno_mutator/charger
-	name = "STRAIN: Queen - More Crashing"
-	description = "You are now a crasher Queen."
-	flavor_description = "Time to crash everyone."
+	name = "STRAIN: Queen - Charging"
+	description = "You are now a Crasher Queen."
+	flavor_description = "You now have charging and more armor, so many speed and crash power."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Queen")
 	mutator_actions_to_remove = list("")
-	mutator_actions_to_add = list()
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/pounce/crusher_charge)
 	behavior_delegate_type = /datum/behavior_delegate/queen_charger
 	keystone = TRUE
 

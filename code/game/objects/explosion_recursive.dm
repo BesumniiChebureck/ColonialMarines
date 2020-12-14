@@ -293,7 +293,7 @@ explosion resistance exactly as much as their health
 				return 0
 			if(MOB_SIZE_HUMAN)
 				return 20
-			if(MOB_SIZE_XENO)
+			if(MOB_SIZE_XENO, MOB_SIZE_XENO_SMALL)
 				return 20
 			if(MOB_SIZE_BIG, MOB_SIZE_IMMOBILE)
 				return 40
@@ -324,7 +324,7 @@ explosion resistance exactly as much as their health
 		var/scatter_x = rand(-scatter,scatter)
 		var/scatter_y = rand(-scatter,scatter)
 		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
-	
+
 	//time for the explosion to destroy windows, walls, etc which might be in the way
 	INVOKE_ASYNC(src, /atom/movable.proc/throw_atom, target, range, speed, null, TRUE)
 
@@ -343,7 +343,7 @@ explosion resistance exactly as much as their health
 			weight = 0.25
 		if(MOB_SIZE_HUMAN)
 			weight = 1
-		if(MOB_SIZE_XENO)
+		if(MOB_SIZE_XENO, MOB_SIZE_XENO_SMALL)
 			weight = 1
 		if(MOB_SIZE_BIG, MOB_SIZE_IMMOBILE)
 			weight = 4

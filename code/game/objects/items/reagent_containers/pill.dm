@@ -71,7 +71,7 @@ var/global/list/randomized_pill_icons
 		if(!do_after(user, ingestion_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
 
 		user.drop_inv_item_on_ground(src) //icon update
-		
+
 		user.affected_message(M,
 			SPAN_HELPFUL("You [user == M ? "<b>swallowed</b>" : "<b>fed</b> [M]"] a pill."),
 			SPAN_HELPFUL("[user] <b>fed</b> you a pill."),
@@ -100,7 +100,7 @@ var/global/list/randomized_pill_icons
 
 	if(target.is_open_container() != 0 && target.reagents)
 		if(!target.reagents.total_volume)
-			to_chat(user, SPAN_DANGER("[target] is empty. Cant dissolve pill."))
+			to_chat(user, SPAN_DANGER("[target] is empty. Can't dissolve pill."))
 			return
 		to_chat(user, SPAN_NOTICE("You dissolve the pill in [target]"))
 

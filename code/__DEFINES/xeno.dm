@@ -85,6 +85,7 @@
 #define XENO_UNIVERSAL_HPMULT 1.0		// Use to unilaterally buff every caste's total HP.
 #define XENO_UNIVERSAL_PLASMAMULT 1.0	// Use to unilaterally buff every caste's total PLASMA.
 #define XENO_UNIVERSAL_DAMAGEMULT 1.0	// Use to unilaterally buff every caste's DAMAGE.
+#define XENO_UNIVERSAL_VEHICLE_DAMAGEMULT 1.5 // Used to unilaterally buff every caste's DAMAGE against vehicles.
 
 #define XVX_UNIVERSAL_DAMAGEMULT 1.5 // Use to unilaterally buff every caste's DAMAGE against other xenos.
 
@@ -325,6 +326,7 @@
 #define XENO_SPEED_SLOWMOD_TIER_9       0.45
 #define XENO_SPEED_SLOWMOD_TIER_10      0.5
 #define XENO_SPEED_SLOWMOD_TIER_11      1.0
+#define XENO_SPEED_SLOWMOD_TIER_12      1.5
 
 // Neuro power
 #define XENO_NEURO_TIER_1   1
