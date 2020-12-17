@@ -141,13 +141,13 @@
 	show_points = TRUE
 	use_snowflake_points = TRUE
 	vendor_theme = VENDOR_THEME_COMPANY
-
-	vend_delay = 10
-
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	vendor_role = list(JOB_SYNTH, JOB_SYNTH_SURVIVOR)
 
+	vend_delay = 10
+
+/obj/structure/machinery/cm_vending/clothing/synth/snowflake/Initialize(mapload, ...)
+	. = ..()
 	listed_products = list(
 		list("UNIFORM", 0, null, null, null),
 		list("Bartender", 12, /obj/item/clothing/under/rank/bartender, null, VENDOR_ITEM_REGULAR),

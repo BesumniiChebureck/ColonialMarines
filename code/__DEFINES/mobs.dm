@@ -276,6 +276,7 @@
 #define QUEEN_NORMAL		"Normal"
 #define QUEEN_POWDER		"Powder"
 #define QUEEN_CHARGER		"Charger"
+#define QUEEN_SCREECHER		"Screecher"
 
 // Drone strain flags
 #define DRONE_NORMAL		"Normal"

@@ -471,10 +471,9 @@
 
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
 	damage = BULLET_DAMAGE_TIER_16
-	damage_var_low = PROJECTILE_VARIANCE_TIER_8
-	damage_var_high = PROJECTILE_VARIANCE_TIER_8
+	damage_var_low = PROJECTILE_VARIANCE_TIER_9
+	damage_var_high = PROJECTILE_VARIANCE_TIER_9
 	accurate_range = 0
-	accuracy = 0
 	damage_armor_punch = 10
 	pen_armor_punch = 10
 	damage_type = BURN||BRUTE
@@ -484,9 +483,9 @@
 	shell_speed = AMMO_SPEED_TIER_1
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_10
-	accuracy_var_low = PROJECTILE_VARIANCE_TIER_10 //so... very need more lacky
-	accuracy_var_high = PROJECTILE_VARIANCE_TIER_10
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_8
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_9
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_9
 
 /datum/ammo/bullet/riflemc/on_hit_mob(mob/M, obj/item/projectile/P)
 	cell_explosion(get_turf(M), 120, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
@@ -897,7 +896,7 @@
 	max_range = 12
 	accuracy = HIT_ACCURACY_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	damage = BULLET_DAMAGE_TIER_6
+	damage = BULLET_DAMAGE_TIER_10
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/armor_piercing

@@ -557,7 +557,7 @@
 
 	has_screeched = 1
 	use_plasma(250)
-	addtimer(CALLBACK(src, .proc/screech_ready), 50 SECONDS)
+	addtimer(CALLBACK(src, .proc/screech_ready), 120 SECONDS)
 	playsound(loc, screech_sound_effect, 75, 0, status = 0)
 	visible_message(SPAN_XENOHIGHDANGER("[src] emits an ear-splitting guttural roar!"))
 	create_shriekwave() //Adds the visual effect. Wom wom wom
@@ -590,6 +590,67 @@
 /mob/living/carbon/Xenomorph/Queen/proc/screech_ready()
 	has_screeched = 0
 	to_chat(src, SPAN_WARNING("You feel your throat muscles vibrate. You are ready to screech again."))
+	for(var/Z in actions)
+		var/datum/action/A = Z
+		A.update_button_icon()
+
+/mob/living/carbon/Xenomorph/Queen/proc/queen_screeche()
+	if(!check_state())
+		return
+
+	if(has_screeched)
+		to_chat(src, SPAN_WARNING("You are not ready to very strong screech again."))
+		return
+
+	if(!check_plasma(500))
+		return
+
+	//screech is so powerful it kills huggers in our hands
+	if(istype(r_hand, /obj/item/clothing/mask/facehugger))
+		var/obj/item/clothing/mask/facehugger/FH = r_hand
+		if(FH.stat != DEAD)
+			FH.Die()
+
+	if(istype(l_hand, /obj/item/clothing/mask/facehugger))
+		var/obj/item/clothing/mask/facehugger/FH = l_hand
+		if(FH.stat != DEAD)
+			FH.Die()
+
+	has_screeched = 1
+	use_plasma(500)
+	addtimer(CALLBACK(src, .proc/screech_ready), 540 SECONDS)
+	playsound(loc, screech_sound_effect, 75, 0, status = 0)
+	visible_message(SPAN_XENOHIGHDANGER("[src] emits an ear-splitting very strong guttural roar!"))
+	create_shriekwave()
+
+	for(var/mob/M in view())
+		if(M && M.client)
+			if(isXeno(M))
+				shake_camera(M, 30, 1)
+			else
+				shake_camera(M, 50, 1)
+
+	for(var/mob/living/carbon/human/M in oview(16, src))
+		if(istype(M.wear_ear, /obj/item/clothing/ears/earmuffs))
+			return
+
+		M.scream_stun_timeout = SECONDS_40
+		var/dist = get_dist(src, M)
+		if(dist <= 6)
+			to_chat(M, SPAN_DANGER("An ear-splitting very strong guttural roar shakes the ground beneath your feet!"))
+			M.AdjustStunned(35)
+			M.KnockDown(25)
+			if(!M.ear_deaf)
+				M.ear_deaf += 15
+		else if(dist >= 7 && dist < 16)
+			M.AdjustStunned(20)
+			if(!M.ear_deaf)
+				M.ear_deaf += 10
+			to_chat(M, SPAN_DANGER("The very strong roar shakes your body to the core, freezing you in place!"))
+
+/mob/living/carbon/Xenomorph/Queen/proc/screeche_ready()
+	has_screeched = 0
+	to_chat(src, SPAN_WARNING("You feel your very strong throat muscles vibrate. You are ready to very powered screech again."))
 	for(var/Z in actions)
 		var/datum/action/A = Z
 		A.update_button_icon()
@@ -652,7 +713,7 @@
 			return
 
 		use_plasma(200)
-		last_special = world.time + MINUTES_15
+		last_special = world.time + MINUTES_5
 
 		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"), \
 		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))

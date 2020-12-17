@@ -1,12 +1,3 @@
-//Xenomorph "generic" parent, does not actually appear in game
-//Many of these defines aren't referenced in the castes and so are assumed to be defaulted
-//Castes are all merely subchildren of this parent
-//Just about ALL the procs are tied to the parent, not to the children
-//This is so they can be easily transferred between them without copypasta
-
-//All this stuff was written by Absynth.... and god help us
-//Edited by Apop - 11JUN16
-
 #define DEBUG_XENO 0
 
 #if DEBUG_XENO
@@ -378,8 +369,8 @@
 	stamina = new /datum/stamina/none(src)
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
-	if(caste_name && xeno_datum_list[caste_name])
-		caste = xeno_datum_list[caste_name]
+	if(caste_name && GLOB.xeno_datum_list[caste_name])
+		caste = GLOB.xeno_datum_list[caste_name]
 	else
 		to_world("something went very wrong")
 		return

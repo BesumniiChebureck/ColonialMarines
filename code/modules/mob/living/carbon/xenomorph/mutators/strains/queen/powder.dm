@@ -1,13 +1,13 @@
 /datum/xeno_mutator/powder
 	name = "STRAIN: Queen - More Power"
-	description = "You are now a very... very strong and slower Queen."
+	description = "You are now a very... very strong and slower, you don't can more screech Queen."
 	flavor_description = "You are the Stronger now."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Queen")
-	mutator_actions_to_remove = list("Xeno Spit","Toggle Spit Type")
+	mutator_actions_to_remove = list("Xeno Spit","Toggle Spit Type", "Screech (250)")
 	mutator_actions_to_add = list()
-	behavior_delegate_type = /datum/behavior_delegate/queen_powder
+	behavior_delegate_type = /datum/behavior_delegate/powder_queen
 	keystone = TRUE
 
 /datum/xeno_mutator/powder/apply_mutator(datum/mutator_set/individual_mutators/MS)
@@ -31,5 +31,5 @@
 	apply_behavior_holder(Q)
 	Q.mutation_type = QUEEN_POWDER
 
-/datum/behavior_delegate/queen_powder
+/datum/behavior_delegate/powder_queen
 	name = "Queen Power Behavior Delegate"

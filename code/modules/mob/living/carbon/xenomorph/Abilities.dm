@@ -179,6 +179,22 @@
 	X.queen_screech()
 	..()
 
+/datum/action/xeno_action/activable/screeche
+	name = "Screech (500)"
+	action_icon_state = "screech"
+	ability_name = "screech"
+	macro_path = /datum/action/xeno_action/verb/verb_screech
+	action_type = XENO_ACTION_ACTIVATE
+
+/datum/action/xeno_action/activable/screeche/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	return !X.has_screeched
+
+/datum/action/xeno_action/activable/screeche/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	X.queen_screeche()
+	..()
+
 /datum/action/xeno_action/activable/gut
 	name = "Gut (200)"
 	action_icon_state = "gut"
@@ -251,7 +267,7 @@
 	if(!target.caste.can_be_queen_healed)
 		to_chat(X, SPAN_XENOWARNING("This caste cannot be given plasma!"))
 		return
-	
+
 	if(target.on_fire)
 		to_chat(X, SPAN_XENOWARNING("You cannot give plasma to xenos that are on fire!"))
 		return
