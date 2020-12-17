@@ -323,7 +323,7 @@
 	show_browser(usr, dat, "Player Menu", "players", "size=640x480")
 
 
-/datum/admins/proc/check_antagonists()
+/datum/admins/proc/check_game_status()
 	if(!SSticker || !(SSticker.current_state >= GAME_STATE_PLAYING))
 		alert("The game hasn't started yet!")
 		return

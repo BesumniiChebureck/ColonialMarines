@@ -210,7 +210,8 @@
 		else
 			icon_state = "[mutation_type] Crusher Running"
 
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+	update_fire()
+	update_wounds()
 
 // Mutator delegate for base ravager
 /datum/behavior_delegate/crusher_base

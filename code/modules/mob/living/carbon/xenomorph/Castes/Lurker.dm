@@ -71,6 +71,7 @@
 			icon_state = "[mutation_type] [caste.caste_name] Running"
 
 	update_fire()
+	update_wounds()
 
 /datum/behavior_delegate/lurker_base
 	name = "Base Lurker Behavior Delegate"

@@ -230,7 +230,7 @@
 /turf/closed/wall/indestructible/splashscreen/New()
 	..()
 	if(icon_state == "lobbyart1") // default
-		icon_state = "lobbyart[rand(1,5)]"
+		icon_state = "lobbyart[rand(1,6)]"
 
 
 /turf/closed/wall/indestructible/other

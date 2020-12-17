@@ -1,11 +1,11 @@
 /datum/xeno_mutator/screecher
 	name = "STRAIN: Queen - Screech go better"
-	description = "You now have very strong screech."
+	description = "You now have very strong screech. Don't go mutation on ovi, and u no can more grow ovipositor"
 	flavor_description = "You are the Stronger now."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Queen")
-	mutator_actions_to_remove = list("Screech (250)")
+	mutator_actions_to_remove = list("Screech (250)", "Grow Ovipositor (500)")
 	mutator_actions_to_add = list(/datum/action/xeno_action/activable/screeche)
 	behavior_delegate_type = /datum/behavior_delegate/screecher_queen
 	keystone = TRUE

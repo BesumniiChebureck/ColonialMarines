@@ -1,11 +1,11 @@
 /datum/xeno_mutator/charger
 	name = "STRAIN: Queen - Charging"
 	description = "You are now a Crasher Queen."
-	flavor_description = "You now have charging and more armor, so many speed and crash power."
+	flavor_description = "You now have charging and more armor, so many speed and crash power. Don't go mutation on ovi, and u no can more grow ovipositor"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Queen")
-	mutator_actions_to_remove = list("")
+	mutator_actions_to_remove = list("Xeno Spit", "Toggle Spit Type", "Grow Ovipositor (500)")
 	mutator_actions_to_add = list(/datum/action/xeno_action/activable/pounce/crusher_charge)
 	behavior_delegate_type = /datum/behavior_delegate/charger_queen
 	keystone = TRUE

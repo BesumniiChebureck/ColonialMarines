@@ -219,7 +219,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,
 	/client/proc/toggle_own_ghost_vis,
-	/client/proc/check_antagonists,
+	/client/proc/check_game_status,
 	/client/proc/check_round_status,
 	/client/proc/toggleattacklogs,
 	/client/proc/toggleffattacklogs,

@@ -838,7 +838,8 @@
 	else
 		icon_state = "[mutation_type] Queen Running"
 
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+	update_fire()
+	update_wounds()
 
 
 /mob/living/carbon/Xenomorph/Queen/gib(var/cause = "gibbing")

@@ -468,10 +468,10 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
-	var/total_amount = 120
-	var/instant_amount = 6
+	var/total_amount = 100
+	var/instant_amount = 4
 	var/explosion_power = 400
-	var/explosion_falloff = 100
+	var/explosion_falloff = 80
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target)
 	. = ..()
@@ -483,7 +483,7 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/warhead/cluster/proc/start_cluster(turf/target)
 	set waitfor = 0
 
-	var/range_num = 18
+	var/range_num = 30
 	var/list/turf_list = list()
 
 	for(var/turf/T in range(range_num, target))
@@ -519,7 +519,7 @@ var/list/ob_type_fuel_requirements
 	warhead_kind = "nuke"
 	icon_state = "ob_warhead_4"
 	var/clear_power = 4000
-	var/clear_falloff = 100
+	var/clear_falloff = 200
 	var/standard_power = 1200
 	var/standard_falloff = 10
 	var/clear_delay = 3

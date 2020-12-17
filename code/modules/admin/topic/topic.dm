@@ -1098,8 +1098,8 @@
 			var/mob/dead/observer/G = usr
 			G.ManualFollow(M)
 
-	else if(href_list["check_antagonist"])
-		check_antagonists()
+	else if(href_list["check_game_status"])
+		check_game_status()
 
 	else if(href_list["adminplayerobservecoodjump"])
 		if(!check_rights(R_MOD))

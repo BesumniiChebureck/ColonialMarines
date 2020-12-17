@@ -106,4 +106,5 @@
 	else
 		icon_state = "[mutation_type] Burrower Running"
 
-	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+	update_fire()
+	update_wounds()

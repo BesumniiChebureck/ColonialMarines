@@ -164,16 +164,16 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 // For colouring the ranks in the statistics menu
 #define JOB_PLAYTIME_TIER_1         (10 HOURS)
-#define JOB_PLAYTIME_TIER_2         (25 HOURS)
-#define JOB_PLAYTIME_TIER_3         (70 HOURS)
-#define JOB_PLAYTIME_TIER_4         (175 HOURS)
+#define JOB_PLAYTIME_TIER_2         (30 HOURS)
+#define JOB_PLAYTIME_TIER_3         (90 HOURS)
+#define JOB_PLAYTIME_TIER_4         (270 HOURS)
 
 #define XENO_NO_AGE     -1
 #define XENO_NORMAL		0
 #define XENO_MATURE		1
 #define XENO_ELDER		2
 #define XENO_ANCIENT	3
-#define XENO_PRIME	4
+#define XENO_PRIME		4
 
 #define JOB_OBSERVER                    "Observer" // For monthly time tracking
 
