@@ -380,6 +380,14 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	else
 		return ..()
 
+/obj/item/storage/backpack/marine/mortarpack
+	name = "\improper USCM mortar shell backpack"
+	desc = "A backpack specifically designed to hold ammunition for the M402 mortar."
+	icon_state = "mortarpack"
+	max_w_class = SIZE_HUGE
+	storage_slots = 8
+	can_hold = list(/obj/item/mortar_shell)
+
 // Scout Cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak
 	name = "\improper M68 Thermal Cloak"
@@ -614,6 +622,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	storage_slots = 3
 	worn_accessible = TRUE
 	can_hold = list(/obj/item/ammo_magazine/flamer_tank, /obj/item/tool/extinguisher)
+	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE
 
 //----------OTHER FACTIONS AND ERTS----------
 

@@ -12,7 +12,7 @@
 
 	if(T.hivenumber != X.hivenumber)
 		to_chat(X, SPAN_XENOWARNING("[T] doesn't belong to your hive!"))
-		return 
+		return
 
 	if(T.is_ventcrawling)
 		to_chat(X, SPAN_XENOWARNING("[T] can't be deevolved here."))
@@ -158,7 +158,7 @@
 
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
 		to_chat(X, SPAN_XENOWARNING("These weeds don't belong to your hive! You can't grow an ovipositor here."))
-		return 
+		return
 
 	if(!X.check_alien_construction(current_turf))
 		return
@@ -379,6 +379,17 @@
 	to_chat(owner, SPAN_XENONOTICE("You focus your plasma into the weeds below you and force the weeds to secrete resin in the shape of \a [RC.construction_name]."))
 	playsound(T, "alien_resin_build", 25)
 
+/datum/action/xeno_action/activable/expand_weeds
+	var/list/recently_built_turfs
+
+/datum/action/xeno_action/activable/expand_weeds/New(Target, override_icon_state)
+	. = ..()
+	recently_built_turfs = list()
+
+/datum/action/xeno_action/activable/expand_weeds/Destroy()
+	recently_built_turfs = null
+	return ..()
+
 /datum/action/xeno_action/activable/expand_weeds/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
 	if(!X.check_state())
@@ -417,8 +428,9 @@
 		return
 
 	var/obj/effect/alien/weeds/node/node
-	for(var/obj/effect/alien/weeds/W in range(1, T))
-		if(W.hivenumber == X.hivenumber && W.parent)
+	for(var/direction in cardinal)
+		var/obj/effect/alien/weeds/W = locate() in get_step(T, direction)
+		if(W && W.hivenumber == X.hivenumber && W.parent && !W.hibernate && !LinkBlocked(W, get_turf(W), T))
 			node = W.parent
 			break
 
@@ -426,11 +438,21 @@
 		to_chat(X, SPAN_XENOWARNING("You can only plant weeds near weeds with a connected node!"))
 		return
 
+	if(T in recently_built_turfs)
+		to_chat(X, SPAN_XENOWARNING("You've recently built here already!"))
+		return
+
 	if (!check_and_use_plasma_owner())
 		return
-	
+
 	new /obj/effect/alien/weeds/weak(T, node)
 	playsound(T, "alien_resin_build", 35)
 
+	recently_built_turfs += T
+	addtimer(CALLBACK(src, .proc/reset_turf_cooldown, T), turf_build_cooldown)
+
 	to_chat(X, SPAN_XENONOTICE("You plant weeds at [T]."))
 	apply_cooldown()
+
+/datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(var/turf/T)
+	recently_built_turfs -= T

@@ -542,6 +542,8 @@
 	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
 	H.equip_if_possible(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 
+	H.hud_set_squad()
+
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/admiral

@@ -74,9 +74,9 @@
 		playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 
-	if(safety)
+	if(safety || (!isturf(target) && !isturf(target.loc)))
 		return ..()
-	
+
 	if(src.reagents.total_volume < 1)
 		to_chat(usr, SPAN_DANGER("\The [src] is empty."))
 		return
@@ -160,7 +160,7 @@
 	reagents.trans_to(W, 1)
 	for(var/b in 0 to (5-1))
 		step_towards(W, target)
-		if (!W || QDELETED(W)) 
+		if (!W || QDELETED(W))
 			return
 		else if (!W.reagents || get_turf(W) == T)
 			break
@@ -188,7 +188,7 @@
 			if(iscarbon(atm) || istype(atm, /obj/structure/barricade))
 				atm.extinguish_acid()
 		T = get_turf(W)
-		if(T == target) 
+		if(T == target)
 			break
 		sleep(2)
 	qdel(W)

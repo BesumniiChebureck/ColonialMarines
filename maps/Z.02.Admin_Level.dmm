@@ -16,6 +16,8 @@
 "ap" = (/obj/effect/decal/warning_stripes/permanent{icon_state = "NE-out"},/turf/open/floor/plating/plating_catwalk,/area/supply/dock_vehicle)
 "aq" = (/obj/effect/decal/warning_stripes/permanent{icon_state = "NW-out"},/turf/open/floor/plating/plating_catwalk,/area/supply/dock_vehicle)
 "ar" = (/turf/open/floor/plating/plating_catwalk,/area/supply/dock_vehicle)
+"as" = (/turf/open/space/transit/north/shuttlespace_ns4,/area/almayer/evacuation/stranded/pod19)
+"at" = (/obj/effect/step_trigger/teleporter/random{affect_ghosts = 1; name = "escapeshuttle_leave"; teleport_x = 25; teleport_x_offset = 245; teleport_y = 25; teleport_y_offset = 245; teleport_z = 1; teleport_z_offset = 1},/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{name = "19"},/turf/open/space/transit/north/shuttlespace_ns4,/area/space)
 "aw" = (/obj/structure/machinery/light{dir = 1},/turf/open/floor/almayer{dir = 5; icon_state = "green"; tag = "icon-green (NORTHEAST)"},/area/adminlevel/bunker01/caves/outpost)
 "ay" = (/turf/open/floor/almayer{dir = 8; icon_state = "sterile_green_side"; tag = "icon-sterile_green_side (WEST)"},/area/adminlevel/bunker01/medbay)
 "az" = (/obj/effect/decal/warning_stripes{icon_state = "W"; tag = "icon-W"},/turf/open/floor/almayer{dir = 5; icon_state = "plating"; tag = "icon-blue (NORTHEAST)"},/area/tdome)
@@ -103,7 +105,7 @@
 "eT" = (/obj/structure/surface/table/almayer,/turf/open/floor/wood,/area/adminlevel/bunker01/breakroom)
 "eU" = (/turf/open/floor/carpet{dir = 8; icon_state = "carpetside"; tag = "icon-carpetside (WEST)"},/area/centcom/living)
 "eW" = (/obj/structure/flora/pottedplant{icon_state = "pottedplant_10"; tag = "icon-plant-10"},/turf/open/floor/carpet{dir = 8; icon_state = "carpetside"; tag = "icon-carpetside (WEST)"},/area/centcom/living)
-"eX" = (/obj/effect/landmark{name = "simulator_target"},/turf/open/floor/engine,/area/adminlevel/simulation)
+"eX" = (/obj/effect/landmark/sim_target,/turf/open/floor/engine,/area/adminlevel/simulation)
 "eY" = (/turf/open/floor/carpet,/area/centcom/living)
 "eZ" = (/turf/open/floor/carpet{dir = 4; icon_state = "carpetside"; tag = "icon-carpetside (EAST)"},/area/centcom/living)
 "fb" = (/turf/open/floor/almayer{dir = 1; icon_state = "green"; tag = "icon-green (NORTH)"},/area/adminlevel/bunker01/mainroom)
@@ -172,19 +174,19 @@
 "hD" = (/obj/structure/machinery/door/airlock/almayer/generic{dir = 4; name = "\improper Bedroom"; req_access = list(201)},/obj/structure/disposalpipe/segment{dir = 4},/obj/structure/pipes/standard/simple/hidden/supply{dir = 4; icon_state = "intact-supply"; tag = "icon-intact-supply (EAST)"},/obj/structure/machinery/door/firedoor/border_only/almayer/antag,/turf/open/floor/plating/plating_catwalk,/area/adminlevel/bunker01/bedroom)
 "hE" = (/obj/structure/surface/table/reinforced,/obj/structure/machinery/door/firedoor/border_only/almayer/antag,/turf/open/floor/prison{dir = 2; icon_state = "sterile_white"; tag = "icon-sterile_white"},/area/adminlevel/bunker01/bedroom)
 "hN" = (/turf/closed/shuttle/ert,/area/shuttle/distress/start)
-"hO" = (/obj/structure/surface/rack,/obj/effect/landmark{name = "DistressItem"},/obj/item/storage/toolbox/mechanical,/obj/item/device/multitool,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
+"hO" = (/obj/structure/surface/rack,/obj/effect/landmark/ert_spawns/distress/item,/obj/item/storage/toolbox/mechanical,/obj/item/device/multitool,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
 "hP" = (/turf/open/shuttle/dropship{icon_state = "rasputin6"; tag = "icon-rasputin6"},/area/shuttle/distress/start)
 "hQ" = (/turf/open/shuttle/dropship{icon_state = "floor8"; tag = "icon-rasputin7"},/area/shuttle/distress/start)
 "hR" = (/turf/open/shuttle/dropship{icon_state = "rasputin7"; tag = "icon-rasputin7"},/area/shuttle/distress/start)
 "hT" = (/turf/closed/shuttle/ert{icon_state = "stan5"},/area/shuttle/distress/start)
 "hU" = (/turf/closed/shuttle/ert{icon_state = "wy18"},/area/shuttle/distress/start_pmc)
-"hV" = (/obj/structure/surface/rack,/obj/effect/landmark{name = "Distress_PMCItem"},/obj/item/storage/toolbox/mechanical,/obj/item/device/multitool,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
+"hV" = (/obj/structure/surface/rack,/obj/effect/landmark/ert_spawns/distress_pmc/item,/obj/item/storage/toolbox/mechanical,/obj/item/device/multitool,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
 "hW" = (/turf/open/shuttle/dropship{icon_state = "rasputin6"; tag = "icon-rasputin6"},/area/shuttle/distress/start_pmc)
 "hX" = (/turf/open/shuttle/dropship{icon_state = "floor8"; tag = "icon-rasputin7"},/area/shuttle/distress/start_pmc)
 "hY" = (/turf/open/shuttle/dropship{icon_state = "rasputin7"; tag = "icon-rasputin7"},/area/shuttle/distress/start_pmc)
 "ia" = (/turf/closed/shuttle/ert{icon_state = "wy19"},/area/shuttle/distress/start_pmc)
 "ib" = (/turf/closed/shuttle/ert{icon_state = "upp4"},/area/shuttle/distress/start_upp)
-"ic" = (/obj/structure/surface/rack,/obj/effect/landmark{name = "Distress_UPPItem"},/obj/item/storage/toolbox/mechanical,/obj/item/device/multitool,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
+"ic" = (/obj/structure/surface/rack,/obj/effect/landmark/ert_spawns/distress_upp/item,/obj/item/storage/toolbox/mechanical,/obj/item/device/multitool,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
 "id" = (/turf/open/shuttle/dropship{icon_state = "rasputin6"; tag = "icon-rasputin6"},/area/shuttle/distress/start_upp)
 "ie" = (/turf/open/shuttle/dropship{icon_state = "floor8"; tag = "icon-rasputin7"},/area/shuttle/distress/start_upp)
 "if" = (/turf/open/shuttle/dropship{icon_state = "rasputin7"; tag = "icon-rasputin7"},/area/shuttle/distress/start_upp)
@@ -192,25 +194,25 @@
 "ii" = (/turf/closed/wall/rock/brown,/area/adminlevel/bunker01/caves/xeno)
 "in" = (/obj/structure/machinery/door/airlock/almayer/generic,/obj/structure/machinery/door/poddoor/shutters/transit{dir = 4},/turf/open/shuttle/dropship{icon_state = "rasputin3"; tag = "icon-rasputin3"},/area/shuttle/distress/start)
 "io" = (/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
-"ip" = (/obj/effect/landmark{name = "Distress"},/turf/open/shuttle/dropship{icon_state = "rasputin3"; tag = "icon-rasputin3"},/area/shuttle/distress/start)
-"iq" = (/obj/structure/bed/chair/dropship/passenger,/obj/effect/landmark{name = "Distress"},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
+"ip" = (/obj/effect/landmark/ert_spawns/distress,/turf/open/shuttle/dropship{icon_state = "rasputin3"; tag = "icon-rasputin3"},/area/shuttle/distress/start)
+"iq" = (/obj/structure/bed/chair/dropship/passenger,/obj/effect/landmark/ert_spawns/distress,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
 "ir" = (/obj/structure/machinery/door/airlock/almayer/generic,/obj/structure/machinery/door/poddoor/shutters/transit{dir = 4},/turf/open/shuttle/dropship{icon_state = "rasputin3"; tag = "icon-rasputin3"},/area/shuttle/distress/start_pmc)
 "is" = (/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
-"it" = (/obj/effect/landmark{name = "Distress_PMC"},/turf/open/shuttle/dropship{icon_state = "rasputin3"; tag = "icon-rasputin3"},/area/shuttle/distress/start_pmc)
-"iu" = (/obj/structure/bed/chair/dropship/passenger,/obj/effect/landmark{name = "Distress_PMC"},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
+"it" = (/obj/effect/landmark/ert_spawns/distress_pmc,/turf/open/shuttle/dropship{icon_state = "rasputin3"; tag = "icon-rasputin3"},/area/shuttle/distress/start_pmc)
+"iu" = (/obj/structure/bed/chair/dropship/passenger,/obj/effect/landmark/ert_spawns/distress_pmc,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
 "iv" = (/obj/structure/machinery/door/airlock/almayer/generic,/obj/structure/machinery/door/poddoor/shutters/transit{dir = 4},/turf/open/shuttle/dropship{icon_state = "rasputin3"; tag = "icon-rasputin3"},/area/shuttle/distress/start_upp)
 "iw" = (/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
-"ix" = (/obj/effect/landmark{name = "Distress_UPP"},/turf/open/shuttle/dropship{icon_state = "rasputin3"; tag = "icon-rasputin3"},/area/shuttle/distress/start_upp)
-"iy" = (/obj/structure/bed/chair/dropship/passenger,/obj/effect/landmark{name = "Distress_UPP"},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
-"iz" = (/obj/structure/bed/chair/dropship/passenger{dir = 4},/obj/effect/landmark{name = "Distress"},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
-"iA" = (/obj/structure/bed/chair/dropship/passenger{dir = 8},/obj/effect/landmark{name = "Distress"},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
+"ix" = (/obj/effect/landmark/ert_spawns/distress_upp,/turf/open/shuttle/dropship{icon_state = "rasputin3"; tag = "icon-rasputin3"},/area/shuttle/distress/start_upp)
+"iy" = (/obj/structure/bed/chair/dropship/passenger,/obj/effect/landmark/ert_spawns/distress_upp,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
+"iz" = (/obj/structure/bed/chair/dropship/passenger{dir = 4},/obj/effect/landmark/ert_spawns/distress,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
+"iA" = (/obj/structure/bed/chair/dropship/passenger{dir = 8},/obj/effect/landmark/ert_spawns/distress,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
 "iB" = (/turf/closed/shuttle/ert{icon_state = "wy16"},/area/shuttle/distress/start_pmc)
-"iC" = (/obj/structure/bed/chair/dropship/passenger{dir = 4},/obj/effect/landmark{name = "Distress_PMC"},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
-"iD" = (/obj/structure/bed/chair/dropship/passenger{dir = 8},/obj/effect/landmark{name = "Distress_PMC"},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
+"iC" = (/obj/structure/bed/chair/dropship/passenger{dir = 4},/obj/effect/landmark/ert_spawns/distress_pmc,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
+"iD" = (/obj/structure/bed/chair/dropship/passenger{dir = 8},/obj/effect/landmark/ert_spawns/distress_pmc,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
 "iE" = (/turf/closed/shuttle/ert{icon_state = "wy17"},/area/shuttle/distress/start_pmc)
 "iF" = (/turf/closed/shuttle/ert{icon_state = "upp16"},/area/shuttle/distress/start_upp)
-"iG" = (/obj/structure/bed/chair/dropship/passenger{dir = 4},/obj/effect/landmark{name = "Distress_UPP"},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
-"iH" = (/obj/structure/bed/chair/dropship/passenger{dir = 8},/obj/effect/landmark{name = "Distress_UPP"},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
+"iG" = (/obj/structure/bed/chair/dropship/passenger{dir = 4},/obj/effect/landmark/ert_spawns/distress_upp,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
+"iH" = (/obj/structure/bed/chair/dropship/passenger{dir = 8},/obj/effect/landmark/ert_spawns/distress_upp,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
 "iQ" = (/turf/open/mars_cave,/area/adminlevel/bunker01/mainroom)
 "iS" = (/turf/closed/shuttle/ert{icon_state = "wy14"},/area/shuttle/distress/start_pmc)
 "iT" = (/turf/closed/shuttle/ert{icon_state = "wy15"},/area/shuttle/distress/start_pmc)
@@ -220,19 +222,19 @@
 "jc" = (/turf/closed/shuttle/ert{icon_state = "wy12"},/area/shuttle/distress/start_pmc)
 "jd" = (/turf/closed/shuttle/ert{icon_state = "wy13"},/area/shuttle/distress/start_pmc)
 "je" = (/obj/structure/closet/crate,/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
-"ji" = (/obj/effect/landmark/start,/turf/open/floor,/area/start)
-"jj" = (/obj/structure/surface/rack,/obj/effect/landmark{name = "DistressItem"},/obj/item/storage/firstaid/regular,/obj/item/storage/belt/medical/lifesaver/full,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
+"ji" = (/obj/effect/landmark/newplayer_start,/turf/open/floor,/area/start)
+"jj" = (/obj/structure/surface/rack,/obj/effect/landmark/ert_spawns/distress/item,/obj/item/storage/firstaid/regular,/obj/item/storage/belt/medical/lifesaver/full,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
 "jk" = (/turf/open/shuttle/dropship{icon_state = "rasputin4"; tag = "icon-rasputin7"},/area/shuttle/distress/start)
 "jl" = (/turf/open/shuttle/dropship{icon_state = "rasputin8"; tag = "icon-rasputin7"},/area/shuttle/distress/start)
 "jm" = (/turf/closed/shuttle/ert{icon_state = "wy4"},/area/shuttle/distress/start_pmc)
-"jn" = (/obj/structure/surface/rack,/obj/effect/landmark{name = "Distress_PMCItem"},/obj/item/storage/firstaid/regular,/obj/item/storage/belt/medical/lifesaver/full,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
+"jn" = (/obj/structure/surface/rack,/obj/effect/landmark/ert_spawns/distress_pmc/item,/obj/item/storage/firstaid/regular,/obj/item/storage/belt/medical/lifesaver/full,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
 "jo" = (/turf/open/shuttle/dropship{icon_state = "rasputin4"; tag = "icon-rasputin7"},/area/shuttle/distress/start_pmc)
 "jp" = (/turf/open/shuttle/dropship{icon_state = "rasputin8"; tag = "icon-rasputin7"},/area/shuttle/distress/start_pmc)
 "jq" = (/turf/closed/shuttle/ert{icon_state = "wy5"},/area/shuttle/distress/start_pmc)
-"jr" = (/obj/structure/surface/rack,/obj/effect/landmark{name = "Distress_UPPItem"},/obj/item/storage/firstaid/regular,/obj/item/storage/belt/medical/lifesaver/full,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
+"jr" = (/obj/structure/surface/rack,/obj/effect/landmark/ert_spawns/distress_upp/item,/obj/item/storage/firstaid/regular,/obj/item/storage/belt/medical/lifesaver/full,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
 "js" = (/turf/open/shuttle/dropship{icon_state = "rasputin4"; tag = "icon-rasputin7"},/area/shuttle/distress/start_upp)
 "jt" = (/turf/open/shuttle/dropship{icon_state = "rasputin8"; tag = "icon-rasputin7"},/area/shuttle/distress/start_upp)
-"ju" = (/obj/structure/surface/rack,/obj/item/storage/firstaid/regular,/obj/item/storage/belt/medical/lifesaver/full,/obj/effect/landmark{name = "Distress_UPPItem"},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
+"ju" = (/obj/structure/surface/rack,/obj/item/storage/firstaid/regular,/obj/item/storage/belt/medical/lifesaver/full,/obj/effect/landmark/ert_spawns/distress_upp/item,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
 "jv" = (/obj/effect/decal/warning_stripes{icon_state = "W"; tag = "icon-W"},/turf/open/floor/plating/almayer,/area/shuttle/distress/start_big)
 "jy" = (/turf/closed/shuttle/ert{icon_state = "stan_leftengine"},/area/shuttle/distress/start)
 "jz" = (/turf/closed/shuttle/ert{icon_state = "stan8"},/area/shuttle/distress/start)
@@ -791,14 +793,14 @@
 "Bt" = (/obj/structure/machinery/door/airlock/almayer/engineering{name = "\improper Engineering"; req_access = list(201); req_one_access = null},/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/adminlevel/bunker01/engineering)
 "Bw" = (/obj/structure/surface/table/reinforced,/obj/effect/spawner/random/toolbox,/turf/open/floor/almayer{dir = 6; icon_state = "orange"; tag = "icon-sterile"},/area/adminlevel/bunker01/engineering)
 "BC" = (/obj/structure/machinery/door/airlock/almayer/generic{name = "\improper Hydroponics"; req_access = list(201)},/turf/open/floor/almayer,/area/adminlevel/bunker01/hydroponics)
-"BD" = (/obj/effect/landmark{name = "tdome2"},/obj/effect/decal/warning_stripes{icon_state = "E"; tag = "icon-W"},/turf/open/floor/almayer{dir = 5; icon_state = "plating"; tag = "icon-blue (NORTHEAST)"},/area/tdome/tdome2)
+"BD" = (/obj/effect/landmark/thunderdome/two,/obj/effect/decal/warning_stripes{icon_state = "E"; tag = "icon-W"},/turf/open/floor/almayer{dir = 5; icon_state = "plating"; tag = "icon-blue (NORTHEAST)"},/area/tdome/tdome2)
 "BJ" = (/obj/structure/pipes/standard/simple/hidden/supply{dir = 4; icon_state = "intact-supply"; tag = "icon-intact-supply (EAST)"},/obj/structure/machinery/firealarm{pixel_y = 24},/turf/open/floor/almayer,/area/adminlevel/bunker01/security)
 "BR" = (/obj/structure/sink{dir = 4; icon_state = "sink"; pixel_x = 11; pixel_y = 0},/turf/open/floor/almayer{dir = 4; icon_state = "sterile_green_side"; tag = "icon-sterile_green_side (EAST)"},/area/adminlevel/bunker01/medbay)
 "BT" = (/turf/open/floor/almayer{dir = 1; icon_state = "green"; tag = "icon-green (NORTH)"},/area/adminlevel/bunker01/caves/outpost)
 "BU" = (/obj/structure/flora/pottedplant{icon_state = "pottedplant_20"; tag = "icon-plant-10"},/turf/open/floor/almayer{dir = 5; icon_state = "plating"; tag = "icon-blue (NORTHEAST)"},/area/tdome/tdomeobserve)
 "BV" = (/obj/structure/surface/table/reinforced,/obj/structure/machinery/chem_dispenser/soda{density = 0},/turf/open/floor/prison{dir = 2; icon_state = "sterile_white"; tag = "icon-sterile_white"},/area/adminlevel/ert_station)
 "BY" = (/obj/structure/machinery/door/airlock/almayer/engineering{dir = 1; name = "\improper Engineering"; req_access = list(201); req_one_access = null},/turf/open/floor/plating/almayer,/area/adminlevel/bunker01/mainroom)
-"Cc" = (/obj/effect/landmark{color = "#FFFF00"; name = "simulator_camera"},/turf/open/floor/engine{color = "#AAAAAA"},/area/adminlevel/simulation)
+"Cc" = (/obj/effect/landmark/sim_camera,/turf/open/floor/engine{color = "#AAAAAA"},/area/adminlevel/simulation)
 "Ch" = (/obj/structure/noticeboard{pixel_y = 34},/turf/open/floor/almayer{dir = 1; icon_state = "red"; tag = "icon-red (NORTH)"},/area/adminlevel/ert_station)
 "Cl" = (/obj/structure/bed,/turf/open/floor/almayer{icon_state = "dark_sterile"; tag = "icon-sterile"},/area/adminlevel/bunker01/medbay)
 "Cm" = (/obj/structure/machinery/cm_vending/gear/antag,/obj/structure/window/reinforced{dir = 4; health = 80},/turf/open/floor/almayer,/area/adminlevel/bunker01/storage)
@@ -821,11 +823,11 @@
 "DM" = (/obj/structure/window_frame/colony/reinforced,/obj/structure/machinery/door/poddoor/shutters/almayer/open{id = "base_1_shutter"; name = "\improper Bunker Shutters"},/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/adminlevel/bunker01/mainroom)
 "DV" = (/turf/open/floor/almayer{icon_plating = "tcomms"; icon_state = "tcomms"},/area/tdome)
 "Ea" = (/obj/structure/largecrate/supply/weapons/m56d,/turf/open/floor/almayer{icon_state = "cargo"; tag = "icon-bluecorner (NORTH)"},/area/adminlevel/bunker01/mainroom)
-"Ee" = (/obj/effect/landmark{name = "tdome1"},/turf/open/floor/almayer{dir = 5; icon_state = "plating"; tag = "icon-blue (NORTHEAST)"},/area/tdome/tdome1)
+"Ee" = (/obj/effect/landmark/thunderdome/one,/turf/open/floor/almayer{dir = 5; icon_state = "plating"; tag = "icon-blue (NORTHEAST)"},/area/tdome/tdome1)
 "Ef" = (/obj/structure/machinery/door/airlock/almayer/generic{dir = 2; name = "\improper Bathroom"},/obj/structure/pipes/standard/simple/hidden/supply,/obj/structure/disposalpipe/segment,/turf/open/floor/prison{dir = 2; icon_state = "sterile_white"; tag = "icon-sterile_white"},/area/adminlevel/bunker01/bedroom)
 "Eh" = (/obj/structure/barricade/plasteel,/turf/open/floor/almayer{dir = 4; icon_state = "green"; tag = "icon-green (EAST)"},/area/adminlevel/bunker01/caves/outpost)
 "En" = (/obj/structure/machinery/cm_vending/sorted/medical/no_access{req_access = null},/turf/open/floor/almayer{icon_state = "sterile_green_side"; tag = "icon-sterile"},/area/adminlevel/ert_station)
-"Er" = (/obj/structure/surface/rack,/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/obj/effect/landmark{name = "Distress_UPPItem"},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
+"Er" = (/obj/structure/surface/rack,/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/obj/effect/landmark/ert_spawns/distress_upp/item,/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_upp)
 "EC" = (/obj/effect/decal/warning_stripes{icon_state = "NE-out"; tag = "icon-NE-out"},/turf/open/floor/plating/almayer,/area/adminlevel/bunker01/mainroom)
 "EI" = (/obj/structure/surface/table/reinforced,/obj/structure/reagent_dispensers/beerkeg{density = 0},/turf/open/floor/prison{dir = 2; icon_state = "sterile_white"; tag = "icon-sterile_white"},/area/adminlevel/ert_station)
 "EP" = (/obj/structure/disposalpipe/segment{dir = 1; icon_state = "pipe-c"},/turf/open/floor/almayer,/area/adminlevel/bunker01/mainroom)
@@ -914,7 +916,7 @@
 "LE" = (/turf/open/floor/almayer{dir = 6; icon_state = "silver"; tag = "icon-sterile"},/area/adminlevel/ert_station)
 "LF" = (/turf/open/floor/almayer{dir = 4; icon_state = "green"; tag = "icon-green (EAST)"},/area/adminlevel/bunker01/caves/outpost)
 "LM" = (/turf/open/floor/almayer{dir = 1; icon_state = "sterile_green_side"; tag = "icon-sterile_green_side (NORTH)"},/area/adminlevel/bunker01/medbay)
-"LN" = (/obj/structure/surface/rack,/obj/effect/landmark{name = "Distress_PMCItem"},/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
+"LN" = (/obj/structure/surface/rack,/obj/effect/landmark/ert_spawns/distress_pmc/item,/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start_pmc)
 "LO" = (/obj/structure/machinery/disposal,/obj/structure/disposalpipe/trunk{dir = 4},/turf/open/floor/almayer{dir = 5; icon_state = "plating"; tag = "icon-blue (NORTHEAST)"},/area/tdome/tdomeobserve)
 "LP" = (/obj/structure/surface/table/reinforced,/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/obj/item/storage/belt/medical/lifesaver/full,/obj/item/storage/belt/medical/lifesaver/full,/obj/item/storage/belt/medical/lifesaver/upp/full,/obj/item/storage/belt/medical/lifesaver/upp/full,/turf/open/floor/almayer{dir = 1; icon_state = "sterile_green_side"; tag = "icon-sterile_green_side (NORTH)"},/area/adminlevel/bunker01/medbay)
 "Me" = (/obj/structure/machinery/door_control{id = "base_4_shutter"; name = "Base Shutters"; pixel_x = 7; pixel_y = -20},/turf/open/floor/almayer,/area/adminlevel/bunker01/mainroom)
@@ -948,7 +950,7 @@
 "Ou" = (/obj/effect/step_trigger/teleporter/random{affect_ghosts = 1; name = "escapeshuttle_leave"; teleport_x = 25; teleport_x_offset = 245; teleport_y = 25; teleport_y_offset = 245; teleport_z = 1; teleport_z_offset = 1},/turf/open/space/transit/north/shuttlespace_ns15,/area/space)
 "OB" = (/turf/closed/wall/r_wall/bunker,/area/adminlevel/bunker01/storage)
 "OD" = (/turf/open/floor/almayer{icon_state = "sterile_green"; tag = "icon-sterile"},/area/adminlevel/ert_station)
-"OK" = (/obj/effect/landmark{name = "tdome1"},/obj/effect/decal/warning_stripes{icon_state = "W"; tag = "icon-W"},/turf/open/floor/almayer{dir = 5; icon_state = "plating"; tag = "icon-blue (NORTHEAST)"},/area/tdome/tdome1)
+"OK" = (/obj/effect/landmark/thunderdome/one,/obj/effect/decal/warning_stripes{icon_state = "W"; tag = "icon-W"},/turf/open/floor/almayer{dir = 5; icon_state = "plating"; tag = "icon-blue (NORTHEAST)"},/area/tdome/tdome1)
 "OT" = (/turf/closed/wall/almayer/outer,/area/tdome/tdomeobserve)
 "OU" = (/obj/structure/machinery/door_control{id = "base_1_shutter"; name = "Base Shutters"; pixel_x = -7; pixel_y = -20},/turf/open/floor/almayer,/area/adminlevel/bunker01/mainroom)
 "OZ" = (/obj/structure/closet/secure_closet/personal,/turf/open/floor/almayer,/area/adminlevel/bunker01/caves)
@@ -961,7 +963,7 @@
 "PC" = (/turf/open/floor/almayer{dir = 4; icon_state = "orange"; tag = "icon-orange (EAST)"},/area/adminlevel/bunker01/engineering)
 "PD" = (/obj/structure/machinery/body_scanconsole{dir = 8},/turf/open/floor/almayer{icon_state = "sterile_green_side"; tag = "icon-sterile"},/area/adminlevel/bunker01/medbay)
 "PE" = (/turf/open/floor/engine,/area/adminlevel/simulation)
-"PF" = (/obj/effect/landmark{name = "tdome2"},/turf/open/floor/almayer{dir = 5; icon_state = "plating"; tag = "icon-blue (NORTHEAST)"},/area/tdome/tdome2)
+"PF" = (/obj/effect/landmark/thunderdome/two,/turf/open/floor/almayer{dir = 5; icon_state = "plating"; tag = "icon-blue (NORTHEAST)"},/area/tdome/tdome2)
 "PG" = (/obj/structure/surface/table/reinforced,/obj/item/reagent_container/glass/beaker/bluespace,/turf/open/floor/almayer{icon_state = "dark_sterile"; tag = "icon-sterile"},/area/adminlevel/bunker01/medbay)
 "PI" = (/obj/structure/closet/firecloset,/turf/open/floor/wood,/area/adminlevel/bunker01/bedroom)
 "PJ" = (/turf/open/floor/almayer{dir = 1; icon_state = "w-y1"; tag = "icon-sterile_green_corner (NORTH)"},/area/tdome)
@@ -1053,7 +1055,7 @@
 "Xh" = (/obj/structure/machinery/cm_vending/gear/antag_guns,/obj/structure/window/reinforced{dir = 8; health = 80},/turf/open/floor/almayer,/area/adminlevel/bunker01/mainroom)
 "Xi" = (/obj/structure/machinery/door/window/northright,/turf/open/floor/prison{dir = 2; icon_state = "sterile_white"; tag = "icon-sterile_white"},/area/adminlevel/ert_station)
 "Xo" = (/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit,/turf/open/floor/almayer{icon_state = "cargo"; tag = "icon-bluecorner (NORTH)"},/area/adminlevel/bunker01/storage)
-"Xt" = (/obj/structure/surface/rack,/obj/effect/landmark{name = "DistressItem"},/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
+"Xt" = (/obj/structure/surface/rack,/obj/effect/landmark/ert_spawns/distress/item,/obj/item/storage/firstaid/adv{pixel_x = 2; pixel_y = -5},/turf/open/shuttle/dropship{icon_state = "rasputin15"; tag = "icon-rasputin15"},/area/shuttle/distress/start)
 "XA" = (/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{req_access = null},/turf/open/floor/almayer{dir = 4; icon_state = "orange"; tag = "icon-orange (EAST)"},/area/adminlevel/ert_station)
 "XN" = (/obj/structure/largecrate/supply/supplies/metal,/obj/structure/largecrate/supply/supplies/metal,/obj/structure/largecrate/supply/supplies/metal,/obj/structure/largecrate/supply/supplies/metal,/obj/structure/largecrate/supply/supplies/metal,/turf/open/floor/almayer{icon_state = "cargo"; tag = "icon-bluecorner (NORTH)"},/area/adminlevel/bunker01/caves)
 "XZ" = (/turf/closed/wall/r_wall/bunker,/area/adminlevel/bunker01/gear)
@@ -1105,29 +1107,29 @@ aaaXbzaXbWbWbWbWbWaXbzbzaXbXbXbXbXbXaXbzbzaXcjcjcjcjaXbzbzbzaXckckckckckaXbzaXaa
 aaaXbzaXbWbWbWbWbWaXbzbzaXbXbXbXbXbXaXbzbzaXcjcjcjcjaXbzbzbzaXckckckckckaXbzaXaaaXaObzaObzaObSbabababababababSbzaObzaObzbTaaaXaObzaObzaObSccccccccccccccbSbzaObzaObzbTaaaXaObzaObzaObSdQdQdQdQdQdQdQbSbzaObzaObzbTaaaaaaaaaaaaaafYgcgcgcnbXNWSpqprRSpsptKupwSspxREREREREREpzJQpDpBREREREREJQpDfYqYgcfYfYfYfY
 aaaXbzdDaXaXaXaXaXaXbzbzdHaXaXaXaXaXaXbzbzaXcjcjcjcjaXbzbzbzgmaXaXaXaXaXaXbzaXaabeaQbMaQbMaQaYbTaYbTaYbTaYbTaYbMaQbMaQbMaTaabeaQbMaQbMaQaYbTaYbTaYbTaYbTaYbMaQbMaQbMaTaabeaQbMaQbMaQaYbTaYbTaYbTaYbTaYbMaQbMaQbMaTaaaaaaaaaaaaaafYgcgcgcqgqvqvovpQpGpSoVovpLEPRopOpNpNpNpNfrytNmItItItpppppppDfYgcgcgcfYfYfY
 aaaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzgnaXaXaXaXaXbzbzbzbzbzbzbzbzbzbzbzaXaabhaPbOaPbOaPaPaQaPaQaPaQaPaQaPbOaPbOaPbOaUaabhaPbOaPbOaPaPaQaPaQaPaQaPaQaPbOaPbOaPbOaUaabhaPbOaPbOaPaPaQaPaQaPaQaPaQaPbOaPbOaPbOaUaaaaaaaaaaaaaafYgcgcgcqgpVpWovpQpRpSpTovqGREppwBppppppppqfpZpDqcqfItpppppppDfYgcgcgcfYfYfY
-aaaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzaXaabjaYbjaYbjaYaTaUaTaUaTaUaTaUaTbjaYbjaYbjaYaabjaYbjaYbjaYaTaUaTaUaTaUaTaUaTbjaYbjaYbjaYaabjaYbjaYbjaYaTaUaTaUaTaUaTaUaTbjaYbjaYbjaYaaaaaaaaaaaaaafYfYgcqgqgqhqiovqdovqeovovSQPfppwBppREREREppZqqlqmpCItppEaFhpDfYiQiQgcfYfYfY
-aaaXbzaXaXaXaXaXaXaXbzbzaXaXaXaXaXaXbzbzbzaXaXaXaXaXaXaXbzbzaXaXaXaXaXaXaXbzaXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcqgqnqoTMbuqrFbqtquqvSQPfppwBppXhSQPfppQxpDVsREREKGEauDpDppiQiQgcfYfYfY
-aaaXbzaXdgdgdgdgdgaXbzbzaXdhdhdhdhaXbzbzbzaXdididididiaXbzbzaXbZbZbZbZbZaXbzaXaabeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcqgqyqDqDqDqCqDqEqFqvqGREppwBppXhSQPfppxopDYRYRaWKGEauDpDppiQiQgcgcfYfY
-aaaXbzaXdgdgdgdgdgaXbzbzaXdhdhdhdhaXbzbzbzaXdididididiaXbzbzaXbZbZbZbZbZaXbzaXaabhaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbhaaaaaaaaaaaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaaaaaaaaaaaaaaaaaaaaaaaaaafYgcgcqgqIqJqKqJqLqMqNqMqMppGxppwBppREREREpppzpDpDpDpDpDpDpDpDppiQiQgcgcgcfY
-aaaXbzaXdgdgdgdgdgaXbzbzaXdhdhdhdhaXbzbzbzaXdididididiaXbzbzaXbZbZbZbZbZaXbzaXaabjaNbQaNbQaNbQaNbQaNaCaCaCaCaCaCaCaCbQaNbQaNbQaNbQaNbQaNbQaNbQaNbQaNbjaaaaaaaaaaaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcqgqRqgqgqgqgqSqTqUqMqMqMqVqWqfpppppppppzppppppppWupprbrcppiQiQgcgcgcfY
-aaaXbzaXdgdgdgdgdgaXbzbzaXdhdhdhdhaXbzbzbzaXdididididiaXbzbzaXbZbZbZbZbZaXbzaXaabSaHaGaHaGaHaCaCaCaCaCeJeJeJeJeJeJaCaCaCaCaCaCaHaGaHaGaHaGaHaGaHaGaHbSaaaaaaaaaaaCaafYfYfYfYfYfYfYfYfYfYfYfYfYfYfYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcgcrdqMqMrerfrgrhriFDrjrkvqrlpNpNpNpNrmDgCrrnqmqmDtrorprqppiQiQgcgcgcfY
-aaaXbzgoaXaXaXaXaXaXbzbzaXdhdhdhdhaXbzbzbzgpaXaXaXaXaXaXbzbzgqaXaXaXaXaXaXbzaXaaaYaOaNaOaNaCaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaOaNaOaNaOaNaOaNaOaNaOaYaaaaaaaaaaaCaafYYfYfYfYfYfYfYfYfYfYfYfYfYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcgcgcqMrrrsrtrsrurvrwrxqMryrzrArBrCrDrErFrFrGrHrFrFrErErErErEQcgcgcgcfY
-aaaXbzbzbzbzbzbzbzbzbzbzgsaXaXaXaXaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzaXaaaUaQaPaQaPaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaCaCaCaCaCaPaQaPaQaPaQaUaaaaaaaaaaaCaafYYfNDEXEXEXEXEXEXEXEXEXMEYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcgcgcqMqMqMqMrIrJqMqMqMqMrKWprLrLrLrMrNrOrPrQrLrRrPrSrTrUrVrEfYgcgcfYfY
+aaaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzaaaaaaaaaaaabzbzaXaabjaYbjaYbjaYaTaUaTaUaTaUaTaUaTbjaYbjaYbjaYaabjaYbjaYbjaYaTaUaTaUaTaUaTaUaTbjaYbjaYbjaYaabjaYbjaYbjaYaTaUaTaUaTaUaTaUaTbjaYbjaYbjaYaaaaaaaaaaaaaafYfYgcqgqgqhqiovqdovqeovovSQPfppwBppREREREppZqqlqmpCItppEaFhpDfYiQiQgcfYfYfY
+aaaXbzaXaXaXaXaXaXaXbzbzaXaXaXaXaXaXbzbzbzaXaXaXaXaXaXaXbzbzaXaXaXaXaXaXaabzaXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcqgqnqoTMbuqrFbqtquqvSQPfppwBppXhSQPfppQxpDVsREREKGEauDpDppiQiQgcfYfYfY
+aaaXbzaXdgdgdgdgdgaXbzbzaXdhdhdhdhaXbzbzbzaXdididididiaXbzbzaXasasasasaXaabzaXaabeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaTbeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcqgqyqDqDqDqCqDqEqFqvqGREppwBppXhSQPfppxopDYRYRaWKGEauDpDppiQiQgcgcfYfY
+aaaXbzaXdgdgdgdgdgaXbzbzaXdhdhdhdhaXbzbzbzaXdididididiaXbzbzaXasasasasaXaabzaXaabhaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbhaaaaaaaaaaaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaaaaaaaaaaaaaaaaaaaaaaaaaafYgcgcqgqIqJqKqJqLqMqNqMqMppGxppwBppREREREpppzpDpDpDpDpDpDpDpDppiQiQgcgcgcfY
+aaaXbzaXdgdgdgdgdgaXbzbzaXdhdhdhdhaXbzbzbzaXdididididiaXbzbzaXasasasasaXaabzaXaabjaNbQaNbQaNbQaNbQaNaCaCaCaCaCaCaCaCbQaNbQaNbQaNbQaNbQaNbQaNbQaNbQaNbjaaaaaaaaaaaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcqgqRqgqgqgqgqSqTqUqMqMqMqVqWqfpppppppppzppppppppWupprbrcppiQiQgcgcgcfY
+aaaXbzaXdgdgdgdgdgaXbzbzaXdhdhdhdhaXbzbzbzaXdididididiaXbzbzaXasasasasaXaabzaXaabSaHaGaHaGaHaCaCaCaCaCeJeJeJeJeJeJaCaCaCaCaCaCaHaGaHaGaHaGaHaGaHaGaHbSaaaaaaaaaaaCaafYfYfYfYfYfYfYfYfYfYfYfYfYfYfYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcgcrdqMqMrerfrgrhriFDrjrkvqrlpNpNpNpNrmDgCrrnqmqmDtrorprqppiQiQgcgcgcfY
+aaaXbzgoaXaXaXaXaXaXbzbzaXdhdhdhdhaXbzbzbzgpaXaXaXaXaXaXbzbzaXasasasasaXaabzaXaaaYaOaNaOaNaCaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaOaNaOaNaOaNaOaNaOaNaOaYaaaaaaaaaaaCaafYYfYfYfYfYfYfYfYfYfYfYfYfYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcgcgcqMrrrsrtrsrurvrwrxqMryrzrArBrCrDrErFrFrGrHrFrFrErErErErEQcgcgcgcfY
+aaaXbzbzbzbzbzbzbzbzbzbzgsaXaXaXaXaXbzbzbzbzbzbzbzbzbzbzbzbzataXaXaXaXaXbzbzaXaaaUaQaPaQaPaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaCaCaCaCaCaPaQaPaQaPaQaUaaaaaaaaaaaCaafYYfNDEXEXEXEXEXEXEXEXEXMEYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcgcgcqMqMqMqMrIrJqMqMqMqMrKWprLrLrLrMrNrOrPrQrLrRrPrSrTrUrVrEfYgcgcfYfY
 aaaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzaXaaaTaPaQaPaQaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaQaPaQaPaQaPaTaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcgcgcqMrrrsrXrsrWserYrZqMsazTrLsbscsdsCsdscsfscsdscsdscsdsjrEfYgcfYfYfY
-aaaXbzaXaXaXaXaXaXbzbzbzaXaXaXaXaXaXaXbzbzaXaXaXaXaXaXaXbzbzaXaXaXaXaXaXbzbzaXaabTaNaOaCaCaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaCaCaCaCaOaNbTaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYgcgcgcgcqMqMskslsmsnsospqMqMrEsqsrssstrMrNsusvswsxrLsvrLsxrLsBrEfYgcfYfYfY
-aaaXbzaXcacacacaaXbzbzbzaXcbcbcbcbcbaXbzbzaXczczczczczaXbzbzaXcAcAcAcAaXbzbzaXaaOuaGaCaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaCaGOuaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYgcgcgcgcgcqMqMqMqMsFqMqMqMsDrErNrNsEsSDjsEsGsvsHsIsJsvsKsLsKsMrEfYgcfYfYfY
-aaaXbzaXcacacacaaXbzbzbzaXcbcbcbcbcbaXbzbzaXczczczczczaXbzbzaXcAcAcAcAaXbzbzaXaabTbgaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCbgbTaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcgcgcgcgcgcgcqMsNsNsOqMqMrEsPsQsQstrMsEKNsVsRsEsTtusTsEsEtvrEfYgcfYfYfY
-aaaXbzaXcacacacaaXbzbzbzaXcbcbcbcbcbaXbzbzaXczczczczczaXbzbzaXcAcAcAcAaXbzbzaXaaaTbiaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCbiaTaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYgcgcgcgcgcgcqMqMqMsUBJrstwsWsXrLstsYsEsZsvtasEtbsvtasEtctdrEfYeGgcgcfY
-aaaXbzaXcacacacaaXbzbzbzaXcbcbcbcbcbaXbzbzaXczczczczczaXbzbzaXcAcAcAcAaXbzbzaXaaaUbmaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCbmaUaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYgcgcgcqMqMqMqMrEtetfsdtftgsEthtiBRsEthtiBRsEtjtkrEfYfYgcgcfY
-aaaXbzaXcacacacaaXbzbzbzgvaXaXaXaXaXaXbzbzgwaXaXaXaXaXaXbzbzaXcAcAcAcAaXbzbzaXaabNbsaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCbsbNaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYfYfYgcgcgcgcgcrEtltmtntotpsEtqtrtssEtqtttsrErErErEfYfYgcgcfY
-aaaXbzgxaXaXaXaXaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzgyaXaXaXaXaXbzbzaXaabSbxaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCbxbSaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYfYfYfYgcgcgcgcrErErErErErErErErErErErErErErEfYfYfYfYgcgcgcfY
+aaaXbzaXaXaXaXaXaXbzbzbzaXaXaXaXaXaXaXbzbzaXaXaXaXaXaXbzbzbzaXaXaXaXaXaXaXbzaXaabTaNaOaCaCaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaCaCaCaCaOaNbTaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYgcgcgcgcqMqMskslsmsnsospqMqMrEsqsrssstrMrNsusvswsxrLsvrLsxrLsBrEfYgcfYfYfY
+aaaXbzaXcacacacaaXbzbzbzaXcbcbcbcbcbaXbzbzaXcAcAcAcAaXbzbzbzaXbZbZbZbZbZaXbzaXaaOuaGaCaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaCaGOuaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYgcgcgcgcgcqMqMqMqMsFqMqMqMsDrErNrNsEsSDjsEsGsvsHsIsJsvsKsLsKsMrEfYgcfYfYfY
+aaaXbzaXcacacacaaXbzbzbzaXcbcbcbcbcbaXbzbzaXcAcAcAcAaXbzbzbzaXbZbZbZbZbZaXbzaXaabTbgaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCbgbTaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYgcgcgcgcgcgcgcqMsNsNsOqMqMrEsPsQsQstrMsEKNsVsRsEsTtusTsEsEtvrEfYgcfYfYfY
+aaaXbzaXcacacacaaXbzbzbzaXcbcbcbcbcbaXbzbzaXcAcAcAcAaXbzbzbzaXbZbZbZbZbZaXbzaXaaaTbiaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCbiaTaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYgcgcgcgcgcgcqMqMqMsUBJrstwsWsXrLstsYsEsZsvtasEtbsvtasEtctdrEfYeGgcgcfY
+aaaXbzaXcacacacaaXbzbzbzaXcbcbcbcbcbaXbzbzaXcAcAcAcAaXbzbzbzaXbZbZbZbZbZaXbzaXaaaUbmaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCbmaUaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYgcgcgcqMqMqMqMrEtetfsdtftgsEthtiBRsEthtiBRsEtjtkrEfYfYgcgcfY
+aaaXbzaXcacacacaaXbzbzbzgvaXaXaXaXaXaXbzbzaXcAcAcAcAaXbzbzbzgqaXaXaXaXaXaXbzaXaabNbsaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCbsbNaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYfYfYgcgcgcgcgcrEtltmtntotpsEtqtrtssEtqtttsrErErErEfYfYgcgcfY
+aaaXbzgxaXaXaXaXaXbzbzbzbzbzbzbzbzbzbzbzbzgyaXaXaXaXaXbzbzbzbzbzbzbzbzbzbzbzaXaabSbxaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCbxbSaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYfYfYfYgcgcgcgcrErErErErErErErErErErErErErErEfYfYfYfYgcgcgcfY
 aaaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzaXaaaZbzaCaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaCbzaZaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYfYfYfYfYgcgcgcgcgcgcgcgcgcgcgcgcgcgcgcgcgcfYfYfYgcgcgcgcgcfY
-aaaXbzaXaXaXaXaXaXaXbzbzaXaXaXaXaXaXaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzaXaabRbMbiaCaCaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaCaCaCaCbibMbRaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYfYfYfYfYfYgcgcgcgcgcgcgcgcgcfYfYgcgcgcgcgcfYfYgcgcgcgcfYfYfY
-aaaXbzaXTFTFTFTFTFaXbzbzaXHBHBHBHBHBaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzaXaabPbObmbObmaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCbmbObmbObmbObPaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYfYfYfYfYfYgcfYfYfYgcgcgcgcfYfYfYfYfYgcgcfYfYfYfYgcgcgcfYRmfY
-aaaXbzaXTFTFTFTFTFaXbzbzaXHBHBHBHBHBaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzaXaabNbQbsbQbsaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaCaCaCaCaCbsbQbsbQbsbQbNaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfY
-aaaXbzaXTFTFTFTFTFaXbzbzaXHBHBHBHBHBaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzaXaabAaHbxaHbxaCaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaHbxaHbxaHbxaHbxaHbxaHbAaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaCaCaCaCaCaCaCaCaCaCaCaCaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaXbzaXTFTFTFTFTFaXbzbzaXHBHBHBHBHBaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzaXaaaXaObzaObzaOaCaCaCaCaCeJeJeJeJeJeJaCaCaCaCaCaCaObzaObzaObzaObzaObzaOaXaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaXbzSkaXaXaXaXaXaXbzbzVpaXaXaXaXaXaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzaXaabeaQbMaQbMaQbMaQbMaQaCaCaCaCaCaCaCaCbMaQbMaQbMaQbMaQbMaQbMaQbMaQbMaQbeaaaaaCaCaCaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYfYfYfYfYfYfYfYfYfYfYfYfYfYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaXbzaXaXaXaXaXaXaXbzbzaXaXaXaXaXaXaXbzbzaXaXaXaXaXaXaXbzbzbzbzbzbzbzbzbzbzaXaabRbMbiaCaCaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaCaCaCaCbibMbRaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYfYfYfYfYfYgcgcgcgcgcgcgcgcgcfYfYgcgcgcgcgcfYfYgcgcgcgcfYfYfY
+aaaXbzaXTFTFTFTFTFaXbzbzaXHBHBHBHBHBaXbzbzaXczczczczczaXbzbzbzbzbzbzbzbzbzbzaXaabPbObmbObmaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCbmbObmbObmbObPaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYfYfYfYfYfYgcfYfYfYgcgcgcgcfYfYfYfYfYgcgcfYfYfYfYgcgcgcfYRmfY
+aaaXbzaXTFTFTFTFTFaXbzbzaXHBHBHBHBHBaXbzbzaXczczczczczaXbzbzbzbzbzbzbzbzbzbzaXaabNbQbsbQbsaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaCaCaCaCaCbsbQbsbQbsbQbNaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaafYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfYfY
+aaaXbzaXTFTFTFTFTFaXbzbzaXHBHBHBHBHBaXbzbzaXczczczczczaXbzbzbzbzbzbzbzbzbzbzaXaabAaHbxaHbxaCaCeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaCaHbxaHbxaHbxaHbxaHbxaHbAaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaCaCaCaCaCaCaCaCaCaCaCaCaCaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaXbzaXTFTFTFTFTFaXbzbzaXHBHBHBHBHBaXbzbzaXczczczczczaXbzbzbzbzbzbzbzbzbzbzaXaaaXaObzaObzaOaCaCaCaCaCeJeJeJeJeJeJaCaCaCaCaCaCaObzaObzaObzaObzaObzaOaXaaaaaaaaaaaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaXbzSkaXaXaXaXaXaXbzbzVpaXaXaXaXaXaXbzbzgwaXaXaXaXaXaXbzbzbzbzbzbzbzbzbzbzaXaabeaQbMaQbMaQbMaQbMaQaCaCaCaCaCaCaCaCbMaQbMaQbMaQbMaQbMaQbMaQbMaQbMaQbeaaaaaCaCaCaCaafYYfyuyyyyyyyyyyyyyyyyyyIHYffYfYfYfYfYfYfYfYfYfYfYfYfYfYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaXbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzbzaXaabhaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbOaPbhaaaaaCaaaaaaaafYYfECNqNqNqNqNqNqNqNqNqAfCWCWCWCWCWCWCWCWCWCWCWCWCWCWfYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaXaabjaYbjaYbjaYbjaYbjaYbjaYbjaYbjaYbjaYbjaYbjaYbjaYbjaYbjaYbjaYbjaYbjaYbjaaaaaCaafYfYfYfYYfyyyyyyyyyyyyyyyyyyyyyyCWlKKppjKppjZOrRLMrUVwCXQYCWfYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaCaafYKnKnKnKnKnKnYfYfYfBYYfYfYfYfYfCWMmRIClRICltototototozTrMCWfYaaaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

@@ -13,7 +13,7 @@
 
 //Game defining directives.
 #define MAIN_AI_SYSTEM "ARES v3.2"
-#define MAIN_SHIP_ESCAPE_POD_NUMBER 18
+#define MAIN_SHIP_ESCAPE_POD_NUMBER 19
 
 // Maploader bounds indices
 #define MAP_MINX 1

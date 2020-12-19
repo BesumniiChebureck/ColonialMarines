@@ -61,9 +61,9 @@ SUBSYSTEM_DEF(ticker)
 			if(Master.initializations_finished_with_no_players_logged_in && !length(GLOB.clients))
 				return
 			if(isnull(start_at))
-				start_at = time_left || world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+				start_at = time_left || world.time + PREROUND_TIME * 10
 			to_chat(world, SPAN_ROUNDBODY("Welcome to the pre-game lobby of [CONFIG_GET(string/servername)]!"))
-			to_chat(world, SPAN_ROLE_BODY("Please, setup your character and select ready. Game will start in [round(time_left / 10) || CONFIG_GET(number/lobby_countdown)] seconds."))
+			to_chat(world, SPAN_ROLE_BODY("Please, setup your character and select ready. Game will start in [round(time_left / 10) || PREROUND_TIME] seconds."))
 			current_state = GAME_STATE_PREGAME
 			fire()
 
@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(ticker)
 			if(setup_failed)
 				current_state = GAME_STATE_STARTUP
 				time_left = null
-				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+				start_at = world.time + PREROUND_TIME * 10
 				start_immediately = FALSE
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
 
@@ -182,8 +182,6 @@ SUBSYSTEM_DEF(ticker)
 	mode.initialize_emergency_calls()
 	mode.post_setup()
 
-	for(var/obj/effect/landmark/start/S in landmarks_list)
-		qdel(S)
 	if(round_statistics)
 		to_world(SPAN_BLUE("<B>Welcome to [round_statistics.name]</B>"))
 
@@ -196,15 +194,6 @@ SUBSYSTEM_DEF(ticker)
 		INVOKE_ASYNC(V, /obj/structure/machinery/vending.proc/select_gamemode_equipment, mode.type)
 
 	setup_done = TRUE
-/*
-	GLOB.start_landmarks_list = shuffle(GLOB.start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
-	for(var/i in GLOB.start_landmarks_list)
-		var/obj/effect/landmark/start/S = i
-		if(istype(S))							//we can not runtime here. not in this important of a proc.
-			S.after_round_start()
-		else
-			stack_trace("[S] [S.type] found in start landmarks list, which isn't a start landmark!")
-*/
 
 //These callbacks will fire after roundstart key transfer
 /datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)

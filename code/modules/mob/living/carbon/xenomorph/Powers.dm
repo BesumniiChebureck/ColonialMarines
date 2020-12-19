@@ -108,7 +108,7 @@
 				playsound(loc, "alien_resin_build", 25)
 			A.add_hiddenprint(src) //so admins know who thickened the walls
 			return TRUE
-	
+
 	if (!RC.can_build_here(current_turf, src))
 		return FALSE
 
@@ -118,7 +118,7 @@
 	alien_weeds.secreting = TRUE
 	alien_weeds.update_icon()
 
-	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, alien_weeds))
 		alien_weeds.secreting = FALSE
 		alien_weeds.update_icon()
 

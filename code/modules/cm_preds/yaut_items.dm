@@ -407,7 +407,7 @@
 		if(clan != CLAN_SHIP_ALMAYER)
 			end_turf = pick(get_clan_spawnpoints(clan))
 		else
-			end_turf = pick(yautja_almayer_loc)
+			end_turf = get_turf(pick(GLOB.mainship_yautja_teleports))
 
 		user.forceMove(end_turf)
 		animation_teleport_quick_in(user)
@@ -431,11 +431,11 @@
 
 	if(loc && istype(usr.loc, /turf))
 		var/turf/location = usr.loc
-		yautja_teleport_loc += location
+		GLOB.yautja_teleports += location
 		var/name = input("What would you like to name this location?", "Text") as null|text
 		if(!name)
 			return
-		yautja_teleport_desc += name + location.loc_to_string()
+		GLOB.yautja_teleport_descs += name + location.loc_to_string()
 		to_chat(usr, SPAN_WARNING("You can now teleport to this location!"))
 		log_game("[usr] ([usr.key]) has created a new teleport location at [get_area(usr)]")
 		yautja_announcement(SPAN_YAUTJABOLDBIG("[usr.real_name] has created a new teleport location, [name], at [usr.loc] in [get_area(usr)]"))
@@ -539,6 +539,7 @@
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
 	hitsound = 'sound/weapons/chain_whip.ogg'
 
+
 /obj/item/weapon/yautja_chain/attack(mob/target, mob/living/user)
 	. = ..()
 	if(isYautja(user) && isXeno(target))
@@ -637,6 +638,7 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	unacidable = TRUE
 
+
 /obj/item/weapon/melee/yautja_scythe/Destroy()
 	remove_from_missing_pred_gear(src)
 	return ..()
@@ -657,7 +659,7 @@
 		X.interference = 15
 
 
-	if(prob(20))
+	if(prob(15))
 		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
 		..() //Do it again! CRIT! This will be replaced by a bleed effect.
 
@@ -684,6 +686,7 @@
 	attack_verb = list("speared", "stabbed", "impaled")
 	var/on = 1
 	var/timer = 0
+
 
 /obj/item/weapon/melee/combistick/IsShield()
 	return on
@@ -716,12 +719,13 @@
 	else
 		to_chat(user, SPAN_WARNING("You need to extend the combi-stick before you can wield it."))
 
+
 /obj/item/weapon/melee/combistick/wield(var/mob/user)
 	..()
 	force = MELEE_FORCE_TIER_6
 	update_icon()
 
-obj/item/weapon/melee/combistick/unwield(mob/user)
+/obj/item/weapon/melee/combistick/unwield(mob/user)
 	..()
 	force = MELEE_FORCE_TIER_3
 	update_icon()
