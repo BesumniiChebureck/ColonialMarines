@@ -1,3 +1,12 @@
+//Xenomorph "generic" parent, does not actually appear in game
+//Many of these defines aren't referenced in the castes and so are assumed to be defaulted
+//Castes are all merely subchildren of this parent
+//Just about ALL the procs are tied to the parent, not to the children
+//This is so they can be easily transferred between them without copypasta
+
+//All this stuff was written by Absynth.... and god help us
+//Edited by Apop - 11JUN16
+
 #define DEBUG_XENO 0
 
 #if DEBUG_XENO

@@ -4,7 +4,7 @@
 	ability_name = "toggle crest defense"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_crest
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 40
+	xeno_cooldown = 20
 	plasma_cost = 0
 	ability_primacy = XENO_PRIMARY_ACTION_1
 

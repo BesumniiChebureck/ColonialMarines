@@ -12,7 +12,7 @@
 
 	if(T.hivenumber != X.hivenumber)
 		to_chat(X, SPAN_XENOWARNING("[T] doesn't belong to your hive!"))
-		return
+		return 
 
 	if(T.is_ventcrawling)
 		to_chat(X, SPAN_XENOWARNING("[T] can't be deevolved here."))
@@ -158,7 +158,7 @@
 
 	if(alien_weeds.linked_hive.hivenumber != X.hivenumber)
 		to_chat(X, SPAN_XENOWARNING("These weeds don't belong to your hive! You can't grow an ovipositor here."))
-		return
+		return 
 
 	if(!X.check_alien_construction(current_turf))
 		return
@@ -444,7 +444,7 @@
 
 	if (!check_and_use_plasma_owner())
 		return
-
+	
 	new /obj/effect/alien/weeds/weak(T, node)
 	playsound(T, "alien_resin_build", 35)
 

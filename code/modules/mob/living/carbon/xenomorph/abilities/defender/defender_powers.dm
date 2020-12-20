@@ -19,11 +19,13 @@
 		to_chat(X, SPAN_XENOWARNING("You lower your crest."))
 		X.armor_deflection_buff += armor_buff
 		X.ability_speed_modifier += speed_debuff
+		X.mob_size = MOB_SIZE_BIG //knockback immune
 		X.update_icons()
 	else
 		to_chat(X, SPAN_XENOWARNING("You raise your crest."))
 		X.armor_deflection_buff -= armor_buff
 		X.ability_speed_modifier -= speed_debuff
+		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
 		X.update_icons()
 
 	apply_cooldown()
@@ -130,7 +132,6 @@
 	var/sweep_range = 1
 	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
 		if (!isXenoOrHuman(H) || X.match_hivemind(H)) continue
-
 		if(H.stat == DEAD) continue
 		if(istype(H.buckled, /obj/structure/bed/nest)) continue
 		step_away(H, X, sweep_range, 2)

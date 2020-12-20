@@ -283,7 +283,7 @@
 	if(hud_used.alien_plasma_display)
 		if(plasma_max == 0)
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
-		else
+		else	
 			var/plasma_stacks = (get_plasma_percentage() * 0.01) * HUD_PLASMA_STATES_XENO
 			hud_used.alien_plasma_display.icon_state = "power_display_[Ceiling(plasma_stacks)]"
 			if(plasma_stacks >= HUD_PLASMA_STATES_XENO)

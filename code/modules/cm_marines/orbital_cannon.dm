@@ -412,8 +412,8 @@ var/list/ob_type_fuel_requirements
 	warhead_kind = "explosive"
 	icon_state = "ob_warhead_1"
 	var/clear_power = 1200
-	var/clear_falloff = 400
-	var/standard_power = 400
+	var/clear_falloff = 300
+	var/standard_power = 600
 	var/standard_falloff = 10
 	var/clear_delay = 3
 	var/double_explosion_delay = 6
@@ -468,10 +468,10 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
-	var/total_amount = 100
-	var/instant_amount = 4
-	var/explosion_power = 400
-	var/explosion_falloff = 80
+	var/total_amount = 50
+	var/instant_amount = 5
+	var/explosion_power = 200
+	var/explosion_falloff = 10
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target)
 	. = ..()

@@ -164,7 +164,7 @@
 			<tr id='title_tr'>
 				<td align='center'>
 					<font size='5'><b>Player panel</b></font><br>
-					Hover over a line to see more information - <a href='?src=\ref[src];check_antagonist=1'>Check antagonists</a>
+					Hover over a line to see more information - <a href='?src=\ref[src];check_round_status=1'>Check Round Status</a>
 					<p>
 				</td>
 			</tr>
