@@ -27,7 +27,7 @@
 		to_chat(usr, SPAN_DANGER("The game hasn't started yet!"))
 		return
 
-	if(alert("Are you sure you want to force a predator round?",, "Yes", "No") == "No")
+	if(alert("Are you sure you want to force a predator round?",, "Yes", "No") == "No") 
 		return
 
 	var/datum/game_mode/predator_round = SSticker.mode
@@ -51,7 +51,7 @@
 
 	if(!admin_holder)
 		return
-
+		
 	var/roles[] = new
 	var/i
 	var/datum/job/J
@@ -93,12 +93,12 @@
 		to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
 	message_staff(SPAN_NOTICE("[key_name(usr)] adjusted job slots of [J.title] to be [num]."))
 
-/client/proc/check_game_status()
-	set name = "S: Check Game Status"
+/client/proc/check_antagonists()
+	set name = "S: Check Antagonists"
 	set category = "Round"
 	if(admin_holder)
-		admin_holder.check_game_status()
-		log_admin("[key_name(usr)] checked game status.")
+		admin_holder.check_antagonists()
+		log_admin("[key_name(usr)] checked antagonists.")
 	return
 
 /client/proc/check_round_status()
@@ -114,7 +114,7 @@
 	set desc = "Immediately ends the round, be very careful"
 	set category = "Round"
 
-	if(!check_rights(R_SERVER) || !SSticker.mode)
+	if(!check_rights(R_SERVER) || !SSticker.mode)	
 		return
 
 	if(alert("Are you sure you want to end the round?",,"Yes","No") != "Yes")
@@ -138,7 +138,7 @@
 	set desc = "Delay the game start/end"
 	set category = "Round"
 
-	if(!check_rights(R_SERVER))
+	if(!check_rights(R_SERVER))	
 		return
 	if (SSticker.current_state != GAME_STATE_PREGAME)
 		SSticker.delay_end = !SSticker.delay_end

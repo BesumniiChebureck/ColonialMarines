@@ -92,7 +92,7 @@
 								counted_xenos[6]++
 							entry += " - <b><font color='red'>Xenomorph</font></b>"
 
-				entry += " (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[C.mob]'>?</A>)"
+				entry += " (<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=\ref[C.mob]'>?</A>)"
 				Lines += entry
 
 		for(var/line in sortList(Lines))
