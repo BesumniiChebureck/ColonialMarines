@@ -634,6 +634,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /obj/item/clothing/suit/storage/marine/M35/Initialize(mapload, ...)
 	. = ..()
 
+/obj/item/clothing/suit/storage/marine/M35/equipped(mob/user, slot)
+	if(slot == WEAR_JACKET)
+		RegisterSignal(user, COMSIG_LIVING_FLAMER_CROSSED, .proc/flamer_fire_callback)
+	..()
+
 /obj/item/clothing/suit/storage/marine/M35/verb/fire_shield()
 	set name = "Activate Fire Shield"
 	set desc = "Activate your armor's FIREWALK protocol for a short duration."
@@ -662,21 +667,25 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		return
 
 	to_chat(H, SPAN_NOTICE("FIREWALK protocol has been activated. You will now be immune to fire for 6 seconds!"))
-	registerListener(H, EVENT_PREIGNITION_CHECK, "fireshield_\ref[src]", CALLBACK(src, .proc/fire_shield_is_on))
-	registerListener(H, EVENT_PRE_FIRE_BURNED_CHECK, "fireshield_\ref[src]", CALLBACK(src, .proc/fire_shield_is_on))
+	RegisterSignal(H, COMSIG_LIVING_PREIGNITION, .proc/fire_shield_is_on)
+	RegisterSignal(H, list(
+		COMSIG_LIVING_FLAMER_FLAMED,
+	), .proc/flamer_fire_callback)
 	fire_shield_on = TRUE
 	can_activate = FALSE
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
-	addtimer(CALLBACK(src, .proc/end_fire_shield, H), SECONDS_6)
+	addtimer(CALLBACK(src, .proc/end_fire_shield, H), 6 SECONDS)
 
 /obj/item/clothing/suit/storage/marine/M35/proc/end_fire_shield(var/mob/living/carbon/human/user)
 	if(!istype(user))
 		return
 	to_chat(user, SPAN_NOTICE("FIREWALK protocol has finished."))
-	unregisterListener(user, EVENT_PREIGNITION_CHECK, "fireshield_\ref[src]")
-	unregisterListener(user, EVENT_PRE_FIRE_BURNED_CHECK, "fireshield_\ref[src]")
+	UnregisterSignal(user, list(
+		COMSIG_LIVING_PREIGNITION,
+		COMSIG_LIVING_FLAMER_FLAMED,
+	))
 	fire_shield_on = FALSE
 
 	addtimer(CALLBACK(src, .proc/enable_fire_shield, user), FIRE_SHIELD_CD)
@@ -691,15 +700,34 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		var/datum/action/A = X
 		A.update_button_icon()
 
-// This proc is solely so that raiseEventSync returns TRUE (i.e. fire shield is on)
-/obj/item/clothing/suit/storage/marine/M35/proc/fire_shield_is_on()
-	return TRUE
+/// This proc is solely so that IgniteMob() fails
+/obj/item/clothing/suit/storage/marine/M35/proc/fire_shield_is_on(mob/living/L)
+	SIGNAL_HANDLER
+
+	if(L.fire_reagent?.fire_penetrating)
+		return
+
+	return COMPONENT_CANCEL_IGNITION
+
+/obj/item/clothing/suit/storage/marine/M35/proc/flamer_fire_callback(mob/living/L, datum/reagent/R)
+	SIGNAL_HANDLER
+
+	if(R.fire_penetrating)
+		return
+
+	. = COMPONENT_NO_IGNITE
+	if(fire_shield_on)
+		. |= COMPONENT_NO_BURN
 
 /obj/item/clothing/suit/storage/marine/M35/dropped(var/mob/user)
 	if (!istype(user))
 		return
-	unregisterListener(user, EVENT_PREIGNITION_CHECK, "fireshield_\ref[src]")
-	unregisterListener(user, EVENT_PRE_FIRE_BURNED_CHECK, "fireshield_\ref[src]")
+	UnregisterSignal(user, list(
+		COMSIG_LIVING_PREIGNITION,
+		COMSIG_LIVING_FLAMER_CROSSED,
+		COMSIG_LIVING_FLAMER_FLAMED,
+	))
+	..()
 
 #undef FIRE_SHIELD_CD
 
@@ -1143,7 +1171,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	storage_slots = 2
 	unacidable = TRUE
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/commando)
-	item_state_slots = list(WEAR_SUIT = "commando_armor")
+	item_state_slots = list(WEAR_JACKET = "commando_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/PMC/commando
 	name = "\improper M5X exoskeleton armor"

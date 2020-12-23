@@ -434,7 +434,7 @@
 		ammo_name = in_ammo.name
 
 		damage = in_ammo.damage * damage_mult
-		bonus_projectile_amount = in_ammo.bonus_projectiles_amount
+		bonus_projectile_amount = in_ammo.bonus_projectiles_amount ? in_ammo.bonus_projectiles_amount + 1 : 0
 		falloff = in_ammo.damage_falloff * damage_falloff_mult
 
 		penetration = in_ammo.penetration
@@ -558,18 +558,9 @@
 	return 1
 
 /obj/item/weapon/gun/unwield(var/mob/user)
-
-	if((flags_item|TWOHANDED|WIELDED) != flags_item)
-		return //Have to be actually a twohander and wielded.
-
-	on_unwield()
-
-	flags_item ^= WIELDED
-	name 	    = copytext(name, 1, -10)
-	item_state  = copytext(item_state, 1, -2)
-	slowdown = initial(slowdown)
-	remove_offhand(user)
-	return 1
+	. = ..()
+	if(.)
+		slowdown = initial(slowdown)
 
 //----------------------------------------------------------
 			//							        \\
@@ -1156,8 +1147,6 @@ and you're good to go.
 
 		if( (flags_gun_features & GUN_WY_RESTRICTED) && !wy_allowed_check(user) )
 			return
-		if( (flags_gun_features & GUN_CO_RESTRICTED) && !co_allowed_check(user) )
-			return
 
 		//Has to be on the bottom of the stack to prevent delay when failing to fire the weapon for the first time.
 		//Can also set last_fired through New(), but honestly there's not much point to it.
@@ -1338,7 +1327,10 @@ and you're good to go.
 			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5
 
 	if(total_recoil > 0 && ishuman(user))
-		shake_camera(user, total_recoil + 1, total_recoil)
+		if(total_recoil >= 4)
+			shake_camera(user, total_recoil/2, total_recoil)
+		else
+			shake_camera(user, 1, total_recoil)
 		return TRUE
 
 	return FALSE

@@ -186,6 +186,7 @@
 		ACCESS_CIVILIAN_ENGINEERING,
 		ACCESS_MARINE_MAINT,
 		ACCESS_MARINE_OT
+
 	)
 	assignment = JOB_ORDNANCE_TECH
 	rank = JOB_ORDNANCE_TECH
@@ -305,8 +306,8 @@
 	service_extra = list(/obj/item/clothing/under/marine/officer/casual, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 	dress_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black, /obj/item/clothing/under/marine/officer/dining)
-	dress_extra = list(/obj/item/clothing/head/beret/marine/commander/dress, /obj/item/storage/large_holster/ceremonial_sword/full)
-	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain, /obj/item/clothing/head/cmcap/co/formal/white, /obj/item/clothing/head/cmcap/co/formal/black)
+	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
+	dress_hat = list(/obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/captain, /obj/item/clothing/head/cmcap/co/formal/white, /obj/item/clothing/head/cmcap/co/formal/black)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
 
 /datum/equipment_preset/uscm_ship/commander/New()
@@ -326,7 +327,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(H), WEAR_L_HAND)
 
 	H.hud_set_squad()
 
@@ -553,8 +554,6 @@
 	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
 	H.equip_if_possible(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 
-	H.hud_set_squad()
-
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/admiral
@@ -602,6 +601,8 @@
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
 
 	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
+
+	H.hud_set_squad()
 
 /*****************************************************************************************************/
 

@@ -387,11 +387,35 @@
 	acid_splash_cooldown = caste.acid_splash_cooldown
 
 	if (caste.fire_immune)
-		registerListener(src, EVENT_PREIGNITION_CHECK, "xeno_fire_immune", TRUE_CALLBACK)
-		registerListener(src, EVENT_PRE_FIRE_BURNED_CHECK, "xeno_fire_immune", TRUE_CALLBACK)
+		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
+		RegisterSignal(src, list(
+			COMSIG_LIVING_FLAMER_CROSSED,
+			COMSIG_LIVING_FLAMER_FLAMED,
+		), .proc/flamer_crossed_immune)
+	else
+		UnregisterSignal(src, list(
+			COMSIG_LIVING_PREIGNITION,
+			COMSIG_LIVING_FLAMER_CROSSED,
+			COMSIG_LIVING_FLAMER_FLAMED,
+		))
 
 	recalculate_everything()
 
+/mob/living/carbon/Xenomorph/proc/fire_immune(mob/living/L)
+	SIGNAL_HANDLER
+
+	if(L.fire_reagent?.fire_penetrating)
+		return
+
+	return COMPONENT_CANCEL_IGNITION
+
+/mob/living/carbon/Xenomorph/proc/flamer_crossed_immune(mob/living/L, datum/reagent/R)
+	SIGNAL_HANDLER
+
+	if(R.fire_penetrating)
+		return
+
+	return COMPONENT_NO_BURN|COMPONENT_NO_IGNITE
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
