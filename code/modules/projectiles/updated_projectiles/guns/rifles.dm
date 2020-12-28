@@ -169,7 +169,7 @@
 /obj/item/weapon/gun/rifle/m41aMK1/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_7
-	burst_amount = BURST_AMOUNT_TIER_4
+	burst_amount = BURST_AMOUNT_TIER_5
 	burst_delay = FIRE_DELAY_TIER_8
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7

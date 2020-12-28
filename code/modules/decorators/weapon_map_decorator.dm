@@ -21,8 +21,8 @@
 
 	gun.icon = c_icon
 
-	gun.item_icons = list()	
-	
+	gun.item_icons = list()
+
 	gun.item_icons += list(WEAR_L_HAND = l_icon)
 	gun.item_icons += list(WEAR_R_HAND = r_icon)
 	gun.item_icons += list(WEAR_BACK = b_icon)
@@ -66,4 +66,4 @@
 	r_icon = 'icons/obj/items/weapons/guns/guns_by_map/urban/guns_righthand.dmi'
 	b_icon = 'icons/obj/items/weapons/guns/guns_by_map/urban/back.dmi'
 	j_icon = 'icons/obj/items/weapons/guns/guns_by_map/urban/suit_slot.dmi'
-	map_array = list()
+	map_array = list(MAP_ZERO_POINT, MAP_ZERO_POINTC)

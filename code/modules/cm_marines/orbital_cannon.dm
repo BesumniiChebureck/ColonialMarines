@@ -468,8 +468,8 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
-	var/total_amount = 50
-	var/instant_amount = 5
+	var/total_amount = 40
+	var/instant_amount = 2
 	var/explosion_power = 200
 	var/explosion_falloff = 10
 

@@ -1,7 +1,7 @@
 #define FALLOFF_SOUNDS		1
 
 #define FREE_CHAN_END 1017
-#define INITIAL_SOUNDSCAPE_COOLDOWN 20 
+#define INITIAL_SOUNDSCAPE_COOLDOWN 20
 
 #define EAR_DEAF_MUTE 			1
 
@@ -14,8 +14,8 @@
 #define MUFFLE_MEDIUM -2000
 #define MUFFLE_HIGH -10000
 
-#define SOUND_FREQ_HIGH 55000 
-#define SOUND_FREQ_LOW 32000 
+#define SOUND_FREQ_HIGH 55000
+#define SOUND_FREQ_LOW 32000
 
 #define ITEM_EQUIP_VOLUME 50
 //Reserved channels
@@ -43,6 +43,7 @@
 #define AMBIENCE_ICE 'sound/ambience/snowstorm.ogg'
 #define AMBIENCE_PRISON 'sound/ambience/shipambience.ogg'
 #define AMBIENCE_TRIJENT 'sound/ambience/desert.ogg'
+#define AMBIENCE_ZERO 'sound/ambience/zero.ogg'
 
 #define SCAPE_PL_WIND list('sound/soundscape/wind1.ogg','sound/soundscape/wind2.ogg')
 #define SCAPE_PL_CAVE list('sound/soundscape/rocksfalling1.ogg', 'sound/soundscape/rocksfalling2.ogg')

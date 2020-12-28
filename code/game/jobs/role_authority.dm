@@ -155,6 +155,9 @@ var/global/marines_assigned = 0
 		r = 1
 		while(++r <= P.len)
 			switch(ckey(P[r]))
+				if("crewmen") 						role |= WHITELIST_CREWMAN
+				if("crewmencouncil") 				role |= WHITELIST_CREWMAN_COUNCIL
+				if("crewmenleader") 				role |= WHITELIST_CREWMAN_LEADER
 				if("yautja") 						role |= WHITELIST_YAUTJA
 				if("yautjacouncil")					role |= WHITELIST_YAUTJA_COUNCIL
 				if("yautjaleader")					role |= WHITELIST_YAUTJA_LEADER

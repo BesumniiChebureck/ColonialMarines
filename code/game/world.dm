@@ -400,7 +400,7 @@ var/list/datum/entity/map_vote/all_votes
 
 	if (CONFIG_GET(string/servername))
 		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)] &#8212; [MAIN_SHIP_NAME]</b>"
-		s += "<br><img src=\"https://cdn.discordapp.com/attachments/693734771221856256/790979627501617232/logo.gif\"></a>"
+		s += "<br><img src=\"\"></a>"
 		// s += "<a href=\"http://goo.gl/04C5lP\">Wiki</a>|<a href=\"http://goo.gl/hMmIKu\">Rules</a>"
 		if(SSticker)
 			if(master_mode)

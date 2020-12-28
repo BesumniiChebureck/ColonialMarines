@@ -19,7 +19,7 @@
 	. = ..()
 	create_reagents(reagent_amount)
 	if(!possible_transfer_amounts)
-		src.verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
+		remove_verb(src, /obj/structure/reagent_dispensers/verb/set_APTFT)
 	if(chemical)
 		reagents.add_reagent(chemical, reagent_amount)
 

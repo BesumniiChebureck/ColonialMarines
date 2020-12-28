@@ -57,11 +57,11 @@ Additional game mode variables.
 	var/merc_starting_num 	= 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
 	var/pred_current_num 	= 0 //How many are there now?
-	var/pred_per_players 	= 40 //Preds per player
-	var/pred_start_count	= 4 //The initial count of predators
+	var/pred_per_players 	= 10 //Preds per player
+	var/pred_start_count	= 1 //The initial count of predators
 
 	var/pred_additional_max = 0
-	var/pred_round_chance 	= 20 //%
+	var/pred_round_chance 	= 0 //%
 	var/pred_leader_count 	= 0 //How many Leader preds are active
 	var/pred_leader_max 	= 1 //How many Leader preds are permitted. Currently fixed to 1. May add admin verb to adjust this later.
 
@@ -696,7 +696,7 @@ Additional game mode variables.
 					"Survivor - Trucker",
 					"Survivor - Colonial Marshall",
 				)
-			if(MAP_ICE_COLONY)
+			if(MAP_ICE_COLONY, MAP_ZERO_POINT, MAP_ZERO_POINTC)
 				survivor_types = list(
 					"Survivor - Scientist",
 					"Survivor - Doctor",

@@ -338,8 +338,10 @@ var/force_mapdaemon_vote = 0
 
 	// For future modularity and maybe more subtle solutions here?
 	switch(GLOB.clients.len)
-		if (0 to PLAYERCOUNT_LOWPOP_MAP_LIMIT)
+		if (PLAYERCOUNT_LOWPOPV_MAP_LIMIT to PLAYERCOUNT_LOWPOP_MAP_LIMIT)
 			L += LOWPOP_NEXT_MAP_CANDIDATES.Copy()
+		if (0 to PLAYERCOUNT_LOWPOPV_MAP_LIMIT)
+			L += LOWPOPV_NEXT_MAP_CANDIDATES.Copy()
 		else
 			L += NEXT_MAP_CANDIDATES.Copy()
 	L -= map_tag
