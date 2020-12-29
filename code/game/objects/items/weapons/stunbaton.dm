@@ -9,7 +9,7 @@
 	edge = 0
 	throwforce = 7
 	w_class = SIZE_MEDIUM
-	
+
 	attack_verb = list("beaten")
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_COMMANDER, ACCESS_WY_CORPORATE, ACCESS_WY_PMC_GREEN, ACCESS_CIVILIAN_BRIG)
 	var/stunforce = 50
@@ -102,7 +102,7 @@
 	else if(istype(W, /obj/item/tool/screwdriver))
 		if(bcell)
 			bcell.updateicon()
-			bcell.loc = get_turf(src.loc)
+			bcell.forceMove(get_turf(src.loc))
 			bcell = null
 			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
 			status = 0

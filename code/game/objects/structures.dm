@@ -22,7 +22,7 @@
 		add_verb(src, /obj/structure/proc/climb_on)
 
 /obj/structure/Destroy()
-	//before ..() because the parent does loc = null
+	//before ..() because the parent does moveToNullspace()
 	for(var/atom/movable/A in contents_recursive())
 		var/obj/O = A
 		if(!istype(O))

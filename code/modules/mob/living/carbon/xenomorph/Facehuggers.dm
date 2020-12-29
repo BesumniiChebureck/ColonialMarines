@@ -237,7 +237,7 @@
 		X.update_icons()
 
 	if(isturf(M.loc))
-		loc = M.loc //Just checkin
+		forceMove(M.loc) //Just checkin
 
 	var/cannot_infect //To determine if the hugger just rips off the protection or can infect.
 	if(ishuman(M))
@@ -259,7 +259,7 @@
 			if(!H.stat && H.dir != dir && prob(catch_chance)) //Not facing away
 				H.visible_message(SPAN_NOTICE("[H] snatches [src] out of the air and squashes it!"))
 				Die()
-				loc = H.loc
+				forceMove(H.loc)
 				return
 
 		if(H.head && !(H.head.flags_item & NODROP))
@@ -307,7 +307,7 @@
 				W.anti_hug = max(0, --W.anti_hug)
 
 		if(!cannot_infect)
-			loc = target
+			forceMove(target)
 			icon_state = initial(icon_state)
 			target.equip_to_slot(src, WEAR_FACE)
 			target.contents += src //Monkey sanity check - Snapshot

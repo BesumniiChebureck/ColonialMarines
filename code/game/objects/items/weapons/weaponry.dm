@@ -58,7 +58,7 @@
 	w_class = SIZE_MEDIUM
 
 
-
+/* анти псевдоплот абуз, заебал если честно он...
 /obj/item/weapon/melee/khornknife
 	name = "Child of bloodshed"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
@@ -71,7 +71,7 @@
 	throwforce = MELEE_FORCE_STRONG
 	throw_range = 7
 	force = MELEE_FORCE_STRONG
-	attack_speed = 10
+	attack_speed = 6
 	edge = 1
 
 obj/item/weapon/melee/bloody_fightknife
@@ -105,7 +105,6 @@ obj/item/weapon/melee/bloody_fightknife
 	attack_verb = list("patted", "tapped")
 	attack_speed = 10
 
-
 /obj/item/weapon/melee/butterfly/attack_self(mob/user)
 	active = !active
 	if(active)
@@ -136,10 +135,11 @@ obj/item/weapon/melee/bloody_fightknife
 	icon_state = "switchblade"
 
 /obj/item/weapon/melee/butterfly/switchblade_lightning
-    name ="Switchblade"
-    icon='icons/obj/items/weapons/weapons-custom.dmi'
+    name = "Painted switchblade"
+    desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
+    icon = 'icons/obj/items/weapons/weapons-custom.dmi'
     icon_state = "switchblade_lightning"
-    desc="Swithable hand knife."
+*/
 
 /obj/item/weapon/melee/butterfly/katana
 	name = "katana"

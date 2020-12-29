@@ -448,7 +448,7 @@
 	CR.stamps = stamps
 	CR.fields = fields
 	CR.name = name
-	CR.loc = loc
+	CR.forceMove(loc)
 	qdel(src)
 	return CR
 

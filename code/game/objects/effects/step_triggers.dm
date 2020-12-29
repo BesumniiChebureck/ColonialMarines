@@ -169,13 +169,9 @@
 				sleep(animation_teleport_spooky_out(A))*/
 
 		if(A && A.loc)
-			A.x = teleport_x
-			A.y = teleport_y
-			A.z = teleport_z
+			A.forceMove(locate(teleport_x,teleport_y,teleport_z))
 		if(M && M.loc)
-			M.x = teleport_x
-			M.y = teleport_y
-			M.z = teleport_z
+			M.forceMove(locate(teleport_x,teleport_y,teleport_z))
 			/*
 			switch(teleportation_type)
 				if(1)
@@ -216,3 +212,4 @@
 	else if(isliving(A)) //Hacked it up so it just deletes it
 		to_chat(A, SPAN_DANGER("You get lost into the depths of space, never to be seen again."))
 		qdel(A)
+

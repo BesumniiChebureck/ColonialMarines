@@ -328,7 +328,7 @@
 	//prevents occupant's belonging from landing inside the machine
 	for(var/obj/O in src)
 		if(O != beaker)
-			O.loc = loc
+			O.forceMove(loc)
 
 
 /obj/structure/machinery/sleeper/proc/go_out()
@@ -410,7 +410,7 @@
 		return
 	if(beaker)
 		filtering = 0
-		beaker.loc = usr.loc
+		beaker.forceMove(usr.loc)
 		beaker = null
 	add_fingerprint(usr)
 

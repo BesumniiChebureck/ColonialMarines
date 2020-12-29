@@ -30,7 +30,7 @@ var/list/ob_type_fuel_requirements
 
 	if(!ob_type_fuel_requirements)
 		ob_type_fuel_requirements = list()
-		var/list/L = list(4,5,6)
+		var/list/L = list(3,4,5,6)
 		var/amt
 		for(var/i=1 to 4)
 			amt = pick_n_take(L)
@@ -164,7 +164,7 @@ var/list/ob_type_fuel_requirements
 		return
 
 	if(last_orbital_firing) //fired at least once
-		var/cooldown_left = (last_orbital_firing + 2500) - world.time
+		var/cooldown_left = (last_orbital_firing + 1200) - world.time
 		if(cooldown_left > 0)
 			if(user)
 				to_chat(user, SPAN_WARNING("[src]'s barrel is still too hot, let it cool down for [round(cooldown_left/10)] more seconds."))
@@ -214,7 +214,7 @@ var/list/ob_type_fuel_requirements
 		if("nuke")
 			inaccurate_fuel = abs(ob_type_fuel_requirements[4] - tray.fuel_amt)
 
-	var/turf/target = locate(T.x + inaccurate_fuel * round(rand(-3,3), 1), T.y + inaccurate_fuel * round(rand(-3,3), 1), T.z)
+	var/turf/target = locate(T.x + inaccurate_fuel * round(rand(-4,4), 1), T.y + inaccurate_fuel * round(rand(-4,4), 1), T.z)
 	if(user)
 		tray.warhead.source_mob = user
 

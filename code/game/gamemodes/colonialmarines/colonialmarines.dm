@@ -138,7 +138,7 @@
 
 	return ..()
 
-#define MONKEYS_TO_MARINES_RATIO 1/20
+#define MONKEYS_TO_MARINES_RATIO 1/10
 
 /datum/game_mode/colonialmarines/proc/spawn_smallhosts()
 	if(!marines_assigned)

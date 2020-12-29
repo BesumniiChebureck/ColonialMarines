@@ -52,10 +52,10 @@
 				P = new /obj/item/paper/wy
 			else if (response == "USCM Document")
 				P = new /obj/item/paper/uscm
-			
-			
 
-		P.loc = user.loc
+
+
+		P.forceMove(user.loc)
 		user.put_in_hands(P)
 		to_chat(user, SPAN_NOTICE("You take [P] out of the [src]."))
 	else

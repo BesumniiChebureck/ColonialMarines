@@ -37,8 +37,7 @@
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
 
-#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 100 // number of players before we switch to lowpop maps only (LV, BR, Prison)
-#define PLAYERCOUNT_LOWPOPV_MAP_LIMIT 20 // number of players before we switch to lowpop maps only (Zero Crashed Point)
+#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 60 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 #define PREROUND_TIME 300 // time before the round starts
 
 //A set of constants used to determine which type of mute an admin wishes to apply:

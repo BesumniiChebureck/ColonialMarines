@@ -7,7 +7,7 @@
 	//ambience = list('figuresomethingout.ogg')
 	icon_state = "zero"
 	can_build_special = TRUE //T-Comms structure
-	temperature = 305
+	temperature = 280
 	lighting_use_dynamic = 1
 	ambience_exterior = AMBIENCE_ZERO
 
@@ -94,7 +94,7 @@
 /area/zero/interior/exp/biodome
 	name = "Biodome"
 	icon_state = "biodome"
-	temperature = 380
+	temperature = 300
 	always_unpowered = 1
 	ceiling = CEILING_GLASS
 

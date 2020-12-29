@@ -58,10 +58,10 @@ Additional game mode variables.
 	var/marine_starting_num = 0 //number of players not in something special
 	var/pred_current_num 	= 0 //How many are there now?
 	var/pred_per_players 	= 10 //Preds per player
-	var/pred_start_count	= 1 //The initial count of predators
+	var/pred_start_count	= 0 //The initial count of predators
 
 	var/pred_additional_max = 0
-	var/pred_round_chance 	= 0 //%
+	var/pred_round_chance 	= 5 //%
 	var/pred_leader_count 	= 0 //How many Leader preds are active
 	var/pred_leader_max 	= 1 //How many Leader preds are permitted. Currently fixed to 1. May add admin verb to adjust this later.
 
@@ -191,7 +191,7 @@ Additional game mode variables.
 
 	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
 
-	if(pred_candidate) pred_candidate.loc = null //Nullspace it for garbage collection later.
+	if(pred_candidate) pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = 1)
 
@@ -258,7 +258,6 @@ Additional game mode variables.
 	RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
 	return new_predator
-
 
 //===================================================\\
 
