@@ -6,7 +6,7 @@
 	disp_icon = "tank"
 	disp_icon_state = "ltaaap_minigun"
 
-	health = 350
+	health = 750
 	cooldown = 8
 	accuracy = 0.6
 	firing_arc = 90

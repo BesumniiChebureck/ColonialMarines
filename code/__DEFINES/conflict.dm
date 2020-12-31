@@ -40,13 +40,14 @@
 #define GUN_BURST_FIRING		(1<<9)
 #define GUN_FLASHLIGHT_ON		(1<<10)
 #define GUN_WY_RESTRICTED		(1<<11)
-#define GUN_SPECIALIST			(1<<12)
-#define GUN_WIELDED_FIRING_ONLY	(1<<13)
-#define GUN_HAS_FULL_AUTO		(1<<14)
-#define GUN_FULL_AUTO_ON		(1<<15)
-#define GUN_ONE_HAND_WIELDED	(1<<16) //removes one-hand accuracy penalty
-#define GUN_ANTIQUE 			(1<<17)
-#define GUN_RECOIL_BUILDUP		(1<<18)
+#define GUN_CO_RESTRICTED		(1<<12)
+#define GUN_SPECIALIST			(1<<13)
+#define GUN_WIELDED_FIRING_ONLY	(1<<14)
+#define GUN_HAS_FULL_AUTO		(1<<15)
+#define GUN_FULL_AUTO_ON		(1<<16)
+#define GUN_ONE_HAND_WIELDED	(1<<17) //removes one-hand accuracy penalty
+#define GUN_ANTIQUE 			(1<<18)
+#define GUN_RECOIL_BUILDUP		(1<<19)
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1

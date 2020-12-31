@@ -13,7 +13,7 @@
 
 //Game defining directives.
 #define MAIN_AI_SYSTEM "ARES v3.2"
-#define MAIN_SHIP_ESCAPE_POD_NUMBER 18
+#define MAIN_SHIP_ESCAPE_POD_NUMBER 19
 
 // Maploader bounds indices
 #define MAP_MINX 1
@@ -34,10 +34,12 @@
 #define MAP_SOROKYNE_STRATA "Sorokyne Strata"
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
+#define MAP_ZERO_POINT "Zero Point"
+#define MAP_ZERO_POINTC "Zero Crashed Point" //Only very lowpop
 
-#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
+#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 60 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
-#define PREROUND_TIME 240 // time before the round starts
+#define PREROUND_TIME 300 // time before the round starts
 
 //A set of constants used to determine which type of mute an admin wishes to apply:
 //Please read and understand the muting/automuting stuff before changing these. MUTE_IC_AUTO etc = (MUTE_IC << 1)

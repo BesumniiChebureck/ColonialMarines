@@ -7,7 +7,7 @@
 	disp_icon_state = "ace_autocannon"
 	activation_sounds = list('sound/weapons/vehicles/autocannon_fire.ogg')
 
-	health = 500
+	health = 1000
 	cooldown = 7
 	accuracy = 0.98
 	firing_arc = 60

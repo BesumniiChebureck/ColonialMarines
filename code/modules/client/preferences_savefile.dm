@@ -85,6 +85,7 @@
 	S["commander_status"]	>> commander_status
 	S["yautja_status"]		>> yautja_status
 	S["synth_status"]		>> synth_status
+	S["vc_status"]			>> vc_status
 
 	S["lang_chat_disabled"]	>> lang_chat_disabled
 
@@ -117,6 +118,7 @@
 	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	yautja_status		= sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status		= sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
+	vc_status			= sanitize_inlist(vc_status, whitelist_hierarchy, initial(vc_status))
 	vars["fps"] = fps
 
 	if(!observer_huds)
@@ -173,6 +175,7 @@
 	S["commander_status"] 	<< commander_status
 	S["yautja_status"]		<< yautja_status
 	S["synth_status"]		<< synth_status
+	S["vc_status"]			<< vc_status
 
 	S["lang_chat_disabled"] << lang_chat_disabled
 

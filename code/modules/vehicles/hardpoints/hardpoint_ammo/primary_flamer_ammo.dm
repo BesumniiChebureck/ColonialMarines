@@ -4,7 +4,7 @@
 	caliber = "Napalm X" //correlates to flamer mags
 	icon_state = "drgn_flametank"
 	w_class = SIZE_LARGE
-	max_rounds = 60
+	max_rounds = 120
 	gun_type = /obj/item/hardpoint/primary/flamer
 	default_ammo = /datum/ammo/flamethrower/tank_flamer
 

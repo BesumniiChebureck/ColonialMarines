@@ -70,8 +70,8 @@
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
 		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
-			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
-			onclose(user, name)
+			user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8' /><TITLE>[name]</TITLE>[extra_headers]</HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=paper[md5(name)]")
+			onclose(user, "paper[md5(name)]")
 		else
 			read_paper(user)
 	else
@@ -82,8 +82,8 @@
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
 	asset_datum.send(user)
 
-	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
-	onclose(user, name)
+	user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8' /><TITLE>[name]</TITLE>[extra_headers]</HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>", "window=paper[md5(name)]")
+	onclose(user, "paper[md5(name)]")
 
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
@@ -345,7 +345,7 @@
 			info += t // Oh, he wants to edit to the end of the file, let him.
 			updateinfolinks()
 
-		show_browser(usr, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
+		usr << browse("<HTML><HEAD><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY><div align='right'style='position:fixed;bottom:0;font-style:bold;'><A href='?src=[REF(src)];help=1'>\[?\]</A></div></HTML>", "window=[name]") // Update the window
 
 		update_icon()
 
@@ -385,7 +385,7 @@
 		if ( istype(P, /obj/item/tool/pen/robopen) && P:mode == 2 )
 			P:RenamePaper(user,src)
 		else
-			show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
+			usr << browse("<HTML><HEAD><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY><div align='right'style='position:fixed;bottom:0;font-style:bold;'><A href='?src=[REF(src)];help=1'>\[?\]</A></div></HTML>", "window=[name]") // Update the window
 		//openhelp(user)
 		return
 

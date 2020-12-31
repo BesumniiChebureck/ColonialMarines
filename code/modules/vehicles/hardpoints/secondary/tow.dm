@@ -6,7 +6,7 @@
 	disp_icon = "tank"
 	disp_icon_state = "towlauncher"
 
-	health = 500
+	health = 700
 	cooldown = 150
 	accuracy = 0.8
 	firing_arc = 60

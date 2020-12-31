@@ -163,10 +163,10 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_XENOMORPH_QUEEN             "Queen"
 
 // For colouring the ranks in the statistics menu
-#define JOB_PLAYTIME_TIER_1         (10 HOURS)
-#define JOB_PLAYTIME_TIER_2         (25 HOURS)
-#define JOB_PLAYTIME_TIER_3         (70 HOURS)
-#define JOB_PLAYTIME_TIER_4         (175 HOURS)
+#define JOB_PLAYTIME_TIER_1         (25 HOURS)
+#define JOB_PLAYTIME_TIER_2         (75 HOURS)
+#define JOB_PLAYTIME_TIER_3         (150 HOURS)
+#define JOB_PLAYTIME_TIER_4         (300 HOURS)
 
 #define XENO_NO_AGE     -1
 #define XENO_NORMAL		0

@@ -7,7 +7,7 @@
 	disp_icon_state = "glauncher"
 	activation_sounds = list('sound/weapons/gun_m92_attachable.ogg')
 
-	health = 500
+	health = 650
 	cooldown = 30
 	accuracy = 0.4
 	firing_arc = 90

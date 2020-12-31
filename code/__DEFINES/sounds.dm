@@ -43,6 +43,7 @@
 #define AMBIENCE_ICE 'sound/ambience/snowstorm.ogg'
 #define AMBIENCE_PRISON 'sound/ambience/shipambience.ogg'
 #define AMBIENCE_TRIJENT 'sound/ambience/desert.ogg'
+#define AMBIENCE_ZERO 'sound/ambience/zero.ogg'
 
 #define SCAPE_PL_WIND list('sound/soundscape/wind1.ogg','sound/soundscape/wind2.ogg')
 #define SCAPE_PL_CAVE list('sound/soundscape/rocksfalling1.ogg', 'sound/soundscape/rocksfalling2.ogg')

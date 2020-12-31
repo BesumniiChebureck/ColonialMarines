@@ -1,5 +1,5 @@
 #define SENTRY_FIREANGLE 	135
-#define SENTRY_RANGE 		5
+#define SENTRY_RANGE 		9
 #define SENTRY_MUZZLELUM	3
 /obj/structure/machinery/defenses/sentry
 	name = "\improper UA 571-C sentry gun"

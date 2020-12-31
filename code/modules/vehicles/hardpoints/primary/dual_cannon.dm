@@ -11,7 +11,7 @@
 
 	damage_multiplier = 0.2
 
-	health = 500
+	health = 700
 	cooldown = 10
 	accuracy = 0.98
 	firing_arc = 60

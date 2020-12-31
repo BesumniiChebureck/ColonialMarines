@@ -110,6 +110,9 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 /obj/item/stack/sheet/plasteel/medium_stack
 	amount = STACK_30
 
+/obj/item/stack/sheet/plasteel/large_stack
+	amount = STACK_50
+
 /*
  * Wood
  */

@@ -62,6 +62,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/yautja_status = WHITELIST_NORMAL
 	var/commander_status = WHITELIST_NORMAL
 	var/synth_status = WHITELIST_NORMAL
+	var/vc_status = WHITELIST_NORMAL
 
 	//character preferences
 	var/real_name						//our character's name
@@ -413,6 +414,12 @@ var/const/MAX_SAVE_SLOTS = 10
 		dat += "<b>Synthetic name:</b> <a href='?_src_=prefs;preference=synth_name;task=input'>[synthetic_name]</a><br>"
 		dat += "<b>Synthetic Type:</b> <a href='?_src_=prefs;preference=synth_type;task=input'>[synthetic_type]</a><br>"
 		dat += "<b>Synthetic whitelist status:</b> <a href='?_src_=prefs;preference=synth_status;task=input'>[synth_status]</a><br>"
+		dat += "</div>"
+	
+	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_CREWMAN)
+		dat += "<div id='column4'>"
+		dat += "<h2><b><u>Vehicle Crewmen Settings:</u></b></h2>"
+		dat += "<b>Vehicle Crewmen whitelist status:</b><a href='?_src_=prefs;preference=tc_status;task=input'>[vc_status]</a><br>"
 		dat += "</div>"
 
 	dat += "</div></body></html>"
@@ -873,6 +880,21 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 
 					synth_status = options[new_synth_status]
+				
+				if("vc_status")
+					var/list/options = list("Normal" = WHITELIST_NORMAL)
+
+					if(whitelist_flags & WHITELIST_CREWMAN_COUNCIL)
+						options += list("Council" = WHITELIST_COUNCIL)
+					if(whitelist_flags & WHITELIST_CREWMAN_LEADER)
+						options += list("Leader" = WHITELIST_LEADER)
+
+					var/new_vc_status = input(user, "Choose your new Vehicle Crewmen Whitelist Status.", "Vehicle Crewmen Status") in options
+
+					if(!new_vc_status)
+						return
+
+					vc_status = options[new_vc_status]
 
 				if("xeno_prefix")
 					if(xeno_name_ban)

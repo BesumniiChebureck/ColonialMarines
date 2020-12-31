@@ -148,18 +148,12 @@
 	fire_sound = "gun_pulse"
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
-	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1
+	current_mag = /obj/item/ammo_magazine/riflemc
 	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
-						/obj/item/attachable/bayonet,
-						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/reddot,
-						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/flashlight,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/attached_gun/grenade/mk1)
+						/obj/item/ammo_magazine/riflemc
+						)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_CO_RESTRICTED
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/grenade/mk1)
 
 /obj/item/weapon/gun/rifle/m41aMK1/set_gun_attachment_offsets()
@@ -168,16 +162,17 @@
 
 /obj/item/weapon/gun/rifle/m41aMK1/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
-	burst_amount = BURST_AMOUNT_TIER_4
-	burst_delay = FIRE_DELAY_TIER_8
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
-	scatter = SCATTER_AMOUNT_TIER_9
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_9
-	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	fire_delay = FIRE_DELAY_TIER_1
+	burst_amount = BURST_AMOUNT_TIER_1
+	burst_delay = FIRE_DELAY_TIER_1
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1
+	scatter = SCATTER_AMOUNT_TIER_1
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_1
+	scatter_unwielded = SCATTER_AMOUNT_TIER_1
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_10
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+	recoil = RECOIL_AMOUNT_TIER_1
 
 
 

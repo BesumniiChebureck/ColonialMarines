@@ -53,6 +53,11 @@
 	ambience_exterior = AMBIENCE_TRIJENT
 	icon_state = "shuttle"
 
+/area/shuttle/drop1/Zero_Point
+	name = "\improper Dropship Alamo"
+	ambience_exterior = AMBIENCE_ZERO
+	icon_state = "shuttle"
+
 /area/shuttle/drop1/transit
 	ambience_exterior 	= 'sound/ambience/dropship_ambience_loop.ogg'
 	name = "\improper Dropship Alamo Transit"
@@ -106,6 +111,11 @@
 /area/shuttle/drop2/DesertDam
 	name = "\improper Dropship Normandy"
 	ambience_exterior = AMBIENCE_TRIJENT
+	icon_state = "shuttle2"
+
+/area/shuttle/drop2/Zero_Point
+	name = "\improper Dropship Normandy"
+	ambience_exterior = AMBIENCE_ZERO
 	icon_state = "shuttle2"
 
 /area/shuttle/drop2/transit

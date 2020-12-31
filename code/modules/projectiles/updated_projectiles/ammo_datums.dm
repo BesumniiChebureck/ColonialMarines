@@ -379,7 +379,7 @@
 	impact_limbs = BODY_FLAG_HEAD
 	debilitate = list(0,2,0,0,0,1,0,0)
 
-	damage = BULLET_DAMAGE_TIER_11
+	damage = BULLET_DAMAGE_TIER_20
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_2
@@ -474,6 +474,47 @@
 					Rifle Ammo
 //================================================
 */
+
+//don't ask me about this is shitly lacky fucking bullets
+/datum/ammo/bullet/riflemc
+	name = "experemental bullet"//really experemental
+
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
+	damage = BULLET_DAMAGE_TIER_16
+	damage_var_low = PROJECTILE_VARIANCE_TIER_9
+	damage_var_high = PROJECTILE_VARIANCE_TIER_9
+	accurate_range = 0
+	damage_armor_punch = 10
+	pen_armor_punch = 10
+	damage_type = BURN||BRUTE
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_6
+	accuracy = HIT_ACCURACY_TIER_1
+	scatter = SCATTER_AMOUNT_TIER_8
+	shell_speed = AMMO_SPEED_TIER_1
+	penetration = ARMOR_PENETRATION_TIER_10
+	damage_falloff = DAMAGE_FALLOFF_TIER_10
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_8
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_9
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_9
+
+/datum/ammo/bullet/riflemc/on_hit_mob(mob/M, obj/item/projectile/P)
+	cell_explosion(get_turf(M), 120, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 400, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+	knockback(M, P, 32)	// Can knockback basically at max range
+	M.Daze(3)
+	if(!M || M == P.firer) return
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		shake_camera(H, 2, 1)
+
+/datum/ammo/bullet/riflemc/on_hit_obj(obj/O, obj/item/projectile/P)
+	cell_explosion(get_turf(O), 120, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 400, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+
+/datum/ammo/bullet/riflemc/on_hit_turf(turf/T, obj/item/projectile/P)
+	if(T.density)
+		cell_explosion(T, 120, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+		cell_explosion(T, 400, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/bullet/rifle
 	name = "rifle bullet"
@@ -808,9 +849,9 @@
 
 	accuracy = HIT_ACCURACY_TIER_8
 	scatter = 0
-	damage = BULLET_DAMAGE_TIER_12
-	damage_var_high = PROJECTILE_VARIANCE_TIER_8
-	penetration	= ARMOR_PENETRATION_TIER_6
+	damage = BULLET_DAMAGE_TIER_18
+	damage_var_high = PROJECTILE_VARIANCE_TIER_10
+	penetration	= ARMOR_PENETRATION_TIER_8
 	accurate_range = 32
 	max_range = 32
 	shell_speed = AMMO_SPEED_TIER_6
@@ -869,7 +910,7 @@
 	max_range = 12
 	accuracy = HIT_ACCURACY_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	damage = BULLET_DAMAGE_TIER_6
+	damage = BULLET_DAMAGE_TIER_10
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/armor_piercing
@@ -964,7 +1005,7 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 12
-	damage = BULLET_DAMAGE_TIER_7
+	damage = BULLET_DAMAGE_TIER_10
 	penetration = ARMOR_PENETRATION_TIER_7
 
 /datum/ammo/bullet/minigun/tank
@@ -1000,9 +1041,9 @@
 	var/datum/effect_system/smoke_spread/smoke
 
 	accuracy = HIT_ACCURACY_TIER_2
-	accurate_range = 7
-	max_range = 7
-	damage = BULLET_DAMAGE_TIER_3
+	accurate_range = 8
+	max_range = 8
+	damage = BULLET_DAMAGE_TIER_4
 	shell_speed = AMMO_SPEED_TIER_1
 
 /datum/ammo/rocket/New()
@@ -1015,24 +1056,24 @@
 	. = ..()
 
 /datum/ammo/rocket/on_hit_mob(mob/M, obj/item/projectile/P)
-	cell_explosion(get_turf(M), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, get_turf(M))
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
 		M.ex_act(350, P.dir, P.weapon_source, P.weapon_source_mob, 100)
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 200, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, get_turf(O))
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_turf(turf/T, obj/item/projectile/P)
-	cell_explosion(T, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(T, 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/do_at_max_range(obj/item/projectile/P)
-	cell_explosion(get_turf(P), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(P), 200, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 	smoke.set_up(1, get_turf(P))
 	smoke.start()
 
@@ -1120,20 +1161,20 @@
 	shell_speed = AMMO_SPEED_TIER_3
 
 /datum/ammo/rocket/ltb/on_hit_mob(mob/M, obj/item/projectile/P)
-	cell_explosion(get_turf(M), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(M), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 490, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 300, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/rocket/ltb/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(O), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 490, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 300, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/rocket/ltb/on_hit_turf(turf/T, obj/item/projectile/P)
-	cell_explosion(get_turf(T), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(T), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(T), 400, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(T), 300, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/rocket/ltb/do_at_max_range(obj/item/projectile/P)
-	cell_explosion(get_turf(P), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(P), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(P), 400, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(P), 300, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"
