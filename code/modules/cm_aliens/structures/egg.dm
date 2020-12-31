@@ -21,7 +21,7 @@
 	create_egg_triggers()
 	if (hive)
 		hivenumber = hive
-	
+
 	set_hive_data(src, hivenumber)
 	update_icon()
 	Grow()
@@ -98,7 +98,7 @@
 		var/obj/effect/egg_trigger/ET = trigger
 		target_turf = locate(x+x_coords[i],y+y_coords[i], z)
 		if(target_turf)
-			ET.loc = target_turf
+			ET.forceMove(target_turf)
 			i++
 
 /obj/effect/alien/egg/proc/delete_egg_triggers()
@@ -123,10 +123,10 @@
 		if(loc && status != EGG_DESTROYED)
 			status = EGG_BURST
 			var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
-			
+
 			child.flags_embryo = flags_embryo
 			flags_embryo = NO_FLAGS // Lose the embryo flags when passed on
-			
+
 			if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand))	//sanity checks
 				X.put_in_hands(child)
 				return
@@ -138,7 +138,7 @@
 /obj/effect/alien/egg/proc/replace_triggers()
 	if(isnull(loc) || status == EGG_DESTROYED)
 		return
-	
+
 	create_egg_triggers()
 	deploy_egg_triggers()
 
@@ -253,10 +253,10 @@
 	if(!linked_egg && !linked_eggmorph) //something went very wrong.
 		qdel(src)
 	else if(linked_egg && (get_dist(src, linked_egg) != 1 || !isturf(linked_egg.loc))) //something went wrong
-		loc = linked_egg
+		forceMove(linked_egg)
 
 	else if(linked_eggmorph && (get_dist(src, linked_eggmorph) != 1 || !isturf(linked_eggmorph.loc))) //something went wrong
-		loc = linked_eggmorph
+		forceMove(linked_eggmorph)
 	else if(iscarbon(A))
 		var/mob/living/carbon/C = A
 		if(linked_egg)

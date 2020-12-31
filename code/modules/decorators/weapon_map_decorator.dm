@@ -21,8 +21,8 @@
 
 	gun.icon = c_icon
 
-	gun.item_icons = list()	
-	
+	gun.item_icons = list()
+
 	gun.item_icons += list(WEAR_L_HAND = l_icon)
 	gun.item_icons += list(WEAR_R_HAND = r_icon)
 	gun.item_icons += list(WEAR_BACK = b_icon)
@@ -34,7 +34,7 @@
 	r_icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_righthand.dmi'
 	b_icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/back.dmi'
 	j_icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/suit_slot.dmi'
-	map_array = list(MAP_PRISON_STATION)
+	map_array = list(MAP_PRISON_STATION, MAP_ZERO_POINT, MAP_ZERO_POINTC)
 
 /datum/decorator/weapon_map_decorator/desert
 	c_icon = 'icons/obj/items/weapons/guns/guns_by_map/desert/guns_obj.dmi'

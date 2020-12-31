@@ -56,7 +56,7 @@
 /mob/living/simple_animal/Initialize()
 	. = ..()
 	living_misc_mobs += src
-	verbs -= /mob/verb/observe
+	remove_verb(src, /mob/verb/observe)
 
 /mob/living/simple_animal/Destroy()
 	..()
@@ -198,7 +198,7 @@
 	if(isturf(src.loc))
 		if(ismob(AM))
 			var/newamloc = src.loc
-			src.loc = AM:loc
+			src.forceMove(AM:loc)
 			AM:loc = newamloc
 		else
 			..()

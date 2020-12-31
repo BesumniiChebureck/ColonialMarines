@@ -38,7 +38,7 @@
 	plasma_cost = 100
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 1 SECONDS
+	xeno_cooldown = 1 SECOND
 
 	var/node_plant_cooldown = 7 SECONDS
 	var/node_plant_plasma_cost = 300
@@ -74,5 +74,3 @@
 	name = "Enter Eye Form"
 	action_icon_state = "queen_eye"
 	plasma_cost = 0
-
-/////////////////////////////Charger Queen abilites

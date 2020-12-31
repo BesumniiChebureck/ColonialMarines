@@ -98,6 +98,18 @@
 	html_link = "images/0/0d/Kutjevo_a1.jpg"
 	color = "red"
 
+/obj/item/map/zero_map
+	name = "\improper Zero Point map"
+	desc = "An orbital scan of Zero Point"
+	html_link = "images/0/0f/Zero.jpg"
+	color = "black"
+
+/obj/item/map/zeroc_map
+	name = "\improper Zero Crashed Point map"
+	desc = "An orbital scan of Zero Point"
+	html_link = "images/0/0fs/Zero.jpg"
+	color = "black"
+
 
 //used by marine equipment machines to spawn the correct map.
 /obj/item/map/current_map
@@ -148,6 +160,16 @@
 			desc = "An orbital scan of Kutjevo Refinery"
 			html_link = "images/0/0d/Kutjevo_a1.jpg"
 			color = "red"
+		if (MAP_ZERO_POINT)
+			name = "\improper Zero Point map"
+			desc = "An orbital scan of Zero Point"
+			html_link = "images/0/0f/Zero.jpg"
+			color = "black"
+		if (MAP_ZERO_POINTC)
+			name = "\improper Zero Crashed Point map"
+			desc = "An orbital scan of Zero Point"
+			html_link = "images/0/0fs/Zero.jpg"
+			color = "black"
 		else
 			qdel(src)
 

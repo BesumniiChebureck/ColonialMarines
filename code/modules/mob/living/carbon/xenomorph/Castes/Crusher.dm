@@ -174,7 +174,7 @@
 				visible_message(SPAN_DANGER("[src] crushes [O]!"), SPAN_XENODANGER("You crush [O]!"))
 				if(O.contents.len) //Hopefully won't auto-delete things inside crushed stuff.
 					var/turf/T = get_turf(src)
-					for(var/atom/movable/S in T.contents) S.loc = T
+					for(var/atom/movable/S in T.contents) S.forceMove(T)
 
 				qdel(O)
 				. = TRUE
@@ -210,8 +210,7 @@
 		else
 			icon_state = "[mutation_type] Crusher Running"
 
-	update_fire()
-	update_wounds()
+	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 
 // Mutator delegate for base ravager
 /datum/behavior_delegate/crusher_base

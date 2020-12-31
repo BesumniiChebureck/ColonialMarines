@@ -258,9 +258,7 @@ var/datum/controller/supply/supply_controller = new()
 
 		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 		C.anchored = FALSE
-		C.z = T.z
-		C.x = T.x
-		C.y = T.y
+		C.forceMove(T)
 		var/turf/TC = get_turf(C)
 		TC.ceiling_debris_check(3)
 		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.
@@ -348,7 +346,7 @@ var/datum/controller/supply/supply_controller = new()
 	var/datum/shuttle/ferry/supply/vehicle/vehicle_elevator
 
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
-	var/dropship_points = 5000 //gains roughly 18 points per minute
+	var/dropship_points = 10000 //gains roughly 18 points per minute | Original points of 5k doubled due to removal of prespawned ammo.
 	var/tank_points = 0
 
 	New()
@@ -530,7 +528,7 @@ var/datum/controller/supply/supply_controller = new()
 			//manifest finalisation
 			slip.info += "</ul><br>"
 			slip.info += "CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS<hr>"
-			if (SP.contraband) slip.loc = null	//we are out of blanks for Form #44-D Ordering Illicit Drugs.
+			if (SP.contraband) slip.moveToNullspace()	//we are out of blanks for Form #44-D Ordering Illicit Drugs.
 
 	shoppinglist.Cut()
 	return

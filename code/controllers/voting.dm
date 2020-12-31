@@ -340,8 +340,6 @@ var/force_mapdaemon_vote = 0
 	switch(GLOB.clients.len)
 		if (0 to PLAYERCOUNT_LOWPOP_MAP_LIMIT)
 			L += LOWPOP_NEXT_MAP_CANDIDATES.Copy()
-		else
-			L += NEXT_MAP_CANDIDATES.Copy()
 	L -= map_tag
 	var/selection = input("Vote for the next map to play on", "Vote:", "Don't care") as null|anything in L
 

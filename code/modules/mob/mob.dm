@@ -23,6 +23,8 @@
 	last_damage_source = null
 	last_damage_mob = null
 
+	QDEL_NULL(mob_panel)
+
 	ghostize()
 	clear_fullscreens()
 	return ..()
@@ -46,7 +48,14 @@
 	if(!isnull(current_area) && current_area.statistic_exempt)
 		statistic_exempt = TRUE
 	prepare_huds()
+
+	create_player_panel()
+
 	return ..()
+
+/mob/proc/create_player_panel()
+	QDEL_NULL(mob_panel)
+	mob_panel = new(src)
 
 /mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -746,7 +755,7 @@ mob/proc/yank_out_object()
 			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
 		else
 			to_chat(usr, "[src] has nothing stuck in their wounds that is large enough to remove.")
-		src.verbs -= /mob/proc/yank_out_object
+		remove_verb(src, /mob/proc/yank_out_object)
 		return
 
 	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
@@ -772,7 +781,7 @@ mob/proc/yank_out_object()
 		visible_message(SPAN_WARNING("<b>[usr] rips [selection] out of [src]'s body.</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"), null, 5)
 
 	if(valid_objects.len == 1) //Yanking out last object - removing verb.
-		src.verbs -= /mob/proc/yank_out_object
+		remove_verb(src, /mob/proc/yank_out_object)
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
@@ -799,7 +808,7 @@ mob/proc/yank_out_object()
 			affected.wounds += I
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 1)
 
-	selection.loc = get_turf(src)
+	selection.forceMove(get_turf(src))
 	return TRUE
 
 /mob/living/proc/handle_statuses()

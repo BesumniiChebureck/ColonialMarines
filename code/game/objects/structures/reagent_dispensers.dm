@@ -19,7 +19,7 @@
 	. = ..()
 	create_reagents(reagent_amount)
 	if(!possible_transfer_amounts)
-		src.verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
+		remove_verb(src, /obj/structure/reagent_dispensers/verb/set_APTFT)
 	if(chemical)
 		reagents.add_reagent(chemical, reagent_amount)
 
@@ -160,7 +160,7 @@
 		usr.visible_message("[usr] begins to detach [rig] from \the [src].", "You begin to detach [rig] from \the [src]")
 		if(do_after(usr, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			usr.visible_message(SPAN_NOTICE("[usr] detaches [rig] from \the [src]."), SPAN_NOTICE(" You detach [rig] from \the [src]"))
-			rig.loc = get_turf(usr)
+			rig.forceMove(get_turf(usr))
 			rig = null
 			update_icon()
 	else

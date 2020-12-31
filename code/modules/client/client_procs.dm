@@ -280,7 +280,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	for(var/line in lines)
 		if(src.ckey == line)
 			src.donator = 1
-			verbs += /client/proc/set_ooc_color_self
+			add_verb(src, /client/proc/set_ooc_color_self)
 
 	if(prefs.window_skin & TOGGLE_WINDOW_SKIN)
 		set_night_skin()
@@ -381,8 +381,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 //for adding procs that allow showing/hiding other groups of prefs
 /client/proc/add_pref_verbs()
-	verbs += /client/proc/show_combat_chat_preferences
-	verbs += /client/proc/show_ghost_preferences
+	add_verb(src, /client/proc/show_combat_chat_preferences)
+	add_verb(src, /client/proc/show_ghost_preferences)
 
 /client/proc/runtime_macro_insert(var/macro_button, var/parent, var/command)
 	if (!macro_button || !parent || !command)
@@ -417,7 +417,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if (!key)
 		return
 
-	raiseEvent(src, EVENT_READ_KEY_DOWN, key)
+	SEND_SIGNAL(src, COMSIG_CLIENT_KEY_DOWN, key)
 
 /client/verb/read_key_up(var/key as text|null)
 	set name = ".Read Key Up"
@@ -426,7 +426,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if (!key)
 		return
 
-	raiseEvent(src, EVENT_READ_KEY_UP, key)
+	SEND_SIGNAL(src, COMSIG_CLIENT_KEY_UP, key)
 
 /client/verb/fix_swap_hand_macro()
 	set name = "Fix Swap Hand Macros"

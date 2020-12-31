@@ -155,6 +155,9 @@ var/global/marines_assigned = 0
 		r = 1
 		while(++r <= P.len)
 			switch(ckey(P[r]))
+				if("crewmen") 						role |= WHITELIST_CREWMAN
+				if("crewmencouncil") 				role |= WHITELIST_CREWMAN_COUNCIL
+				if("crewmenleader") 				role |= WHITELIST_CREWMAN_LEADER
 				if("yautja") 						role |= WHITELIST_YAUTJA
 				if("yautjacouncil")					role |= WHITELIST_YAUTJA_COUNCIL
 				if("yautjaleader")					role |= WHITELIST_YAUTJA_LEADER
@@ -484,7 +487,7 @@ var/global/marines_assigned = 0
 		return
 	//If they didn't join late, we want to move them to the start position for their role.
 	if(late_join)
-		M.loc = late_join //If they late joined, we passed on the location from the parent proc.
+		M.forceMove(late_join) //If they late joined, we passed on the location from the parent proc.
 	else //If they didn't, we need to find a suitable spawn location for them.
 		if(!length(GLOB.spawns_by_job[J.type]))
 			log_debug("Failed to find a spawn for [J.type]")

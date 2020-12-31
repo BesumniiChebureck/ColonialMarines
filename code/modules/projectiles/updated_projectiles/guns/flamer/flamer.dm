@@ -18,14 +18,14 @@
 	aim_slowdown = SLOWDOWN_ADS_INCINERATOR
 	current_mag = /obj/item/ammo_magazine/flamer_tank
 	var/max_range = 9 //9 tiles, 7 is screen range, controlled by the type of napalm in the canister. We max at 9 since diagonal bullshit.
-	var/lit = 0 //Turn the flamer on/off
 
 	attachable_allowed = list( //give it some flexibility.
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/attached_gun/extinguisher)
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_TRIGGER_SAFETY
 	gun_category = GUN_CATEGORY_HEAVY
+
 
 /obj/item/weapon/gun/flamer/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -40,11 +40,15 @@
 	fire_delay = FIRE_DELAY_TIER_4 * 5
 
 /obj/item/weapon/gun/flamer/unique_action(mob/user)
-	toggle_flame(user)
+	toggle_gun_safety()
+
+/obj/item/weapon/gun/flamer/gun_safety_message(var/mob/user)
+	to_chat(user, SPAN_NOTICE("You [SPAN_BOLD(flags_gun_features & GUN_TRIGGER_SAFETY ? "extinguish" : "ignite")] the pilot light."))
+	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
+	update_icon()
 
 /obj/item/weapon/gun/flamer/examine(mob/user)
 	..()
-	to_chat(user, "It's turned [lit? "on" : "off"].")
 	if(current_mag)
 		to_chat(user, "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!")
 	else
@@ -66,7 +70,7 @@
 
 		overlays += I
 
-	if(lit)
+	if(!(flags_gun_features & GUN_TRIGGER_SAFETY))
 		var/image/I = image('icons/obj/items/weapons/guns/gun.dmi', src, "+lit")
 		I.pixel_x += 3
 		overlays += I
@@ -76,12 +80,6 @@
 	if(.)
 		if(!current_mag || !current_mag.current_rounds)
 			return
-
-/obj/item/weapon/gun/flamer/proc/toggle_flame(mob/user)
-	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
-	lit = !lit
-
-	update_icon()
 
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
@@ -97,7 +95,7 @@
 	var/turf/targloc = get_turf(target)
 	if (!targloc || !curloc) return //Something has gone wrong...
 
-	if(!lit)
+	if(flags_gun_features & GUN_TRIGGER_SAFETY)
 		to_chat(user, SPAN_WARNING("The weapon isn't lit"))
 		return
 
@@ -136,7 +134,7 @@
 			else replace_magazine(user, magazine)
 		else
 			current_mag = magazine
-			magazine.loc = src
+			magazine.forceMove(src)
 			replace_ammo(,magazine)
 
 	update_icon()
@@ -207,8 +205,13 @@
 	current_mag = null
 	var/obj/item/storage/large_holster/fuelpack/fuelpack
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro)
-
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 	flags_item = TWOHANDED|NO_CRYO_STORE
+
+
+/obj/item/weapon/gun/flamer/M240T/unique_action(mob/user)
+	if(fuelpack)
+		fuelpack.do_toggle_fuel(user)
 
 /obj/item/weapon/gun/flamer/M240T/Destroy()
 	if(fuelpack)
@@ -218,21 +221,28 @@
 	. = ..()
 
 /obj/item/weapon/gun/flamer/M240T/harness_check(var/mob/living/carbon/human/user)
-	if (..())
+	var/obj/item/storage/large_holster/fuelpack/FP = user.back
+	if(istype(FP) && !(FP.contents.len))
 		return TRUE
 
-	var/obj/item/I = user.back
-	if(!istype(I, /obj/item/storage/large_holster/fuelpack))
-		return FALSE
-	return TRUE
+	. = ..()
 
 /obj/item/weapon/gun/flamer/M240T/harness_return(var/mob/living/carbon/human/user)
+	if (!loc || !user)
+		return
+	if (!isturf(loc))
+		return
+	if (!harness_check(user))
+		return
+
 	var/obj/item/storage/large_holster/fuelpack/FP = user.back
-	if (istype(FP) && FP.handle_item_insertion(src, TRUE))
+	if (istype(FP) && user.equip_to_slot_if_possible(src, WEAR_IN_SCABBARD))
 		to_chat(user, SPAN_WARNING("[src] snaps into place on [FP]."))
 		return
 
-	..()
+	var/obj/item/I = user.wear_suit
+	if(user.equip_to_slot_if_possible(src, WEAR_J_STORE))
+		to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
 
 /obj/item/weapon/gun/flamer/M240T/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 9, "rail_y" = 21, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
@@ -248,8 +258,9 @@
 			// This was a manually loaded fuel tank
 			if (current_mag && !(current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))
 				to_chat(user, SPAN_WARNING("\The [current_mag] is ejected by the Broiler-T back harness and replaced with \the [fuelpack.active_fuel]!"))
-				unload()
+				unload(user, drop_override = TRUE)
 			current_mag = fuelpack.active_fuel
+			update_icon()
 	..()
 
 
@@ -408,13 +419,12 @@
 				if(weapon_source)
 					H.track_shot_hit(weapon_source, H)
 
+		var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
 
-		if (raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED || tied_reagent.fire_penetrating)
-			M.adjust_fire_stacks(tied_reagent.durationfire, tied_reagent)
-			M.IgniteMob()
+		if(!(sig_result & COMPONENT_NO_IGNITE))
+			M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
-		// If fire shield is on, do not receive burn damage
-		if (raiseEventSync(M, EVENT_PRE_FIRE_BURNED_CHECK) == HALTED && !tied_reagent.fire_penetrating)
+		if(sig_result & COMPONENT_NO_BURN)
 			continue
 
 		M.last_damage_mob = weapon_source_mob
@@ -447,20 +457,16 @@
 /obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliable do it when you walk into it.
 	if(!istype(M))
 		return
+	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
+	var/burn_damage = round(burnlevel*0.5)
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(isXeno(H.pulledby))
 			var/mob/living/carbon/Xenomorph/Z = H.pulledby
-			if(raiseEventSync(Z, EVENT_PREIGNITION_CHECK) != HALTED && !tied_reagent.fire_penetrating)
-				Z.adjust_fire_stacks(tied_reagent.durationfire, tied_reagent)
-				Z.IgniteMob()
+			Z.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 		if(istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(H.wear_suit, /obj/item/clothing/suit/fire))
-			if (raiseEventSync(H, EVENT_PRE_FIRE_BURNED_CHECK) == HALTED)
-				return
-			H.show_message(text("Your suit protects you from the flames."),1)
-			H.apply_damage(burnlevel*0.25, BURN) //Does small burn damage to a person wearing one of the suits.
-			return
+			burn_damage = round(burnlevel*0.25) //Does small burn damage to a person wearing one of the suits.
 
 	if(isXeno(M))
 		var/mob/living/carbon/Xenomorph/X = M
@@ -469,9 +475,11 @@
 		if(X.burrow)
 			return
 
-	if (raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED || tied_reagent.fire_penetrating)
-		M.adjust_fire_stacks(tied_reagent.durationfire, tied_reagent) //Make it possible to light them on fire later.
-		M.IgniteMob()
+	if(!(sig_result & COMPONENT_NO_IGNITE))
+		M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
+
+	if(sig_result & COMPONENT_NO_BURN)
+		return
 
 	if(weapon_source)
 		M.last_damage_source = weapon_source
@@ -479,7 +487,7 @@
 		M.last_damage_source = initial(name)
 
 	M.last_damage_mob = weapon_source_mob
-	M.apply_damage(round(burnlevel*0.5), BURN) //This makes fire stronk.
+	M.apply_damage(burn_damage, BURN) //This makes fire stronk.
 	to_chat(M, SPAN_DANGER("You are burned!"))
 	if(isXeno(M))
 		M.updatehealth()
@@ -535,10 +543,9 @@
 				var/mob/living/carbon/human/H = I
 				if(istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(H.wear_suit, /obj/item/clothing/suit/fire))
 					continue
-			if (raiseEventSync(I, EVENT_PREIGNITION_CHECK) == HALTED && !tied_reagent.fire_penetrating)
+			// If I stand in the fire I deserve all of this. Also Napalm stacks quickly.
+			if(!I.TryIgniteMob(firelevel, tied_reagent))
 				continue
-			I.adjust_fire_stacks(firelevel, tied_reagent) // If I stand in the fire I deserve all of this. Also Napalm stacks quickly.
-			I.IgniteMob()
 			I.show_message(text(SPAN_WARNING("You are burned!")), 1)
 			if(isXeno(I)) //Have no fucken idea why the Xeno thing was there twice.
 				var/mob/living/carbon/Xenomorph/X = I

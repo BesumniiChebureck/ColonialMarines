@@ -91,7 +91,7 @@
 	icon = 'icons/obj/items/stock_parts.dmi'
 	icon_state = "capacitor"
 	desc = "A debug item for research."
-	
+
 /obj/item/moneybag
 	icon = 'icons/obj/items/storage.dmi'
 	name = "Money bag"
@@ -173,7 +173,7 @@
 	overlays += "evidence"	//should look nicer for transparent stuff. not really that important, but hey.
 
 	desc = "An evidence bag containing [I]."
-	I.loc = src
+	I.forceMove(src)
 	stored_item = I
 	w_class = I.w_class
 	return

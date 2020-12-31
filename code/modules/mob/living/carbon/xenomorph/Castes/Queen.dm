@@ -105,7 +105,7 @@
 
 /mob/hologram/queen/proc/start_watching(var/mob/living/carbon/Xenomorph/X, var/mob/living/carbon/Xenomorph/target)
 	SIGNAL_HANDLER
-	loc = target
+	forceMove(target)
 	is_watching = target
 
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/target_watching_qdeleted)
@@ -123,11 +123,11 @@
 			var/turf/T = get_turf(target)
 
 			if(T)
-				loc = T
+				forceMove(T)
 		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 
 	if(!isturf(loc) || (turf_weed_only(src, loc) & COMPONENT_TURF_DENY_MOVEMENT))
-		loc = X.loc
+		forceMove(X.loc)
 
 	is_watching = null
 	X.reset_view()
@@ -183,7 +183,7 @@
 	if(!(turf_weed_only(src, T) & COMPONENT_TURF_ALLOW_MOVEMENT))
 		return
 
-	loc = T
+	forceMove(T)
 	if(is_watching)
 		Q.overwatch(stop_overwatch = TRUE)
 
@@ -247,6 +247,10 @@
 	var/egg_amount = 0 //amount of eggs inside the queen
 	var/screech_sound_effect = 'sound/voice/alien_queen_screech.ogg' //the noise the Queen makes when she screeches. Done this way for VV purposes.
 	var/egg_planting_range = 3 // in ovipositor queen can plant egg up to this amount of tiles away from her position
+
+	var/queen_ovipositor_icon
+	var/queen_standing_icon
+
 
 	tileoffset = 0
 	viewsize = 12
@@ -324,6 +328,8 @@
 /mob/living/carbon/Xenomorph/Queen/Initialize()
 	. = ..()
 	icon = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
+	queen_standing_icon = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
+	queen_ovipositor_icon = get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor))
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
@@ -824,11 +830,11 @@
 		return canmove
 
 /mob/living/carbon/Xenomorph/Queen/update_icons()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
+	icon = queen_standing_icon
 	if(stat == DEAD)
 		icon_state = "[mutation_type] Queen Dead"
 	else if(ovipositor)
-		icon = get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor))
+		icon = queen_ovipositor_icon
 		icon_state = "[mutation_type] Queen Ovipositor"
 	else if(lying)
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))

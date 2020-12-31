@@ -57,10 +57,10 @@
 		var/obj/item/cell/C = A
 		visible_message("[user.name] swaps out the power cell in the [src.name].","You swap out the power cell in the [src] and drop the old one.")
 		to_chat(user, "The new cell contains: [C.charge] power.")
-		pcell.loc = get_turf(user)
+		pcell.forceMove(get_turf(user))
 		pcell = C
 		user.drop_inv_item_to_loc(C, src)
-		playsound(src,'sound/machines/click.ogg', 25, 1)		
+		playsound(src,'sound/machines/click.ogg', 25, 1)
 	else
 		..()
 
@@ -74,8 +74,8 @@
 	var/actual_drain = (rand(drain/2,drain)/25)
 	if(c && c.charge > 0)
 		if(c.charge > actual_drain)
-			c.charge -= actual_drain 
-		else 
+			c.charge -= actual_drain
+		else
 			c.charge = 0
 			to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
 		return TRUE

@@ -73,7 +73,7 @@ var/internal_tick_usage = 0
 
 	if(!EvacuationAuthority)		EvacuationAuthority = new
 
-	world.tick_lag = CONFIG_GET(number/ticklag)
+	change_tick_lag(CONFIG_GET(number/ticklag))
 
 	Master.Initialize(10, FALSE, TRUE)
 
@@ -397,18 +397,19 @@ var/list/datum/entity/map_vote/all_votes
 /world/proc/update_status()
 	//Note: Hub content is limited to 254 characters, including HTML/CSS. Image width is limited to 450 pixels.
 	var/s = ""
-	if (config)
-		s += "<a href=\"https://discord.gg/eWKjvt4\"><b>CM-SS13 RU EDITION &#8212; [MAIN_SHIP_NAME]</b></a>"
-	else
-		s += "<a href=\"https://discord.gg/eWKjvt4\"><b>CM-SS13 RU EDITION &#8212; [MAIN_SHIP_NAME]</b></a>"
+
+	if (CONFIG_GET(string/servername))
+		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)] &#8212; [MAIN_SHIP_NAME]</b>"
+		s += "<br><img src=\"\"></a>"
+		// s += "<a href=\"http://goo.gl/04C5lP\">Wiki</a>|<a href=\"http://goo.gl/hMmIKu\">Rules</a>"
 		if(SSticker)
 			if(master_mode)
 				s += "<br>Map: <b>[map_tag]</b>"
-				s += "<br>Mode: <b>[SSticker.mode.name]</b>"
+				if(SSticker.mode)
+					s += "<br>Mode: <b>[SSticker.mode.name]</b>"
 				s += "<br>Round time: <b>[duration2text()]</b>"
 		else
 			s += "<br>Map: <b>[map_tag]</b>"
-			s += "<br>Round time: <b>[duration2text()]</b>"
 		// s += enter_allowed ? "<br>Entering: <b>Enabled</b>" : "<br>Entering: <b>Disabled</b>"
 
 		status = s
@@ -478,6 +479,15 @@ proc/setup_database_connection()
 		return //No change required.
 
 	fps = new_value
+	on_tickrate_change()
+
+/world/proc/change_tick_lag(new_value = 0.5)
+	if(new_value <= 0)
+		CRASH("change_tick_lag() called with [new_value] new_value.")
+	if(tick_lag == new_value)
+		return //No change required.
+
+	tick_lag = new_value
 	on_tickrate_change()
 
 /world/proc/on_tickrate_change()

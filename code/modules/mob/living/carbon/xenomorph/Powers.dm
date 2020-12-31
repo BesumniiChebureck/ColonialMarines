@@ -108,7 +108,7 @@
 				playsound(loc, "alien_resin_build", 25)
 			A.add_hiddenprint(src) //so admins know who thickened the walls
 			return TRUE
-
+	
 	if (!RC.can_build_here(current_turf, src))
 		return FALSE
 

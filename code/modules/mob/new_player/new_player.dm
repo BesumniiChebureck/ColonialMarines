@@ -32,6 +32,9 @@
 
 
 /mob/new_player/proc/new_player_panel_proc(var/refresh = FALSE)
+	if(!client)
+		return
+
 	var/tempnumber = rand(1, 999)
 	var/postfix_text = (client.prefs && client.prefs.xeno_postfix) ? ("-"+client.prefs.xeno_postfix) : ""
 	var/prefix_text = (client.prefs && client.prefs.xeno_prefix) ? client.prefs.xeno_prefix : "XX"
@@ -123,7 +126,7 @@
 				var/obj/O = locate("landmark*Observer-Start")
 				if(istype(O))
 					to_chat(src, SPAN_NOTICE("Now teleporting."))
-					observer.loc = O.loc
+					observer.forceMove(O.loc)
 				else
 					to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
 				observer.icon = 'icons/mob/humans/species/r_human.dmi'

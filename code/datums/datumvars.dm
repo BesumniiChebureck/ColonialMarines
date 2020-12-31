@@ -433,7 +433,7 @@ body
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
 
-		src.admin_holder.show_player_panel(M)
+		addtimer(CALLBACK(admin_holder, /datum/admins.proc/show_player_panel, M), 0.5 SECONDS)
 		href_list["datumrefresh"] = href_list["mob_player_panel"]
 
 	else if(href_list["give_disease"])
@@ -870,7 +870,7 @@ body
 		if(!verb || verb == "Cancel")
 			return
 		else
-			H.verbs += verb
+			add_verb(H, verb)
 
 	else if(href_list["remverb"])
 		if(!check_rights(R_DEBUG))
@@ -888,7 +888,7 @@ body
 		if(!verb)
 			return
 		else
-			H.verbs -= verb
+			remove_verb(H, verb)
 
 	else if(href_list["addorgan"])
 		if(!check_rights(R_SPAWN))

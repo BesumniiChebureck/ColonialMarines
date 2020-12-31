@@ -82,10 +82,10 @@ var/list/ai_verbs_default = list(
 	var/datum/announcement/priority/announcement
 
 /mob/living/silicon/ai/proc/add_ai_verbs()
-	src.verbs |= ai_verbs_default
+	add_verb(src, ai_verbs_default)
 
 /mob/living/silicon/ai/proc/remove_ai_verbs()
-	src.verbs -= ai_verbs_default
+	remove_verb(src, ai_verbs_default)
 
 /mob/living/silicon/ai/New(loc, var/obj/item/device/mmi/B, var/safety = 0)
 	var/list/possibleNames = ai_names
@@ -103,7 +103,7 @@ var/list/ai_verbs_default = list(
 	anchored = 1
 	canmove = 0
 	density = 1
-	loc = loc
+	forceMove(loc)
 
 	holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))
 
@@ -183,7 +183,7 @@ var/list/ai_verbs_default = list(
 	if(isnull(powered_ai))
 		qdel(src)
 		return
-	loc = powered_ai.loc
+	forceMove(powered_ai.loc)
 	use_power(1) // Just incase we need to wake up the power system.
 	//start_processing()
 	//..()
@@ -193,7 +193,7 @@ var/list/ai_verbs_default = list(
 		qdel(src)
 		return
 	if(!powered_ai.anchored)
-		loc = powered_ai.loc
+		forceMove(powered_ai.loc)
 		update_use_power(0)
 	if(powered_ai.anchored)
 		update_use_power(2)

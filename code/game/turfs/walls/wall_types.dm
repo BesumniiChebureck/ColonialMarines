@@ -49,6 +49,9 @@
 	walltype = WALL_HULL
 	hull = 1 //Impossible to destroy or even damage. Used for outer walls that would breach into space, potentially some special walls
 
+/turf/closed/wall/almayer/no_door_tile
+	tiles_with = list(/turf/closed/wall,/obj/structure/window/framed,/obj/structure/window_frame,/obj/structure/girder)
+
 /turf/closed/wall/almayer/outer/take_damage(dam, var/mob/M)
 	return
 
@@ -56,6 +59,9 @@
 	walltype = WALL_WHITE
 	icon = 'icons/turf/walls/almayer_white.dmi'
 	icon_state = "wwall"
+
+/turf/closed/wall/almayer/white/outer_tile
+	tiles_with = list(/turf/closed/wall/almayer/white,/turf/closed/wall/almayer/outer)
 
 /turf/closed/wall/almayer/white/hull
 	name = "research hull"
@@ -222,16 +228,33 @@
 
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
-	icon = 'icons/custom/lobby/title.dmi'
+	desc = "Assorted artworks."
 	icon_state = "lobbyart1"
+//	icon_state = "title_holiday"
 	layer = FLY_LAYER
 	special_icon = 1
 
-/turf/closed/wall/indestructible/splashscreen/New()
-	..()
+/turf/closed/wall/indestructible/splashscreen/Initialize()
+	. = ..()
+	icon = get_icon_from_source(CONFIG_GET(string/lobby_art))
+	tag = "LOBBYART"
 	if(icon_state == "lobbyart1") // default
-		icon_state = "lobbyart[rand(1,6)]"
+		// Only pick lobby art that credits the author
+		displayed_lobby_art = rand(1,length(lobby_art_authors))
+		icon_state = "lobbyart[displayed_lobby_art]"
 
+		desc = "Artwork by [lobby_art_authors[displayed_lobby_art]]"
+
+/proc/force_lobby_art(art_id)
+	displayed_lobby_art = art_id
+	var/turf/closed/wall/indestructible/splashscreen/SS = locate("LOBBYART")
+	SS.icon_state = "lobbyart[displayed_lobby_art]"
+	SS.desc = "Artwork by [lobby_art_authors[displayed_lobby_art]]"
+	for(var/client/C in GLOB.clients)
+		if(displayed_lobby_art != -1)
+			var/author = "[lobby_art_authors[displayed_lobby_art]]"
+			if(author != "Unknown")
+				to_chat_forced(C, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
 
 /turf/closed/wall/indestructible/other
 	icon_state = "r_wall"

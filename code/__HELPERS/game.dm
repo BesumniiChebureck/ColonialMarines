@@ -30,6 +30,7 @@
 	var/dy = abs(Loc1.y - Loc2.y)
 	return (dx * dx) + (dy * dy)
 
+
 /proc/get_dist_euclidian(atom/Loc1 as turf|mob|obj,atom/Loc2 as turf|mob|obj)
 	var/dx = Loc1.x - Loc2.x
 	var/dy = Loc1.y - Loc2.y
@@ -50,6 +51,7 @@
 		if(dx*dx + dy*dy <= rsq)
 			turfs += T
 	return turfs
+
 
 //var/debug_mob = 0
 
@@ -255,3 +257,24 @@ proc/isInSight(var/atom/A, var/atom/B)
 
 /proc/getWireFlag(var/wire)
 	return 2**(wire-1)
+
+/**
+ * Get a bounding box of a list of atoms.
+ *
+ * Arguments:
+ * - atoms - List of atoms. Can accept output of view() and range() procs.
+ *
+ * Returns: list(x1, y1, x2, y2)
+ */
+/proc/get_bbox_of_atoms(list/atoms)
+	var/list/list_x = list()
+	var/list/list_y = list()
+	for(var/_a in atoms)
+		var/atom/a = _a
+		list_x += a.x
+		list_y += a.y
+	return list(
+		min(list_x),
+		min(list_y),
+		max(list_x),
+		max(list_y))

@@ -51,7 +51,8 @@ SUBSYSTEM_DEF(ticker)
 	'sound/music/buffalo_springfield.ogg',
 	'sound/music/warrior_song.ogg',
 	'sound/music/Edwin_Starr_War.ogg',
-	'sound/music/Ross_bugden_Welcome_to_chaos.ogg')
+	'sound/music/Ross_bugden_Welcome_to_chaos.ogg',
+	'sound/music/Big_Iron.ogg')
 
 	return ..()
 
