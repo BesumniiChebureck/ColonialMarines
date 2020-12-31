@@ -117,7 +117,7 @@ var/global/datum/controller/defcon/defcon_controller
 	//text2file("Map tag: [map_tag]", "data/defcon_log.txt")
 	if (map_tag == MAP_PRISON_STATION || map_tag == MAP_SOROKYNE_STRATA)
 		defcon_level_triggers = list(3750, 2600, 1450, 875, 0.0)
-	else if (map_tag == MAP_ICE_COLONY || map_tag == MAP_DESERT_DAM || map_tag == MAP_CORSAT || map_tag == MAP_ZERO_POINT || map_tag == MAP_ZERO_POINTC)
+	else if (map_tag == MAP_ICE_COLONY || map_tag == MAP_DESERT_DAM || map_tag == MAP_CORSAT)
 		defcon_level_triggers = list(3300, 2100, 1450, 580, 0.0)
 	else if (map_tag == MAP_BIG_RED)
 		defcon_level_triggers = list(4750, 3500, 2000, 1000, 0.0)
@@ -311,29 +311,4 @@ var/global/datum/controller/defcon/defcon_controller
 /datum/defcon_reward/nuke/announce_reward(var/announcement_message)
 	//Send ARES message about special asset authorisation
 	var/name = "STRATEGIC NUKE AUTHORISED"
-	marine_announcement(announcement_message, name, 'sound/misc/notice1.ogg')
-
-/datum/defcon_reward/obnuke
-	name = "OB nuke"
-	cost = DEFCON_COST_EXPENSIVE
-	minimum_defcon_level = 2
-	unique = TRUE
-	announcement_message = "OB nuke has been been delivered to Requisitions' ASRS."
-
-/datum/defcon_reward/obnuke/apply_reward(var/datum/controller/defcon/d)
-	. = ..()
-	if(. == 0)
-		return
-
-	var/datum/supply_order/O = new /datum/supply_order()
-	O.ordernum = supply_controller.ordernum
-	supply_controller.ordernum++
-	O.object = supply_controller.supply_packs["Operational OB Nuke"]
-	O.orderedby = MAIN_AI_SYSTEM
-
-	supply_controller.shoppinglist += O
-
-/datum/defcon_reward/obnuke/announce_reward(var/announcement_message)
-	//Send ARES message about special asset authorisation
-	var/name = "STRATEGIC OB NUKE AUTHORISED"
 	marine_announcement(announcement_message, name, 'sound/misc/notice1.ogg')

@@ -30,9 +30,9 @@ var/list/ob_type_fuel_requirements
 
 	if(!ob_type_fuel_requirements)
 		ob_type_fuel_requirements = list()
-		var/list/L = list(3,4,5,6)
+		var/list/L = list(4,5,6)
 		var/amt
-		for(var/i=1 to 4)
+		for(var/i=1 to 3)
 			amt = pick_n_take(L)
 			ob_type_fuel_requirements += amt
 
@@ -164,7 +164,7 @@ var/list/ob_type_fuel_requirements
 		return
 
 	if(last_orbital_firing) //fired at least once
-		var/cooldown_left = (last_orbital_firing + 1200) - world.time
+		var/cooldown_left = (last_orbital_firing + 2500) - world.time
 		if(cooldown_left > 0)
 			if(user)
 				to_chat(user, SPAN_WARNING("[src]'s barrel is still too hot, let it cool down for [round(cooldown_left/10)] more seconds."))
@@ -211,10 +211,8 @@ var/list/ob_type_fuel_requirements
 			inaccurate_fuel = abs(ob_type_fuel_requirements[2] - tray.fuel_amt)
 		if("cluster")
 			inaccurate_fuel = abs(ob_type_fuel_requirements[3] - tray.fuel_amt)
-		if("nuke")
-			inaccurate_fuel = abs(ob_type_fuel_requirements[4] - tray.fuel_amt)
 
-	var/turf/target = locate(T.x + inaccurate_fuel * round(rand(-4,4), 1), T.y + inaccurate_fuel * round(rand(-4,4), 1), T.z)
+	var/turf/target = locate(T.x + inaccurate_fuel * round(rand(-3,3), 1), T.y + inaccurate_fuel * round(rand(-3,3), 1), T.z)
 	if(user)
 		tray.warhead.source_mob = user
 
@@ -369,6 +367,7 @@ var/list/ob_type_fuel_requirements
 
 
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(var/turf/target)
+	// make damn sure everyone hears it
 	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
 
 	var/cancellation_token = rand(0,32000)
@@ -412,9 +411,9 @@ var/list/ob_type_fuel_requirements
 	warhead_kind = "explosive"
 	icon_state = "ob_warhead_1"
 	var/clear_power = 1200
-	var/clear_falloff = 300
+	var/clear_falloff = 400
 	var/standard_power = 600
-	var/standard_falloff = 10
+	var/standard_falloff = 30
 	var/clear_delay = 3
 	var/double_explosion_delay = 6
 
@@ -427,6 +426,7 @@ var/list/ob_type_fuel_requirements
 	sleep(10)
 	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob) //break shit around
 	sleep(clear_delay)
+	//ACTUALLY BLOW SHIT UP
 	if(!target.density)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 		sleep(double_explosion_delay)
@@ -444,12 +444,12 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Incendiary orbital warhead"
 	warhead_kind = "incendiary"
 	icon_state = "ob_warhead_2"
-	var/clear_power = 1600
-	var/clear_falloff = 350
+	var/clear_power = 1200
+	var/clear_falloff = 400
 	var/clear_delay = 3
-	var/distance = 22
+	var/distance = 18
 	var/fire_level = 70
-	var/burn_level = 100
+	var/burn_level = 80
 	var/fire_color = "white"
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target)
@@ -468,10 +468,10 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
-	var/total_amount = 40
-	var/instant_amount = 2
-	var/explosion_power = 200
-	var/explosion_falloff = 10
+	var/total_amount = 60
+	var/instant_amount = 3
+	var/explosion_power = 300
+	var/explosion_falloff = 150
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target)
 	. = ..()
@@ -483,7 +483,7 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/warhead/cluster/proc/start_cluster(turf/target)
 	set waitfor = 0
 
-	var/range_num = 30
+	var/range_num = 12
 	var/list/turf_list = list()
 
 	for(var/turf/T in range(range_num, target))
@@ -513,39 +513,6 @@ var/list/ob_type_fuel_requirements
 	pixel_x = rand(-5,5)
 	pixel_y = rand(-5,5)
 
-
-/obj/structure/ob_ammo/warhead/nuke
-	name = "\improper Nucke orbital warhead"
-	warhead_kind = "nuke"
-	icon_state = "ob_warhead_4"
-	var/clear_power = 4000
-	var/clear_falloff = 200
-	var/standard_power = 1200
-	var/standard_falloff = 10
-	var/clear_delay = 3
-	var/double_explosion_delay = 6
-
-/obj/structure/ob_ammo/warhead/nuke/warhead_impact(turf/target)
-	. = ..()
-	if (!.)
-		return
-
-	new /obj/effect/overlay/temp/blinking_laser (target)
-	sleep(10)
-	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob) //break shit around
-	sleep(clear_delay)
-	if(!target.density)
-		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
-		sleep(double_explosion_delay)
-		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
-		return
-
-	for(var/turf/T in range(2, target))
-		if(!T.density)
-			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
-			sleep(double_explosion_delay)
-			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
-			return
 
 
 
@@ -591,7 +558,6 @@ var/list/ob_type_fuel_requirements
 			dat += "- HE Orbital Warhead: <b>[ob_type_fuel_requirements[1]] Solid Fuel blocks.</b><BR>"
 			dat += "- Incendiary Orbital Warhead: <b>[ob_type_fuel_requirements[2]] Solid Fuel blocks.</b><BR>"
 			dat += "- Cluster Orbital Warhead: <b>[ob_type_fuel_requirements[3]] Solid Fuel blocks.</b><BR>"
-			dat += "- Nuke Orbital Warhead: <b>[ob_type_fuel_requirements[4]] Solid Fuel blocks.</b><BR>"
 
 			dat += "<BR><BR><A href='?src=\ref[src];back=1'><font size=3>Back</font></A><BR>"
 		else

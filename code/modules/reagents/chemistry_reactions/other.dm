@@ -70,7 +70,6 @@
 	required_reagents = list("radium" = 1, "phosphorus" = 1, "chlorine" = 1)
 	result_amount = 3
 
-
 /datum/chemical_reaction/stoxin
 	name = "Soporific"
 	id = "stoxin"

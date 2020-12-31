@@ -1352,7 +1352,7 @@
 
 	if(H)
 		for(var/atom/movable/AM in H)
-			AM.forceMove(src.loc)
+			AM.forceMove(loc)
 			AM.pipe_eject(dir)
 			if(!istype(AM, /mob/living/silicon/robot/drone)) //Drones keep smashing windows from being fired out of chutes. Bad for the station. ~Z
 				spawn(5)

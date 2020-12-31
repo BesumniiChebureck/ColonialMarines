@@ -128,7 +128,7 @@
 				"Survivor - Trucker",
 				"Survivor - Colonial Marshall",
 			)
-		if(MAP_ICE_COLONY, MAP_ZERO_POINT, MAP_ZERO_POINTC)
+		if(MAP_ICE_COLONY)
 			survivor_types = list(
 				"Survivor - Scientist",
 				"Survivor - Doctor",

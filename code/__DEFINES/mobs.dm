@@ -182,6 +182,7 @@
 #define HAS_UNDERWEAR 512
 #define IS_WHITELISTED 1024
 #define IS_SYNTHETIC 2048
+#define NO_SHRAPNEL 4096
 
 //=================================================
 
@@ -274,13 +275,11 @@
 
 // Queen strain flags
 #define QUEEN_NORMAL		"Normal"
-#define QUEEN_POWDER		"Powder"
-#define QUEEN_CHARGER		"Charger"
-#define QUEEN_SCREECHER		"Screecher"
 
 // Drone strain flags
 #define DRONE_NORMAL		"Normal"
 #define DRONE_HEALER		"Healer"
+#define DRONE_GARDENER		"Gardener"
 
 // Hivelord strain flags
 #define HIVELORD_NORMAL		"Normal"

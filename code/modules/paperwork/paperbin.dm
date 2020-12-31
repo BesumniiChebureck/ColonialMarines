@@ -52,8 +52,8 @@
 				P = new /obj/item/paper/wy
 			else if (response == "USCM Document")
 				P = new /obj/item/paper/uscm
-
-
+			
+			
 
 		P.forceMove(user.loc)
 		user.put_in_hands(P)

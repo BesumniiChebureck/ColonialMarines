@@ -7,7 +7,7 @@
 	disp_icon_state = "drgn_flamer"
 	activation_sounds = list('sound/weapons/vehicles/flamethrower.ogg')
 
-	health = 600
+	health = 400
 	cooldown = 20
 	accuracy = 0.75
 	firing_arc = 90

@@ -544,6 +544,7 @@
 
 	if(hive_datum[H.hivenumber])
 		var/datum/hive_status/hive = hive_datum[H.hivenumber]
+
 		if(hive.leading_cult_sl == H)
 			hive.leading_cult_sl = null
 
@@ -582,7 +583,6 @@
 
 	if(hive_datum[H.hivenumber])
 		var/datum/hive_status/hive = hive_datum[H.hivenumber]
-
 		hive.leading_cult_sl = H
 
 	var/list/types = subtypesof(/datum/action/human_action/activable/cult_leader/)

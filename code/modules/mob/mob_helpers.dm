@@ -158,7 +158,7 @@ var/global/list/limb_types_by_name = list(
 			t = text("[]*", t)
 		p++
 	return t
-/*
+
 proc/slur(phrase)
 	phrase = html_decode(phrase)
 	var/leng=length(phrase)
@@ -204,86 +204,6 @@ proc/slur(phrase)
 		t = text("[t][n_letter]")//since the above is ran through for each letter, the text just adds up back to the original word.
 		p++//for each letter p is increased to find where the next letter will be.
 	return strip_html(t)
-
-*/
-/proc/slur(text)
-
-	text = html_decode(text)
-
-	var/bytes_length = length(text)
-	var/new_text = ""
-	var/letter = ""
-	var/new_letter = ""
-
-	for(var/i = 1, i <= bytes_length, i += length(letter))
-		letter = text[i]
-		new_letter = letter
-
-		if(prob(35))
-			switch(lowertext(new_letter))
-				// latin
-				if("o")
-					new_letter = "u"
-				if("s")
-					new_letter = "ch"
-				if("a")
-					new_letter = "ah"
-				if("c")
-					new_letter = "k"
-				// cyrillic
-				if("ч")
-					new_letter = "щ"
-				if("е")
-					new_letter = "и"
-				if("з")
-					new_letter = "с"
-				if("к")
-					new_letter = "х"
-
-		switch(rand(1,15))
-			if(1,3,5,8)
-				new_letter = lowertext(new_letter)
-			if(2,4,6,15)
-				new_letter = uppertext(new_letter)
-			if(7)
-				new_letter += "'"
-
-		new_text += new_letter
-
-	return html_encode(capitalize(new_text))
-
-/proc/stutter(text)
-
-	text = html_decode(text)
-
-	var/bytes_length = length(text)
-	var/new_text = ""
-	var/letter = ""
-	var/new_letter = ""
-
-	var/static/list/stutter_alphabet = list("b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z","б","в","г","д","ж","з","й","к","л","м","н","п","р","с","т","ф","х","ц","ч","ш","щ")
-
-
-	for(var/i = 1, i <= bytes_length, i += length(letter))
-		letter = text[i]
-		new_letter = letter
-
-		if(prob(80) && (lowertext(new_letter) in stutter_alphabet))
-			if (prob(10))
-				new_letter = "[new_letter]-[new_letter]-[new_letter]-[new_letter]"
-			else
-				if (prob(20))
-					new_letter = "[new_letter]-[new_letter]-[new_letter]"
-				else
-					if (prob(5))
-						new_letter = ""
-					else
-						new_letter = "[new_letter]-[new_letter]"
-
-		new_text += new_letter
-
-	return html_encode(new_text)
-
 
 
 proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added
@@ -332,37 +252,25 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		p=p+n_mod
 	return strip_html(t)
 
+#define PIXELS_PER_STRENGTH_VAL 24
 
-/proc/shake_camera(mob/M, duration, strength=1)
-	if(!M || !M.client || M.shakecamera)
+/proc/shake_camera(var/mob/M, var/steps = 1, var/strength = 1, var/time_per_step = 1)
+	if(!M || !M.client || (M.shakecamera > world.time))
 		return
-	M.shakecamera = 1
-	spawn(1)
-		if(!M.client)
-			return
 
-		var/atom/oldeye=M.client.eye
-		var/aiEyeFlag = 0
-		if(istype(oldeye, /mob/aiEye))
-			aiEyeFlag = 1
+	M.shakecamera = world.time + steps * time_per_step
+	strength = abs(strength)*PIXELS_PER_STRENGTH_VAL
+	var/old_X = M.client.pixel_x
+	var/old_y = M.client.pixel_y
 
-		var/x
-		for(x=0; x<duration, x++)
-			if(!M) return //Might have died/logged out before it ended
+	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step)
+	var/i = 1
+	while(i < steps)
+		animate(pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step)
+		i++
+	animate(pixel_x = old_X, pixel_y = old_y,time = Clamp(Floor(strength/PIXELS_PER_STRENGTH_VAL),2,4))//ease it back
 
-			if(!M.client)
-				M.shakecamera = 0
-				return
-
-			if(aiEyeFlag)
-				M.client.eye = locate(dd_range(1,oldeye.loc.x+rand(-strength,strength),world.maxx),dd_range(1,oldeye.loc.y+rand(-strength,strength),world.maxy),oldeye.loc.z)
-			else
-				M.client.eye = locate(dd_range(1,M.loc.x+rand(-strength,strength),world.maxx),dd_range(1,M.loc.y+rand(-strength,strength),world.maxy),M.loc.z)
-			sleep(1)
-		if(M.client)
-			M.client.eye=oldeye //Mighta disconnected
-		M.shakecamera = 0
-
+#undef PIXELS_PER_STRENGTH_VAL
 
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)

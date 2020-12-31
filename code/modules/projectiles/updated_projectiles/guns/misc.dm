@@ -159,7 +159,7 @@
 	last_regen = world.time
 	update_icon()
 	remove_verb(src, list(
-		/obj/item/weapon/gun/verb/field_strip,
+		/obj/item/weapon/gun/verb/field_strip, //We don't want these to show since they're useless.
 		/obj/item/weapon/gun/verb/toggle_burst,
 		/obj/item/weapon/gun/verb/empty_mag,
 		/obj/item/weapon/gun/verb/use_unique_action,

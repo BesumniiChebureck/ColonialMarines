@@ -22,7 +22,7 @@
 	evolution_allowed = FALSE
 	deevolves_to = "Lurker"
 	caste_desc = "A brutal, devastating front-line attacker."
-	fire_immune = FALSE
+	fire_immune = TRUE
 	attack_delay = -1
 
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base
@@ -95,7 +95,6 @@
 			break
 
 	if (rav_shield && ((rav_shield.last_damage_taken + shield_decay_time) < world.time))
-		bound_xeno.xeno_shields -= rav_shield
 		QDEL_NULL(rav_shield)
 		to_chat(bound_xeno, SPAN_XENODANGER("You feel your shield decay!"))
 		bound_xeno.overlay_shields()

@@ -27,7 +27,7 @@
 
 /datum/game_mode/xenovs/proc/setup_mapdata(map)
     switch(map)
-        if(MAP_LV_624, MAP_ZERO_POINT, MAP_ZERO_POINTC)
+        if(MAP_LV_624)
             monkey_types = list(/mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
             hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO)
 
@@ -68,6 +68,7 @@
         else
             monkey_types = list(/mob/living/carbon/human/monkey) //make sure we always have a monkey type
             hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO)
+
 
 /* Pre-pre-startup */
 /datum/game_mode/xenovs/can_start()

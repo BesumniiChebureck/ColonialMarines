@@ -61,7 +61,7 @@ proc/NewStutter(phrase,stunned)
 
 proc/DazedText(phrase)
 	phrase = html_decode(phrase)
-	var/result = ""
+	var/result = ""	
 	var/i = rand(5,10)
 	if(length(phrase)<2)
 		for(,i > 0,i--)

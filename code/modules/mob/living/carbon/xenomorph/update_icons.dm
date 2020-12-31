@@ -2,9 +2,6 @@
 //Abby
 
 //Xeno Overlays Indexes//////////
-#define X_WOUND3_LAYER			11
-#define X_WOUND2_LAYER			10
-#define X_WOUND1_LAYER			9
 #define X_HEAD_LAYER			8
 #define X_SUIT_LAYER			7
 #define X_L_HAND_LAYER			6
@@ -13,8 +10,7 @@
 #define X_TARGETED_LAYER		3
 #define X_LEGCUFF_LAYER			2
 #define X_FIRE_LAYER			1
-
-#define X_TOTAL_LAYERS			11
+#define X_TOTAL_LAYERS			8
 /////////////////////////////////
 
 
@@ -42,7 +38,6 @@
 		icon_state = "[mutation_type] [caste.caste_name] Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-	update_wounds() //the damage overlay
 
 /mob/living/carbon/Xenomorph/regenerate_icons()
 	..()
@@ -188,51 +183,7 @@
 	apply_overlay(X_HEAD_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_HEAD_LAYER), 20)
 
-/mob/living/carbon/Xenomorph/proc/update_wounds()
-	remove_overlay(X_WOUND1_LAYER)
-	if(health < maxHealth * 0.75) //Injuries appear at less than 25% health
-		var/image/I
-		if(mob_size >= MOB_SIZE_BIG)
-			if((!initial(pixel_y) || lying) && !resting && !sleeping)
-				I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state" =  "wound1", "layer"=-X_WOUND1_LAYER)
-			else
-				I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state" =  "wound1_lying", "layer"=-X_WOUND1_LAYER)
-		else
-			I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_effects)), "icon_state" =  "wound1", "layer"=-X_WOUND1_LAYER)
-
-		overlays_standing[X_WOUND1_LAYER] = I
-		apply_overlay(X_WOUND1_LAYER)
-	remove_overlay(X_WOUND2_LAYER)
-	if(health < (maxHealth * 0.5)) //Injuries appear at less than 50% health
-		var/image/I
-		if(mob_size >= MOB_SIZE_BIG)
-			if((!initial(pixel_y) || lying) && !resting && !sleeping)
-				I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state"="wound2", "layer"=-X_WOUND2_LAYER)
-			else
-				I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state"="wound2_lying", "layer"=-X_WOUND2_LAYER)
-		else
-			I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_effects)), "icon_state"="wound2", "layer"=-X_WOUND2_LAYER)
-
-		overlays_standing[X_WOUND2_LAYER] = I
-		apply_overlay(X_WOUND2_LAYER)
-	remove_overlay(X_WOUND3_LAYER)
-	if(health < (maxHealth * 0.25)) //Injuries appear at less than 75% health
-		var/image/I
-		if(mob_size >= MOB_SIZE_BIG)
-			if((!initial(pixel_y) || lying) && !resting && !sleeping)
-				I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state"="wound3", "layer"=-X_WOUND3_LAYER)
-			else
-				I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state"="wound3_lying", "layer"=-X_WOUND3_LAYER)
-		else
-			I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_effects)), "icon_state"="wound3", "layer"=-X_WOUND3_LAYER)
-
-		overlays_standing[X_WOUND3_LAYER] = I
-		apply_overlay(X_WOUND3_LAYER)
-
 //Xeno Overlays Indexes//////////
-#undef X_WOUND3_LAYER
-#undef X_WOUND2_LAYER
-#undef X_WOUND1_LAYER
 #undef X_HEAD_LAYER
 #undef X_SUIT_LAYER
 #undef X_L_HAND_LAYER

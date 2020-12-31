@@ -1,3 +1,4 @@
+
 /client/verb/who()
 	set name = "Who"
 	set category = "OOC"
@@ -36,11 +37,11 @@
 
 	var/list/counted_xenos = list(0,0,0,0,0,0)
 
-	var/body = "<b>Current Players:</b><br>"
+	var/msg = "<b>Current Players:</b>\n"
 	var/list/Lines = list()
 	if(admin_holder && ((R_ADMIN & admin_holder.rights) || (R_MOD & admin_holder.rights)))
 		for(var/client/C in GLOB.clients)
-			var/entry = "[C.key]"
+			var/entry = "\t[C.key]"
 			if(C.mob)	//Juuuust in case
 				if(istype(C.mob, /mob/new_player))
 					entry += " - In Lobby"
@@ -92,45 +93,45 @@
 								counted_xenos[6]++
 							entry += " - <b><font color='red'>Xenomorph</font></b>"
 
-				entry += " (<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=\ref[C.mob]'>?</A>)"
+				entry += " (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[C.mob]'>?</A>)"
 				Lines += entry
 
 		for(var/line in sortList(Lines))
-			body += "[line]<br>"
-		body += "<b>Total Players: [length(Lines)]</b>"
-		body += "<br><b style='color:#777'>In Lobby: [counted_humanoids["Lobby"]]</b>"
-		body += "<br><b style='color:#777'>Observers: [counted_humanoids["Observers"]] players and [counted_humanoids["Admin observers"]] staff members</b>"
-		body += "<br><b style='color:#2C7EFF'>Humans: [counted_humanoids["Humans"]]</b> <b style='color:#F00'>(Infected: [counted_humanoids["Infected humans"]])</b>"
+			msg += "[line]\n"
+		msg += "<b>Total Players: [length(Lines)]</b>"
+		msg += "<br><b style='color:#777'>In Lobby: [counted_humanoids["Lobby"]]</b>"
+		msg += "<br><b style='color:#777'>Observers: [counted_humanoids["Observers"]] players and [counted_humanoids["Admin observers"]] staff members</b>"
+		msg += "<br><b style='color:#2C7EFF'>Humans: [counted_humanoids["Humans"]]</b> <b style='color:#F00'>(Infected: [counted_humanoids["Infected humans"]])</b>"
 		if(counted_humanoids[FACTION_MARINE])
-			body += "<br><b style='color:#2C7EFF'>USCM personnel: [counted_humanoids[FACTION_MARINE]]</b> <b style='color:#688944'>(Squad Marines: [counted_humanoids["USCM Marines"]])</b>"
+			msg += "<br><b style='color:#2C7EFF'>USCM personnel: [counted_humanoids[FACTION_MARINE]]</b> <b style='color:#688944'>(Squad Marines: [counted_humanoids["USCM Marines"]])</b>"
 		if(counted_humanoids[FACTION_YAUTJA])
-			body += "<br><b style='color:#7ABA19'>Predators: [counted_humanoids[FACTION_YAUTJA]]</b> [counted_humanoids["Infected preds"] ? "<b style='color:#F00'>(Infected: [counted_humanoids["Infected preds"]])</b>" : ""]"
+			msg += "<br><b style='color:#7ABA19'>Predators: [counted_humanoids[FACTION_YAUTJA]]</b> [counted_humanoids["Infected preds"] ? "<b style='color:#F00'>(Infected: [counted_humanoids["Infected preds"]])</b>" : ""]"
 
 		var/show_fact = TRUE
 		for(var/i in 10 to LAZYLEN(counted_humanoids) - 2)
 			if(counted_humanoids[counted_humanoids[i]])
 				if(show_fact)
-					body += "<br><br>Other factions:"
+					msg += "<br><br>Other factions:"
 					show_fact = FALSE
-				body += "<br><b style='color:#2C7EFF'>[counted_humanoids[i]]: [counted_humanoids[counted_humanoids[i]]]</b>"
+				msg += "<br><b style='color:#2C7EFF'>[counted_humanoids[i]]: [counted_humanoids[counted_humanoids[i]]]</b>"
 		if(counted_humanoids[FACTION_NEUTRAL])
-			body += "<br><b style='color:#777'>[FACTION_NEUTRAL] humans: [counted_humanoids[FACTION_NEUTRAL]]</b>"
+			msg += "<br><b style='color:#777'>[FACTION_NEUTRAL] humans: [counted_humanoids[FACTION_NEUTRAL]]</b>"
 
 		show_fact = TRUE
 		var/datum/hive_status/hive
 		for(var/i = 1;i < LAZYLEN(counted_xenos); i++)
 			if(counted_xenos[i])
 				if(show_fact)
-					body += "<br><br>Xenomorphs:"
+					msg += "<br><br>Xenomorphs:"
 					show_fact = FALSE
 				hive = hive_datum[i]
 				if(hive)
-					body += "<br><b style='color:[hive.color ? hive.color : "#8200FF"]'>[hive.name]: [counted_xenos[i]]</b> <b style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</b>"
+					msg += "<br><b style='color:[hive.color ? hive.color : "#8200FF"]'>[hive.name]: [counted_xenos[i]]</b> <b style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</b>"
 				else
-					body += "<br><b style='color:#F00'>Error: no hive datum detected for [counted_xenos[i]]s Hive.</b>"
+					msg += "<br><b style='color:#F00'>Error: no hive datum detected for [counted_xenos[i]]s Hive.</b>"
 				hive = null
 		if(counted_xenos[6])
-			body += "<br><b style='color:#7ABA19'>Predaliens: [counted_xenos[6]]</b>"
+			msg += "<br><b style='color:#7ABA19'>Predaliens: [counted_xenos[6]]</b>"
 
 	else
 		for(var/client/C in GLOB.clients)
@@ -139,22 +140,18 @@
 
 			Lines += C.key
 		for(var/line in sortList(Lines))
-			body += "[line]<br>"
-		body += "<b>Total Players: [length(Lines)]</b><br>"
+			msg += "[line]\n"
+		msg += "<b>Total Players: [length(Lines)]</b>"
 
-	var/datum/browser/browser = new(usr, "who", "<div align='center'>Who</div>", 1200, 1500)
-	browser.set_content(body)
-	browser.open()
-
-
+	to_chat(src, msg)
 
 /client/verb/staffwho()
 	set name = "Staffwho"
 	set category = "OOC"
 
-	var/body = ""
-	var/modbody = ""
-	var/mentbody = ""
+	var/msg = ""
+	var/modmsg = ""
+	var/mentmsg = ""
 	var/num_mods_online = 0
 	var/num_admins_online = 0
 	var/num_mentors_online = 0
@@ -162,47 +159,47 @@
 	if(admin_holder && !AHOLD_IS_ONLY_MENTOR(admin_holder))
 		for(var/client/C in GLOB.admins)
 			if(AHOLD_IS_ADMIN(C.admin_holder))	//Used to determine who shows up in admin rows
-				body += "[C] is a [C.admin_holder.rank]"
+				msg += "\t[C] is a [C.admin_holder.rank]"
 
 				if(C.admin_holder.fakekey)
-					body += " <i>(HIDDEN)</i>"
+					msg += " <i>(HIDDEN)</i>"
 
 				if(isobserver(C.mob))
-					body += " - Observing"
+					msg += " - Observing"
 				else if(istype(C.mob,/mob/new_player))
-					body += " - Lobby"
+					msg += " - Lobby"
 				else
-					body += " - Playing"
+					msg += " - Playing"
 
 				if(C.is_afk())
-					body += " (AFK)"
-				body += "<br>"
+					msg += " (AFK)"
+				msg += "\n"
 
 				num_admins_online++
 			else if(AHOLD_IS_MOD(C.admin_holder))				//Who shows up in mod/mentor rows.
-				modbody += "[C] is a [C.admin_holder.rank]"
+				modmsg += "\t[C] is a [C.admin_holder.rank]"
 
 				if(C.admin_holder.fakekey)
-					modbody += " <i>(HIDDEN)</i>"
+					modmsg += " <i>(HIDDEN)</i>"
 
 				if(isobserver(C.mob))
-					modbody += " - Observing"
+					modmsg += " - Observing"
 				else if(istype(C.mob,/mob/new_player))
-					modbody += " - Lobby"
+					modmsg += " - Lobby"
 				else
-					modbody += " - Playing"
+					modmsg += " - Playing"
 
 				if(C.is_afk())
-					modbody += " (AFK)"
-				modbody += "<br>"
+					modmsg += " (AFK)"
+				modmsg += "\n"
 				num_mods_online++
 
 			else if(AHOLD_IS_MENTOR(C.admin_holder))
-				mentbody += "\t[C] is a [C.admin_holder.rank]"
+				mentmsg += "\t[C] is a [C.admin_holder.rank]"
 
 				if(C.is_afk())
-					mentbody += " (AFK)"
-				mentbody += "<br>"
+					mentmsg += " (AFK)"
+				mentmsg += "\n"
 
 				num_mentors_online++
 
@@ -212,26 +209,24 @@
 				if(C.admin_holder.fakekey)
 					continue
 
-				body += "[C] is a [C.admin_holder.rank]<br>"
+				msg += "\t[C] is a [C.admin_holder.rank]\n"
 				num_admins_online++
 			else if (AHOLD_IS_MOD(C.admin_holder))
 				if(C.admin_holder.fakekey)
 					continue
 
-				modbody += "[C] is a [C.admin_holder.rank]<br>"
+				modmsg += "\t[C] is a [C.admin_holder.rank]\n"
 				num_mods_online++
 			else if (AHOLD_IS_MENTOR(C.admin_holder))
-				mentbody += "[C] is a [C.admin_holder.rank]<br>"
+				mentmsg += "\t[C] is a [C.admin_holder.rank]\n"
 				num_mentors_online++
 
-	body = "<b>Current Admins ([num_admins_online]):</b><br>" + body
+	msg = "<b>Current Admins ([num_admins_online]):</b>\n" + msg
 
 	if(CONFIG_GET(flag/show_mods))
-		body += "<b> Current Moderators ([num_mods_online]):</b><br>" + modbody
+		msg += "\n<b> Current Moderators ([num_mods_online]):</b>\n" + modmsg
 
 	if(CONFIG_GET(flag/show_mentors))
-		body += "<b> Current Mentors ([num_mentors_online]):</b><br>" + mentbody
+		msg += "\n<b> Current Mentors ([num_mentors_online]):</b>\n" + mentmsg
 
-	var/datum/browser/browser = new(usr, "Staffwho", "<div align='center'>Staffwho</div>", 1200, 1500)
-	browser.set_content(body)
-	browser.open()
+	to_chat(src, msg)

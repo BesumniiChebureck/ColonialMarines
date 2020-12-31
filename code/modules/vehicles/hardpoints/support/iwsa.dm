@@ -6,7 +6,7 @@
 	disp_icon = "tank"
 	disp_icon_state = "warray"
 
-	health = 500
+	health = 250
 
 	buff_multipliers = list(
 		"cooldown" = 0.67,

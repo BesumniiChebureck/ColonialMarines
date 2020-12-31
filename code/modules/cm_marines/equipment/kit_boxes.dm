@@ -442,26 +442,3 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/attachable/quickfire(src)
 	new /obj/item/attachable/lasersight(src)
 	new /obj/item/storage/belt/gun/smartpistol(src)
-
-/obj/item/storage/box/kitc/co_gun
-	name = "\improper Experimental CO Weapon Kit (WARNING, HIGH DANGER USE WEAPON SYSTEM)"
-	icon = 'icons/obj/items/pro_case.dmi'
-	icon_state = "pro_case_large"
-	w_class = SIZE_HUGE
-	storage_slots = 24
-	slowdown = 1
-	can_hold = list(/obj/item/ammo_magazine/riflemc,/obj/item/weapon/gun/rifle/m46c) //Nada. Once you take the stuff out it doesn't fit back in.
-	foldable = TRUE
-	desc = "Warning, this is high warning kit."
-
-/obj/item/storage/box/kitc/co_gun/New()
-	..()
-	overlays += image('icons/obj/items/pro_case.dmi', "+co")
-
-/obj/item/storage/box/kitc/co_gun/fill_preset_inventory()
-	new /obj/item/weapon/gun/rifle/m46c(src)
-	new /obj/item/ammo_magazine/riflemc(src)
-	new /obj/item/ammo_magazine/riflemc(src)
-	new /obj/item/ammo_magazine/riflemc(src)
-	new /obj/item/ammo_magazine/riflemc(src)
-	new /obj/item/ammo_magazine/riflemc(src)

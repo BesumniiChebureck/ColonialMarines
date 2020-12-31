@@ -190,7 +190,6 @@
 
 			if(reagents.total_volume/count < 1) //Sanity checking.
 				return
-			var/was_logged = FALSE
 
 			if(href_list["createpill_multiple"])
 				count = Clamp(input("Select the number of pills to make. (max: [max_pill_count])", 10, pillamount) as num|null,0,max_pill_count)
@@ -214,6 +213,8 @@
 
 			if(reagents.total_volume/count < 1) //Sanity checking.
 				return
+			var/was_logged = FALSE
+
 			while (count--)
 				var/obj/item/reagent_container/pill/P = new/obj/item/reagent_container/pill(loc)
 				if(!name) name = reagents.get_master_reagent_name()
@@ -251,7 +252,7 @@
 					P = new/obj/item/reagent_container/glass/beaker/vial()
 					P.name = "[name] vial"
 					reagents.trans_to(P, 30)
-
+				
 				P.pixel_x = rand(-7, 7) //random position
 				P.pixel_y = rand(-7, 7)
 				P.update_icon()
@@ -295,7 +296,7 @@
 		if(QDELETED(connected))
 			to_chat(user, SPAN_WARNING("Connect a smartfridge first."))
 			return
-
+		
 		if(src.z != connected.z || get_dist(src, connected) > tether_range)
 			to_chat(user, SPAN_WARNING("Smartfridge is out of range. Connection severed."))
 			cleanup()

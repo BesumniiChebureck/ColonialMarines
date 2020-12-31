@@ -1,13 +1,6 @@
 //------------GEAR VENDOR---------------
 
-/obj/structure/machinery/cm_vending/gear/engi
-	name = "\improper ColMarTech Squad Engineer Gear Rack"
-	desc = "An automated gear rack for Squad Engineers."
-	icon_state = "eng_gear"
-	vendor_role = list(JOB_SQUAD_ENGI)
-	req_access = list(ACCESS_MARINE_ENGPREP)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("ENGINEER SET (MANDATORY)", 0, null, null, null),
 		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
@@ -19,25 +12,20 @@
 		list("UA 571-C Sentry Gun", 0, /obj/item/defenses/handheld/sentry, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
-		list("21S Tesla Coil", 15, /obj/item/defenses/handheld/tesla_coil, null, VENDOR_ITEM_REGULAR),
-		list("JIMA Planted Flag", 20, /obj/item/defenses/handheld/planted_flag, null, VENDOR_ITEM_REGULAR),
-		list("R-1NG Bell Tower", 15, /obj/item/defenses/handheld/bell_tower, null, VENDOR_ITEM_REGULAR),
-		list("UA 42-F Sentry Flamer", 25, /obj/item/defenses/handheld/sentry/flamer, null, VENDOR_ITEM_REGULAR),
-		list("UA 571-C Sentry Gun", 20, /obj/item/defenses/handheld/sentry, null, VENDOR_ITEM_REGULAR),
 		list("Airlock Circuit Board", 2, /obj/item/circuitboard/airlock, null, VENDOR_ITEM_REGULAR),
 		list("APC Circuit Board", 2, /obj/item/circuitboard/apc, null, VENDOR_ITEM_REGULAR),
 		list("Entrenching Tool (ET)", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
-		list("Fire Extinguisher (Portable)", 4, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
-		list("High-Capacity Power Cell", 2, /obj/item/cell/high, null, VENDOR_ITEM_REGULAR),
-		list("Incendiary Grenade", 4, /obj/item/explosive/grenade/incendiary, null, VENDOR_ITEM_REGULAR),
-		list("M20 Mine Box (x4 mines)", 10, /obj/item/storage/box/explosive_mines, null, VENDOR_ITEM_REGULAR),
-		list("Metal x50", 10, /obj/item/stack/sheet/metal/large_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Plasteel x50", 15, /obj/item/stack/sheet/plasteel/large_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Plastic Explosive", 4, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
-		list("Range Finder", 4, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
-		list("Sandbags x25", 8, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
-		list("Super-Capacity Power Cell", 6, /obj/item/cell/super, null, VENDOR_ITEM_REGULAR),
-		list("Welding Goggles", 6, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_MANDATORY),
+		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
+		list("High-Capacity Power Cell", 3, /obj/item/cell/high, null, VENDOR_ITEM_REGULAR),
+		list("Incendiary Grenade", 6, /obj/item/explosive/grenade/incendiary, null, VENDOR_ITEM_REGULAR),
+		list("M20 Mine Box (x4 mines)", 18, /obj/item/storage/box/explosive_mines, null, VENDOR_ITEM_REGULAR),
+		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_RECOMMENDED),
+		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
+		list("Plastic Explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
+		list("Range Finder", 10, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
+		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
+		list("Super-Capacity Power Cell", 10, /obj/item/cell/super, null, VENDOR_ITEM_REGULAR),
+		list("Welding Goggles", 5, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_MANDATORY),
 
 		list("AMMUNITION", 0, null, null, null),
 		list("L42A AP Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/l42a/ap, null, VENDOR_ITEM_REGULAR),
@@ -61,17 +49,22 @@
 		list("Reflex Sight", 6, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 6, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
 		list("Vertical Grip", 6, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR)
-	)
+	))
+
+/obj/structure/machinery/cm_vending/gear/engi
+	name = "\improper ColMarTech Squad Engineer Gear Rack"
+	desc = "An automated gear rack for Squad Engineers."
+	icon_state = "eng_gear"
+	vendor_role = list(JOB_SQUAD_ENGI)
+	req_access = list(ACCESS_MARINE_ENGPREP)
+
+/obj/structure/machinery/cm_vending/gear/engi/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_gear_engi
 
 //------------CLOTHING VENDOR---------------
 
-/obj/structure/machinery/cm_vending/clothing/engi
-	name = "\improper ColMarTech Squad Engineer Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Squad Engineer standard-issue equipment."
-	req_access = list(ACCESS_MARINE_ENGPREP)
-	vendor_role = list(JOB_SQUAD_ENGI)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 		list("Uniform", 0, /obj/item/clothing/under/marine/engineer, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
@@ -92,12 +85,13 @@
 		list("Technician Welderpack", 0, /obj/item/storage/backpack/marine/engineerpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
+		list("G8-A General Utility Pouch", 0, /obj/item/storage/sparepouch, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 General Pistol Holster Rig", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("M276 Knife Rig", 0, /obj/item/storage/belt/knifepouch, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 M39 Holster Rig", 0, /obj/item/storage/large_holster/m39, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 M44 Holster Rig", 0, /obj/item/storage/belt/gun/m44, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Shotgun Shell Loading Rig", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+		list("M276 Mortar Operator Belt", 0, /obj/item/storage/belt/gun/mortarbelt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Toolbelt Rig (Full)", 0, /obj/item/storage/belt/utility/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
@@ -121,7 +115,17 @@
 		list("MASK (CHOOSE 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
 		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-	)
+	))
+
+/obj/structure/machinery/cm_vending/clothing/engi
+	name = "\improper ColMarTech Squad Engineer Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of Squad Engineer standard-issue equipment."
+	req_access = list(ACCESS_MARINE_ENGPREP)
+	vendor_role = list(JOB_SQUAD_ENGI)
+
+/obj/structure/machinery/cm_vending/clothing/engi/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_clothing_engi
 
 /obj/structure/machinery/cm_vending/clothing/engi/alpha
 	squad_tag = SQUAD_NAME_1
@@ -152,11 +156,9 @@
 /obj/effect/essentials_set/engi
 	spawned_gear_list = list(
 		/obj/item/explosive/plastic,
-		/obj/item/explosive/plastic,
 		/obj/item/stack/sandbags_empty = 25,
 		/obj/item/stack/sheet/metal/large_stack,
-		/obj/item/stack/sheet/metal/large_stack,
-		/obj/item/stack/sheet/plasteel/large_stack,
+		/obj/item/stack/sheet/plasteel/medium_stack,
 		/obj/item/cell/high,
 		/obj/item/tool/shovel/etool,
 		/obj/item/device/lightreplacer,

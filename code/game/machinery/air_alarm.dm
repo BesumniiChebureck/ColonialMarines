@@ -113,7 +113,7 @@
 
 	if(building)
 		if(loc)
-			src.forceMove(loc)
+			forceMove(loc)
 
 		if(direction)
 			src.dir = direction

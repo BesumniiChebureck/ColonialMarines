@@ -25,6 +25,7 @@
 	var/sound_armor //When it's blocked by human armor.
 	var/sound_miss //When it misses someone.
 	var/sound_bounce //When it bounces off something.
+	var/sound_shield_hit //When the bullet is absorbed by a xeno_shield
 
 	var/accurate_range_min 			= 0			// Snipers use this to simulate poor accuracy at close ranges
 	var/scatter  					= 0 		// How much the ammo scatters when burst fired, added to gun scatter, along with other mods
@@ -94,7 +95,7 @@
 		if(isliving(M)) //This is pretty ugly, but what can you do.
 			if(isXeno(M))
 				var/mob/living/carbon/Xenomorph/target = M
-				if(target.mob_size == MOB_SIZE_BIG)
+				if(target.mob_size >= MOB_SIZE_BIG)
 					target.apply_effect(2, SLOW)
 					return //Big xenos are not affected.
 				target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
@@ -114,7 +115,7 @@
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
 			to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
-			if(target.mob_size == MOB_SIZE_BIG)
+			if(target.mob_size >= MOB_SIZE_BIG)
 				target.apply_effect(0.3, DAZE)
 				target.apply_effect(2, SLOW)
 				return
@@ -141,15 +142,22 @@
 			var/msg = "You are hit by backlash from \a </b>[P.name]</b>!"
 			M.visible_message(SPAN_DANGER("[M] is hit by backlash from \a [P.name]!"),isXeno(M) ? SPAN_XENODANGER("[msg]"):SPAN_HIGHDANGER("[msg]"))
 		var/damage = P.damage/damage_div
+
+		var/mob/living/carbon/Xenomorph/XNO = null
+
 		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/XNO = M
+			XNO = M
 			var/total_explosive_resistance = XNO.caste.xeno_explosion_resistance + XNO.armor_explosive_buff
 			damage = armor_damage_reduction(GLOB.xeno_explosive, damage, total_explosive_resistance , 60, 0, 0.5, XNO.armor_integrity)
 			var/armor_punch = armor_break_calculation(GLOB.xeno_explosive, damage, total_explosive_resistance, 60, 0, 0.5, XNO.armor_integrity)
 			XNO.apply_armorbreak(armor_punch)
 
 		M.apply_damage(damage,damage_type)
-		P.play_damage_effect(M)
+
+		if(XNO && XNO.xeno_shields.len)
+			P.play_shielded_damage_effect(M)
+		else
+			P.play_damage_effect(M)
 
 /datum/ammo/proc/fire_bonus_projectiles(obj/item/projectile/original_P)
 	set waitfor = 0
@@ -194,6 +202,7 @@
 	sound_armor  = "ballistic_armor"
 	sound_miss	 = "ballistic_miss"
 	sound_bounce = "ballistic_bounce"
+	sound_shield_hit = "ballistic_shield_hit"
 
 	accurate_range_min = 0
 	damage = BULLET_DAMAGE_TIER_2
@@ -370,8 +379,8 @@
 	impact_limbs = BODY_FLAG_HEAD
 	debilitate = list(0,2,0,0,0,1,0,0)
 
-	damage = BULLET_DAMAGE_TIER_20
-	damage_var_low = PROJECTILE_VARIANCE_TIER_6
+	damage = BULLET_DAMAGE_TIER_11
+	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_2
 
@@ -465,46 +474,6 @@
 					Rifle Ammo
 //================================================
 */
-//don't ask me about this is shitly lacky fucking bullets
-/datum/ammo/bullet/riflemc
-	name = "experemental bullet"//really experemental
-
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
-	damage = BULLET_DAMAGE_TIER_16
-	damage_var_low = PROJECTILE_VARIANCE_TIER_9
-	damage_var_high = PROJECTILE_VARIANCE_TIER_9
-	accurate_range = 0
-	damage_armor_punch = 10
-	pen_armor_punch = 10
-	damage_type = BURN||BRUTE
-	shrapnel_chance = SHRAPNEL_CHANCE_TIER_6
-	accuracy = HIT_ACCURACY_TIER_1
-	scatter = SCATTER_AMOUNT_TIER_8
-	shell_speed = AMMO_SPEED_TIER_1
-	penetration = ARMOR_PENETRATION_TIER_10
-	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_8
-	accuracy_var_low = PROJECTILE_VARIANCE_TIER_9
-	accuracy_var_high = PROJECTILE_VARIANCE_TIER_9
-
-/datum/ammo/bullet/riflemc/on_hit_mob(mob/M, obj/item/projectile/P)
-	cell_explosion(get_turf(M), 120, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(M), 400, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
-	knockback(M, P, 32)	// Can knockback basically at max range
-	M.Daze(3)
-	if(!M || M == P.firer) return
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		shake_camera(H, 2, 1)
-
-/datum/ammo/bullet/riflemc/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 120, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(O), 400, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
-
-/datum/ammo/bullet/riflemc/on_hit_turf(turf/T, obj/item/projectile/P)
-	if(T.density)
-		cell_explosion(T, 120, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
-		cell_explosion(T, 400, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/bullet/rifle
 	name = "rifle bullet"
@@ -512,6 +481,7 @@
 	damage = BULLET_DAMAGE_TIER_8
 	accurate_range = 16
 	accuracy = HIT_ACCURACY_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_10
 	shell_speed = AMMO_SPEED_TIER_6
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
 
@@ -692,7 +662,7 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	max_range = 12
-	damage = BULLET_DAMAGE_TIER_5
+	damage = BULLET_DAMAGE_TIER_6
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_7
@@ -792,7 +762,7 @@
 		var/blind_duration = 5
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
-			if(target.mob_size == MOB_SIZE_BIG)
+			if(target.mob_size >= MOB_SIZE_BIG)
 				blind_duration = 2
 		L.AdjustEyeBlur(blind_duration)
 		L.adjust_fire_stacks(10)
@@ -815,7 +785,7 @@
 		var/mob/living/L = M
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
-			if(target.mob_size == MOB_SIZE_BIG)
+			if(target.mob_size >= MOB_SIZE_BIG)
 				slow_duration = 4
 		M.AdjustSuperslowed(slow_duration)
 		L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
@@ -838,9 +808,9 @@
 
 	accuracy = HIT_ACCURACY_TIER_8
 	scatter = 0
-	damage = BULLET_DAMAGE_TIER_18
-	damage_var_high = PROJECTILE_VARIANCE_TIER_10
-	penetration	= ARMOR_PENETRATION_TIER_8
+	damage = BULLET_DAMAGE_TIER_12
+	damage_var_high = PROJECTILE_VARIANCE_TIER_8
+	penetration	= ARMOR_PENETRATION_TIER_6
 	accurate_range = 32
 	max_range = 32
 	shell_speed = AMMO_SPEED_TIER_6
@@ -899,7 +869,7 @@
 	max_range = 12
 	accuracy = HIT_ACCURACY_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	damage = BULLET_DAMAGE_TIER_10
+	damage = BULLET_DAMAGE_TIER_6
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/armor_piercing
@@ -998,11 +968,10 @@
 	penetration = ARMOR_PENETRATION_TIER_7
 
 /datum/ammo/bullet/minigun/tank
-	accuracy = HIT_ACCURACY_TIER_1
+	accuracy = -HIT_ACCURACY_TIER_1
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_8
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_8
 	accurate_range = 12
-	damage = BULLET_DAMAGE_TIER_10
 
 /datum/ammo/bullet/m60
 	name = "M60 bullet"
@@ -1074,9 +1043,9 @@
 
 	accuracy = HIT_ACCURACY_TIER_8
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_9
-	accurate_range = 8
-	max_range = 8
-	damage = BULLET_DAMAGE_TIER_4
+	accurate_range = 6
+	max_range = 6
+	damage = BULLET_DAMAGE_TIER_2
 	penetration= ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/item/projectile/P)
@@ -1151,20 +1120,20 @@
 	shell_speed = AMMO_SPEED_TIER_3
 
 /datum/ammo/rocket/ltb/on_hit_mob(mob/M, obj/item/projectile/P)
-	cell_explosion(get_turf(M), 330, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(M), 300, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/rocket/ltb/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 330, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(O), 300, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/rocket/ltb/on_hit_turf(turf/T, obj/item/projectile/P)
-	cell_explosion(get_turf(T), 330, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(T), 300, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(T), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(T), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/rocket/ltb/do_at_max_range(obj/item/projectile/P)
-	cell_explosion(get_turf(P), 330, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(P), 300, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(P), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(P), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"
@@ -1676,14 +1645,14 @@
 	damage = BULLET_DAMAGE_TIER_4
 	shell_speed = AMMO_SPEED_TIER_3
 	accuracy = HIT_ACCURACY_TIER_5*3
-	max_range = 7
+	max_range = 6
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
 	accuracy = HIT_ACCURACY_TIER_5*3
-	max_range = 6
+	max_range = 7
 	damage = BULLET_DAMAGE_TIER_5
 	damage_var_low = PROJECTILE_VARIANCE_TIER_6
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8

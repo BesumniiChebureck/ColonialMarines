@@ -285,6 +285,7 @@ cases. Override_icon_state should be a list.*/
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
+	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	src.dir = SOUTH//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	return
 
@@ -662,7 +663,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 	SPAN_NOTICE("You look up from [zoom_device]."))
 	zoom = !zoom
 	user.zoom_cooldown = world.time + 20
-	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT)
+	SEND_SIGNAL(user, COMSIG_LIVING_ZOOM_OUT, src)
 	if(zoom_event_handler)
 		user.remove_movement_handler(zoom_event_handler)
 		UnregisterSignal(src, list(

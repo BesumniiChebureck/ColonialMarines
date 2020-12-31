@@ -7,7 +7,7 @@
 	disp_icon_state = "ltb_cannon"
 	activation_sounds = list('sound/weapons/vehicles/cannon_fire1.ogg', 'sound/weapons/vehicles/cannon_fire2.ogg')
 
-	health = 1250
+	health = 500
 	cooldown = 200
 	accuracy = 0.97
 	firing_arc = 60

@@ -1,3 +1,4 @@
+
 var/list/unansweredAhelps = list()			//This feels inefficient, but I can't think of a better way. Stores the message indexed by CID
 var/list/CLFaxes = list()					//List of all CL faxes sent this round
 var/list/fax_contents = list() 				//List of fax contents to maintain it even if source paper is deleted
@@ -8,8 +9,8 @@ GLOBAL_LIST_EMPTY(custom_event_info_list)
 
 //Names of maps that can be compiled on
 var/list/DEFAULT_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_BIG_RED, MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_ICE_COLONY, MAP_PRISON_STATION, MAP_CORSAT, MAP_SOROKYNE_STRATA, MAP_KUTJEVO)
-var/list/LOWPOP_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_BIG_RED, MAP_PRISON_STATION, MAP_KUTJEVO, MAP_ZERO_POINT)
-var/list/NOTVOTABLE_MAPS = list(MAP_WHISKEY_OUTPOST)
+var/list/LOWPOP_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_BIG_RED, MAP_PRISON_STATION, MAP_KUTJEVO)
+var/list/NOTVOTABLE_MAPS = list(MAP_WHISKEY_OUTPOST, MAP_ICE_COLONY)
 var/list/NEXT_MAP_CANDIDATES = DEFAULT_NEXT_MAP_CANDIDATES.Copy() - NOTVOTABLE_MAPS
 var/list/MAPS_COLD_TEMP = list(MAP_ICE_COLONY, MAP_SOROKYNE_STRATA, MAP_CORSAT)
 

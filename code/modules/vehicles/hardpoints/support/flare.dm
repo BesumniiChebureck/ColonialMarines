@@ -12,7 +12,7 @@
 
 	activatable = TRUE
 
-	health = 750
+	health = 500
 	cooldown = 30
 	accuracy = 0.7
 	firing_arc = 120

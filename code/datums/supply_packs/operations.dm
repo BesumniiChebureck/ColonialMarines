@@ -170,24 +170,6 @@ OPERATIONS
 	group = "Operations"
 	iteration_needed = null
 
-/datum/supply_packs/obnuclearbomb
-	contains = list(
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/warhead/nuke,
-	)
-
-	name = "Operational OB Nuke"
-	cost = 0
-	containertype = /obj/structure/closet/crate/secure/ammo
-	buyable = 0
-	group = "Operations"
-	iteration_needed = null
-
 /datum/supply_packs/spec_kits
 	name = "Specialist Kits"
 	contains = list(

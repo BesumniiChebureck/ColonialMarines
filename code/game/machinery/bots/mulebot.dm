@@ -469,7 +469,7 @@
 	if(istype(crate))
 		crate.close()
 
-	C.forceMove(src.loc)
+	C.forceMove(loc)
 	sleep(2)
 	if(C.loc != src.loc) //To prevent you from going onto more thano ne bot.
 		return
@@ -500,7 +500,7 @@
 	mode = 1
 	overlays.Cut()
 
-	load.forceMove(src.loc)
+	load.forceMove(loc)
 	load.pixel_y -= 9
 	load.layer = initial(load.layer)
 	if(ismob(load))
@@ -514,7 +514,7 @@
 		if(!BlockedPassDirs(load, dirn))//Can't get off onto anything that wouldn't let you pass normally
 			step(load, dirn)
 		else
-			load.forceMove(src.loc)//Drops you right there, so you shouldn't be able to get yourself stuck
+			load.forceMove(loc)//Drops you right there, so you shouldn't be able to get yourself stuck
 
 	load = null
 
@@ -525,7 +525,7 @@
 	for(var/atom/movable/AM in src)
 		if(AM == cell || AM == botcard) continue
 
-		AM.forceMove(src.loc)
+		AM.forceMove(loc)
 		AM.layer = initial(AM.layer)
 		AM.pixel_y = initial(AM.pixel_y)
 		if(ismob(AM))

@@ -15,7 +15,7 @@
 
 /obj/structure/pipes/Initialize(mapload, ...)
 	. = ..()
-
+	
 	if(!icon_manager)
 		icon_manager = new()
 
@@ -30,7 +30,7 @@
 
 	if(mapload)
 		create_valid_directions()
-
+	
 		search_for_connections()
 
 /obj/structure/pipes/Destroy()
@@ -130,11 +130,11 @@
 		playsound(user, pick('sound/effects/alien_ventpass1.ogg', 'sound/effects/alien_ventpass2.ogg'), 35, 1)
 
 		return
-
+	
 	user.forceMove(next_pipe)
 	user.client.eye = next_pipe //if we don't do this, Byond only updates the eye every tick - required for smooth movement
 	user.update_pipe_icons(next_pipe)
-
+	
 	if(world.time - user.last_played_vent > VENT_SOUND_DELAY)
 		user.last_played_vent = world.time
 		playsound(src, pick('sound/effects/alien_ventcrawl1.ogg', 'sound/effects/alien_ventcrawl2.ogg'), 25, 1)

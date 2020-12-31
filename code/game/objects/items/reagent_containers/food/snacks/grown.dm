@@ -611,7 +611,7 @@
 			s.set_up(3, 1, M)
 			s.start()
 			new/obj/effect/decal/cleanable/molten_item(M.loc) //Leaves a pile of goo behind for dramatic effect.
-			M.forceMove(picked)
+			M.forceMove(picked )//
 			sleep(1)
 			s.set_up(3, 1, M)
 			s.start() //Two set of sparks, one before the teleport and one after.

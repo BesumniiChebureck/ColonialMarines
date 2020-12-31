@@ -728,7 +728,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 /obj/structure/machinery/newscaster/proc/AttachPhoto(mob/user as mob)
 	if(photo)
 		if(!isRemoteControlling(user))
-			photo.forceMove(src.loc)
+			photo.forceMove(loc)
 			user.put_in_inactive_hand(photo)
 		photo = null
 	var/obj/item/photo/PH = user.get_active_hand()

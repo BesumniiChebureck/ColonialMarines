@@ -709,7 +709,8 @@
 /obj/structure/machinery/vending/power_change()
 	..()
 	if(stat & NOPOWER)
-		sleep(rand(0, 15))
+		addtimer(CALLBACK(src, .proc/update_icon), rand(1, 15))
+		return
 	update_icon()
 
 //Oh no we're malfunctioning!  Dump out some product and break.

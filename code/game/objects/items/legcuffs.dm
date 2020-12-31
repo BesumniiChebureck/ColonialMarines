@@ -7,7 +7,7 @@
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 0
 	w_class = SIZE_MEDIUM
-
+	
 	var/breakouttime = SECONDS_15
 
 /obj/item/legcuffs/beartrap

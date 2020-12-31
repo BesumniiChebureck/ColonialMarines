@@ -175,7 +175,7 @@
 	if (src.occupant.client)
 		src.occupant.client.eye = src.occupant.client.mob
 		src.occupant.client.perspective = MOB_PERSPECTIVE
-	src.occupant.forceMove(src.loc)
+	src.occupant.forceMove(loc)
 	src.occupant = null
 	stop_processing()
 	build_icon()

@@ -13,7 +13,7 @@
 /datum/xeno_mutator/hedgehog/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
 	if (. == 0)
-		return
+		return	
 
 	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
 
@@ -27,7 +27,7 @@
 
 	mutator_update_actions(R)
 	MS.recalculate_actions(description, flavor_description)
-
+	
 	R.recalculate_everything()
 
 /datum/behavior_delegate/ravager_hedgehog
@@ -82,7 +82,7 @@
 	bound_xeno.recalculate_speed()
 
 	shards_locked = FALSE
-
+	
 // Return true if we have enough shards, false otherwise
 /datum/behavior_delegate/ravager_hedgehog/proc/check_shards(amount)
 	if (!amount)
@@ -92,11 +92,11 @@
 
 /datum/behavior_delegate/ravager_hedgehog/proc/use_shards(amount)
 	if (!amount)
-		return
+		return 
 	shards = max(0, shards - amount)
 
 /datum/behavior_delegate/ravager_hedgehog/on_life()
-
+	
 	if (!shards_locked)
 		shards = min(max_shards, shards + shard_gain_onlife)
 
