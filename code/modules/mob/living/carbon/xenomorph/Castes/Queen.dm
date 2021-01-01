@@ -38,7 +38,7 @@
 
 	minimum_xeno_playtime = 9 HOURS
 
-	behavior_delegate_type = /datum/behavior_delegate/queen_base
+//	behavior_delegate_type = /datum/behavior_delegate/queen_base
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:

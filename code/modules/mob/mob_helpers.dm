@@ -138,8 +138,8 @@ var/global/list/limb_types_by_name = list(
 	return zone
 
 
-/proc/stars(n, pr)
-	t = html_decode(t)
+/proc/stars(text, n, pr)
+	text = html_decode(text)
 	if (pr == null)
 		pr = 25
 	if (pr <= 0)
@@ -148,17 +148,16 @@ var/global/list/limb_types_by_name = list(
 		if (pr >= 100)
 			return n
 	var/te = n
-	var/t = ""
 	n = length(n)
 	var/p = null
 	p = 1
 	while(p <= n)
 		if ((copytext(te, p, p + 1) == " " || prob(pr)))
-			t = text("[][]", t, copytext(te, p, p + 1))
+			text = text("[][]", text, copytext(te, p, p + 1))
 		else
-			t = text("[]*", t)
+			text = text("[]*", text)
 		p++
-	return html_encode(t)
+	return html_encode(text)
 /*
 proc/slur(phrase)
 	phrase = html_decode(phrase)

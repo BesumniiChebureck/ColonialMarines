@@ -1,3 +1,4 @@
+/*
 /datum/xeno_mutator/powder
 	name = "STRAIN: Queen - More Power"
 	description = "You are now a very... very strong and slower, you don't can more screech Queen. Don't go mutation on ovi, and u no can more grow ovipositor"
@@ -31,4 +32,4 @@
 	Q.mutation_type = QUEEN_POWDER
 
 /datum/behavior_delegate/powder_queen
-	name = "Queen Power Behavior Delegate"
+	name = "Queen Power Behavior Delegate"*/

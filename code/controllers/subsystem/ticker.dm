@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(ticker)
 			if(Master.initializations_finished_with_no_players_logged_in && !length(GLOB.clients))
 				return
 			if(isnull(start_at))
-				start_at = time_left || world.time + PREROUND_TIME * 10)
+				start_at = time_left || world.time + PREROUND_TIME * 10
 			to_chat(world, SPAN_ROUNDBODY("Welcome to the pre-game lobby of [CONFIG_GET(string/servername)]!"))
 			to_chat(world, SPAN_ROLE_BODY("Please, setup your character and select ready. Game will start in [round(time_left / 10) || PREROUND_TIME] seconds."))
 			current_state = GAME_STATE_PREGAME
@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(ticker)
 			if(setup_failed)
 				current_state = GAME_STATE_STARTUP
 				time_left = null
-				start_at = world.time + PREROUND_TIME * 10)
+				start_at = world.time + PREROUND_TIME * 10
 				start_immediately = FALSE
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
 

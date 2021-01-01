@@ -15,6 +15,7 @@
 	flags_equip_slot = SLOT_HEAD
 	flags_armor_protection = BODY_FLAG_HEAD
 	attack_verb = list("bapped")
+	var/extra_headers //For additional styling or other js features.
 
 	var/info		//What's actually written on the paper.
 	var/info_links	//A different version of the paper which includes html links at fields and EOF

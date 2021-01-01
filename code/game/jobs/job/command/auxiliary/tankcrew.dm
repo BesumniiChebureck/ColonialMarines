@@ -22,11 +22,11 @@
 		return
 
 	if(roles_whitelist[player.ckey] & WHITELIST_CREWMAN_LEADER)
-		return get_desired_status(player.prefs.tc_status, WHITELIST_LEADER)
+		return get_desired_status(player.prefs.vc_status, WHITELIST_LEADER)
 	else if(roles_whitelist[player.ckey] & WHITELIST_CREWMAN_COUNCIL)
-		return get_desired_status(player.prefs.tc_status, WHITELIST_COUNCIL)
+		return get_desired_status(player.prefs.vc_status, WHITELIST_COUNCIL)
 	else if(roles_whitelist[player.ckey] & WHITELIST_CREWMAN)
-		return get_desired_status(player.prefs.tc_status, WHITELIST_NORMAL)
+		return get_desired_status(player.prefs.vc_status, WHITELIST_NORMAL)
 
 /datum/job/command/tank_crew/generate_entry_message(mob/living/carbon/human/H)
 	entry_message_body = "Your job is to operate and maintain the ship's armored vehicles. You are in charge of representing the armored presence amongst the marines during the operation, as well as maintaining and repairing your own tank."
