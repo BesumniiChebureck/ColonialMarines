@@ -1,3 +1,6 @@
+#define XENO_QUEEN_AGE_TIME	(15 MINUTES)
+#define YOUNG_QUEEN_HEALTH_MULTIPLIER 0.5
+
 /datum/caste_datum/queen
 	caste_name = "Queen"
 	tier = 0
@@ -35,7 +38,7 @@
 
 	minimum_xeno_playtime = 9 HOURS
 
-	behavior_delegate_type = /datum/behavior_delegate/queen_base
+//	behavior_delegate_type = /datum/behavior_delegate/queen_base
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
@@ -247,10 +250,8 @@
 	var/egg_amount = 0 //amount of eggs inside the queen
 	var/screech_sound_effect = 'sound/voice/alien_queen_screech.ogg' //the noise the Queen makes when she screeches. Done this way for VV purposes.
 	var/egg_planting_range = 3 // in ovipositor queen can plant egg up to this amount of tiles away from her position
-
 	var/queen_ovipositor_icon
 	var/queen_standing_icon
-
 
 	tileoffset = 0
 	viewsize = 12
@@ -265,9 +266,6 @@
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/activable/gut,
-		/datum/action/xeno_action/activable/screech, //custom macro, "Screech"
-		/datum/action/xeno_action/activable/xeno_spit, //first macro
-		/datum/action/xeno_action/onclick/shift_spits, //second macro
 		/datum/action/xeno_action/onclick/plant_weeds, //here so its overridden by xeno_spit, and fits near the resin structure macros.
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //third macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fourth macro
@@ -304,8 +302,18 @@
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
 			)
+
+	// Abilities they get when they've successfully aged.
+	var/mobile_aged_abilities = list(
+		/datum/action/xeno_action/activable/screech, //custom macro, Screech
+		/datum/action/xeno_action/activable/xeno_spit, //first macro
+		/datum/action/xeno_action/onclick/shift_spits, //second macro
+	)
 	mutation_type = QUEEN_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
+
+	var/queen_aged = FALSE
+	var/queen_age_timer_id = TIMER_ID_NULL
 
 /mob/living/carbon/Xenomorph/Queen/can_destroy_special()
 	return TRUE
@@ -333,6 +341,65 @@
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
+
+	if(hive?.dynamic_evolution)
+		queen_age_timer_id = addtimer(CALLBACK(src, .proc/make_combat_effective), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
+	else
+		make_combat_effective()
+
+/mob/living/carbon/Xenomorph/Queen/generate_name()
+	. = ..()
+
+	var/datum/hive_status/in_hive = hive
+	if(!in_hive)
+		in_hive = hive_datum[hivenumber]
+
+	var/name_prefix = in_hive.prefix
+	if(queen_aged)
+		switch(age)
+			if(XENO_NORMAL) name = "[name_prefix]Queen"			 //Young
+			if(XENO_MATURE) name = "[name_prefix]Elder Queen"	 //Mature
+			if(XENO_ELDER) name = "[name_prefix]Elder Empress"	 //Elite
+			if(XENO_ANCIENT) name = "[name_prefix]Ancient Empress" //Ancient
+			if(XENO_PRIME) name = "[name_prefix]Prime Empress" //Primordial
+	else
+		age = XENO_NORMAL
+		if(client)
+			hud_update()
+
+		name = "[name_prefix]Young Queen"
+
+/mob/living/carbon/Xenomorph/Queen/proc/make_combat_effective()
+	queen_aged = TRUE
+
+	give_combat_abilities()
+	recalculate_actions()
+	recalculate_health()
+	generate_name()
+
+/mob/living/carbon/Xenomorph/Queen/proc/give_combat_abilities()
+	if(ovipositor)
+		return
+
+	QDEL_LIST(actions)
+
+	var/list/abilities_to_give = mobile_abilities
+
+	if(!queen_aged)
+		abilities_to_give -= mobile_aged_abilities
+
+	for(var/path in abilities_to_give)
+		var/datum/action/xeno_action/A = new path()
+		A.give_action(src)
+
+
+/mob/living/carbon/Xenomorph/Queen/recalculate_health()
+	. = ..()
+	if(!queen_aged)
+		maxHealth *= YOUNG_QUEEN_HEALTH_MULTIPLIER
+
+	if(health > maxHealth)
+		health = maxHealth
 
 /mob/living/carbon/Xenomorph/Queen/Destroy()
 	if(observed_xeno)
@@ -373,7 +440,11 @@
 
 	stat("Pooled Larvae:", "[stored_larvae]")
 	stat("Leaders:", "[xeno_leader_num] / [hive?.queen_leader_limit]")
-	return 1
+	if(queen_age_timer_id != TIMER_ID_NULL)
+		var/time_left = time2text(timeleft(queen_age_timer_id) + 1 MINUTES, "mm") // We add a minute so that it basically ceilings the value.
+		stat("Maturity:", "[time_left == 1? "[time_left] minute" : "[time_left] minutes"] remaining")
+
+	return TRUE
 
 //Custom bump for crushers. This overwrites normal bumpcode from carbon.dm
 /mob/living/carbon/Xenomorph/Queen/Collide(atom/A)
@@ -539,128 +610,6 @@
 		to_chat(src, SPAN_XENONOTICE("You have forbidden anyone to unnest hosts, except for the drone caste."))
 		xeno_message("The Queen has forbidden anyone to unnest hosts, except for the drone caste.")
 
-/mob/living/carbon/Xenomorph/Queen/proc/queen_screech()
-	if(!check_state())
-		return
-
-	if(has_screeched)
-		to_chat(src, SPAN_WARNING("You are not ready to screech again."))
-		return
-
-	if(!check_plasma(250))
-		return
-
-	//screech is so powerful it kills huggers in our hands
-	if(istype(r_hand, /obj/item/clothing/mask/facehugger))
-		var/obj/item/clothing/mask/facehugger/FH = r_hand
-		if(FH.stat != DEAD)
-			FH.Die()
-
-	if(istype(l_hand, /obj/item/clothing/mask/facehugger))
-		var/obj/item/clothing/mask/facehugger/FH = l_hand
-		if(FH.stat != DEAD)
-			FH.Die()
-
-	has_screeched = 1
-	use_plasma(250)
-	addtimer(CALLBACK(src, .proc/screech_ready), 120 SECONDS)
-	playsound(loc, screech_sound_effect, 75, 0, status = 0)
-	visible_message(SPAN_XENOHIGHDANGER("[src] emits an ear-splitting guttural roar!"))
-	create_shriekwave() //Adds the visual effect. Wom wom wom
-
-	for(var/mob/M in view())
-		if(M && M.client)
-			if(isXeno(M))
-				shake_camera(M, 10, 1)
-			else
-				shake_camera(M, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
-
-	for(var/mob/living/carbon/human/M in oview(7, src))
-		if(istype(M.wear_ear, /obj/item/clothing/ears/earmuffs))
-			return
-
-		M.scream_stun_timeout = SECONDS_20
-		var/dist = get_dist(src, M)
-		if(dist <= 4)
-			to_chat(M, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
-			M.AdjustStunned(4)
-			M.KnockDown(4)
-			if(!M.ear_deaf)
-				M.ear_deaf += 5 //Deafens them temporarily
-		else if(dist >= 5 && dist < 7)
-			M.AdjustStunned(3)
-			if(!M.ear_deaf)
-				M.ear_deaf += 2
-			to_chat(M, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
-
-/mob/living/carbon/Xenomorph/Queen/proc/screech_ready()
-	has_screeched = 0
-	to_chat(src, SPAN_WARNING("You feel your throat muscles vibrate. You are ready to screech again."))
-	for(var/Z in actions)
-		var/datum/action/A = Z
-		A.update_button_icon()
-
-/mob/living/carbon/Xenomorph/Queen/proc/queen_screeche()
-	if(!check_state())
-		return
-
-	if(has_screeched)
-		to_chat(src, SPAN_WARNING("You are not ready to very strong screech again."))
-		return
-
-	if(!check_plasma(500))
-		return
-
-	//screech is so powerful it kills huggers in our hands
-	if(istype(r_hand, /obj/item/clothing/mask/facehugger))
-		var/obj/item/clothing/mask/facehugger/FH = r_hand
-		if(FH.stat != DEAD)
-			FH.Die()
-
-	if(istype(l_hand, /obj/item/clothing/mask/facehugger))
-		var/obj/item/clothing/mask/facehugger/FH = l_hand
-		if(FH.stat != DEAD)
-			FH.Die()
-
-	has_screeched = 1
-	use_plasma(500)
-	addtimer(CALLBACK(src, .proc/screech_ready), 540 SECONDS)
-	playsound(loc, screech_sound_effect, 75, 0, status = 0)
-	visible_message(SPAN_XENOHIGHDANGER("[src] emits an ear-splitting very strong guttural roar!"))
-	create_shriekwave()
-
-	for(var/mob/M in view())
-		if(M && M.client)
-			if(isXeno(M))
-				shake_camera(M, 30, 1)
-			else
-				shake_camera(M, 50, 1)
-
-	for(var/mob/living/carbon/human/M in oview(16, src))
-		if(istype(M.wear_ear, /obj/item/clothing/ears/earmuffs))
-			return
-
-		M.scream_stun_timeout = SECONDS_40
-		var/dist = get_dist(src, M)
-		if(dist <= 6)
-			to_chat(M, SPAN_DANGER("An ear-splitting very strong guttural roar shakes the ground beneath your feet!"))
-			M.AdjustStunned(35)
-			M.KnockDown(25)
-			if(!M.ear_deaf)
-				M.ear_deaf += 15
-		else if(dist >= 7 && dist < 16)
-			M.AdjustStunned(20)
-			if(!M.ear_deaf)
-				M.ear_deaf += 10
-			to_chat(M, SPAN_DANGER("The very strong roar shakes your body to the core, freezing you in place!"))
-
-/mob/living/carbon/Xenomorph/Queen/proc/screeche_ready()
-	has_screeched = 0
-	to_chat(src, SPAN_WARNING("You feel your very strong throat muscles vibrate. You are ready to very powered screech again."))
-	for(var/Z in actions)
-		var/datum/action/A = Z
-		A.update_button_icon()
-
 /mob/living/carbon/Xenomorph/Queen/proc/queen_gut(atom/A)
 
 	if(!iscarbon(A))
@@ -719,7 +668,7 @@
 			return
 
 		use_plasma(200)
-		last_special = world.time + MINUTES_5
+		last_special = world.time + MINUTES_15
 
 		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"), \
 		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
@@ -799,12 +748,8 @@
 		overwatch(observed_xeno, TRUE)
 	zoom_out()
 
-	for(var/datum/action/A in actions)
-		qdel(A)
+	give_combat_abilities()
 
-	for(var/path in mobile_abilities)
-		var/datum/action/xeno_action/A = new path()
-		A.give_action(src)
 	recalculate_actions()
 
 	egg_amount = 0
@@ -844,7 +789,7 @@
 	else
 		icon_state = "[mutation_type] Queen Running"
 
-	update_fire()
+	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 	update_wounds()
 
 
@@ -855,7 +800,3 @@
 	if(!ovipositor)
 		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways
 	return get_dist(src, T) <= egg_planting_range
-
-// No special behavior for boilers
-/datum/behavior_delegate/queen_base
-	name = "Base Queen Behavior Delegate"

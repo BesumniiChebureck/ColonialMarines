@@ -69,6 +69,7 @@
             monkey_types = list(/mob/living/carbon/human/monkey) //make sure we always have a monkey type
             hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO)
 
+
 /* Pre-pre-startup */
 /datum/game_mode/xenovs/can_start()
     setup_mapdata(map_tag)

@@ -27,7 +27,7 @@
 
 /obj/structure/airlock_assembly/examine(mob/user)
 	. = ..()
-
+	
 	to_chat(user, SPAN_NOTICE("A [SPAN_HELPFUL("crowbar")] will dismantle it."))
 	switch(state)
 		if(STATE_STANDARD)
@@ -48,11 +48,11 @@
 
 	if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 		to_chat(user, SPAN_WARNING("You are not trained to configure [src]..."))
-		return
+		return 
 
 	if(istype(W, /obj/item/tool/pen))
 		var/t = copytext(stripped_input(user, "Enter the name for the door.", name, created_name), 1, MAX_NAME_LEN)
-		if(!t || !in_range(src, usr) && loc != usr)
+		if(!t || !in_range(src, usr) && loc != usr)	
 			return
 		created_name = t
 		return

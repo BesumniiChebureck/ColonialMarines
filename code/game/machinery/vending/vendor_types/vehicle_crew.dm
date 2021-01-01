@@ -369,14 +369,7 @@
 
 //------------CLOTHING RACK---------------
 
-//MARINE_CAN_BUY_SHOES MARINE_CAN_BUY_UNIFORM currently not used
-/obj/structure/machinery/cm_vending/clothing/vehicle_crew
-	name = "\improper ColMarTech Vehicle Crewman Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Vehicle Crewmen standard-issue equipment."
-	req_access = list(ACCESS_MARINE_CREWMAN)
-	vendor_role = list(JOB_CREWMAN)
-
-	listed_products = list(
+GLOBAL_LIST_INIT(cm_vending_clothing_vehicle_crew, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Tanker Armor", 0, /obj/item/clothing/suit/storage/marine/tanker, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -394,11 +387,9 @@
 		list("M103 Vehicle-Ammo Rig", 0, /obj/item/storage/belt/tank, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("M276 Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 General Pistol Holster Rig", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("M276 Knife Rig", 0, /obj/item/storage/belt/knifepouch, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 M39 Holster Rig", 0, /obj/item/storage/large_holster/m39, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 M44 Holster Rig", 0, /obj/item/storage/belt/gun/m44, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Shotgun Shell Loading Rig", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("M276 Mortar Operator Belt", 0, /obj/item/storage/belt/gun/mortarbelt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Toolbelt Rig (Full)", 0, /obj/item/storage/belt/utility/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
@@ -455,7 +446,18 @@
 		list("Large Magazine Pouch", 15, /obj/item/storage/pouch/magazine/large, null, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("Plastic Explosive", 10, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
-	)
+	))
+
+//MARINE_CAN_BUY_SHOES MARINE_CAN_BUY_UNIFORM currently not used
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew
+	name = "\improper ColMarTech Vehicle Crewman Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of Vehicle Crewmen standard-issue equipment."
+	req_access = list(ACCESS_MARINE_CREWMAN)
+	vendor_role = list(JOB_CREWMAN)
+
+/obj/structure/machinery/cm_vending/clothing/vehicle_crew/Initialize(mapload, ...)
+	. = ..()
+	listed_products = GLOB.cm_vending_clothing_vehicle_crew
 
 //------------ESSENTIAL SETS---------------
 

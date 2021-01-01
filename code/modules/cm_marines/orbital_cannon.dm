@@ -214,7 +214,7 @@ var/list/ob_type_fuel_requirements
 		if("nuke")
 			inaccurate_fuel = abs(ob_type_fuel_requirements[4] - tray.fuel_amt)
 
-	var/turf/target = locate(T.x + inaccurate_fuel * round(rand(-4,4), 1), T.y + inaccurate_fuel * round(rand(-4,4), 1), T.z)
+	var/turf/target = locate(T.x + inaccurate_fuel * round(rand(-3,3), 1), T.y + inaccurate_fuel * round(rand(-3,3), 1), T.z)
 	if(user)
 		tray.warhead.source_mob = user
 
@@ -369,6 +369,7 @@ var/list/ob_type_fuel_requirements
 
 
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(var/turf/target)
+	// make damn sure everyone hears it
 	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
 
 	var/cancellation_token = rand(0,32000)
@@ -427,6 +428,7 @@ var/list/ob_type_fuel_requirements
 	sleep(10)
 	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob) //break shit around
 	sleep(clear_delay)
+	//ACTUALLY BLOW SHIT UP
 	if(!target.density)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 		sleep(double_explosion_delay)
@@ -468,10 +470,10 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
-	var/total_amount = 40
-	var/instant_amount = 2
-	var/explosion_power = 200
-	var/explosion_falloff = 10
+	var/total_amount = 60
+	var/instant_amount = 3
+	var/explosion_power = 300
+	var/explosion_falloff = 60
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target)
 	. = ..()
@@ -546,7 +548,6 @@ var/list/ob_type_fuel_requirements
 			sleep(double_explosion_delay)
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 			return
-
 
 
 

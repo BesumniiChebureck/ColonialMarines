@@ -12,7 +12,7 @@
 	if(!..())
 		return FALSE//Cooldown check
 
-	if(holder)
+	if(holder) 
 		if(istype(holder.loc,/obj/item/explosive))
 			var/obj/item/explosive/explosive = holder.loc
 			explosive.prime()

@@ -84,6 +84,11 @@
 #define COMSIG_MOB_GETTING_UP "mob_getting_up"
 /// From /mob/proc/update_canmove()
 
+#define COMSIG_HUMAN_ALIEN_ATTACK "human_alien_attack"
+/// from /mob/living/carbon/human/attack_alien()
+#define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
+/// from /mob/living/carbon/Xenomorph/attack_alien()
+
 
 /// For when a mob is dragged
 #define COMSIG_MOB_DRAGGED "mob_dragged"
@@ -174,3 +179,8 @@
 
 #define COMSIG_GRENADE_PRE_PRIME "grenade_pre_prime"
 	#define COMPONENT_GRENADE_PRIME_CANCEL	(1<<0)
+
+#define COMSIG_ITEM_PICKUP "item_pickup"
+
+#define COMSIG_MOVABLE_PRE_LAUNCH "movable_pre_launch"
+	#define COMPONENT_LAUNCH_CANCEL (1<<0)

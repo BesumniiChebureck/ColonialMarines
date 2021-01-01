@@ -57,7 +57,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	matter = list("metal" = 3750)
 	throwforce = 14.0
 	flags_atom = FPRINT|CONDUCT
-
+	
 	stack_id = "metal"
 
 /obj/item/stack/sheet/metal/small_stack
@@ -96,7 +96,7 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	matter = list("metal" = 3750)
 	throwforce = 15.0
 	flags_atom = FPRINT|CONDUCT
-
+	
 	stack_id = "plasteel"
 
 /obj/item/stack/sheet/plasteel/New(var/loc, var/amount=null)
@@ -109,7 +109,6 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 
 /obj/item/stack/sheet/plasteel/medium_stack
 	amount = STACK_30
-
 
 /obj/item/stack/sheet/plasteel/large_stack
 	amount = STACK_50
@@ -137,7 +136,7 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	singular_name = "wood plank"
 	icon_state = "sheet-wood"
 	item_state = "sheet-wood"
-
+	
 	stack_id = "wood plank"
 
 /obj/item/stack/sheet/wood/cyborg
@@ -158,7 +157,7 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	desc = "This roll of cloth is made from only the finest chemicals and bunny rabbits."
 	singular_name = "cloth roll"
 	icon_state = "sheet-cloth"
-
+	
 	stack_id = "cloth"
 
 /*
@@ -251,7 +250,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	desc = "Large sheets of card, like boxes folded flat."
 	singular_name = "cardboard sheet"
 	icon_state = "sheet-card"
-
+	
 	stack_id = "cardboard"
 
 /obj/item/stack/sheet/cardboard/New(var/loc, var/amount=null)

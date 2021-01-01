@@ -58,35 +58,6 @@
 	w_class = SIZE_MEDIUM
 
 
-/* анти псевдоплот абуз, заебал если честно он...
-/obj/item/weapon/melee/khornknife
-	name = "Child of bloodshed"
-	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
-	icon = 'icons/obj/items/weapons/weapons-custom.dmi'
-	icon_state = "Khorn's_ritual_knife"
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("ripped", "torn", "cut")
-	w_class = SIZE_MEDIUM
-	throw_speed = SPEED_VERY_FAST
-	throwforce = MELEE_FORCE_STRONG
-	throw_range = 7
-	force = MELEE_FORCE_STRONG
-	attack_speed = 6
-	edge = 1
-
-obj/item/weapon/melee/bloody_fightknife
-	name = "Bloody knife"
-	desc = "Painted into bloody knife"
-	icon = 'icons/obj/items/weapons/weapons-custom.dmi'
-	icon_state = "fighting_knife_red"
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("bapped", "smacked", "clubbed")
-	force = MELEE_FORCE_NORMAL
-	attack_speed = 8
-	throwforce = MELEE_FORCE_NORMAL
-	throw_range = 7
-	throw_speed = SPEED_FAST
-	edge = 1
 
 /obj/item/weapon/melee/butterfly
 	name = "butterfly knife"
@@ -104,6 +75,7 @@ obj/item/weapon/melee/bloody_fightknife
 	throwforce = 7
 	attack_verb = list("patted", "tapped")
 	attack_speed = 10
+
 
 /obj/item/weapon/melee/butterfly/attack_self(mob/user)
 	active = !active
@@ -133,13 +105,6 @@ obj/item/weapon/melee/bloody_fightknife
 	name = "switchblade"
 	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
 	icon_state = "switchblade"
-
-/obj/item/weapon/melee/butterfly/switchblade_lightning
-    name = "Painted switchblade"
-    desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
-    icon = 'icons/obj/items/weapons/weapons-custom.dmi'
-    icon_state = "switchblade_lightning"
-*/
 
 /obj/item/weapon/melee/butterfly/katana
 	name = "katana"

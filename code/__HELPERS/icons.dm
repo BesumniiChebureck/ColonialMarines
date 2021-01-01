@@ -324,6 +324,8 @@ proc/ReadRGB(rgb)
 	. = list(r, g, b)
 	if(usealpha) . += alpha
 
+
+
 /*
 Get flat icon by DarkCampainger. As it says on the tin, will return an icon with all the overlays
 as a single icon. Useful for when you want to manipulate an icon via the above as overlays are not normally included.
@@ -531,6 +533,7 @@ proc/sort_atoms_by_layer(var/list/atoms)
 				result.Swap(i, gap + i)
 				swapped = 1
 	return result
+
 
 /image/proc/flick_overlay(var/atom/A, var/duration) //originally code related to goonPS. This isn't the original code, but has the same effect
 	A.overlays.Add(src)

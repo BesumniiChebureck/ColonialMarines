@@ -359,6 +359,7 @@ its easier to just keep the beam vertical.
 	if(toxvomit)
 		this.icon_state = "vomittox_[pick(1,4)]"
 
+
 //Generalized Fire Proc.
 /atom/proc/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
 	return

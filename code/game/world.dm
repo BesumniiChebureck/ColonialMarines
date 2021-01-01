@@ -19,10 +19,10 @@ var/internal_tick_usage = 0
 	hub = "Exadv1.spacestation13"
 
 /world/New()
-	var/extools = world.GetConfig("env", "EXTOOLS_DLL") || "./byond-extools.dll"
-	if(fexists(extools))
-		call(extools, "maptick_initialize")()
-	enable_debugger()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_init")()
+		enable_debugging()
 	internal_tick_usage = 0.2 * world.tick_lag
 	hub_password = "kMZy3U5jJHSiBQjr"
 
@@ -400,7 +400,7 @@ var/list/datum/entity/map_vote/all_votes
 
 	if (CONFIG_GET(string/servername))
 		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)] &#8212; [MAIN_SHIP_NAME]</b>"
-		s += "<br><img src=\"\"></a>"
+		s += "<br><img src=\"[CONFIG_GET(string/forumurl)]/byond_hub_logo.jpg\"></a>"
 		// s += "<a href=\"http://goo.gl/04C5lP\">Wiki</a>|<a href=\"http://goo.gl/hMmIKu\">Rules</a>"
 		if(SSticker)
 			if(master_mode)

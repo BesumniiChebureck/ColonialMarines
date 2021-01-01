@@ -1,3 +1,4 @@
+/*
 /datum/xeno_mutator/charger
 	name = "STRAIN: Queen - Charging"
 	description = "You are now a Crasher Queen."
@@ -28,4 +29,4 @@
 	Q.mutation_type = QUEEN_CHARGER
 
 /datum/behavior_delegate/charger_queen
-	name = "Queen Charge Behavior Delegate"
+	name = "Queen Charge Behavior Delegate"*/

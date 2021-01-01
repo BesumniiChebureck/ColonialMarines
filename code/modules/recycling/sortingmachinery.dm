@@ -15,7 +15,7 @@
 
 	attack_hand(mob/user as mob)
 		if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
-			wrapped.forceMove((get_turf(src.loc)))
+			wrapped.forceMove(get_turf(src.loc))
 			if(istype(wrapped, /obj/structure/closet))
 				var/obj/structure/closet/O = wrapped
 				O.welded = 0

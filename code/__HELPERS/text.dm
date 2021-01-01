@@ -9,7 +9,6 @@
  */
 
 
-
 /*
  * Text sanitization
  */

@@ -49,8 +49,10 @@
 	Die()
 
 /obj/item/clothing/mask/facehugger/dropped()
-	set waitfor = 0
-	sleep(2)
+	addtimer(CALLBACK(src, .proc/do_drop), 2)
+	return ..()
+
+/obj/item/clothing/mask/facehugger/proc/do_drop()
 	var/obj/item/clothing/mask/facehugger/F
 	var/count = 0
 	for(F in get_turf(src))
@@ -63,7 +65,6 @@
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
 		GoIdle()
 		check_lifecycle()
-	..()
 
 /obj/item/clothing/mask/facehugger/attack_hand(var/mob/user)
 
@@ -237,7 +238,7 @@
 		X.update_icons()
 
 	if(isturf(M.loc))
-		forceMove(M.loc) //Just checkin
+		forceMove(M.loc )//Just checkin
 
 	var/cannot_infect //To determine if the hugger just rips off the protection or can infect.
 	if(ishuman(M))

@@ -1,3 +1,4 @@
+/*
 /datum/xeno_mutator/screecher
 	name = "STRAIN: Queen - Screech go better"
 	description = "You now have very strong screech. Don't go mutation on ovi, and u no can more grow ovipositor"
@@ -32,4 +33,4 @@
 	Q.mutation_type = QUEEN_SCREECHER
 
 /datum/behavior_delegate/screecher_queen
-	name = "Queen Screacher Behavior Delegate"
+	name = "Queen Screacher Behavior Delegate"*/

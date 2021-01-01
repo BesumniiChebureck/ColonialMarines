@@ -221,7 +221,7 @@
 			H.name = H.get_visible_name()
 			H.change_real_name(H, usr.name_archive)
 
-	usr.forceMove(O.loc) // Appear where the object you were controlling is -- TLE
+	usr.forceMove(O.loc )// Appear where the object you were controlling is -- TLE
 	usr.client.eye = usr
 	usr.control_object = null
 

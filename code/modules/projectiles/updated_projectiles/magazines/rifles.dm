@@ -12,6 +12,7 @@
 	max_rounds = 8
 	gun_type = /obj/item/weapon/gun/rifle/m46c
 
+
 //-------------------------------------------------------
 //M41A (MK2) PULSE RIFLE AMMUNITION
 

@@ -29,15 +29,16 @@
 #define MAP_LV_624 "LV-624"
 #define MAP_BIG_RED "Solaris Ridge"
 #define MAP_PRISON_STATION "Prison Station"
-#define MAP_ZERO_POINT "Zero Point"
-#define MAP_ZERO_POINTC "Zero Crashed Point" //Only very lowpop
 #define MAP_WHISKEY_OUTPOST "Whiskey Outpost" // Unused
 #define MAP_DESERT_DAM "Trijent Dam"  // Highpop only
 #define MAP_SOROKYNE_STRATA "Sorokyne Strata"
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
+#define MAP_ZERO_POINT "Zero Point"
+#define MAP_ZERO_POINTC "Zero Crashed Point" //Only very lowpop
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 60 // number of players before we switch to lowpop maps only (LV, BR, Prison)
+
 #define PREROUND_TIME 300 // time before the round starts
 
 //A set of constants used to determine which type of mute an admin wishes to apply:

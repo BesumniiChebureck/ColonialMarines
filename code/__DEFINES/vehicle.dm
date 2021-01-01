@@ -42,4 +42,4 @@
 
 #define TOGGLE_SHIFT_CLICK_GUNNER			1 	// Toggle between Shift click and MMB click for gunner
 
-#define TANK_POPLOCK				40
+#define TANK_POPLOCK				40	//

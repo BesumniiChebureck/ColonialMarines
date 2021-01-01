@@ -20,7 +20,6 @@
 	if(!..())	return 0//Cooldown check
 
 	timing = !timing
-
 	if(timing)
 		START_PROCESSING(SSobj, src)
 	else
@@ -76,9 +75,9 @@
 	if(!secured)
 		to_chat(user, SPAN_WARNING("The [name] is unsecured!"))
 		return
-
+	
 	tgui_interact(user)
-
+	
 
 /obj/item/device/assembly/timer/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -121,7 +120,7 @@
 	. = list()
 	.["current_time"] = time SECONDS_TO_DECISECONDS
 	.["is_timing"] = timing
-
+	
 /obj/item/device/assembly/timer/ui_static_data(mob/user)
 	. = list()
 	.["min_time"] = TIMER_MINIMUM_TIME SECONDS_TO_DECISECONDS

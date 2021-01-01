@@ -463,5 +463,3 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/ammo_magazine/riflemc(src)
 	new /obj/item/ammo_magazine/riflemc(src)
 	new /obj/item/ammo_magazine/riflemc(src)
-	new /obj/item/ammo_magazine/riflemc(src)
-	new /obj/item/ammo_magazine/riflemc(src)

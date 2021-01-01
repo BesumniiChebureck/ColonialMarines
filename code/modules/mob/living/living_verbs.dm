@@ -30,7 +30,7 @@
 
 		if(!istype(M))
 			return
-
+		
 		for(var/obj/item/holder/hold in M.contents)
 			return
 
@@ -46,7 +46,7 @@
 	//unbuckling yourself
 	if(buckled && (last_special <= world.time) )
 		resist_buckle()
-
+	
 	//escaping a bodybag or a thermal tarp
 	if(loc && (istype(loc, /obj/structure/closet/bodybag)))
 		var/obj/structure/closet/bodybag/BB = loc

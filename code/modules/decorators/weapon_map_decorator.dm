@@ -21,8 +21,8 @@
 
 	gun.icon = c_icon
 
-	gun.item_icons = list()
-
+	gun.item_icons = list()	
+	
 	gun.item_icons += list(WEAR_L_HAND = l_icon)
 	gun.item_icons += list(WEAR_R_HAND = r_icon)
 	gun.item_icons += list(WEAR_BACK = b_icon)

@@ -167,7 +167,7 @@
 						usr.put_in_hands(scan)
 					scan = null
 				else
-					scan.forceMove(src.loc)
+					scan.forceMove(loc)
 					scan = null
 			else
 				var/obj/item/I = usr.get_active_hand()

@@ -21,7 +21,7 @@
 	create_egg_triggers()
 	if (hive)
 		hivenumber = hive
-
+	
 	set_hive_data(src, hivenumber)
 	update_icon()
 	Grow()
@@ -123,10 +123,10 @@
 		if(loc && status != EGG_DESTROYED)
 			status = EGG_BURST
 			var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
-
+			
 			child.flags_embryo = flags_embryo
 			flags_embryo = NO_FLAGS // Lose the embryo flags when passed on
-
+			
 			if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand))	//sanity checks
 				X.put_in_hands(child)
 				return
@@ -138,7 +138,7 @@
 /obj/effect/alien/egg/proc/replace_triggers()
 	if(isnull(loc) || status == EGG_DESTROYED)
 		return
-
+	
 	create_egg_triggers()
 	deploy_egg_triggers()
 

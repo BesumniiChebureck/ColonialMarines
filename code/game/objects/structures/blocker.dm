@@ -99,4 +99,4 @@
 	visible = TRUE
 
 /obj/structure/blocker/forcefield/ghost //create secrets and lock open moving for all map (dosn't work idk problem reason)
-	types = list(/mob/dead/)
+	types = list(/mob/dead)

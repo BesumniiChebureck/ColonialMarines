@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(sound)
 	runlevels 	  = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
 	var/list/template_queue = list()							// Full Template Queue
-	var/list/run_queue = list()									// Queue subset being processed during this tick
+	var/list/run_queue = list()									// Queue subset being processed during this tick	
 	var/list/run_hearers = null									// Hearers for currently being processed template
 
 /datum/controller/subsystem/sound/fire(resumed = FALSE)

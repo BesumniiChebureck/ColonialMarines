@@ -91,7 +91,7 @@
 	icon = 'icons/obj/items/stock_parts.dmi'
 	icon_state = "capacitor"
 	desc = "A debug item for research."
-
+	
 /obj/item/moneybag
 	icon = 'icons/obj/items/storage.dmi'
 	name = "Money bag"

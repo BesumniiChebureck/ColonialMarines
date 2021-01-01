@@ -655,7 +655,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		return
 
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
-		current_mag.forceMove(get_turf(src)) //Drop it on the ground.
+		current_mag.forceMove(get_turf(src) )//Drop it on the ground.
 	else
 		user.put_in_hands(current_mag)
 
