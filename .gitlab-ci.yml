@@ -1,0 +1,70 @@
+image: i386/ubuntu:xenial
+
+stages:
+  - build
+
+variables:
+  BYOND_MAJOR: "513"
+  BYOND_MINOR: "1527"
+  SPACEMAN_DMM_VERSION: "1.6"
+  GITLAB_CHANGELOG_PID: "21031593"
+  GITLAB_REPO_LINK: "git@gitlab.com:cmdevs/colonial-warfare.git"
+
+
+before_script:
+  - apt-get update -qq
+  - apt-get --yes install build-essential unzip libc6:i386 libgcc1:i386 libstdc++6:i386 curl -qq
+  - curl "http://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip" -o byond.zip
+  - unzip byond.zip
+  - cd byond
+  - make install
+  - cd ..
+  - curl -LJO "https://github.com/SpaceManiac/SpacemanDMM/releases/download/suite-${SPACEMAN_DMM_VERSION}/dreamchecker" -o dreamchecker
+  - chmod +x dreamchecker
+
+build:
+    stage: build
+    script:
+      - ./dreamchecker
+      - chmod +rwx ./insert_maps_in_dme.sh
+      - ./insert_maps_in_dme.sh
+      - DreamMaker ColonialMarinesALPHA.dme
+    artifacts:
+      paths:
+        - ColonialMarinesALPHA.dmb
+        - ColonialMarinesALPHA.rsc
+      expire_in: 20min
+
+changelog:
+    stage: build
+    before_script:
+      - apt-get update -qq
+      - apt-get install -y git python3 python3-dateutil python3-requests python3-yaml python3-bs4 -qq
+      - 'which ssh-agent || ( apt-get update -qy && apt-get install openssh-client -qqy )'
+      - eval `ssh-agent -s`
+      - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null # add ssh ke
+      - mkdir -p ~/.ssh
+      - chmod 700 ~/.ssh
+      - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+      - git config --local user.email "cmhub@somewhere.com"
+      - git config --local user.name "Changelogs"
+      - git config --local push.default simple
+      - git remote set-url origin ${GITLAB_REPO_LINK} # git configuration
+      - git checkout dev
+      - git pull origin dev
+    script:
+      - python3 tools/changelogs/generate_changelogs.py dev html/changelogs/
+      - python3 tools/GenerateChangelog/ss13_genchangelog.py html/changelog.html html/changelogs/
+      - git add .
+      - git commit -m "changelog-${CI_COMMIT_BRANCH} [ci skip]" -a || true
+      - git push -u origin dev
+    artifacts:
+      paths:
+        - html/changelog.html
+        - html/changelogs
+      expire_in: 10min
+    only:
+      refs:
+        - dev #only dev
+      variables:
+        - $CHANGELOG_ENABLED
