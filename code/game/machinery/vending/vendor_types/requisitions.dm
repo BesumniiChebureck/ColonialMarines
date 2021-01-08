@@ -365,13 +365,7 @@
 		list("M4A3 HP Magazine (9mm)", round(scale * 4), /obj/item/ammo_magazine/pistol/hp, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smartpistol Magazine (.45)", round(scale * 6), /obj/item/ammo_magazine/pistol/smart, VENDOR_ITEM_REGULAR),
 		list("VP78 Magazine", round(scale * 6), /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR),
-		list("L42A LE Magazine (10x24mm)", round(scale * 4), /obj/item/ammo_magazine/rifle/l42a/le, VENDOR_ITEM_REGULAR),
 		list("L42A Inc Magazine (10x24mm)", round(scale * 4), /obj/item/ammo_magazine/rifle/l42a/incendiary, VENDOR_ITEM_REGULAR),
-		list("M39 LE Magazine (10x20mm)", round(scale * 3), /obj/item/ammo_magazine/smg/m39/le, VENDOR_ITEM_REGULAR),
-		list("M39 Inc Magazine (10x20mm)", round(scale * 3), /obj/item/ammo_magazine/smg/m39/incendiary, VENDOR_ITEM_REGULAR),
-		list("M41A EX Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/explosive, VENDOR_ITEM_REGULAR),
-		list("M41A Inc Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/incendiary, VENDOR_ITEM_REGULAR),
-		list("M41A LE Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/le, VENDOR_ITEM_REGULAR),
 		list("M41A MK1 Magazine (10x24mm)", round(scale * 3), /obj/item/ammo_magazine/rifle/m41aMK1, VENDOR_ITEM_REGULAR)
 		)
 
