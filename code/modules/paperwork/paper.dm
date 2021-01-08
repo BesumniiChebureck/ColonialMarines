@@ -15,7 +15,6 @@
 	flags_equip_slot = SLOT_HEAD
 	flags_armor_protection = BODY_FLAG_HEAD
 	attack_verb = list("bapped")
-
 	var/extra_headers //For additional styling or other js features.
 
 	var/info		//What's actually written on the paper.
@@ -113,8 +112,8 @@
 		read_paper(user)
 	else
 		//Show scrambled paper
-		user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8' /><TITLE>[name]</TITLE>[extra_headers]</HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=paper[md5(name)]")
-		onclose(user, "paper[md5(name)]")
+		show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
+		onclose(user, name)
 	return
 
 /obj/item/paper/attack(mob/living/carbon/M, mob/living/carbon/user)
@@ -388,6 +387,7 @@
 			P:RenamePaper(user,src)
 		else
 			usr << browse("<HTML><HEAD><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY><div align='right'style='position:fixed;bottom:0;font-style:bold;'><A href='?src=[REF(src)];help=1'>\[?\]</A></div></HTML>", "window=[name]") // Update the window
+		//openhelp(user)
 		return
 
 	else if(istype(P, /obj/item/tool/stamp))
@@ -448,7 +448,7 @@
 	CR.stamps = stamps
 	CR.fields = fields
 	CR.name = name
-	CR.loc = loc
+	CR.forceMove(loc)
 	qdel(src)
 	return CR
 

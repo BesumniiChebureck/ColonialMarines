@@ -7,9 +7,9 @@
 	if(!MI)
 		CRASH("Internal storage was created without a valid master item! ([loc], [usr])")
 	master_item = MI
-	loc = master_item
+	forceMove(master_item)
 	name = master_item.name
-	verbs -= /obj/item/verb/verb_pickup	//make sure this is never picked up.
+	remove_verb(src, /obj/item/verb/verb_pickup)	//make sure this is never picked up.
 	..()
 
 /obj/item/storage/internal/attack_hand()
@@ -139,3 +139,4 @@
 /obj/item/storage/internal/Destroy()
 	. = ..()
 	master_item = null
+

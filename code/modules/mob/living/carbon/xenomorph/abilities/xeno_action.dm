@@ -8,7 +8,8 @@
 
 	// Cooldown
 	var/xeno_cooldown = null   // Cooldown of the ability
-	
+	var/cooldown_message = null
+
 	var/cooldown_timer_id = TIMER_ID_NULL // holds our timer ID
 
 	// Track state so we can effectively REDUCE xeno_cooldown by removing and replacing timers.
@@ -16,7 +17,7 @@
 	var/current_cooldown_duration = 0
 
 
-// Actually applies the effects of the action. 
+// Actually applies the effects of the action.
 // Circa 1/2020, effects for even non-activable abilities are moved
 // under this proc.
 // __MUST__ call apply_cooldown if xeno_cooldown are desired.
@@ -52,7 +53,7 @@
 /datum/action/xeno_action/give_action(mob/living/L)
 	..()
 	if(macro_path)
-		L.verbs += macro_path
+		add_verb(L, macro_path)
 
 /datum/action/xeno_action/update_button_icon()
 	if(!button)
@@ -64,12 +65,12 @@
 	else
 		button.color = rgb(255,255,255,255)
 
-// Helper proc that checks and uses plasma if possible, returning TRUE 
+// Helper proc that checks and uses plasma if possible, returning TRUE
 // if the use was successful
 /datum/action/xeno_action/proc/check_and_use_plasma_owner(var/plasma_to_use)
 	if (!check_plasma_owner(plasma_to_use))
 		return FALSE
-	
+
 	use_plasma_owner(plasma_to_use)
 	return TRUE
 
@@ -103,8 +104,8 @@
 /datum/action/xeno_action/activable
 
 // Called when the action is clicked on.
-// For non-activable Xeno actions, this is used to 
-// actually DO the action. 
+// For non-activable Xeno actions, this is used to
+// actually DO the action.
 /datum/action/xeno_action/activable/action_activate()
 	if(!owner)
 		return
@@ -128,7 +129,7 @@
 	if(X.selected_ability == src)
 		X.selected_ability = null
 	if(macro_path)
-		X.verbs -= macro_path
+		remove_verb(X, macro_path)
 
 
 // 'Onclick' actions - the bulk of the ability's work is done when the button is clicked. Just a thin wrapper that immediately calls into
@@ -143,12 +144,13 @@
 // Adds a cooldown to this
 // According to the cooldown variables set on this and
 // the the age of the host Xenomorph, where applicable
-// IF YOU WANT AGE SCALING SET IT 
+// IF YOU WANT AGE SCALING SET IT
 // THIS PROC SHOULD NEVER BE OVERRIDDEN BY CHILDREN
 // AND SHOULD __ALWAYS__ BE CALLED IN USE_ABILITY
 /datum/action/xeno_action/proc/apply_cooldown()
 	if(!owner)
 		return
+	var/mob/living/carbon/Xenomorph/X = owner
 	// Uh oh! STINKY! already on cooldown
 	if (cooldown_timer_id != TIMER_ID_NULL)
 		log_debug("Xeno action [src] tried to go on cooldown while already on cooldown.")
@@ -161,11 +163,13 @@
 	if(xeno_cooldown)
 		cooldown_to_apply = xeno_cooldown
 
+	cooldown_to_apply = cooldown_to_apply * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
+
 	// Add a unique timer
 	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_to_apply, TIMER_UNIQUE | TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_to_apply
 	current_cooldown_start_time = world.time
-	
+
 	// Update our button
 	update_button_icon()
 
@@ -175,8 +179,11 @@
 // Useful for things like abilities with 2 xeno_cooldown
 // Otherwise identical to apply_cooldown, but likewise should not be overridden
 /datum/action/xeno_action/proc/apply_cooldown_override(cooldown_duration)
-
+	if(!owner)
+		return
+	var/mob/living/carbon/Xenomorph/X = owner
 	// Note: no check to see if we're already on CD. we just flat override whatever's there
+	cooldown_duration = cooldown_duration * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
 
 	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE | TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_duration
@@ -196,7 +203,7 @@
 		log_debug("Xeno action [src] tried to go off cooldown while already off cooldown.")
 		log_admin("Xeno action [src] tried to go off cooldown while already off cooldown.")
 		return
-	
+
 	cooldown_timer_id = TIMER_ID_NULL
 	// Don't need to clean up our timer
 	current_cooldown_start_time = 0
@@ -204,7 +211,7 @@
 	ability_cooldown_over()
 	return
 
-// Immediately force-ends the current cooldown. 
+// Immediately force-ends the current cooldown.
 /datum/action/xeno_action/proc/end_cooldown()
 	if (cooldown_timer_id == TIMER_ID_NULL)
 		log_debug("Xeno action [src] tried to force end cooldown while already off cooldown.")
@@ -226,7 +233,7 @@
 		log_debug("Xeno action [src] tried to force end cooldown while already off cooldown.")
 		log_admin("Xeno action [src] tried to force end cooldown while already off cooldown.")
 		return
-	
+
 	// Unconditionally delete the first timer
 	deltimer(cooldown_timer_id)
 	cooldown_timer_id = TIMER_ID_NULL
@@ -237,20 +244,20 @@
 		current_cooldown_start_time = 0
 		current_cooldown_duration = 0
 		ability_cooldown_over()
-	else 
+	else
 		// Looks like timers are back on the menu, boys
 		var/new_cooldown_duration = current_cooldown_duration - amount - (world.time - current_cooldown_start_time)
 		cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), new_cooldown_duration, TIMER_UNIQUE | TIMER_STOPPABLE)
 		current_cooldown_duration = new_cooldown_duration
 		current_cooldown_start_time = world.time
-	
+
 	return
 
 // Called when the cooldown ends from any source.
 // This is VERY safe to override if you're looking to do extra things when a cooldown
-// goes up. 
+// goes up.
 // Possible extensions of this code: add procs that do this
-// for all cases, so people that don't understand this code can more 
+// for all cases, so people that don't understand this code can more
 // easily use it
 /datum/action/xeno_action/proc/ability_cooldown_over()
 	if(!owner)
@@ -258,7 +265,9 @@
 	for(var/X in owner.actions)
 		var/datum/action/act = X
 		act.update_button_icon()
-	if (!istype(src, /datum/action/xeno_action/onclick))
+	if(cooldown_message)
+		to_chat(owner, SPAN_XENODANGER("[cooldown_message]"))
+	else if (!istype(src, /datum/action/xeno_action/onclick))
 		to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
 	return
 

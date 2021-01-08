@@ -265,7 +265,7 @@
 	var/list/targets = list()
 	for (var/turf/target_turf in turflist)
 		for (var/mob/living/carbon/H in target_turf)
-			if(!isXenoOrHuman(H) || X.match_hivemind(H) || H.is_dead())
+			if(!isXenoOrHuman(H) || X.match_hivemind(H) || H.is_dead() || H.is_mob_incapacitated(TRUE))
 				continue
 
 			targets += H
@@ -733,7 +733,7 @@
 
 	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
 	grenade.source_mob = X
-	grenade.loc = get_turf(X)
+	grenade.forceMove(get_turf(X))
 	grenade.throw_atom(A, 5, SPEED_SLOW, X, TRUE)
 	addtimer(CALLBACK(grenade, /obj/item/explosive/proc/prime), prime_delay)
 

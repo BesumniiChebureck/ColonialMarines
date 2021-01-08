@@ -110,6 +110,7 @@ datum/controller/vote
 					for(var/option in winners)
 						text += "\t[option]\n"
 			. = pick(winners)
+
 			if((mode == "gamemode" && . == "extended")) // Announce Extended gamemode, but not other gamemodes
 				text += "<b>Vote Result: [.]</b>"
 			else

@@ -19,6 +19,13 @@
 
 //////////////////////////////////////////////////////////////////
 
+#define COMSIG_CLIENT_LMB_DOWN "client_lmb_down"
+#define COMSIG_CLIENT_LMB_UP "client_lmb_up"
+#define COMSIG_CLIENT_LMB_DRAG "client_lmb_drag"
+
+#define COMSIG_CLIENT_KEY_DOWN "client_key_down"
+#define COMSIG_CLIENT_KEY_UP "client_key_up"
+
 // /datum signals
 /// when a component is added to a datum: (/datum/component)
 #define COMSIG_COMPONENT_ADDED "component_added"
@@ -77,6 +84,11 @@
 #define COMSIG_MOB_GETTING_UP "mob_getting_up"
 /// From /mob/proc/update_canmove()
 
+#define COMSIG_HUMAN_ALIEN_ATTACK "human_alien_attack"
+/// from /mob/living/carbon/human/attack_alien()
+#define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
+/// from /mob/living/carbon/Xenomorph/attack_alien()
+
 
 /// For when a mob is dragged
 #define COMSIG_MOB_DRAGGED "mob_dragged"
@@ -106,6 +118,18 @@
 
 /// From /mob/living/rejuvenate
 #define COMSIG_LIVING_REJUVENATED "living_rejuvenated"
+/// From /mob/living/proc/IgniteMob
+#define COMSIG_LIVING_PREIGNITION "living_preignition"
+	#define COMPONENT_CANCEL_IGNITION (1<<0)
+
+/// From /obj/flamer_fire/Crossed
+#define COMSIG_LIVING_FLAMER_CROSSED "living_flamer_crossed"
+/// From /obj/flamer_fire/Initialize
+#define COMSIG_LIVING_FLAMER_FLAMED "living_flamer_flamed"
+	#define COMPONENT_NO_BURN	(1<<0)
+	#define COMPONENT_NO_IGNITE	(1<<1)
+/// From /obj/item/proc/unzoom
+#define COMSIG_LIVING_ZOOM_OUT "living_zoom_out"
 
 /// From /obj/item/device/defibrillator/attack
 #define COMSIG_HUMAN_REVIVED "human_revived"
@@ -122,9 +146,14 @@
 // /obj/item signals
 ///from base of obj/item/dropped(): (mob/user)
 #define COMSIG_ITEM_DROPPED "item_drop"
+///from /obj/item/proc/unwield
+#define COMSIG_ITEM_UNWIELD "item_unwield"
+
 /// From /atom/movable/proc/launch_towards
 #define COMSIG_MOVABLE_PRE_THROW "movable_pre_throw"
 	#define COMPONENT_CANCEL_THROW (1<<0)
+//from base of atom/movable/Moved(): (/atom, dir, forced)
+#define COMSIG_MOVABLE_MOVED "movable_moved"
 
 ///from /obj/item/device/agents/floppy_disk/proc/insert_drive
 #define COMSIG_AGENT_DISK_INSERTED "agent_disk_inserted"
@@ -150,3 +179,8 @@
 
 #define COMSIG_GRENADE_PRE_PRIME "grenade_pre_prime"
 	#define COMPONENT_GRENADE_PRIME_CANCEL	(1<<0)
+
+#define COMSIG_ITEM_PICKUP "item_pickup"
+
+#define COMSIG_MOVABLE_PRE_LAUNCH "movable_pre_launch"
+	#define COMPONENT_LAUNCH_CANCEL (1<<0)

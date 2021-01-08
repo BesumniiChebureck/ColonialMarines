@@ -122,6 +122,7 @@
 		else
 			return NORTH
 
+
 // Among other things, used by flamethrower and boiler spray to calculate if flame/spray can pass through.
 // Returns an atom for specific effects (primarily flames and acid spray) that damage things upon contact
 //
@@ -214,6 +215,7 @@
 			return A
 
 	return null // Nothing found to block the link of mover from start_turf to target_turf
+
 
 /proc/TurfBlockedNonWindow(turf/loc)
 	for(var/obj/O in loc)
@@ -1233,7 +1235,7 @@ var/global/image/action_blue_power_up
 
 						// Spawn a new shuttle corner object
 						var/obj/corner = new()
-						corner.loc = X
+						corner.forceMove(X)
 						corner.density = 1
 						corner.anchored = 1
 						corner.icon = X.icon
@@ -1261,10 +1263,10 @@ var/global/image/action_blue_power_up
 							qdel(O) // prevents multiple shuttle corners from stacking
 							continue
 						if(!istype(O,/obj)) continue
-						O.loc = X
+						O.forceMove(X)
 					for(var/mob/M in T)
 						if(!istype(M,/mob) || istype(M, /mob/aiEye)) continue // If we need to check for more mobs, I'll add a variable
-						M.loc = X
+						M.forceMove(X)
 
 //					var/area/AR = X.loc
 
@@ -1308,12 +1310,14 @@ var/global/image/action_blue_power_up
 	var/dy = abs(B.y - A.y)
 	return get_dir(A, B) & (rand() * (dx+dy) < dy ? 3 : 12)
 
+
 //Returns the 2 dirs perpendicular to the arg
 proc/get_perpen_dir(var/dir)
 	if(dir & (dir-1)) return 0 //diagonals
 	if(dir in list(EAST, WEST))
 		return list(SOUTH, NORTH)
 	else return list(EAST, WEST)
+
 
 /proc/parse_zone(zone)
 	if(zone == "r_hand") return "right hand"
@@ -1494,6 +1498,7 @@ var/list/WALLITEMS = list(
 
 	return turfs
 
+
 //Key thing that stops lag. Cornerstone of performance in ss13, Just sitting here, in unsorted.dm.
 
 //Increases delay as the server gets more overloaded,
@@ -1556,7 +1561,7 @@ var/list/WALLITEMS = list(
 /proc/grenade_grief_check(var/obj/item/explosive/grenade/G)
 	var/turf/T = get_turf(G)
 	if(!(T.loc.type in grenade_antigrief_exempt_areas))
-		var/crash_occured = (!SSticker?.mode?.is_in_endgame)
+		var/crash_occured = (SSticker?.mode?.is_in_endgame)
 		if(G.harmful && (T.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBITT))) && (security_level < SEC_LEVEL_RED) && !crash_occured && grenade_antigrief_on)
 			return TRUE
 	return FALSE

@@ -16,12 +16,12 @@ SUBSYSTEM_DEF(ticker)
 
 	var/datum/game_mode/mode = null
 
-	var/list/login_music = null				//Music played in pregame lobby
+	var/list/login_music = null						//Music played in pregame lobby
 
 	var/delay_end = FALSE					//If set true, the round will not restart on it's own
 	var/admin_delay_notice = ""				//A message to display to anyone who tries to restart the world after a delay
 
-	var/time_left						//Pre-game timer
+	var/time_left							//Pre-game timer
 	var/start_at
 
 	var/roundend_check_paused = FALSE
@@ -44,6 +44,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
+
 	login_music = pick(
 	'sound/music/good_day_to_die.ogg',
 	'sound/music/Aliens_Main_Theme.ogg',
@@ -51,9 +52,11 @@ SUBSYSTEM_DEF(ticker)
 	'sound/music/buffalo_springfield.ogg',
 	'sound/music/warrior_song.ogg',
 	'sound/music/Edwin_Starr_War.ogg',
-	'sound/music/Ross_bugden_Welcome_to_chaos.ogg')
+	'sound/music/Ross_bugden_Welcome_to_chaos.ogg',
+	'sound/music/Big_Iron.ogg')
 
 	return ..()
+
 
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
@@ -194,6 +197,7 @@ SUBSYSTEM_DEF(ticker)
 		INVOKE_ASYNC(V, /obj/structure/machinery/vending.proc/select_gamemode_equipment, mode.type)
 
 	setup_done = TRUE
+
 
 //These callbacks will fire after roundstart key transfer
 /datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)

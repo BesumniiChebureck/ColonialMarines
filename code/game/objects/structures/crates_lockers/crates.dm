@@ -52,7 +52,7 @@
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
 	for(var/obj/O in src)
-		O.loc = get_turf(src)
+		O.forceMove(get_turf(src))
 	opened = 1
 	update_icon()
 	if(climbable)
@@ -77,7 +77,7 @@
 			var/obj/structure/bed/B = O
 			if(B.buckled_mob)
 				continue
-		O.loc = src
+		O.forceMove(src)
 		itemcount++
 
 	opened = 0
@@ -106,7 +106,7 @@
 		if(rigged)
 			to_chat(user, SPAN_NOTICE("You attach [W] to [src]."))
 			user.drop_held_item()
-			W.loc = src
+			W.forceMove(src)
 			return
 	else if(istype(W, /obj/item/tool/wirecutters))
 		if(rigged)
@@ -143,6 +143,13 @@
 	icon_opened = "open_alpha"
 	icon_closed = "closed_alpha"
 
+/obj/structure/closet/crate/ammo
+	name = "ammunitions crate"
+	desc = "A ammunitions crate"
+	icon_state = "closed_ammo"
+	icon_opened = "open_ammo"
+	icon_closed = "closed_ammo"
+
 /obj/structure/closet/crate/bravo
 	name = "bravo squad crate"
 	desc = "A crate with bravo squad's symbol on it. "
@@ -157,33 +164,19 @@
 	icon_opened = "open_charlie"
 	icon_closed = "closed_charlie"
 
-/obj/structure/closet/crate/delta
-	name = "delta squad crate"
-	desc = "A crate with delta squad's symbol on it. "
-	icon_state = "closed_delta"
-	icon_opened = "open_delta"
-	icon_closed = "closed_delta"
-
-/obj/structure/closet/crate/echo
-	name = "echo squad crate"
-	desc = "A crate with echo squad's symbol on it. "
-	icon_state = "closed_echo"
-	icon_opened = "open_echo"
-	icon_closed = "closed_echo"
-
-/obj/structure/closet/crate/ammo
-	name = "ammunitions crate"
-	desc = "A ammunitions crate"
-	icon_state = "closed_ammo"
-	icon_opened = "open_ammo"
-	icon_closed = "closed_ammo"
-
 /obj/structure/closet/crate/construction
 	name = "construction crate"
 	desc = "A construction crate"
 	icon_state = "closed_construction"
 	icon_opened = "open_construction"
 	icon_closed = "closed_construction"
+
+/obj/structure/closet/crate/delta
+	name = "delta squad crate"
+	desc = "A crate with delta squad's symbol on it. "
+	icon_state = "closed_delta"
+	icon_opened = "open_delta"
+	icon_closed = "closed_delta"
 
 /obj/structure/closet/crate/explosives
 	name = "explosives crate"

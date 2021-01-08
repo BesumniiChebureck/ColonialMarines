@@ -1,3 +1,12 @@
+//Xenomorph "generic" parent, does not actually appear in game
+//Many of these defines aren't referenced in the castes and so are assumed to be defaulted
+//Castes are all merely subchildren of this parent
+//Just about ALL the procs are tied to the parent, not to the children
+//This is so they can be easily transferred between them without copypasta
+
+//All this stuff was written by Absynth.... and god help us
+//Edited by Apop - 11JUN16
+
 #define DEBUG_XENO 0
 
 #if DEBUG_XENO
@@ -67,6 +76,7 @@
 	var/plasma_stored = 10
 	var/plasma_max = 10
 	var/plasma_gain = 5
+	var/cooldown_reduction_percentage = 0 // By what % cooldown are reduced by. 1 => No cooldown. Should normally be clamped at 50%
 
 	var/small_explosives_stun = TRUE // Have to put this here, otherwise it can't be strain specific
 
@@ -154,6 +164,7 @@
 	var/explosivearmor_modifier = 0
 	var/plasmapool_modifier = 1
 	var/plasmagain_modifier = 0
+	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
 	var/acid_modifier = 0
@@ -226,6 +237,10 @@
 	var/obj/structure/tunnel/start_dig = null
 	var/tunnel_delay = 0
 	var/steelcrest = FALSE
+	var/list/available_placeable = list() // List of placeable the xenomorph has access to.
+	var/list/current_placeable = list() // If we have current_placeable that are limited, e.g. fruits
+	var/max_placeable = 0 // Limit to that amount
+	var/selected_placeable_index = 1 //In the available build list, what is the index of what we're building next
 
 
 	//////////////////////////////////////////////////////////////////
@@ -236,9 +251,6 @@
 	var/burrow_timer = 200
 	var/tunnel_timer = 20
 
-	///// BELOW HERE LIE COOLDOWN VARS
-	var/has_spat = 0
-	var/has_screeched = 0
 	//Burrower Vars
 	var/used_tremor = 0
 	// Defender vars
@@ -378,11 +390,35 @@
 	acid_splash_cooldown = caste.acid_splash_cooldown
 
 	if (caste.fire_immune)
-		registerListener(src, EVENT_PREIGNITION_CHECK, "xeno_fire_immune", TRUE_CALLBACK)
-		registerListener(src, EVENT_PRE_FIRE_BURNED_CHECK, "xeno_fire_immune", TRUE_CALLBACK)
+		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
+		RegisterSignal(src, list(
+			COMSIG_LIVING_FLAMER_CROSSED,
+			COMSIG_LIVING_FLAMER_FLAMED,
+		), .proc/flamer_crossed_immune)
+	else
+		UnregisterSignal(src, list(
+			COMSIG_LIVING_PREIGNITION,
+			COMSIG_LIVING_FLAMER_CROSSED,
+			COMSIG_LIVING_FLAMER_FLAMED,
+		))
 
 	recalculate_everything()
 
+/mob/living/carbon/Xenomorph/proc/fire_immune(mob/living/L)
+	SIGNAL_HANDLER
+
+	if(L.fire_reagent?.fire_penetrating)
+		return
+
+	return COMPONENT_CANCEL_IGNITION
+
+/mob/living/carbon/Xenomorph/proc/flamer_crossed_immune(mob/living/L, datum/reagent/R)
+	SIGNAL_HANDLER
+
+	if(R.fire_penetrating)
+		return
+
+	return COMPONENT_NO_BURN|COMPONENT_NO_IGNITE
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
@@ -420,15 +456,10 @@
 	color = in_hive.color
 
 	//Queens have weird, hardcoded naming conventions based on age levels. They also never get nicknumbers
-	if(isXenoQueen(src))
-		switch(age)
-			if(XENO_NORMAL) name = "[name_prefix]Queen"			 //Young
-			if(XENO_MATURE) name = "[name_prefix]Elder Queen"	 //Mature
-			if(XENO_ELDER) name = "[name_prefix]Elder Empress"	 //Elite
-			if(XENO_ANCIENT) name = "[name_prefix]Ancient Empress" //Ancient
-			if(XENO_PRIME) name = "[name_prefix]Prime Empress" //Primordial
-	else if(isXenoPredalien(src)) name = "[name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
-	else if(caste) name = "[name_prefix][age_prefix][caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
+	if(isXenoPredalien(src))
+		name = "[name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
+	else if(caste)
+		name = "[name_prefix][age_prefix][caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)

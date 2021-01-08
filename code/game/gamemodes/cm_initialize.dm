@@ -191,7 +191,7 @@ Additional game mode variables.
 
 	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
 
-	if(pred_candidate) pred_candidate.loc = null //Nullspace it for garbage collection later.
+	if(pred_candidate) pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = 1)
 
@@ -696,7 +696,7 @@ Additional game mode variables.
 					"Survivor - Trucker",
 					"Survivor - Colonial Marshall",
 				)
-			if(MAP_ICE_COLONY)
+			if(MAP_ICE_COLONY, MAP_ZERO_POINT, MAP_ZERO_POINTC)
 				survivor_types = list(
 					"Survivor - Scientist",
 					"Survivor - Doctor",

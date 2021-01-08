@@ -23,6 +23,8 @@
 	last_damage_source = null
 	last_damage_mob = null
 
+	QDEL_NULL(mob_panel)
+
 	ghostize()
 	clear_fullscreens()
 	return ..()
@@ -46,7 +48,15 @@
 	if(!isnull(current_area) && current_area.statistic_exempt)
 		statistic_exempt = TRUE
 	prepare_huds()
+
+	create_player_panel()
+
 	return ..()
+
+/mob/proc/create_player_panel()
+	QDEL_NULL(mob_panel)
+
+	mob_panel = new(src)
 
 /mob/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -746,7 +756,7 @@ mob/proc/yank_out_object()
 			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
 		else
 			to_chat(usr, "[src] has nothing stuck in their wounds that is large enough to remove.")
-		src.verbs -= /mob/proc/yank_out_object
+		remove_verb(src, /mob/proc/yank_out_object)
 		return
 
 	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
@@ -772,7 +782,7 @@ mob/proc/yank_out_object()
 		visible_message(SPAN_WARNING("<b>[usr] rips [selection] out of [src]'s body.</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"), null, 5)
 
 	if(valid_objects.len == 1) //Yanking out last object - removing verb.
-		src.verbs -= /mob/proc/yank_out_object
+		remove_verb(src, /mob/proc/yank_out_object)
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
@@ -799,7 +809,7 @@ mob/proc/yank_out_object()
 			affected.wounds += I
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 1)
 
-	selection.loc = get_turf(src)
+	selection.forceMove(get_turf(src))
 	return TRUE
 
 /mob/living/proc/handle_statuses()
@@ -902,3 +912,71 @@ mob/proc/yank_out_object()
 
 		if(istype(img))
 			img.appearance_flags &= ~PIXEL_SCALE
+
+/mob/proc/trainteleport(atom/destination)
+	if(!destination || anchored)
+		return FALSE //Gotta go somewhere and be able to move
+	if(!pulling)
+		return forceMove(destination) //No need for a special proc if there's nothing being pulled.
+	pulledby?.stop_pulling() //The leader of the choo-choo train breaks the pull
+	var/list/conga_line = list()
+	var/end_of_conga = FALSE
+	var/mob/S = src
+	conga_line += S
+	if(S.buckled)
+		if(S.buckled.anchored)
+			S.buckled.unbuckle() //Unbuckle the first of the line if anchored.
+		else
+			conga_line += S.buckled
+	while(!end_of_conga)
+		var/atom/movable/A = S.pulling
+		if(A in conga_line || A.anchored) //No loops, nor moving anchored things.
+			end_of_conga = TRUE
+			break
+		conga_line += A
+		var/mob/M = A
+		if(istype(M)) //Is a mob
+			if(M.buckled && !(M.buckled in conga_line))
+				if(M.buckled.anchored)
+					conga_line -= A //Remove from the conga line if on anchored buckles.
+					end_of_conga = TRUE //Party is over, they won't be dragging anyone themselves.
+					break
+				else
+					conga_line += M.buckled //Or bring the buckles along.
+			if(M.pulling)
+				S = M
+			else
+				end_of_conga = TRUE
+		else if(isobj(A)) //Not a mob.
+			var/obj/O = A
+			if(O.buckled_mob)
+				conga_line += O.buckled_mob
+				var/mob/buckled_mob = O.buckled_mob
+				if(!buckled_mob.pulling)
+					continue
+				buckled_mob.stop_pulling() //No support for wheelchair trains yet.
+			var/obj/structure/bed/B = O
+			if(istype(B) && B.buckled_bodybag)
+				conga_line += B.buckled_bodybag
+			end_of_conga = TRUE //Only mobs can continue the cycle.
+	var/area/new_area = get_area(destination)
+	for(var/atom/movable/AM in conga_line)
+		var/oldLoc
+		if(AM.loc)
+			oldLoc = AM.loc
+			AM.loc.Exited(AM,destination)
+		AM.loc = destination
+		AM.loc.Entered(AM,oldLoc)
+		var/area/old_area
+		if(oldLoc)
+			old_area = get_area(oldLoc)
+		if(new_area && old_area != new_area)
+			new_area.Entered(AM,oldLoc)
+		for(var/atom/movable/CR in destination)
+			if(CR in conga_line)
+				continue
+			CR.Crossed(AM)
+		if(oldLoc)
+			AM.Moved(oldLoc)
+
+	return TRUE

@@ -88,16 +88,16 @@
 
 			s_class = occupant.getBruteLoss() < 60 ? INTERFACE_BLUE : INTERFACE_RED
 			dat += SET_CLASS("\t-Brute Damage %: [occupant.getBruteLoss()]<BR>", s_class)
-			
+
 			s_class = occupant.getOxyLoss() < 60 ? INTERFACE_BLUE : INTERFACE_RED
 			dat += SET_CLASS("\t-Respiratory Damage %: [occupant.getOxyLoss()]<BR>", s_class)
-			
+
 			s_class = occupant.getToxLoss() < 60 ? INTERFACE_BLUE : INTERFACE_RED
 			dat += SET_CLASS("\t-Toxin Content %: [occupant.getToxLoss()]<BR>", s_class)
-			
+
 			s_class = occupant.getFireLoss() < 60 ? INTERFACE_BLUE : INTERFACE_RED
 			dat += SET_CLASS("\t-Burn Severity %: [occupant.getFireLoss()]<BR>", s_class)
-			
+
 			dat += "<HR>Knocked Out Summary %: [occupant.knocked_out] ([round(occupant.knocked_out / 4)] seconds left!)<BR>"
 			if(occupant.reagents)
 				for(var/chemical in connected.available_chemicals)
@@ -185,7 +185,7 @@
 	density = 1
 	anchored = 1
 	var/mob/living/carbon/human/occupant = null
-	var/available_chemicals = list("inaprovaline" = "Inaprovaline", "stoxin" = "Soporific", "paracetamol" = "Paracetamol", "anti_toxin" = "Dylovene", "dexalin" = "Dexalin", "tricordrazine" = "Tricordrazine")
+	var/available_chemicals = list("inaprovaline" = "Inaprovaline", "paracetamol" = "Paracetamol", "anti_toxin" = "Dylovene", "dexalin" = "Dexalin", "tricordrazine" = "Tricordrazine")
 	var/amounts = list(5, 10)
 	var/obj/item/reagent_container/glass/beaker = null
 	var/filtering = 0
@@ -328,7 +328,7 @@
 	//prevents occupant's belonging from landing inside the machine
 	for(var/obj/O in src)
 		if(O != beaker)
-			O.loc = loc
+			O.forceMove(loc)
 
 
 /obj/structure/machinery/sleeper/proc/go_out()
@@ -410,7 +410,7 @@
 		return
 	if(beaker)
 		filtering = 0
-		beaker.loc = usr.loc
+		beaker.forceMove(usr.loc)
 		beaker = null
 	add_fingerprint(usr)
 

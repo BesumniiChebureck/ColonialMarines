@@ -458,16 +458,16 @@
 							to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
 							continue
 						new /obj/item/stack/sheet/metal(get_step(src,dir))
-						O.loc = get_turf(locate(84,237,2)) //z.2
-//						O.loc = get_turf(locate(30,70,1)) //z.1
+						O.forceMove(get_turf(locate(84,237,2))) //z.2
+//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
 						removed++
 						break
 					else if(istype(O,/obj/item))
 						var/obj/item/I = O
 						if(I.anchored)
 							continue
-						O.loc = get_turf(locate(84,237,2)) //z.2
-//						O.loc = get_turf(locate(30,70,1)) //z.1
+						O.forceMove(get_turf(locate(84,237,2))) //z.2
+//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
 						removed++
 						break
 				for(var/mob/M in T)
@@ -475,8 +475,8 @@
 						var/mob/living/carbon/Xenomorph/X = M
 						if(!X.stat == DEAD)
 							continue
-						X.loc = get_turf(locate(84,237,2)) //z.2
-//						X.loc = get_turf(locate(30,70,1)) //z.1
+						X.forceMove(get_turf(locate(84,237,2))) //z.2
+//						X.forceMove(get_turf(locate(30,70,1)) )//z.1
 						removed++
 						break
 				if(removed && !working)
@@ -668,17 +668,13 @@
 								/obj/item/attachable/quickfire, /obj/item/attachable/heavy_barrel, /obj/item/attachable/scope, /obj/item/attachable/quickfire,
 								/obj/item/attachable/scope/mini)
 
-/obj/item/storage/box/attachments/New()
-	..()
-	Pick_Contents()
-
-/obj/item/storage/box/attachments/proc/Pick_Contents()
+/obj/item/storage/box/attachments/fill_preset_inventory()
 	var/a1 = pick(common)
 	var/a2 = pick(attachment_1)
 	var/a3 = pick(attachment_2)
-	if(a1) new a1 (src)
-	if(a2) new a2 (src)
-	if(a3) new a3 (src)
+	if(a1) new a1(src)
+	if(a2) new a2(src)
+	if(a3) new a3(src)
 	return
 
 /obj/item/storage/box/attachments/update_icon()
@@ -687,4 +683,3 @@
 		if(T)
 			new /obj/item/paper/crumpled(T)
 		qdel(src)
-

@@ -138,7 +138,8 @@ var/global/list/limb_types_by_name = list(
 	return zone
 
 
-/proc/stars(n, pr)
+/proc/stars(text, n, pr)
+	text = html_decode(text)
 	if (pr == null)
 		pr = 25
 	if (pr <= 0)
@@ -147,17 +148,16 @@ var/global/list/limb_types_by_name = list(
 		if (pr >= 100)
 			return n
 	var/te = n
-	var/t = ""
 	n = length(n)
 	var/p = null
 	p = 1
 	while(p <= n)
 		if ((copytext(te, p, p + 1) == " " || prob(pr)))
-			t = text("[][]", t, copytext(te, p, p + 1))
+			text = text("[][]", text, copytext(te, p, p + 1))
 		else
-			t = text("[]*", t)
+			text = text("[]*", text)
 		p++
-	return t
+	return html_encode(text)
 /*
 proc/slur(phrase)
 	phrase = html_decode(phrase)
@@ -204,7 +204,6 @@ proc/slur(phrase)
 		t = text("[t][n_letter]")//since the above is ran through for each letter, the text just adds up back to the original word.
 		p++//for each letter p is increased to find where the next letter will be.
 	return strip_html(t)
-
 */
 /proc/slur(text)
 
@@ -284,8 +283,6 @@ proc/slur(phrase)
 
 	return html_encode(new_text)
 
-
-
 proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added
 	/* Turn text into complete gibberish! */
 	var/returntext = ""
@@ -332,37 +329,25 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		p=p+n_mod
 	return strip_html(t)
 
+#define PIXELS_PER_STRENGTH_VAL 24
 
-/proc/shake_camera(mob/M, duration, strength=1)
-	if(!M || !M.client || M.shakecamera)
+/proc/shake_camera(var/mob/M, var/steps = 1, var/strength = 1, var/time_per_step = 1)
+	if(!M || !M.client || (M.shakecamera > world.time))
 		return
-	M.shakecamera = 1
-	spawn(1)
-		if(!M.client)
-			return
 
-		var/atom/oldeye=M.client.eye
-		var/aiEyeFlag = 0
-		if(istype(oldeye, /mob/aiEye))
-			aiEyeFlag = 1
+	M.shakecamera = world.time + steps * time_per_step
+	strength = abs(strength)*PIXELS_PER_STRENGTH_VAL
+	var/old_X = M.client.pixel_x
+	var/old_y = M.client.pixel_y
 
-		var/x
-		for(x=0; x<duration, x++)
-			if(!M) return //Might have died/logged out before it ended
+	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step)
+	var/i = 1
+	while(i < steps)
+		animate(pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step)
+		i++
+	animate(pixel_x = old_X, pixel_y = old_y,time = Clamp(Floor(strength/PIXELS_PER_STRENGTH_VAL),2,4))//ease it back
 
-			if(!M.client)
-				M.shakecamera = 0
-				return
-
-			if(aiEyeFlag)
-				M.client.eye = locate(dd_range(1,oldeye.loc.x+rand(-strength,strength),world.maxx),dd_range(1,oldeye.loc.y+rand(-strength,strength),world.maxy),oldeye.loc.z)
-			else
-				M.client.eye = locate(dd_range(1,M.loc.x+rand(-strength,strength),world.maxx),dd_range(1,M.loc.y+rand(-strength,strength),world.maxy),M.loc.z)
-			sleep(1)
-		if(M.client)
-			M.client.eye=oldeye //Mighta disconnected
-		M.shakecamera = 0
-
+#undef PIXELS_PER_STRENGTH_VAL
 
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)

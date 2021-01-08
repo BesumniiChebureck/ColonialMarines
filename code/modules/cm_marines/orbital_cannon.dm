@@ -30,7 +30,7 @@ var/list/ob_type_fuel_requirements
 
 	if(!ob_type_fuel_requirements)
 		ob_type_fuel_requirements = list()
-		var/list/L = list(4,5,6)
+		var/list/L = list(3,4,5,6)
 		var/amt
 		for(var/i=1 to 4)
 			amt = pick_n_take(L)
@@ -164,7 +164,7 @@ var/list/ob_type_fuel_requirements
 		return
 
 	if(last_orbital_firing) //fired at least once
-		var/cooldown_left = (last_orbital_firing + 2500) - world.time
+		var/cooldown_left = (last_orbital_firing + 1200) - world.time
 		if(cooldown_left > 0)
 			if(user)
 				to_chat(user, SPAN_WARNING("[src]'s barrel is still too hot, let it cool down for [round(cooldown_left/10)] more seconds."))
@@ -369,6 +369,7 @@ var/list/ob_type_fuel_requirements
 
 
 /obj/structure/ob_ammo/warhead/proc/warhead_impact(var/turf/target)
+	// make damn sure everyone hears it
 	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1, 75)
 
 	var/cancellation_token = rand(0,32000)
@@ -412,8 +413,8 @@ var/list/ob_type_fuel_requirements
 	warhead_kind = "explosive"
 	icon_state = "ob_warhead_1"
 	var/clear_power = 1200
-	var/clear_falloff = 400
-	var/standard_power = 400
+	var/clear_falloff = 300
+	var/standard_power = 600
 	var/standard_falloff = 10
 	var/clear_delay = 3
 	var/double_explosion_delay = 6
@@ -427,6 +428,7 @@ var/list/ob_type_fuel_requirements
 	sleep(10)
 	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob) //break shit around
 	sleep(clear_delay)
+	//ACTUALLY BLOW SHIT UP
 	if(!target.density)
 		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 		sleep(double_explosion_delay)
@@ -468,10 +470,10 @@ var/list/ob_type_fuel_requirements
 	name = "\improper Cluster orbital warhead"
 	warhead_kind = "cluster"
 	icon_state = "ob_warhead_3"
-	var/total_amount = 100
-	var/instant_amount = 4
-	var/explosion_power = 400
-	var/explosion_falloff = 80
+	var/total_amount = 60
+	var/instant_amount = 3
+	var/explosion_power = 300
+	var/explosion_falloff = 60
 
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target)
 	. = ..()
@@ -546,7 +548,6 @@ var/list/ob_type_fuel_requirements
 			sleep(double_explosion_delay)
 			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
 			return
-
 
 
 

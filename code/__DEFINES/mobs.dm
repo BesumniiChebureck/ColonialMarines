@@ -182,6 +182,7 @@
 #define HAS_UNDERWEAR 512
 #define IS_WHITELISTED 1024
 #define IS_SYNTHETIC 2048
+#define NO_SHRAPNEL 4096
 
 //=================================================
 
@@ -281,6 +282,7 @@
 // Drone strain flags
 #define DRONE_NORMAL		"Normal"
 #define DRONE_HEALER		"Healer"
+#define DRONE_GARDENER		"Gardener"
 
 // Hivelord strain flags
 #define HIVELORD_NORMAL		"Normal"

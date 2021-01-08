@@ -194,7 +194,7 @@
 	if(mode == MODE_CREATE && chemical_data.has_new_properties)
 		update_costs()
 
-	if(href_list["simulate"])
+	if(href_list["simulate"] && ready)
 		simulating = SIMULATION_STAGE_BEGIN
 		status_bar = "COMMENCING SIMULATION"
 		icon_state = "modifier_running"
@@ -455,11 +455,13 @@
 		new_od_level += 5
 
 /obj/structure/machinery/chem_simulator/proc/prepare_recipe_options()
-	var/datum/chemical_reaction/generated/R = chemical_reactions_list[target.data.id]
-	if(!R) //If it doesn't have a recipe, go immediately to finalizing, which will then generate a new associated recipe
+	var/datum/chemical_reaction/generated/O = chemical_reactions_list[target.data.id]
+	if(!O) //If it doesn't have a recipe, go immediately to finalizing, which will then generate a new associated recipe
 		return FALSE
 	recipe_targets = list() //reset
-	var/list/old_reaction = R.required_reagents.Copy()
+	var/list/old_reaction = O.required_reagents.Copy()
+	var/datum/chemical_reaction/generated/R = new /datum/chemical_reaction/generated()
+	R.required_reagents = old_reaction.Copy()
 	while(LAZYLEN(recipe_targets) < 3)
 		var/list/target_elevated[0]
 		for(var/i = 0 to 5) //5 attempts at modifying the recipe before elevating recipe length
@@ -478,7 +480,7 @@
 			target_elevated["[new_component.id]"] = FALSE
 			break
 		LAZYADD(recipe_targets, target_elevated)
-	R.required_reagents = old_reaction.Copy() //it was just a simulation
+		R.required_reagents = old_reaction.Copy() //it was just a simulation
 	return TRUE
 
 /obj/structure/machinery/chem_simulator/proc/check_ready()
@@ -634,7 +636,7 @@
 	C.gen_tier = max(min(C.chemclass, CHEM_CLASS_COMMON),C.gen_tier,1)
 	if(C.chemclass == CHEM_CLASS_SPECIAL)
 		C.gen_tier = 4
-	
+
 	//Change a single component of the reaction or generate a new one if there is no recipe
 	var/datum/chemical_reaction/generated/R = new /datum/chemical_reaction/generated
 	var/datum/chemical_reaction/generated/assoc_R
@@ -662,7 +664,7 @@
 		if(R.required_reagents.len > 2 && !recipe_targets[recipe_target]) //we only replace if the recipe isn't small and the target is not set TRUE to being elevated
 			LAZYREMOVE(R.required_reagents, pick(R.required_reagents))
 		R.add_component(recipe_target)
-	
+
 	//Handle new overdose
 	C.overdose = new_od_level
 	if(C.overdose < 1) //to prevent chems that start at 0 OD to become un-OD-able
@@ -678,21 +680,19 @@
 		var/datum/reagent/component = chemical_reagents_list[recipe_target]
 		if(component && component.chemclass >= CHEM_CLASS_RARE)
 			chemical_data.update_credits(1)
-	
-	
+
+
 	//Save the reagent
 	C.generate_description()
 	C.chemclass = CHEM_CLASS_RARE //So that we can always scan this in the future, don't generate defcon, and don't get a loop of making credits
 	chemical_reagents_list[C.id] = C
 	LAZYADD(simulations, C.id) //Remember we've simulated this
-	
+
 	//Save the reaction
 	R.id = C.id
 	R.result = C.id
 	chemical_reactions_list[R.id] = R
-	var/filter_id = R.get_filter()
-	if(filter_id)
-		chemical_reactions_filtered_list[filter_id] += R
+	R.add_to_filtered_list()
 	status_bar = "SIMULATION COMPLETE"
 	print(C.id, TRUE)
 

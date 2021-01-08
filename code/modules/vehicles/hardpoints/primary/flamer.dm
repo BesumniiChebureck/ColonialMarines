@@ -7,7 +7,7 @@
 	disp_icon_state = "drgn_flamer"
 	activation_sounds = list('sound/weapons/vehicles/flamethrower.ogg')
 
-	health = 600
+	health = 750
 	cooldown = 20
 	accuracy = 0.75
 	firing_arc = 90
@@ -46,7 +46,7 @@
 	var/range = get_dist(origin_turf, A) + 1
 
 	var/obj/item/projectile/P = new(initial(name), user)
-	P.loc = origin_turf
+	P.forceMove(origin_turf)
 	P.generate_bullet(new ammo.default_ammo)
 	if(ammo.has_iff && owner.seats[VEHICLE_GUNNER])
 		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, range < P.ammo.max_range ? range : P.ammo.max_range, P.ammo.shell_speed, iff_group = owner.seats[VEHICLE_GUNNER].faction_group)

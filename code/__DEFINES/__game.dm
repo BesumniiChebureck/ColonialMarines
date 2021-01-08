@@ -34,8 +34,10 @@
 #define MAP_SOROKYNE_STRATA "Sorokyne Strata"
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
+#define MAP_ZERO_POINT "Zero Point"
+#define MAP_ZERO_POINTC "Zero Crashed Point" //Only very lowpop
 
-#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
+#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 60 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
 #define PREROUND_TIME 300 // time before the round starts
 

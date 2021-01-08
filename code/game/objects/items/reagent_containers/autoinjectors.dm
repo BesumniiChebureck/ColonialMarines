@@ -33,6 +33,12 @@
 	uses_left--
 	update_icon()
 
+
+/obj/item/reagent_container/hypospray/autoinjector/attackby(obj/item/W, mob/user)
+	if(isstorage(W))
+		..(W, user)
+	return
+
 /obj/item/reagent_container/hypospray/autoinjector/update_icon()
 	overlays.Cut()
 	if(uses_left)
@@ -133,6 +139,8 @@
 	volume = (REAGENTS_OVERDOSE-1)*2 + (MED_REAGENTS_OVERDOSE-1)
 	mixed_chem = TRUE
 	uses_left = 1
+	injectSFX = 'sound/items/air_release.ogg'
+	injectVOL = 70//limited-supply emergency injector with v.large injection of drugs. Variable sfx freq sometimes rolls too quiet.
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize()
 	. = ..()

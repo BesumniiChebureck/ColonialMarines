@@ -169,13 +169,9 @@
 				sleep(animation_teleport_spooky_out(A))*/
 
 		if(A && A.loc)
-			A.x = teleport_x
-			A.y = teleport_y
-			A.z = teleport_z
+			A.forceMove(locate(teleport_x,teleport_y,teleport_z))
 		if(M && M.loc)
-			M.x = teleport_x
-			M.y = teleport_y
-			M.z = teleport_z
+			M.forceMove(locate(teleport_x,teleport_y,teleport_z))
 			/*
 			switch(teleportation_type)
 				if(1)
@@ -190,11 +186,8 @@
 /obj/effect/step_trigger/teleporter/yautja_ship/Trigger(atom/movable/A)
 	var/turf/destination
 	if(length(GLOB.yautja_teleports))	//We have some possible locations.
-		var/turf/pick = input("Where do you want to go today?", "Locations") as null|anything in GLOB.yautja_teleport_descs	//Pick one of them in the list.
-		for(var/turf/T in GLOB.yautja_teleports)
-			if(findtext(pick,(T.loc_to_string())))
-				destination = T
-				break
+		var/pick = input("Where do you want to go today?", "Locations") as null|anything in GLOB.yautja_teleport_descs	//Pick one of them in the list.
+		destination = GLOB.yautja_teleport_descs[pick]
 	if(!destination || (A.loc != loc))
 		return
 	teleport_x = destination.x	//Configure the destination locations.
@@ -216,3 +209,4 @@
 	else if(isliving(A)) //Hacked it up so it just deletes it
 		to_chat(A, SPAN_DANGER("You get lost into the depths of space, never to be seen again."))
 		qdel(A)
+

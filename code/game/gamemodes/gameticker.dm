@@ -28,13 +28,12 @@
 
 /datum/controller/gameticker/proc/pregame()
 	login_music = pick(
-	'sound/music/good_day_to_die.ogg',//It's a Good Day to Die
-	'sound/music/Aliens_Main_Theme.ogg',
-	'sound/music/fortunate_son.ogg',
-	'sound/music/buffalo_springfield.ogg',
-	'sound/music/warrior_song.ogg',//The Warrior Song
-	'sound/music/Edwin_Starr_War.ogg',
-	'sound/music/Ross_bugden_Welcome_to_chaos.ogg')//Welcome to Chaos
+	"sound/music/1.ogg",
+	"sound/music/2.ogg",
+	"sound/music/3.ogg",
+	"sound/music/4.ogg",
+	"sound/music/5.ogg",
+	"sound/music/6.ogg")
 	do
 		pregame_timeleft = PREROUND_TIME
 		if(round_statistics)
@@ -151,6 +150,7 @@
 
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
+		//Cleanup some stuff
 		if(round_statistics)
 			to_world(SPAN_BLUE("<B>Welcome to [round_statistics.name]</B>"))
 		to_world(SPAN_BLUE("<B>Enjoy the game!</B>"))

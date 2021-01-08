@@ -8,7 +8,7 @@
 
 	slot = HDPT_TREADS
 
-	health = 500
+	health = 1250
 
 	move_speed = VEHICLE_SPEED_FAST
 
@@ -16,7 +16,7 @@
 	name = "robus-treads"
 	desc = "These treads are made of a tougher material and are more durable. However, the added weight slows the tank down slightly."
 
-	health = 1000
+	health = 750
 
 	move_speed = VEHICLE_SPEED_FASTNORMAL
 

@@ -123,12 +123,12 @@
 	src.is_shrapnel = is_shrapnel
 	if(!loc)
 		if (!is_shrapnel)
-			loc = get_turf(F)
+			forceMove(get_turf(F))
 		else
-			loc = get_turf(S)
+			forceMove(get_turf(S))
 	starting = get_turf(src)
 	if(starting != loc)
-		loc = starting //Put us on the turf, if we're not.
+		forceMove(starting) //Put us on the turf, if we're not.
 	target_turf = get_turf(target)
 	if(!target_turf || !starting || target_turf == starting) //This shouldn't happen, but it can.
 		qdel(src)
@@ -236,7 +236,7 @@
 			qdel(src)
 			return
 
-		loc = next_turf
+		forceMove(next_turf)
 		speed = each_turf(speed)
 
 		this_iteration++
@@ -736,6 +736,10 @@
 	if(ammo.sound_hit) playsound(M, ammo.sound_hit, 50, 1)
 	if(M.stat != DEAD) animation_flash_color(M)
 
+/obj/item/projectile/proc/play_shielded_damage_effect(mob/M)
+	if(ammo.sound_shield_hit) playsound(M, ammo.sound_shield_hit, 50, 1)
+	if(M.stat != DEAD) animation_flash_color(M)
+
 //----------------------------------------------------------
 				//				    \\
 				//    OTHER PROCS	\\
@@ -758,18 +762,18 @@
 	if(P.ammo.debilitate && stat != DEAD && ( damage || (ammo_flags & AMMO_IGNORE_RESIST) ) )
 		apply_effects(arglist(P.ammo.debilitate))
 
+	. = TRUE
 	if(damage)
 		bullet_message(P)
 		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P)
 		P.play_damage_effect(src)
 		if(ammo_flags & AMMO_INCENDIARY)
 			var/datum/reagent/napalm/ut/N = new()
-			adjust_fire_stacks(20, N)
-			IgniteMob()
+			if(!TryIgniteMob(20, N))
+				return
 			if(isHumanStrict(src))
 				emote("scream")
 			to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
-	return TRUE
 
 /mob/living/carbon/human/bullet_act(obj/item/projectile/P)
 	if(!P)
@@ -838,7 +842,7 @@
 		if(ammo_flags & AMMO_INCENDIARY)
 			var/datum/reagent/napalm/ut/N = new()
 			adjust_fire_stacks(20, N)
-			IgniteMob()
+			IgniteMob(TRUE)
 			if(!stat && pain.feels_pain)
 				emote("scream")
 			to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
@@ -905,13 +909,16 @@
 
 	if(damage)
 		apply_damage(damage_result,P.ammo.damage_type, P.def_zone)	//Deal the damage.
-		P.play_damage_effect(src)
+		if(xeno_shields.len)
+			P.play_shielded_damage_effect(src)
+		else
+			P.play_damage_effect(src)
 		if(!stat && prob(5 + round(damage_result / 4)))
 			var/pain_emote = prob(70) ? "hiss" : "roar"
 			emote(pain_emote)
 		if(ammo_flags & AMMO_INCENDIARY)
 			if(caste.fire_immune)
-				if(!stat) to_chat(src, "<span class='avoidharm'>You shrug off some persistent flames.</span>")
+				if(!stat) to_chat(src, SPAN_AVOIDHARM("You shrug off some persistent flames."))
 			else
 				var/datum/reagent/napalm/ut/N = new()
 				adjust_fire_stacks(10 + round(damage_result / 4), N)

@@ -96,7 +96,7 @@
 
 	// If the player has self-deevolved before, don't allow them to do it again
 	if(!(/mob/living/carbon/Xenomorph/verb/Deevolve in T.verbs))
-		new_xeno.verbs -= /mob/living/carbon/Xenomorph/verb/Deevolve
+		remove_verb(new_xeno, /mob/living/carbon/Xenomorph/verb/Deevolve)
 
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_name] emerges from the husk of \the [T]."), \
 	SPAN_XENODANGER("[X] makes you regress into your previous form."))
@@ -404,27 +404,27 @@
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
 
+	var/area/AR = get_area(T)
+	if(!AR.is_resin_allowed)
+		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		return
+
 	var/obj/effect/alien/weeds/located_weeds = locate() in T
 	if(located_weeds)
 		if(istype(located_weeds, /obj/effect/alien/weeds/node))
 			return
 
-		if(located_weeds.weed_strength > WEED_LEVEL_WEAK)
-			to_chat(X, SPAN_XENOWARNING("There's weeds here already!"))
+		if(located_weeds.weed_strength > X.weed_level)
+			to_chat(X, SPAN_XENOWARNING("There's stronger weeds here already!"))
 			return
 
 		if (!check_and_use_plasma_owner(node_plant_plasma_cost))
 			return
 
 		to_chat(X, SPAN_XENONOTICE("You plant a node at [T]."))
-		new /obj/effect/alien/weeds/node/weak(T, null, X)
+		new /obj/effect/alien/weeds/node(T, null, X)
 		playsound(T, "alien_resin_build", 35)
 		apply_cooldown_override(node_plant_cooldown)
-		return
-
-	var/area/AR = get_area(T)
-	if(!AR.is_resin_allowed)
-		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return
 
 	var/obj/effect/alien/weeds/node/node
@@ -445,7 +445,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	new /obj/effect/alien/weeds/weak(T, node)
+	new /obj/effect/alien/weeds(T, node)
 	playsound(T, "alien_resin_build", 35)
 
 	recently_built_turfs += T

@@ -154,7 +154,7 @@ mob
 		// Testing object types (and layers)
 		overlays+=/obj/effect/overlayTest
 
-		loc = locate (10,10,1)
+		forceMove(locate (10,10,1))
 	verb
 		Browse_Icon()
 			set name = "1. Browse Icon"
@@ -323,6 +323,8 @@ proc/ReadRGB(rgb)
 
 	. = list(r, g, b)
 	if(usealpha) . += alpha
+
+
 
 /*
 Get flat icon by DarkCampainger. As it says on the tin, will return an icon with all the overlays
@@ -531,6 +533,7 @@ proc/sort_atoms_by_layer(var/list/atoms)
 				result.Swap(i, gap + i)
 				swapped = 1
 	return result
+
 
 /image/proc/flick_overlay(var/atom/A, var/duration) //originally code related to goonPS. This isn't the original code, but has the same effect
 	A.overlays.Add(src)

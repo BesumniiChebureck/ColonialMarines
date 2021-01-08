@@ -235,7 +235,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	else if(istype(W, /obj/item/weapon/gun/flamer))
 		var/obj/item/weapon/gun/flamer/F = W
-		if(F.lit)
+		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
 			light(SPAN_NOTICE("[user] lights their [src] with the pilot light of the [F]."))
 		else
 			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
@@ -332,7 +332,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/process(delta_time)
 	var/mob/living/M = loc
-	if(isliving(loc) && raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED)
+	if(isliving(loc))
 		M.IgniteMob()
 	smoketime -= delta_time SECONDS
 	if(smoketime < 1)
@@ -476,7 +476,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	else if(istype(W, /obj/item/weapon/gun/flamer))
 		var/obj/item/weapon/gun/flamer/F = W
-		if(F.lit)
+		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
 			light(SPAN_NOTICE("[user] lights their [src] with the pilot light of the [F], the glint of pyromania in their eye."))
 		else
 			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
@@ -672,8 +672,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/tool/lighter/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!isliving(M))
 		return
-	if(raiseEventSync(M, EVENT_PREIGNITION_CHECK) != HALTED)
-		M.IgniteMob()
+	M.IgniteMob()
 	if(!istype(M, /mob))
 		return
 

@@ -1,3 +1,4 @@
+
 var/list/unansweredAhelps = list()			//This feels inefficient, but I can't think of a better way. Stores the message indexed by CID
 var/list/CLFaxes = list()					//List of all CL faxes sent this round
 var/list/fax_contents = list() 				//List of fax contents to maintain it even if source paper is deleted
@@ -8,7 +9,7 @@ GLOBAL_LIST_EMPTY(custom_event_info_list)
 
 //Names of maps that can be compiled on
 var/list/DEFAULT_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_BIG_RED, MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_ICE_COLONY, MAP_PRISON_STATION, MAP_CORSAT, MAP_SOROKYNE_STRATA, MAP_KUTJEVO)
-var/list/LOWPOP_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_BIG_RED, MAP_PRISON_STATION, MAP_KUTJEVO)
+var/list/LOWPOP_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_BIG_RED, MAP_PRISON_STATION, MAP_KUTJEVO, MAP_ZERO_POINT)
 var/list/NOTVOTABLE_MAPS = list(MAP_WHISKEY_OUTPOST, MAP_ICE_COLONY)
 var/list/NEXT_MAP_CANDIDATES = DEFAULT_NEXT_MAP_CANDIDATES.Copy() - NOTVOTABLE_MAPS
 var/list/MAPS_COLD_TEMP = list(MAP_ICE_COLONY, MAP_SOROKYNE_STRATA, MAP_CORSAT)
@@ -42,7 +43,13 @@ var/global/list/ai_mob_list = list()				//List of all AIs
 
 var/global/list/freed_mob_list = list() 	// List of mobs freed for ghosts
 
-GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_name) // multi-d list of xeno datums
+// Xeno stuff //
+GLOBAL_LIST_EMPTY(resin_constructions_list)
+GLOBAL_LIST_EMPTY_TYPED(resin_build_order_default, /datum/resin_construction)
+GLOBAL_LIST_EMPTY_TYPED(resin_build_order_hivelord, /datum/resin_construction)
+
+/// Xeno caste datums
+GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_name)
 
 //Chem Stuff
 var/global/list/chemical_reactions_filtered_list	//List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
@@ -128,12 +135,6 @@ var/global/list/pass_flags_cache = list()
 //Parameterss cache
 var/global/list/paramslist_cache = list()
 
-// Resin constructions parameters
-var/global/list/resin_constructions_list = list()
-
-var/global/list/resin_build_order_default = list()
-var/global/list/resin_build_order_hivelord = list()
-
 #define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, /proc/key_number_decode)
 #define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, /proc/number_list_decode)
 
@@ -158,6 +159,8 @@ var/global/list/resin_build_order_hivelord = list()
 //////////////////////////
 /////Initial Building/////
 //////////////////////////
+
+
 
 /proc/makeDatumRefLists()
 	// Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name
@@ -228,26 +231,25 @@ var/global/list/resin_build_order_hivelord = list()
 		ammo_list[A.type] = A
 
 	// Resin constructions
-	resin_constructions_list = list()
 	for (var/T in subtypesof(/datum/resin_construction) - list(/datum/resin_construction/resin_obj, /datum/resin_construction/resin_turf))
 		var/datum/resin_construction/RC = new T
-		resin_constructions_list[RC.name] = RC
-	resin_constructions_list = sortAssoc(resin_constructions_list)
-	resin_build_order_default = list(
-		resin_constructions_list["Resin Wall"],
-		resin_constructions_list["Resin Membrane"],
-		resin_constructions_list["Resin Nest"],
-		resin_constructions_list["Sticky Resin"],
-		resin_constructions_list["Fast Resin"],
-		resin_constructions_list["Resin Door"]
+		GLOB.resin_constructions_list[RC.name] = RC
+	GLOB.resin_constructions_list = sortAssocKeepList(GLOB.resin_constructions_list)
+	GLOB.resin_build_order_default += list(
+		GLOB.resin_constructions_list["Resin Wall"],
+		GLOB.resin_constructions_list["Resin Membrane"],
+		GLOB.resin_constructions_list["Resin Nest"],
+		GLOB.resin_constructions_list["Sticky Resin"],
+		GLOB.resin_constructions_list["Fast Resin"],
+		GLOB.resin_constructions_list["Resin Door"]
 	)
-	resin_build_order_hivelord = list(
-		resin_constructions_list["Thick Resin Wall"],
-		resin_constructions_list["Thick Resin Membrane"],
-		resin_constructions_list["Resin Nest"],
-		resin_constructions_list["Sticky Resin"],
-		resin_constructions_list["Fast Resin"],
-		resin_constructions_list["Thick Resin Door"]
+	GLOB.resin_build_order_hivelord += list(
+		GLOB.resin_constructions_list["Thick Resin Wall"],
+		GLOB.resin_constructions_list["Thick Resin Membrane"],
+		GLOB.resin_constructions_list["Resin Nest"],
+		GLOB.resin_constructions_list["Sticky Resin"],
+		GLOB.resin_constructions_list["Fast Resin"],
+		GLOB.resin_constructions_list["Thick Resin Door"]
 	)
 
     // Equipment presets

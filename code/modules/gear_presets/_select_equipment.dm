@@ -2,7 +2,7 @@
 #define EQUIPMENT_PRESET_START_OF_ROUND (1<<0)
 #define EQUIPMENT_PRESET_EXTRA 			(1<<1)
 #define EQUIPMENT_PRESET_START_OF_ROUND_WO (1<<2)
-#define EQUIPMENT_PRESET_MARINE			(1<<3)
+#define EQUIPMENT_PRESET_MARINE (1<<3)
 
 /datum/equipment_preset
 	var/name = "Preset"
@@ -175,11 +175,11 @@
 				H.w_uniform.attach_accessory(H, R)
 			else
 				qdel(R)
-
+		
 	if(flags & EQUIPMENT_PRESET_MARINE)
 		var/playtime = get_job_playtime(H.client, assignment)
 		var/medal_type
-
+		
 		switch(playtime)
 			if(JOB_PLAYTIME_TIER_1 to JOB_PLAYTIME_TIER_2)
 				medal_type = /obj/item/clothing/accessory/medal/bronze/service
@@ -204,8 +204,8 @@
 				if(!H.equip_to_slot_if_possible(medal, WEAR_IN_BACK))
 					if(!H.equip_to_slot_if_possible(medal, WEAR_L_HAND))
 						if(!H.equip_to_slot_if_possible(medal, WEAR_R_HAND))
-							medal.loc = H.loc
-
+							medal.forceMove(H.loc)
+			
 
 	//Gives glasses to the vision impaired
 	if(H.disabilities & NEARSIGHTED)

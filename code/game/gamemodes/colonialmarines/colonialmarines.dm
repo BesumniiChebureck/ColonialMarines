@@ -94,6 +94,8 @@
 			if(MAP_SOROKYNE_STRATA) new /obj/item/map/sorokyne_map(T)
 			if(MAP_CORSAT) new /obj/item/map/corsat(T)
 			if(MAP_KUTJEVO) new /obj/item/map/kutjevo_map(T)
+			if(MAP_ZERO_POINT) new /obj/item/map/zero_map(T)
+			if(MAP_ZERO_POINTC) new /obj/item/map/zeroc_map(T)
 
 	if(!round_fog.len) round_fog = null //No blockers?
 	else
@@ -136,7 +138,7 @@
 
 	return ..()
 
-#define MONKEYS_TO_MARINES_RATIO 1/20
+#define MONKEYS_TO_MARINES_RATIO 1/10
 
 /datum/game_mode/colonialmarines/proc/spawn_smallhosts()
 	if(!marines_assigned)
@@ -151,7 +153,7 @@
 			monkey_types = list(/mob/living/carbon/human/neaera)
 		if(MAP_KUTJEVO)
 			monkey_types = list(/mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
-		if(MAP_PRISON_STATION)
+		if(MAP_PRISON_STATION, MAP_ZERO_POINT, MAP_ZERO_POINTC)
 			monkey_types = list(/mob/living/carbon/human/monkey)
 		if(MAP_DESERT_DAM)
 			monkey_types = list(/mob/living/carbon/human/stok)
@@ -195,6 +197,10 @@
 			marine_announcement("An automated distress signal has been received from Weston-Yamada's Corporate Orbital Research Station for Advanced Technology, or CORSAT. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
 		if (MAP_KUTJEVO)
 			marine_announcement("An automated distress signal has been received from Weston-Yamada colony Kutjevo Refinery, known for botanical research, export, and raw materials processing and refinement. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
+		if (MAP_ZERO_POINT)
+			marine_announcement("We've lost contact with the Weston-Yamada's new colony, [map_tag]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
+		if (MAP_ZERO_POINTC)
+			marine_announcement("We've lost contact with the Weston-Yamada's new colony in progress, [map_tag]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
